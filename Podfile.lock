@@ -1,0 +1,7 @@
+PODS:
+  - BlockAlertsAnd-ActionSheets (1.0.0)
+  - JSONKit (1.5pre)
+
+DEPENDENCIES:
+  - BlockAlertsAnd-ActionSheets (>= 1.0.0)
+  - JSONKit (~> 1.4)
