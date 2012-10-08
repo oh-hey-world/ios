@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "OHWAppDelegate.h"
 
 @interface OHWCheckinViewController : UIViewController <CLLocationManagerDelegate>
 

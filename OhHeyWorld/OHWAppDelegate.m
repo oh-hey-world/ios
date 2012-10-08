@@ -11,6 +11,7 @@
 NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:SessionStateChangedNotification";
 
 @implementation OHWAppDelegate
+
 @synthesize window = _window;
 @synthesize checkinViewController = _checkinViewController;
 @synthesize navController = _navController;
@@ -40,31 +41,16 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   }
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-  // FBSample logic
-  // We need to handle URLs by passing them to FBSession in order for SSO authentication
-  // to work.
-  return [FBSession.activeSession handleOpenURL:url];
-}
-
 - (void)sessionStateChanged:(FBSession *)session
                       state:(FBSessionState)state
                       error:(NSError *)error
 {
   switch (state) {
     case FBSessionStateOpen: {
-      [self.checkinViewController startLocationManager];
-      //if ([[self.window.rootViewController modalViewController] isKindOfClass:[OHWLoginViewController class]]) {
-        
-      //}
-
+      //UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+      //self.checkinViewController = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
+      //[self.checkinViewController startLocationManager];
       [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-      // FBSample logic
-      // Pre-fetch and cache the friends for the friend picker as soon as possible to improve
-      // responsiveness when the user tags their friends.
       FBCacheDescriptor *cacheDescriptor = [FBFriendPickerViewController cacheDescriptor];
       [cacheDescriptor prefetchAndCacheForSession:session];
     }
@@ -74,10 +60,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
     }
       break;
     case FBSessionStateClosedLoginFailed: {
-      // if the token goes invalid we want to switch right back to
-      // the login view, however we do it with a slight delay in order to
-      // account for a race between this and the login view dissappearing
-      // a moment before
       [self performSelector:@selector(showLoginView)
                  withObject:nil
                  afterDelay:0.5f];
@@ -93,8 +75,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   if (error) {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %@",
                                                                  [OHWAppDelegate FBErrorCodeDescription:error.code]]
-                                                        message:error.localizedDescription
-                                                       delegate:nil
+                                              message:error.localizedDescription
+                                              delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
@@ -131,18 +113,23 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   }
 }
 
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  return [FBSession.activeSession handleOpenURL:url];
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-
+  if (![self openSessionWithAllowLoginUI:NO]) {
+    [self showLoginView];
+  }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-  
-  //if (![self openSessionWithAllowLoginUI:NO]) {
-    [self showLoginView];
-  //}
   return YES;
 }
 

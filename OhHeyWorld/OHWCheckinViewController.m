@@ -26,22 +26,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
   self.title = @"Check In";
   
   // Get the CLLocationManager going.
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.delegate = self;
   self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-  // We don't want to be notified of small changes in location, preferring to use our
-  // last cached results, if any.
   self.locationManager.distanceFilter = 50;
-  
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Settings"
-                                            style:UIBarButtonItemStyleBordered
-                                            target:self
-                                            action:@selector(settingsButtonWasPressed:)];
   
   //self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   //self.activityIndicator.hidesWhenStopped = YES;
