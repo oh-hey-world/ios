@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071385DA1623122200936674 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D81623122200936674 /* CoreData.framework */; };
+		071385DB1623122200936674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D91623122200936674 /* CoreLocation.framework */; };
+		071385E01623135100936674 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385DF1623135100936674 /* AddressBook.framework */; };
+		071385E21623144800936674 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385E11623144800936674 /* MapKit.framework */; };
+		07141AD0162304A1001C346A /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141ACF162304A1001C346A /* FacebookSDK.framework */; };
+		07141AD21623052B001C346A /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07141AD11623052B001C346A /* FacebookSDKResources.bundle */; };
+		07141AD716230571001C346A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD316230571001C346A /* Accounts.framework */; };
+		07141AD816230571001C346A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD416230571001C346A /* AdSupport.framework */; };
+		07141AD916230571001C346A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD516230571001C346A /* Social.framework */; };
+		07141ADA16230571001C346A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD616230571001C346A /* Twitter.framework */; };
+		07141AE416230BA7001C346A /* OHWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AE316230BA7001C346A /* OHWLoginViewController.m */; };
+		07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AF216230D33001C346A /* OHWCheckinViewController.m */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
 		0768B0D6161F73AA002DD6F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D5161F73AA002DD6F2 /* CoreGraphics.framework */; };
@@ -36,6 +48,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071385D81623122200936674 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		071385D91623122200936674 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		071385DF1623135100936674 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		071385E11623144800936674 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07141ACF162304A1001C346A /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		07141AD11623052B001C346A /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		07141AD316230571001C346A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		07141AD416230571001C346A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		07141AD516230571001C346A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		07141AD616230571001C346A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		07141AE216230BA7001C346A /* OHWLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWLoginViewController.h; sourceTree = "<group>"; };
+		07141AE316230BA7001C346A /* OHWLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWLoginViewController.m; sourceTree = "<group>"; };
+		07141AF116230D33001C346A /* OHWCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWCheckinViewController.h; sourceTree = "<group>"; };
+		07141AF216230D33001C346A /* OHWCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWCheckinViewController.m; sourceTree = "<group>"; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0768B0D1161F73AA002DD6F2 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0768B0D3161F73AA002DD6F2 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,10 +91,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071385E21623144800936674 /* MapKit.framework in Frameworks */,
+				071385E01623135100936674 /* AddressBook.framework in Frameworks */,
+				0768B0D6161F73AA002DD6F2 /* CoreGraphics.framework in Frameworks */,
+				071385DA1623122200936674 /* CoreData.framework in Frameworks */,
+				071385DB1623122200936674 /* CoreLocation.framework in Frameworks */,
+				07141AD716230571001C346A /* Accounts.framework in Frameworks */,
+				07141AD816230571001C346A /* AdSupport.framework in Frameworks */,
+				07141AD916230571001C346A /* Social.framework in Frameworks */,
+				07141ADA16230571001C346A /* Twitter.framework in Frameworks */,
 				0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */,
 				0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */,
-				0768B0D6161F73AA002DD6F2 /* CoreGraphics.framework in Frameworks */,
 				5F625F920F8B49B481779525 /* libPods.a in Frameworks */,
+				07141AD0162304A1001C346A /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,9 +120,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07141ADF16230B37001C346A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		0768B0C2161F73AA002DD6F2 = {
 			isa = PBXGroup;
 			children = (
+				071385E11623144800936674 /* MapKit.framework */,
 				0768B0D7161F73AA002DD6F2 /* OhHeyWorld */,
 				0768B106161F73AB002DD6F2 /* OhHeyWorldTests */,
 				0768B0D0161F73AA002DD6F2 /* Frameworks */,
@@ -108,6 +151,15 @@
 		0768B0D0161F73AA002DD6F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				071385DF1623135100936674 /* AddressBook.framework */,
+				071385D81623122200936674 /* CoreData.framework */,
+				071385D91623122200936674 /* CoreLocation.framework */,
+				07141AD316230571001C346A /* Accounts.framework */,
+				07141AD416230571001C346A /* AdSupport.framework */,
+				07141AD516230571001C346A /* Social.framework */,
+				07141AD616230571001C346A /* Twitter.framework */,
+				07141AD11623052B001C346A /* FacebookSDKResources.bundle */,
+				07141ACF162304A1001C346A /* FacebookSDK.framework */,
 				0768B0D1161F73AA002DD6F2 /* UIKit.framework */,
 				0768B0D3161F73AA002DD6F2 /* Foundation.framework */,
 				0768B0D5161F73AA002DD6F2 /* CoreGraphics.framework */,
@@ -120,8 +172,13 @@
 		0768B0D7161F73AA002DD6F2 /* OhHeyWorld */ = {
 			isa = PBXGroup;
 			children = (
+				07141ADF16230B37001C346A /* Assets */,
 				0768B0E0161F73AB002DD6F2 /* OHWAppDelegate.h */,
 				0768B0E1161F73AB002DD6F2 /* OHWAppDelegate.m */,
+				07141AF116230D33001C346A /* OHWCheckinViewController.h */,
+				07141AF216230D33001C346A /* OHWCheckinViewController.m */,
+				07141AE216230BA7001C346A /* OHWLoginViewController.h */,
+				07141AE316230BA7001C346A /* OHWLoginViewController.m */,
 				0768B0E9161F73AB002DD6F2 /* MainStoryboard.storyboard */,
 				0768B0D8161F73AB002DD6F2 /* Supporting Files */,
 			);
@@ -239,6 +296,7 @@
 				0768B0E6161F73AB002DD6F2 /* Default@2x.png in Resources */,
 				0768B0E8161F73AB002DD6F2 /* Default-568h@2x.png in Resources */,
 				0768B0EB161F73AB002DD6F2 /* MainStoryboard.storyboard in Resources */,
+				07141AD21623052B001C346A /* FacebookSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +347,8 @@
 			files = (
 				0768B0DE161F73AB002DD6F2 /* main.m in Sources */,
 				0768B0E2161F73AB002DD6F2 /* OHWAppDelegate.m in Sources */,
+				07141AE416230BA7001C346A /* OHWLoginViewController.m in Sources */,
+				07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,9 +451,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
 				INFOPLIST_FILE = "OhHeyWorld/OhHeyWorld-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -403,9 +472,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
 				INFOPLIST_FILE = "OhHeyWorld/OhHeyWorld-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

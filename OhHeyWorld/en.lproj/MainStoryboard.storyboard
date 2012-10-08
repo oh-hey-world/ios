@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="933" y="180"/>
         </scene>
-        <!--View Controller-->
+        <!--Checkin View Controller-->
         <scene sceneID="DsU-m5-0Ib">
             <objects>
-                <viewController id="bJO-7w-svo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckinView" id="bJO-7w-svo" customClass="OHWCheckinViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OoJ-XK-KRt">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,6 +131,58 @@
             </objects>
             <point key="canvasLocation" x="928" y="854"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ye3-ku-2Vw">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Cgb-Uw-RBP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t5n-XP-JQR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3KK-eu-J3l" kind="relationship" relationship="rootViewController" id="GGb-K0-9uZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iix-Tg-OLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-270" y="-518"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="xdx-rd-26f">
+            <objects>
+                <viewController storyboardIdentifier="LoginView" id="3KK-eu-J3l" customClass="OHWLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ItS-Hl-yJW">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIc-Vb-zez">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="nep-AG-MnR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="performLogin:" destination="3KK-eu-J3l" eventType="touchUpInside" id="cz5-s8-ygT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eIc-Vb-zez" firstAttribute="centerX" secondItem="ItS-Hl-yJW" secondAttribute="centerX" type="default" id="RxP-Bk-CjY"/>
+                            <constraint firstItem="eIc-Vb-zez" firstAttribute="top" secondItem="ItS-Hl-yJW" secondAttribute="top" constant="205" id="hRY-4z-QvG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nCL-mt-wA2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jUd-qx-JfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112" y="-518"/>
+        </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="dt9-1O-aoz">
             <objects>
@@ -148,6 +200,21 @@
             <point key="canvasLocation" x="524" y="-518"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="OHWCheckinViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckinViewController.h"/>
+        </class>
+        <class className="OHWLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="performLogin:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
