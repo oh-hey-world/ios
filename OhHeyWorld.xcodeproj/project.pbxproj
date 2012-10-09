@@ -34,6 +34,15 @@
 		0768B103161F73AB002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
 		0768B10B161F73AB002DD6F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0768B109161F73AB002DD6F2 /* InfoPlist.strings */; };
 		0768B10E161F73AB002DD6F2 /* OhHeyWorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0768B10D161F73AB002DD6F2 /* OhHeyWorldTests.m */; };
+		0775F6371624566D00D8BDA7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 0775F6351624566C00D8BDA7 /* Podfile */; };
+		0775F6381624566D00D8BDA7 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 0775F6361624566C00D8BDA7 /* Podfile.lock */; };
+		0775F691162464DF00D8BDA7 /* RestKit.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 0775F690162464DF00D8BDA7 /* RestKit.xcodeproj */; };
+		0775F69C1624669500D8BDA7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6961624669500D8BDA7 /* CFNetwork.framework */; };
+		0775F69D1624669500D8BDA7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6971624669500D8BDA7 /* libxml2.dylib */; };
+		0775F69E1624669500D8BDA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6981624669500D8BDA7 /* MobileCoreServices.framework */; };
+		0775F69F1624669500D8BDA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6991624669500D8BDA7 /* QuartzCore.framework */; };
+		0775F6A01624669500D8BDA7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F69A1624669500D8BDA7 /* Security.framework */; };
+		0775F6A11624669500D8BDA7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F69B1624669500D8BDA7 /* SystemConfiguration.framework */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +91,15 @@
 		0768B10A161F73AB002DD6F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0768B10C161F73AB002DD6F2 /* OhHeyWorldTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OhHeyWorldTests.h; sourceTree = "<group>"; };
 		0768B10D161F73AB002DD6F2 /* OhHeyWorldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OhHeyWorldTests.m; sourceTree = "<group>"; };
+		0775F6351624566C00D8BDA7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		0775F6361624566C00D8BDA7 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
+		0775F690162464DF00D8BDA7 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		0775F6961624669500D8BDA7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0775F6971624669500D8BDA7 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		0775F6981624669500D8BDA7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0775F6991624669500D8BDA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0775F69A1624669500D8BDA7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0775F69B1624669500D8BDA7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBE417732F6642FCBE38D17D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,6 +109,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0775F69C1624669500D8BDA7 /* CFNetwork.framework in Frameworks */,
+				0775F69D1624669500D8BDA7 /* libxml2.dylib in Frameworks */,
+				0775F69E1624669500D8BDA7 /* MobileCoreServices.framework in Frameworks */,
+				0775F69F1624669500D8BDA7 /* QuartzCore.framework in Frameworks */,
+				0775F6A01624669500D8BDA7 /* Security.framework in Frameworks */,
+				0775F6A11624669500D8BDA7 /* SystemConfiguration.framework in Frameworks */,
 				071385E21623144800936674 /* MapKit.framework in Frameworks */,
 				071385E01623135100936674 /* AddressBook.framework in Frameworks */,
 				0768B0D6161F73AA002DD6F2 /* CoreGraphics.framework in Frameworks */,
@@ -130,11 +154,13 @@
 		0768B0C2161F73AA002DD6F2 = {
 			isa = PBXGroup;
 			children = (
-				071385E11623144800936674 /* MapKit.framework */,
+				0775F690162464DF00D8BDA7 /* RestKit.xcodeproj */,
 				0768B0D7161F73AA002DD6F2 /* OhHeyWorld */,
 				0768B106161F73AB002DD6F2 /* OhHeyWorldTests */,
 				0768B0D0161F73AA002DD6F2 /* Frameworks */,
 				0768B0CE161F73AA002DD6F2 /* Products */,
+				0775F6351624566C00D8BDA7 /* Podfile */,
+				0775F6361624566C00D8BDA7 /* Podfile.lock */,
 				50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -151,6 +177,13 @@
 		0768B0D0161F73AA002DD6F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0775F6961624669500D8BDA7 /* CFNetwork.framework */,
+				0775F6971624669500D8BDA7 /* libxml2.dylib */,
+				0775F6981624669500D8BDA7 /* MobileCoreServices.framework */,
+				0775F6991624669500D8BDA7 /* QuartzCore.framework */,
+				0775F69A1624669500D8BDA7 /* Security.framework */,
+				0775F69B1624669500D8BDA7 /* SystemConfiguration.framework */,
+				071385E11623144800936674 /* MapKit.framework */,
 				071385DF1623135100936674 /* AddressBook.framework */,
 				071385D81623122200936674 /* CoreData.framework */,
 				071385D91623122200936674 /* CoreLocation.framework */,
@@ -297,6 +330,9 @@
 				0768B0E8161F73AB002DD6F2 /* Default-568h@2x.png in Resources */,
 				0768B0EB161F73AB002DD6F2 /* MainStoryboard.storyboard in Resources */,
 				07141AD21623052B001C346A /* FacebookSDKResources.bundle in Resources */,
+				0775F6371624566D00D8BDA7 /* Podfile in Resources */,
+				0775F6381624566D00D8BDA7 /* Podfile.lock in Resources */,
+				0775F691162464DF00D8BDA7 /* RestKit.xcodeproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +456,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -440,8 +481,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -458,6 +504,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/BlockAlertsAnd-ActionSheets\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "OhHeyWorld/OhHeyWorld-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -479,6 +530,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/BlockAlertsAnd-ActionSheets\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "OhHeyWorld/OhHeyWorld-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
