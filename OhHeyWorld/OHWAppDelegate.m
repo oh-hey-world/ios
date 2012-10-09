@@ -18,7 +18,10 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize loginViewController = _loginViewController;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
-  return [FBSession openActiveSessionWithReadPermissions:nil
+  //publish_checkins,publish_stream
+  NSArray *permissions = [NSArray arrayWithObjects:@"user_location", @"email", @"user_birthday", @"friends_location", @"user_photos",
+                          @"friends_photos", @"user_website", @"friends_website", @"offline_access", nil];
+  return [FBSession openActiveSessionWithReadPermissions:permissions
                                             allowLoginUI:allowLoginUI
                                        completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
                                          [self sessionStateChanged:session state:state error:error];
@@ -47,10 +50,18 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 {
   switch (state) {
     case FBSessionStateOpen: {
-      //UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-      //self.checkinViewController = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
-      //[self.checkinViewController startLocationManager];
       [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+      
+      [FBRequestConnection
+       startForMeWithCompletionHandler:^(FBRequestConnection *connection,
+                                         id<FBGraphUser> user,
+                                         NSError *error) {
+         if (!error) {
+           NSLog(@"%@", user);
+           NSLog(@"%@", [user objectForKey:@"username"]);
+         }
+       }];
+      
       FBCacheDescriptor *cacheDescriptor = [FBFriendPickerViewController cacheDescriptor];
       [cacheDescriptor prefetchAndCacheForSession:session];
     }
@@ -123,9 +134,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-  if (![self openSessionWithAllowLoginUI:NO]) {
+  //if (![self openSessionWithAllowLoginUI:NO]) {
     [self showLoginView];
-  }
+  //}
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
