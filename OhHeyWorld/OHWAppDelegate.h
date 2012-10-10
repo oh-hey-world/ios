@@ -12,6 +12,8 @@
 #import "OHWCheckinViewController.h"
 #import "OHWSettings.h"
 #import "User.h"
+#import "ModelHelper.h"
+#import "CoreDataHelper.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 
@@ -28,6 +30,7 @@
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain) NSMutableData *data;
+@property (nonatomic, retain) NSURL *baseUrl;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;
@@ -37,6 +40,9 @@
 - (void)sessionStateChanged:(FBSession *)session
                       state:(FBSessionState)state
                       error:(NSError *)error;
+- (void)setupRK;
+- (void)setupRKUser;
+
 + (NSString *)FBErrorCodeDescription:(FBErrorCode) code;
 
 @end

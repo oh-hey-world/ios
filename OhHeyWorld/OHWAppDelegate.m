@@ -19,6 +19,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize checkinViewController = _checkinViewController;
 @synthesize navController = _navController;
 @synthesize loginViewController = _loginViewController;
+@synthesize baseUrl = _baseUrl;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream
@@ -51,7 +52,22 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  User *user = [ModelHelper getUserByEmail:@"eric.roland@gmail.com"];
+  NSLog(@"%@", user);
   NSLog(@"%@", objects);
+}
+
+- (void)setupRK {
+  RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:_baseUrl];
+  manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+}
+
+- (void)setupRKUser {
+  RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[User class]];
+  [objectMapping mapKeyPath:@"email" toAttribute:@"email"];
+  
+  
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:objectMapping withRootKeyPath:@"user"];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
@@ -67,22 +83,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
                                          NSDictionary<FBGraphUser> *fbUser,
                                          NSError *error) {
          if (!error) {
-           NSString *developmentBaseUrl = [OHWSettings.defaultList objectForKey:@"DevelopmentBaseUrl"];
            
-           NSURL *baseUrl = [NSURL URLWithString:developmentBaseUrl];
-           
-           RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:baseUrl];
-           manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
-           
-           RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[User class]];
-           [objectMapping mapKeyPath:@"email" toAttribute:@"email"];
-           
-           
-           [[RKObjectManager sharedManager].mappingProvider registerMapping:objectMapping withRootKeyPath:@"user"];
-           
-           NSManagedObjectContext *context = [self managedObjectContext];
-           User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
-           user.email = [fbUser valueForKey:@"email"];
+           User *user = [ModelHelper getFacebookUser:fbUser];
            
            RKObjectRouter *router = [RKObjectManager sharedManager].router;
            [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
@@ -163,6 +165,10 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+  NSString *developmentBaseUrl = [OHWSettings.defaultList objectForKey:@"DevelopmentBaseUrl"];
+  _baseUrl = [NSURL URLWithString:developmentBaseUrl];
+  [self setupRK];
+  [self setupRKUser];
   [self showLoginView];
   /*
   if (![self openSessionWithAllowLoginUI:NO]) {
