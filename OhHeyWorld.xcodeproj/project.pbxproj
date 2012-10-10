@@ -43,12 +43,12 @@
 		0775F6A01624669500D8BDA7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F69A1624669500D8BDA7 /* Security.framework */; };
 		0775F6A11624669500D8BDA7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F69B1624669500D8BDA7 /* SystemConfiguration.framework */; };
 		0775F6A5162470AF00D8BDA7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */; };
-		0775F6A8162499D300D8BDA7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775F6A7162499D300D8BDA7 /* User.m */; };
 		0775FBD41624B77200D8BDA7 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775FBC91624AECD00D8BDA7 /* libRestKit.a */; };
 		0775FBD61625939E00D8BDA7 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0775FBD51625939E00D8BDA7 /* defaults.plist */; };
 		0775FBDA1625943900D8BDA7 /* OHWSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBD91625943900D8BDA7 /* OHWSettings.m */; };
 		0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBF91625F93400D8BDA7 /* ModelHelper.m */; };
 		0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */; };
+		0775FC0316260D3200D8BDA7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FC0216260D3200D8BDA7 /* User.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -148,8 +148,6 @@
 		0775F69A1624669500D8BDA7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0775F69B1624669500D8BDA7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0775F6A4162470AF00D8BDA7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		0775F6A6162499D300D8BDA7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		0775F6A7162499D300D8BDA7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0775FBBD1624AECC00D8BDA7 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		0775FBD51625939E00D8BDA7 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
 		0775FBD81625943900D8BDA7 /* OHWSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWSettings.h; sourceTree = "<group>"; };
@@ -158,6 +156,8 @@
 		0775FBF91625F93400D8BDA7 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
 		0775FBFB1626004600D8BDA7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = ../../../../../yourmapper/mainapp/mainapp/CoreDataHelper.h; sourceTree = "<group>"; };
 		0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../../../../../yourmapper/mainapp/mainapp/CoreDataHelper.m; sourceTree = "<group>"; };
+		0775FC0116260D3200D8BDA7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		0775FC0216260D3200D8BDA7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBE417732F6642FCBE38D17D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -317,10 +317,10 @@
 			isa = PBXGroup;
 			children = (
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
-				0775F6A6162499D300D8BDA7 /* User.h */,
-				0775F6A7162499D300D8BDA7 /* User.m */,
 				0775FBF81625F93400D8BDA7 /* ModelHelper.h */,
 				0775FBF91625F93400D8BDA7 /* ModelHelper.m */,
+				0775FC0116260D3200D8BDA7 /* User.h */,
+				0775FC0216260D3200D8BDA7 /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -528,10 +528,10 @@
 				07141AE416230BA7001C346A /* OHWLoginViewController.m in Sources */,
 				07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */,
 				0775F6A5162470AF00D8BDA7 /* Model.xcdatamodeld in Sources */,
-				0775F6A8162499D300D8BDA7 /* User.m in Sources */,
 				0775FBDA1625943900D8BDA7 /* OHWSettings.m in Sources */,
 				0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */,
 				0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */,
+				0775FC0316260D3200D8BDA7 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

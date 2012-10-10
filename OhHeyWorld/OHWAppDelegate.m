@@ -52,9 +52,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  User *user = [ModelHelper getUserByEmail:@"eric.roland@gmail.com"];
-  NSLog(@"%@", user);
-  NSLog(@"%@", objects);
+  NSLog(@"%@", @"updates user");
 }
 
 - (void)setupRK {
@@ -64,10 +62,31 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)setupRKUser {
   RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[User class]];
-  [objectMapping mapKeyPath:@"email" toAttribute:@"email"];
   
+  [objectMapping mapKeyPath:@"email" toAttribute:@"email"];
+  [objectMapping mapKeyPath:@"birthday" toAttribute:@"birthday"];
+  [objectMapping mapKeyPath:@"agrees_to_terms" toAttribute:@"agreesToTerms"];
+  [objectMapping mapKeyPath:@"blog_url" toAttribute:@"blogUrl"];
+  [objectMapping mapKeyPath:@"blurb" toAttribute:@"blurb"];
+  [objectMapping mapKeyPath:@"completed_first_checkin" toAttribute:@"completedFirstCheckin"];
+  [objectMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [objectMapping mapKeyPath:@"first_name" toAttribute:@"firstName"];
+  [objectMapping mapKeyPath:@"gender" toAttribute:@"gender"];
+  [objectMapping mapKeyPath:@"last_name" toAttribute:@"lastName"];
+  [objectMapping mapKeyPath:@"link" toAttribute:@"link"];
+  [objectMapping mapKeyPath:@"locale" toAttribute:@"locale"];
+  [objectMapping mapKeyPath:@"nickname" toAttribute:@"nickname"];
+  [objectMapping mapKeyPath:@"picture_url" toAttribute:@"pictureUrl"];
+  [objectMapping mapKeyPath:@"roles_mask" toAttribute:@"rolesMask"];
+  [objectMapping mapKeyPath:@"slug" toAttribute:@"slug"];
+  [objectMapping mapKeyPath:@"timezone" toAttribute:@"timezone"];
+  [objectMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [objectMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   
   [[RKObjectManager sharedManager].mappingProvider registerMapping:objectMapping withRootKeyPath:@"user"];
+  
+  RKObjectRouter *router = [RKObjectManager sharedManager].router;
+  [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
@@ -83,11 +102,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
                                          NSDictionary<FBGraphUser> *fbUser,
                                          NSError *error) {
          if (!error) {
-           
            User *user = [ModelHelper getFacebookUser:fbUser];
            
-           RKObjectRouter *router = [RKObjectManager sharedManager].router;
-           [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
+
            
            [[RKObjectManager sharedManager] postObject:user delegate:self];
          }
@@ -166,9 +183,11 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   NSString *developmentBaseUrl = [OHWSettings.defaultList objectForKey:@"DevelopmentBaseUrl"];
-  _baseUrl = [NSURL URLWithString:developmentBaseUrl];
-  [self setupRK];
-  [self setupRKUser];
+  if (_baseUrl == nil) {
+    _baseUrl = [NSURL URLWithString:developmentBaseUrl];
+    [self setupRK];
+    [self setupRKUser];
+  }
   [self showLoginView];
   /*
   if (![self openSessionWithAllowLoginUI:NO]) {

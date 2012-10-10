@@ -2,7 +2,7 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/9/12.
+//  Created by Eric Roland on 10/10/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -12,24 +12,24 @@
 
 @interface User : NSManagedObject
 
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSDate * created_at;
-@property (nonatomic, retain) NSDate * updated_at;
-@property (nonatomic, retain) NSString * first_name;
-@property (nonatomic, retain) NSString * last_name;
-@property (nonatomic, retain) NSString * gender;
-@property (nonatomic, retain) NSNumber * timezone;
-@property (nonatomic, retain) NSString * locale;
-@property (nonatomic, retain) NSString * picture_url;
-@property (nonatomic, retain) NSString * link;
-@property (nonatomic, retain) NSString * blurb;
+@property (nonatomic, retain) NSNumber * agreesToTerms;
 @property (nonatomic, retain) NSDate * birthday;
-@property (nonatomic, retain) NSNumber * roles_mask;
-@property (nonatomic, retain) NSString * blog_url;
+@property (nonatomic, retain) NSString * blogUrl;
+@property (nonatomic, retain) NSString * blurb;
+@property (nonatomic, retain) NSNumber * completedFirstCheckin;
+@property (nonatomic, retain) NSDate * createdAt;
+@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * firstName;
+@property (nonatomic, retain) NSString * gender;
+@property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSString * link;
+@property (nonatomic, retain) NSString * locale;
 @property (nonatomic, retain) NSString * nickname;
+@property (nonatomic, retain) NSString * pictureUrl;
+@property (nonatomic, retain) NSNumber * rolesMask;
 @property (nonatomic, retain) NSString * slug;
-@property (nonatomic, retain) NSNumber * agrees_to_terms;
-@property (nonatomic, retain) NSNumber * completed_first_checkin;
-@property (nonatomic, retain) NSString * send_overrides;
+@property (nonatomic, retain) NSNumber * timezone;
+@property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSNumber * externalId;
 
 @end
