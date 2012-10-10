@@ -22,8 +22,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream
-  NSArray *permissions = [NSArray arrayWithObjects:@"user_location", @"email", @"user_birthday", @"friends_location", @"user_photos",
-                          @"friends_photos", @"user_website", @"friends_website", @"offline_access", nil];
+  NSArray *permissions = [NSArray arrayWithObjects:@"user_location", @"email", @"user_birthday", @"friends_location", @"offline_access", nil];
   return [FBSession openActiveSessionWithReadPermissions:permissions
                                             allowLoginUI:allowLoginUI
                                        completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
@@ -48,12 +47,10 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-  NSLog(@"%@", error);
-  NSLog(@"%@", error);
+
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  NSLog(@"%@", objects);
   NSLog(@"%@", objects);
 }
 
@@ -75,7 +72,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
            NSURL *baseUrl = [NSURL URLWithString:developmentBaseUrl];
            
            RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:baseUrl];
-           //manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+           manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
            
            RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[User class]];
            [objectMapping mapKeyPath:@"email" toAttribute:@"email"];
