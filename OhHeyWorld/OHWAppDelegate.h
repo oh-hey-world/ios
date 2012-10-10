@@ -10,12 +10,15 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "OHWLoginViewController.h"
 #import "OHWCheckinViewController.h"
+#import "OHWSettings.h"
+#import "User.h"
 #import <RestKit/RestKit.h>
+#import <RestKit/RKRequestSerialization.h>
 
 @class OHWCheckinViewController;
 @class OHWLoginViewController;
 
-@interface OHWAppDelegate : UIResponder <UIApplicationDelegate>
+@interface OHWAppDelegate : UIResponder <UIApplicationDelegate, RKObjectLoaderDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navController;

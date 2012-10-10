@@ -10,4 +10,18 @@
 
 @implementation OHWSettings
 
++ (NSUserDefaults *)defaultSettings {
+  return [NSUserDefaults standardUserDefaults];
+}
+
++ (NSDictionary *)defaultList {
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
+  return [[NSDictionary alloc] initWithContentsOfFile: path];
+}
+
++ (void)removeViewByIndex:(UIView *)superView:(int)index {
+  UIView *view = [superView viewWithTag:index];
+  [view removeFromSuperview];
+}
+
 @end

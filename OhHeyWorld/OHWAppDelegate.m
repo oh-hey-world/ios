@@ -47,6 +47,16 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   }
 }
 
+- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
+  NSLog(@"%@", error);
+  NSLog(@"%@", error);
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  NSLog(@"%@", objects);
+  NSLog(@"%@", objects);
+}
+
 - (void)sessionStateChanged:(FBSession *)session
                       state:(FBSessionState)state
                       error:(NSError *)error
@@ -57,11 +67,30 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
       
       [FBRequestConnection
        startForMeWithCompletionHandler:^(FBRequestConnection *connection,
-                                         id<FBGraphUser> user,
+                                         NSDictionary<FBGraphUser> *fbUser,
                                          NSError *error) {
          if (!error) {
-           NSLog(@"%@", user);
-           NSLog(@"%@", [user objectForKey:@"username"]);
+           NSString *developmentBaseUrl = [OHWSettings.defaultList objectForKey:@"DevelopmentBaseUrl"];
+           
+           NSURL *baseUrl = [NSURL URLWithString:developmentBaseUrl];
+           
+           RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:baseUrl];
+           //manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+           
+           RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[User class]];
+           [objectMapping mapKeyPath:@"email" toAttribute:@"email"];
+           
+           
+           [[RKObjectManager sharedManager].mappingProvider registerMapping:objectMapping withRootKeyPath:@"user"];
+           
+           NSManagedObjectContext *context = [self managedObjectContext];
+           User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
+           user.email = [fbUser valueForKey:@"email"];
+           
+           RKObjectRouter *router = [RKObjectManager sharedManager].router;
+           [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
+           
+           [[RKObjectManager sharedManager] postObject:user delegate:self];
          }
        }];
       
@@ -137,9 +166,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-  //if (![self openSessionWithAllowLoginUI:NO]) {
-    [self showLoginView];
-  //}
+  [self showLoginView];
+  /*
+  if (![self openSessionWithAllowLoginUI:NO]) {
+    
+  }
+  */
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

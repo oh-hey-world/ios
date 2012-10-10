@@ -10,4 +10,8 @@
 
 @interface OHWSettings : NSObject
 
++ (NSUserDefaults *)defaultSettings;
++ (NSDictionary *)defaultList;
++ (void)removeViewByIndex:(UIView *)superView:(int)index;
+
 @end
