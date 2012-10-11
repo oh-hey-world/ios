@@ -39,108 +39,59 @@
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"MM/dd/yyyy"];
   
-  
-  
   user.email = email;
   user.firstName = [fbUser valueForKey:@"first_name"];
   user.lastName = [fbUser valueForKey:@"last_name"];
   user.gender = [fbUser valueForKey:@"gender"];
   user.timezone = [fbUser valueForKey:@"timezone"];
   user.locale = [fbUser valueForKey:@"locale"];
-  user.pictureUrl = [fbUser valueForKey:@"picture_url"];
+  user.nickname = [fbUser valueForKey:@"username"];
+  NSArray *pictureUrl = [[NSArray alloc] initWithObjects:[OHWSettings.defaultList objectForKey:@"FBGraphUrl"], user.nickname, @"picture", nil];
+  user.pictureUrl = [pictureUrl componentsJoinedByString: @"/"];
   user.link = [fbUser valueForKey:@"link"];
   //TODO home_town_location_id
-  user.nickname = [fbUser valueForKey:@"username"];
   user.birthday = [dateFormatter dateFromString:[fbUser valueForKey:@"birthday"]];
   //user. = [fbUser valueForKey:@""];
-  /*
-   {
-   birthday = "11/08/1970";
-   education =     (
-   {
-   school =             {
-   id = 106233546075029;
-   name = "Oldham County High School";
-   };
-   type = "High School";
-   },
-   {
-   concentration =             (
-   {
-   id = 113336252010022;
-   name = Marketing;
-   },
-   {
-   id = 105415696160112;
-   name = "International Business";
-   }
-   );
-   school =             {
-   id = 107411822621990;
-   name = "University of Louisville";
-   };
-   type = College;
-   year =             {
-   id = 135676686463386;
-   name = 1994;
-   };
-   },
-   {
-   concentration =             (
-   {
-   id = 181079781940764;
-   name = "Management Information System";
-   }
-   );
-   degree =             {
-   id = 196378900380313;
-   name = MBA;
-   };
-   school =             {
-   id = 235601731818;
-   name = "University of Kentucky";
-   };
-   type = "Graduate School";
-   }
-   );
-   email = "eric.roland@gmail.com";
-   "first_name" = Eric;
-   gender = male;
-   hometown =     {
-   id = 104006346303593;
-   name = "Louisville, Kentucky";
-   };
-   id = 654625246;
-   "last_name" = Roland;
-   link = "http://www.facebook.com/eric.roland";
-   locale = "en_US";
-   location =     {
-   id = 104006346303593;
-   name = "Louisville, Kentucky";
-   };
-   name = "Eric Roland";
-   timezone = "-4";
-   "updated_time" = "2012-10-10T17:56:46+0000";
-   username = "eric.roland";
-   verified = 1;
-   website = "http://www.mainrhode.com
-   \nhttp://www.profilactic.com
-   \nhttp://www.brandgeni.us/";
-   work =     (
-   {
-   employer =             {
-   id = 107545669277386;
-   name = "Me (MainRhode)";
-   };
-   "end_date" = "0000-00";
-   "start_date" = "2005-06";
-   }
-   );
-   }
-   */
-  
+  [ModelHelper getOrSaveUserProvider:fbUser :user :@"facebook"];
   [appDelegate saveContext];
   return user;
+}
+
+
++ (UserProvider*)getUserProvider:(User*)user:(NSString*)providerName {
+  UserProvider *userProvider = nil;
+  for(UserProvider *item in user.userUserProviders) {
+    if([item.provider isEqualToString:providerName]) {
+      userProvider = item;
+    }
+  }
+  return userProvider;
+}
+
++ (UserProvider*)getOrSaveUserProvider:(NSDictionary<FBGraphUser>*)fbUser:(User*)user:(NSString*)providerName {
+  UserProvider *userProvider = [ModelHelper getUserProvider:user :providerName];
+  if (userProvider == nil) {
+    userProvider = [NSEntityDescription insertNewObjectForEntityForName:@"UserProvider" inManagedObjectContext:[appDelegate managedObjectContext]];
+    userProvider.uid = [fbUser valueForKey:@"id"];
+    userProvider.link = [fbUser valueForKey:@"link"];
+    userProvider.provider = providerName;
+    FBGraphObject *homeTown = [fbUser valueForKey:@"hometown"];
+    if (homeTown != nil) {
+      userProvider.hometown = [homeTown valueForKey:@"name"];
+    }
+    user.pictureUrl = user.pictureUrl;
+    userProvider.gender = [fbUser valueForKey:@"gender"];
+    userProvider.locale = [fbUser valueForKey:@"locale"];
+    userProvider.timezone = [fbUser valueForKey:@"timezone"];
+    userProvider.firstName = [fbUser valueForKey:@"first_name"];
+    userProvider.lastName = [fbUser valueForKey:@"last_name"];
+    userProvider.fullName = [fbUser valueForKey:@"full_name"];
+    userProvider.failedPostDeauthorized = false;
+    userProvider.failedAppDeauthorized = false;
+    userProvider.user = user;
+    [appDelegate saveContext];
+  }
+  return userProvider;
 }
 
 + (User*)getUserByEmail:(NSString*)email {

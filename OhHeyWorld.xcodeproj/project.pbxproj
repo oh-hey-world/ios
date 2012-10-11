@@ -48,8 +48,9 @@
 		0775FBDA1625943900D8BDA7 /* OHWSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBD91625943900D8BDA7 /* OHWSettings.m */; };
 		0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBF91625F93400D8BDA7 /* ModelHelper.m */; };
 		0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */; };
-		0775FC0316260D3200D8BDA7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FC0216260D3200D8BDA7 /* User.m */; };
 		07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */; };
+		07FB6B0E16273DCB006E0F01 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B0D16273DCB006E0F01 /* User.m */; };
+		07FB6B1116273E53006E0F01 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B1016273E53006E0F01 /* UserProvider.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -157,10 +158,12 @@
 		0775FBF91625F93400D8BDA7 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
 		0775FBFB1626004600D8BDA7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = ../../../../../yourmapper/mainapp/mainapp/CoreDataHelper.h; sourceTree = "<group>"; };
 		0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../../../../../yourmapper/mainapp/mainapp/CoreDataHelper.m; sourceTree = "<group>"; };
-		0775FC0116260D3200D8BDA7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		0775FC0216260D3200D8BDA7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		07FB6AD716270D13006E0F01 /* OHWFriendsNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWFriendsNearbyViewController.h; sourceTree = "<group>"; };
 		07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWFriendsNearbyViewController.m; sourceTree = "<group>"; };
+		07FB6B0C16273DCB006E0F01 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		07FB6B0D16273DCB006E0F01 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		07FB6B0F16273E53006E0F01 /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
+		07FB6B1016273E53006E0F01 /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBE417732F6642FCBE38D17D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -322,10 +325,12 @@
 			isa = PBXGroup;
 			children = (
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
+				07FB6B0F16273E53006E0F01 /* UserProvider.h */,
+				07FB6B1016273E53006E0F01 /* UserProvider.m */,
+				07FB6B0C16273DCB006E0F01 /* User.h */,
+				07FB6B0D16273DCB006E0F01 /* User.m */,
 				0775FBF81625F93400D8BDA7 /* ModelHelper.h */,
 				0775FBF91625F93400D8BDA7 /* ModelHelper.m */,
-				0775FC0116260D3200D8BDA7 /* User.h */,
-				0775FC0216260D3200D8BDA7 /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -536,8 +541,9 @@
 				0775FBDA1625943900D8BDA7 /* OHWSettings.m in Sources */,
 				0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */,
 				0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */,
-				0775FC0316260D3200D8BDA7 /* User.m in Sources */,
 				07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */,
+				07FB6B0E16273DCB006E0F01 /* User.m in Sources */,
+				07FB6B1116273E53006E0F01 /* UserProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

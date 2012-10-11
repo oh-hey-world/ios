@@ -4,5 +4,7 @@
 <dict>
 	<key>DevelopmentBaseUrl</key>
 	<string>http://localhost:3000</string>
+	<key>FBGraphUrl</key>
+	<string>http://graph.facebook.com</string>
 </dict>
 </plist>

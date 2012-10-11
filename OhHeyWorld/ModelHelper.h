@@ -14,6 +14,8 @@
 + (void)deleteObject:(NSManagedObject*)object;
 + (User*)getFacebookUser:(NSDictionary<FBGraphUser>*)fbUser;
 + (User*)getUserByEmail:(NSString*)email;
++ (UserProvider*)getUserProvider:(User*)user:(NSString*)providerName;
++ (UserProvider*)getOrSaveUserProvider:(NSDictionary<FBGraphUser>*)fbUser:(User*)user;
 //+ (User*)getUserByExternalId:(NSInteger*)externalId;
 
 @end

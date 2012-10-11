@@ -66,29 +66,43 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)setupRKUser {
-  RKObjectMapping *objectMapping = [RKObjectMapping mappingForClass:[User class]];
+  RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
+  [userMapping mapKeyPath:@"email" toAttribute:@"email"];
+  [userMapping mapKeyPath:@"birthday" toAttribute:@"birthday"];
+  [userMapping mapKeyPath:@"agrees_to_terms" toAttribute:@"agreesToTerms"];
+  [userMapping mapKeyPath:@"blog_url" toAttribute:@"blogUrl"];
+  [userMapping mapKeyPath:@"blurb" toAttribute:@"blurb"];
+  [userMapping mapKeyPath:@"completed_first_checkin" toAttribute:@"completedFirstCheckin"];
+  [userMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [userMapping mapKeyPath:@"first_name" toAttribute:@"firstName"];
+  [userMapping mapKeyPath:@"gender" toAttribute:@"gender"];
+  [userMapping mapKeyPath:@"last_name" toAttribute:@"lastName"];
+  [userMapping mapKeyPath:@"link" toAttribute:@"link"];
+  [userMapping mapKeyPath:@"locale" toAttribute:@"locale"];
+  [userMapping mapKeyPath:@"nickname" toAttribute:@"nickname"];
+  [userMapping mapKeyPath:@"picture_url" toAttribute:@"pictureUrl"];
+  [userMapping mapKeyPath:@"roles_mask" toAttribute:@"rolesMask"];
+  [userMapping mapKeyPath:@"slug" toAttribute:@"slug"];
+  [userMapping mapKeyPath:@"timezone" toAttribute:@"timezone"];
+  [userMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [userMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
   
-  [objectMapping mapKeyPath:@"email" toAttribute:@"email"];
-  [objectMapping mapKeyPath:@"birthday" toAttribute:@"birthday"];
-  [objectMapping mapKeyPath:@"agrees_to_terms" toAttribute:@"agreesToTerms"];
-  [objectMapping mapKeyPath:@"blog_url" toAttribute:@"blogUrl"];
-  [objectMapping mapKeyPath:@"blurb" toAttribute:@"blurb"];
-  [objectMapping mapKeyPath:@"completed_first_checkin" toAttribute:@"completedFirstCheckin"];
-  [objectMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
-  [objectMapping mapKeyPath:@"first_name" toAttribute:@"firstName"];
-  [objectMapping mapKeyPath:@"gender" toAttribute:@"gender"];
-  [objectMapping mapKeyPath:@"last_name" toAttribute:@"lastName"];
-  [objectMapping mapKeyPath:@"link" toAttribute:@"link"];
-  [objectMapping mapKeyPath:@"locale" toAttribute:@"locale"];
-  [objectMapping mapKeyPath:@"nickname" toAttribute:@"nickname"];
-  [objectMapping mapKeyPath:@"picture_url" toAttribute:@"pictureUrl"];
-  [objectMapping mapKeyPath:@"roles_mask" toAttribute:@"rolesMask"];
-  [objectMapping mapKeyPath:@"slug" toAttribute:@"slug"];
-  [objectMapping mapKeyPath:@"timezone" toAttribute:@"timezone"];
-  [objectMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
-  [objectMapping mapKeyPath:@"id" toAttribute:@"externalId"];
-  
-  [[RKObjectManager sharedManager].mappingProvider registerMapping:objectMapping withRootKeyPath:@"user"];
+  RKObjectMapping *userProviderMapping = [RKObjectMapping mappingForClass:[UserProvider class]];
+  [userProviderMapping mapKeyPath:@"uid" toAttribute:@"uid"];
+  [userProviderMapping mapKeyPath:@"link" toAttribute:@"link"];
+  [userProviderMapping mapKeyPath:@"provider" toAttribute:@"provider"];
+  [userProviderMapping mapKeyPath:@"hometown" toAttribute:@"hometown"];
+  [userProviderMapping mapKeyPath:@"picture_url" toAttribute:@"user.pictureUrl"];
+  [userProviderMapping mapKeyPath:@"gender" toAttribute:@"gender"];
+  [userProviderMapping mapKeyPath:@"locale" toAttribute:@"locale"];
+  [userProviderMapping mapKeyPath:@"timezone" toAttribute:@"timezone"];
+  [userProviderMapping mapKeyPath:@"first_name" toAttribute:@"firstName"];
+  [userProviderMapping mapKeyPath:@"last_name" toAttribute:@"lastName"];
+  [userProviderMapping mapKeyPath:@"full_name" toAttribute:@"fullName"];
+  [userProviderMapping mapKeyPath:@"failed_post_deauthorized" toAttribute:@"failedPostDeauthorized"];
+  [userProviderMapping mapKeyPath:@"failed_app_deauthorized" toAttribute:@"failedAppDeauthorized"];
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderMapping withRootKeyPath:@"user_provider"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
@@ -190,9 +204,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
     [self setupRKUser];
   }
   [self showLoginView]; //TODO move into if statement below
-  if (![self openSessionWithAllowLoginUI:NO] || _user == nil) {
+  //if (![self openSessionWithAllowLoginUI:NO] || _user == nil) {
     
-  }
+  //}
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

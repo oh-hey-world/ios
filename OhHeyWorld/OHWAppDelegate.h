@@ -12,6 +12,7 @@
 #import "OHWCheckinViewController.h"
 #import "OHWSettings.h"
 #import "User.h"
+#import "UserProvider.h"
 #import "ModelHelper.h"
 #import "CoreDataHelper.h"
 #import <RestKit/RestKit.h>

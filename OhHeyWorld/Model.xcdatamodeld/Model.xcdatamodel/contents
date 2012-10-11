@@ -25,7 +25,7 @@
     <entity name="UserLocation" syncable="YES">
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="UserProvider" syncable="YES">
+    <entity name="UserProvider" representedClassName="UserProvider" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="externalUserId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>

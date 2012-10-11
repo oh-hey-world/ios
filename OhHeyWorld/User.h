@@ -2,7 +2,7 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/10/12.
+//  Created by Eric Roland on 10/11/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * completedFirstCheckin;
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSNumber * externalId;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSString * lastName;
@@ -30,6 +31,14 @@
 @property (nonatomic, retain) NSString * slug;
 @property (nonatomic, retain) NSNumber * timezone;
 @property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSNumber * externalId;
+@property (nonatomic, retain) NSSet *userUserProviders;
+@end
+
+@interface User (CoreDataGeneratedAccessors)
+
+- (void)addUserUserProvidersObject:(NSManagedObject *)value;
+- (void)removeUserUserProvidersObject:(NSManagedObject *)value;
+- (void)addUserUserProviders:(NSSet *)values;
+- (void)removeUserUserProviders:(NSSet *)values;
 
 @end
