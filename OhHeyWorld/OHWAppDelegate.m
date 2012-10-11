@@ -21,6 +21,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize loginViewController = _loginViewController;
 @synthesize baseUrl = _baseUrl;
 @synthesize manager = _manager;
+@synthesize user = _user;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream
@@ -53,7 +54,10 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  NSLog(@"%@", @"updates user");
+  _user = [objects objectAtIndex:0];
+  if (_user != nil) {
+    [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+  }
 }
 
 - (void)setupRK {
@@ -96,8 +100,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 {
   switch (state) {
     case FBSessionStateOpen: {
-      [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-      
       [FBRequestConnection
        startForMeWithCompletionHandler:^(FBRequestConnection *connection,
                                          NSDictionary<FBGraphUser> *fbUser,
@@ -187,12 +189,10 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
     [self setupRK];
     [self setupRKUser];
   }
-  [self showLoginView];
-  /*
-  if (![self openSessionWithAllowLoginUI:NO]) {
+  [self showLoginView]; //TODO move into if statement below
+  if (![self openSessionWithAllowLoginUI:NO] || _user == nil) {
     
   }
-  */
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

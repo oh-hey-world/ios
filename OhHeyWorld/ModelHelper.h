@@ -12,7 +12,7 @@
 @interface ModelHelper : NSObject
 
 + (void)deleteObject:(NSManagedObject*)object;
-+ (User*)getFacebookUser:(NSDictionary*)fbUser;
++ (User*)getFacebookUser:(NSDictionary<FBGraphUser>*)fbUser;
 + (User*)getUserByEmail:(NSString*)email;
 //+ (User*)getUserByExternalId:(NSInteger*)externalId;
 

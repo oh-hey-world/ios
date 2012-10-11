@@ -24,11 +24,11 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Friends-->
         <scene sceneID="YdY-Z0-pcc">
             <objects>
                 <navigationController definesPresentationContext="YES" id="w2D-jI-Ucu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nmi-zL-MRQ"/>
+                    <tabBarItem key="tabBarItem" title="Friends" id="nmi-zL-MRQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QEZ-NF-ZpN">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="524" y="180"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Friends Nearby View Controller-->
         <scene sceneID="AAe-he-5Hv">
             <objects>
-                <tableViewController id="gpf-Yj-f1f" sceneMemberID="viewController">
+                <tableViewController id="gpf-Yj-f1f" customClass="OHWFriendsNearbyViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JWa-wu-tU7">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,11 +85,11 @@
             </objects>
             <point key="canvasLocation" x="928" y="-518"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - History-->
         <scene sceneID="iNI-eX-VIL">
             <objects>
                 <navigationController definesPresentationContext="YES" id="IpM-UX-hlI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="RQA-tk-4gZ"/>
+                    <tabBarItem key="tabBarItem" title="History" id="RQA-tk-4gZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z3A-Cv-3QB">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -183,11 +183,11 @@
             </objects>
             <point key="canvasLocation" x="112" y="-518"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Check In-->
         <scene sceneID="dt9-1O-aoz">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Itj-uu-QqS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9zQ-cg-S64"/>
+                    <tabBarItem key="tabBarItem" title="Check In" id="9zQ-cg-S64"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bjp-pb-CSd">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -206,6 +206,9 @@
         </class>
         <class className="OHWCheckinViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckinViewController.h"/>
+        </class>
+        <class className="OHWFriendsNearbyViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWFriendsNearbyViewController.h"/>
         </class>
         <class className="OHWLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLoginViewController.h"/>

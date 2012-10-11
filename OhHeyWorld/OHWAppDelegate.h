@@ -32,6 +32,7 @@
 @property (nonatomic, retain) NSMutableData *data;
 @property (nonatomic, retain) NSURL *baseUrl;
 @property (nonatomic, retain) RKObjectManager *manager;
+@property (nonatomic, retain) RKObjectManager *user;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;

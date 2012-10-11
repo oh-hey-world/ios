@@ -27,7 +27,7 @@
   [appDelegate saveContext];
 }
 
-+ (User*)getFacebookUser:(NSDictionary*)fbUser {
++ (User*)getFacebookUser:(NSDictionary<FBGraphUser>*)fbUser {
   NSString *entityName = @"User";
   NSString *email = [fbUser valueForKey:@"email"];
   User *user = [ModelHelper getUserByEmail:email];
@@ -39,6 +39,8 @@
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"MM/dd/yyyy"];
   
+  
+  
   user.email = email;
   user.firstName = [fbUser valueForKey:@"first_name"];
   user.lastName = [fbUser valueForKey:@"last_name"];
@@ -48,7 +50,7 @@
   user.pictureUrl = [fbUser valueForKey:@"picture_url"];
   user.link = [fbUser valueForKey:@"link"];
   //TODO home_town_location_id
-  user.nickname = [fbUser valueForKey:@"nickname"];
+  user.nickname = [fbUser valueForKey:@"username"];
   user.birthday = [dateFormatter dateFromString:[fbUser valueForKey:@"birthday"]];
   //user. = [fbUser valueForKey:@""];
   /*
