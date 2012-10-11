@@ -20,6 +20,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize navController = _navController;
 @synthesize loginViewController = _loginViewController;
 @synthesize baseUrl = _baseUrl;
+@synthesize manager = _manager;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream
@@ -48,7 +49,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-
+  NSLog(@"%@", @"error for user");
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
@@ -56,8 +57,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)setupRK {
-  RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:_baseUrl];
-  manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+  _manager = [RKObjectManager objectManagerWithBaseURL:_baseUrl];
+  _manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
 }
 
 - (void)setupRKUser {
@@ -102,10 +103,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
                                          NSDictionary<FBGraphUser> *fbUser,
                                          NSError *error) {
          if (!error) {
+           [_manager.client setValue:session.appID forHTTPHeaderField:@"X-APP-ID"]; //TODO this needs to be an https call
            User *user = [ModelHelper getFacebookUser:fbUser];
-           
-
-           
            [[RKObjectManager sharedManager] postObject:user delegate:self];
          }
        }];

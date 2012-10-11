@@ -31,6 +31,7 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain) NSMutableData *data;
 @property (nonatomic, retain) NSURL *baseUrl;
+@property (nonatomic, retain) RKObjectManager *manager;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;
