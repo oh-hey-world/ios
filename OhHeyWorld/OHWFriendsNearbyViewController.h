@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OHWAppDelegate.h"
 
 @interface OHWFriendsNearbyViewController : UITableViewController
 

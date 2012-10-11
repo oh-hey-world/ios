@@ -7,12 +7,17 @@
 //
 
 #import "OHWFriendsNearbyViewController.h"
+#define appDelegate (OHWAppDelegate *)[[UIApplication sharedApplication] delegate]
 
 @interface OHWFriendsNearbyViewController ()
 
 @end
 
 @implementation OHWFriendsNearbyViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+  NSLog(@"%@", [appDelegate user]);
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
