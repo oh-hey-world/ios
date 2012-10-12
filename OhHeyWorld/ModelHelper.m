@@ -49,7 +49,14 @@
   NSArray *pictureUrl = [[NSArray alloc] initWithObjects:[OHWSettings.defaultList objectForKey:@"FBGraphUrl"], user.nickname, @"picture", nil];
   user.pictureUrl = [pictureUrl componentsJoinedByString: @"/"];
   user.link = [fbUser valueForKey:@"link"];
-  //TODO home_town_location_id
+  FBGraphObject *homeTown = [fbUser valueForKey:@"hometown"];
+  if (homeTown != nil) {
+    user.homeLocation = [homeTown valueForKey:@"name"];
+  }
+  FBGraphObject *residence = [fbUser valueForKey:@"location"];
+  if (residence != nil) {
+    user.residenceLocation = [residence valueForKey:@"name"];
+  }
   user.birthday = [dateFormatter dateFromString:[fbUser valueForKey:@"birthday"]];
   //user. = [fbUser valueForKey:@""];
   [ModelHelper getOrSaveUserProvider:fbUser :user :@"facebook"];

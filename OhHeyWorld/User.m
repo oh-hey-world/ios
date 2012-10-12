@@ -2,11 +2,12 @@
 //  User.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/11/12.
+//  Created by Eric Roland on 10/12/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import "User.h"
+#import "UserProvider.h"
 
 
 @implementation User
@@ -30,6 +31,8 @@
 @dynamic slug;
 @dynamic timezone;
 @dynamic updatedAt;
+@dynamic homeLocation;
+@dynamic residenceLocation;
 @dynamic userUserProviders;
 
 @end

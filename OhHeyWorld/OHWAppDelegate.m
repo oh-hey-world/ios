@@ -86,6 +86,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userMapping mapKeyPath:@"timezone" toAttribute:@"timezone"];
   [userMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
   [userMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  [userMapping mapKeyPath:@"home_location" toAttribute:@"homeLocation"];
+  [userMapping mapKeyPath:@"residence_location" toAttribute:@"residenceLocation"];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
   
   RKObjectMapping *userProviderMapping = [RKObjectMapping mappingForClass:[UserProvider class]];

@@ -11,18 +11,20 @@
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="homeLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locale" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="residenceLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rolesMask" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timezone" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="userUserProviders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProvider" inverseName="user" inverseEntity="UserProvider" syncable="YES"/>
     </entity>
-    <entity name="UserLocation" syncable="YES">
+    <entity name="UserLocation" representedClassName="UserLocation" syncable="YES">
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="UserProvider" representedClassName="UserProvider" syncable="YES">
@@ -54,8 +56,8 @@
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userUserProviders" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-72" positionY="-204" width="128" height="343"/>
-        <element name="UserLocation" positionX="304" positionY="-51" width="128" height="60"/>
+        <element name="User" positionX="-72" positionY="-204" width="128" height="373"/>
+        <element name="UserLocation" positionX="304" positionY="-51" width="128" height="58"/>
         <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="433"/>
     </elements>
 </model>

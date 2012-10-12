@@ -2,13 +2,14 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/11/12.
+//  Created by Eric Roland on 10/12/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class UserProvider;
 
 @interface User : NSManagedObject
 
@@ -31,13 +32,15 @@
 @property (nonatomic, retain) NSString * slug;
 @property (nonatomic, retain) NSNumber * timezone;
 @property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSString * homeLocation;
+@property (nonatomic, retain) NSString * residenceLocation;
 @property (nonatomic, retain) NSSet *userUserProviders;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
 
-- (void)addUserUserProvidersObject:(NSManagedObject *)value;
-- (void)removeUserUserProvidersObject:(NSManagedObject *)value;
+- (void)addUserUserProvidersObject:(UserProvider *)value;
+- (void)removeUserUserProvidersObject:(UserProvider *)value;
 - (void)addUserUserProviders:(NSSet *)values;
 - (void)removeUserUserProviders:(NSSet *)values;
 
