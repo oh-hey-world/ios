@@ -7,6 +7,7 @@
 //
 
 #import "OHWLoginViewController.h"
+#define appDelegate (OHWAppDelegate *)[[UIApplication sharedApplication] delegate]
 
 @interface OHWLoginViewController ()
 
@@ -19,7 +20,6 @@
 }
 
 - (IBAction)performLogin:(id)sender {
-  OHWAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
   [appDelegate openSessionWithAllowLoginUI:YES];
 }
 
