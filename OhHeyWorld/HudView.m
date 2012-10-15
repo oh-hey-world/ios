@@ -1,6 +1,6 @@
 //
 //  HudView.m
-//  mainapp
+// 
 //
 //  Created by Eric Roland on 5/16/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -30,7 +30,7 @@
     _captionLabel.backgroundColor = [UIColor clearColor];
     _captionLabel.textColor = [UIColor whiteColor];
     _captionLabel.adjustsFontSizeToFitWidth = YES;
-    _captionLabel.textAlignment = UITextAlignmentCenter;
+    _captionLabel.textAlignment = kCTCenterTextAlignment;
     _captionLabel.text = @"Loading...";
     [_hudView addSubview:_captionLabel];
 }

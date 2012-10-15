@@ -7,6 +7,7 @@
 //
 
 #import "OHWCheckinViewController.h"
+#define appDelegate (OHWAppDelegate *)[[UIApplication sharedApplication] delegate]
 
 @interface OHWCheckinViewController ()
 
@@ -15,6 +16,7 @@
 @implementation OHWCheckinViewController
 @synthesize locationManager = _locationManager;
 @synthesize placeCacheDescriptor = _placeCacheDescriptor;
+@synthesize hudView = _hudView;
 
 - (void)startLocationManager {
   [self.locationManager startUpdatingLocation];
@@ -34,15 +36,10 @@
   self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
   self.locationManager.distanceFilter = 50;
   
-  //self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-  //self.activityIndicator.hidesWhenStopped = YES;
-  //[self.view addSubview:self.activityIndicator];
-  /*
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(sessionStateChanged:)
-                                               name:SessionStateChangedNotification
-                                             object:nil];
-  */
+  _hudView = [[HudView alloc] init];
+  [_hudView loadActivityIndicator];
+  [_hudView startActivityIndicator:self.view];
+  [self startLocationManager];
 }
 
 #pragma mark -
@@ -55,10 +52,33 @@
       (oldLocation.coordinate.latitude != newLocation.coordinate.latitude &&
        oldLocation.coordinate.longitude != newLocation.coordinate.longitude &&
        newLocation.horizontalAccuracy <= 100.0)) {
-        // Fetch data at this new location, and remember the cache descriptor.
-        //[self setPlaceCacheDescriptorForCoordinates:newLocation.coordinate];
-        //[self.placeCacheDescriptor prefetchAndCacheForSession:FBSession.activeSession];
+        [self.placeCacheDescriptor prefetchAndCacheForSession:FBSession.activeSession];
+        NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+        [settings setDouble:newLocation.coordinate.latitude forKey:@"lastLatitude"];
+        [settings setDouble:newLocation.coordinate.longitude forKey:@"lastLongitude"];
+        [settings synchronize];
+        //CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([settings doubleForKey:@"lastLatitude"], [settings doubleForKey:@"lastLongitude"]);
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+          if (error != nil){
+            return;
+          }
+          [_hudView stopActivityIndicator];
+          if (placemarks.count > 0) {
+            CLPlacemark *placeMark = [placemarks objectAtIndex:0];
+            NSLog(@"%@", [placeMark.addressDictionary valueForKey:@"FormattedAddressLines"]);
+            
+          }
+        }];
       }
+}
+
+- (IBAction)checkin:(id)sender {
+  [_locationManager stopUpdatingLocation];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [_locationManager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager

@@ -10,13 +10,17 @@
 #import <MapKit/MapKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "OHWAppDelegate.h"
+#import "HudView.h"
 
 @interface OHWCheckinViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) FBCacheDescriptor *placeCacheDescriptor;
+@property (nonatomic, retain) IBOutlet UIButton *checkinButton;
+@property (nonatomic, retain) HudView *hudView;
 
 //- (void)setPlaceCacheDescriptorForCoordinates:(CLLocationCoordinate2D)coordinates;
 - (void)startLocationManager;
+- (IBAction)checkin:(id)sender;
 
 @end
