@@ -37,6 +37,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   if (self.loginViewController == nil) {
     UIStoryboard *storyboard = self.window.rootViewController.storyboard;
     self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginView"];
+    self.checkinViewController = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
     [self.window.rootViewController presentViewController:self.loginViewController animated:YES completion:nil];
   }
 }
@@ -90,7 +91,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   [userMapping mapKeyPath:@"home_location" toAttribute:@"homeLocation"];
   [userMapping mapKeyPath:@"residence_location" toAttribute:@"residenceLocation"];
-  //userMapping.primaryKeyAttribute = @"externalId";
+  userMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
   
   RKManagedObjectMapping *userProviderMapping = [RKManagedObjectMapping mappingForClass:[UserProvider class] inManagedObjectStore:_manager.objectStore];
@@ -108,6 +109,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userProviderMapping mapKeyPath:@"failed_post_deauthorized" toAttribute:@"failedPostDeauthorized"];
   [userProviderMapping mapKeyPath:@"failed_app_deauthorized" toAttribute:@"failedAppDeauthorized"];
   [userProviderMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  userProviderMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderMapping withRootKeyPath:@"user_provider"];
   
   RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForClass:[Location class] inManagedObjectStore:_manager.objectStore];
@@ -125,6 +127,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [locationMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
   [locationMapping mapKeyPath:@"user_input" toAttribute:@"userInput"];
   [locationMapping mapKeyPath:@"residence" toAttribute:@"residence"];
+  locationMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:locationMapping withRootKeyPath:@"locations.location"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
@@ -254,6 +257,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   }
 }
 
+
 #pragma mark - Core Data stack
 
 /**
@@ -262,19 +266,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
  */
 - (NSManagedObjectContext *)managedObjectContext
 {
-  if (__managedObjectContext != nil)
-  {
-    return __managedObjectContext;
-  }
-  
-  NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-  if (coordinator != nil)
-  {
-    __managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [__managedObjectContext setPersistentStoreCoordinator:coordinator];
-    [__managedObjectContext setRetainsRegisteredObjects:YES];
-  }
-  return __managedObjectContext;
+  return _manager.objectStore.managedObjectContextForCurrentThread;
 }
 
 /**
@@ -283,13 +275,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
  */
 - (NSManagedObjectModel *)managedObjectModel
 {
-  if (__managedObjectModel != nil)
-  {
-    return __managedObjectModel;
-  }
-  NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
-  __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-  return __managedObjectModel;
+  return _manager.objectStore.managedObjectModel;
 }
 
 /**
@@ -298,37 +284,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-  if (__persistentStoreCoordinator != nil)
-  {
-    return __persistentStoreCoordinator;
-  }
-  
-	NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"app.sqlite"];
-	/*
-	 Set up the store.
-	 For the sake of illustration, provide a pre-populated default store.
-	 */
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	// If the expected store doesn't exist, copy the default store.
-	if (![fileManager fileExistsAtPath:storePath]) {
-		NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:@"App" ofType:@"sqlite"];
-		if (defaultStorePath) {
-			[fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
-		}
-	}
-	NSURL *storeUrl = [NSURL fileURLWithPath:storePath];
-	
-	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-  __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
-  
-	NSError *error;
-	if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
-  }
-  
-  return __persistentStoreCoordinator;
+  return _manager.objectStore.persistentStoreCoordinator;
 }
 
 #pragma mark - Application's Documents directory
