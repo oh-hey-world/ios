@@ -20,6 +20,7 @@
 @synthesize placeMark = _placeMark;
 
 - (void)startLocationManager {
+  NSLog(@"%@", @"starting");
   [self.locationManager startUpdatingLocation];
 }
 
@@ -40,7 +41,6 @@
   _hudView = [[HudView alloc] init];
   [_hudView loadActivityIndicator];
   [_hudView startActivityIndicator:self.view];
-  [self startLocationManager];
 }
 
 #pragma mark -
@@ -49,6 +49,7 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
+  NSLog(@"%@", @"found location");
   if (!oldLocation ||
       (oldLocation.coordinate.latitude != newLocation.coordinate.latitude &&
        oldLocation.coordinate.longitude != newLocation.coordinate.longitude &&
@@ -99,7 +100,13 @@
   [_locationManager stopUpdatingLocation];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self startLocationManager];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
   [_locationManager stopUpdatingLocation];
 }
 
