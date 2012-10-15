@@ -17,6 +17,7 @@
 @synthesize locationManager = _locationManager;
 @synthesize placeCacheDescriptor = _placeCacheDescriptor;
 @synthesize hudView = _hudView;
+@synthesize placeMark = _placeMark;
 
 - (void)startLocationManager {
   [self.locationManager startUpdatingLocation];
@@ -65,15 +66,36 @@
           }
           [_hudView stopActivityIndicator];
           if (placemarks.count > 0) {
-            CLPlacemark *placeMark = [placemarks objectAtIndex:0];
-            NSLog(@"%@", [placeMark.addressDictionary valueForKey:@"FormattedAddressLines"]);
-            
+            _placeMark = [placemarks objectAtIndex:0];
           }
         }];
       }
 }
 
+- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
+  NSLog(@"%@", @"error for location");
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  if (objects.count == 0) {
+    BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure"
+                                                   message:@"We were unable to find your location"];
+    [alert setCancelButtonWithTitle:@"Ok" block:^{
+      // Do something or nothing.... This block can even be nil!
+    }];
+    [alert show];
+  } else {
+    Location *location = [objects objectAtIndex:0];
+  }
+}
+
 - (IBAction)checkin:(id)sender {
+  //[_placeMark.addressDictionary valueForKey:@"FormattedAddressLines"]
+  NSDictionary *params = [NSDictionary dictionaryWithKeysAndObjects:
+                          @"user_input", ABCreateStringWithAddressDictionary(_placeMark.addressDictionary, YES),
+                          nil];
+  
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[@"/api/locations/search" stringByAppendingQueryParameters:params] delegate:self];
   [_locationManager stopUpdatingLocation];
 }
 
