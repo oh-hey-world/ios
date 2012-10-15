@@ -13,8 +13,11 @@
 #import "OHWSettings.h"
 #import "User.h"
 #import "UserProvider.h"
+#import "Location.h"
+#import "UserLocation.h"
 #import "ModelHelper.h"
 #import "CoreDataHelper.h"
+#import "HudView.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 
@@ -27,13 +30,14 @@
 @property (strong, nonatomic) UINavigationController *navController;
 @property (strong, nonatomic) OHWCheckinViewController *checkinViewController;
 @property (strong, nonatomic) OHWLoginViewController *loginViewController;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, retain) NSMutableData *data;
 @property (nonatomic, retain) NSURL *baseUrl;
 @property (nonatomic, retain) RKObjectManager *manager;
-@property (nonatomic, retain) RKObjectManager *user;
+@property (nonatomic, retain) User *user;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;

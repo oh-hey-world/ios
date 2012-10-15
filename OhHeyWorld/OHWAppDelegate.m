@@ -55,6 +55,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
   _user = [objects objectAtIndex:0];
+  NSLog(@"%@", _user.email);
   if (_user != nil) {
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
   }
@@ -104,7 +105,25 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userProviderMapping mapKeyPath:@"full_name" toAttribute:@"fullName"];
   [userProviderMapping mapKeyPath:@"failed_post_deauthorized" toAttribute:@"failedPostDeauthorized"];
   [userProviderMapping mapKeyPath:@"failed_app_deauthorized" toAttribute:@"failedAppDeauthorized"];
+  [userProviderMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderMapping withRootKeyPath:@"user_provider"];
+  
+  RKObjectMapping *locationMapping = [RKObjectMapping mappingForClass:[Location class]];
+  [locationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  [locationMapping mapKeyPath:@"latitude" toAttribute:@"latitude"];
+  [locationMapping mapKeyPath:@"longitude" toAttribute:@"longitude"];
+  [locationMapping mapKeyPath:@"address" toAttribute:@"address"];
+  [locationMapping mapKeyPath:@"city" toAttribute:@"city"];
+  [locationMapping mapKeyPath:@"state" toAttribute:@"state"];
+  [locationMapping mapKeyPath:@"state_code" toAttribute:@"stateCode"];
+  [locationMapping mapKeyPath:@"postal_code" toAttribute:@"postalCode"];
+  [locationMapping mapKeyPath:@"country" toAttribute:@"country"];
+  [locationMapping mapKeyPath:@"country_code" toAttribute:@"countryCode"];
+  [locationMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [locationMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [locationMapping mapKeyPath:@"user_input" toAttribute:@"userInput"];
+  [locationMapping mapKeyPath:@"residence" toAttribute:@"residence"];
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:locationMapping withRootKeyPath:@"location"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
@@ -189,7 +208,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   }
 }
 
-
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
@@ -205,10 +223,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
     [self setupRK];
     [self setupRKUser];
   }
-  [self showLoginView]; //TODO move into if statement below
-  //if (![self openSessionWithAllowLoginUI:NO] || _user == nil) {
-    
-  //}
+  if (![self openSessionWithAllowLoginUI:NO]) {
+    [self showLoginView];
+  }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
