@@ -12,5 +12,15 @@
 @implementation UserLocation
 
 @dynamic externalId;
+@dynamic userId;
+@dynamic createdAt;
+@dynamic updatedAt;
+@dynamic locationId;
+@dynamic current;
+@dynamic endedAt;
+@dynamic residence;
+@dynamic slug;
+@dynamic name;
+@dynamic sentSnapshot;
 
 @end

@@ -19,6 +19,7 @@
 		07141ADA16230571001C346A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD616230571001C346A /* Twitter.framework */; };
 		07141AE416230BA7001C346A /* OHWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AE316230BA7001C346A /* OHWLoginViewController.m */; };
 		07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AF216230D33001C346A /* OHWCheckinViewController.m */; };
+		071EE426162C55C5008C6519 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EE425162C55C5008C6519 /* HudView.m */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
 		0768B0D6161F73AA002DD6F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D5161F73AA002DD6F2 /* CoreGraphics.framework */; };
@@ -49,9 +50,10 @@
 		0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBF91625F93400D8BDA7 /* ModelHelper.m */; };
 		0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */; };
 		07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */; };
-		07FB6B7916285E8C006E0F01 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B7816285E8B006E0F01 /* User.m */; };
-		07FB6B7C16285E8D006E0F01 /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B7B16285E8D006E0F01 /* UserLocation.m */; };
-		07FB6B7F16285E8D006E0F01 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B7E16285E8D006E0F01 /* UserProvider.m */; };
+		07FB6B8216289F12006E0F01 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B8116289F12006E0F01 /* UserProvider.m */; };
+		07FB6B8516289F14006E0F01 /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B8416289F14006E0F01 /* UserLocation.m */; };
+		07FB6B8816289F14006E0F01 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B8716289F14006E0F01 /* User.m */; };
+		07FB6B8B16289F15006E0F01 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6B8A16289F14006E0F01 /* Location.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +124,8 @@
 		07141AE316230BA7001C346A /* OHWLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWLoginViewController.m; sourceTree = "<group>"; };
 		07141AF116230D33001C346A /* OHWCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWCheckinViewController.h; sourceTree = "<group>"; };
 		07141AF216230D33001C346A /* OHWCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWCheckinViewController.m; sourceTree = "<group>"; };
+		071EE424162C55C5008C6519 /* HudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudView.h; sourceTree = "<group>"; };
+		071EE425162C55C5008C6519 /* HudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudView.m; sourceTree = "<group>"; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0768B0D1161F73AA002DD6F2 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0768B0D3161F73AA002DD6F2 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,12 +165,14 @@
 		0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../../../../../yourmapper/mainapp/mainapp/CoreDataHelper.m; sourceTree = "<group>"; };
 		07FB6AD716270D13006E0F01 /* OHWFriendsNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWFriendsNearbyViewController.h; sourceTree = "<group>"; };
 		07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWFriendsNearbyViewController.m; sourceTree = "<group>"; };
-		07FB6B7716285E8B006E0F01 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		07FB6B7816285E8B006E0F01 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		07FB6B7A16285E8D006E0F01 /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
-		07FB6B7B16285E8D006E0F01 /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
-		07FB6B7D16285E8D006E0F01 /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
-		07FB6B7E16285E8D006E0F01 /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
+		07FB6B8016289F12006E0F01 /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
+		07FB6B8116289F12006E0F01 /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
+		07FB6B8316289F14006E0F01 /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
+		07FB6B8416289F14006E0F01 /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
+		07FB6B8616289F14006E0F01 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		07FB6B8716289F14006E0F01 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		07FB6B8916289F14006E0F01 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		07FB6B8A16289F14006E0F01 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBE417732F6642FCBE38D17D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -327,13 +333,15 @@
 		0775F6A216246FFF00D8BDA7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				07FB6B7716285E8B006E0F01 /* User.h */,
-				07FB6B7816285E8B006E0F01 /* User.m */,
-				07FB6B7D16285E8D006E0F01 /* UserProvider.h */,
-				07FB6B7E16285E8D006E0F01 /* UserProvider.m */,
-				07FB6B7A16285E8D006E0F01 /* UserLocation.h */,
-				07FB6B7B16285E8D006E0F01 /* UserLocation.m */,
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
+				07FB6B8016289F12006E0F01 /* UserProvider.h */,
+				07FB6B8116289F12006E0F01 /* UserProvider.m */,
+				07FB6B8316289F14006E0F01 /* UserLocation.h */,
+				07FB6B8416289F14006E0F01 /* UserLocation.m */,
+				07FB6B8616289F14006E0F01 /* User.h */,
+				07FB6B8716289F14006E0F01 /* User.m */,
+				07FB6B8916289F14006E0F01 /* Location.h */,
+				07FB6B8A16289F14006E0F01 /* Location.m */,
 				0775FBF81625F93400D8BDA7 /* ModelHelper.h */,
 				0775FBF91625F93400D8BDA7 /* ModelHelper.m */,
 			);
@@ -355,6 +363,8 @@
 		0775FBD7162593F900D8BDA7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				071EE424162C55C5008C6519 /* HudView.h */,
+				071EE425162C55C5008C6519 /* HudView.m */,
 				0775FBFB1626004600D8BDA7 /* CoreDataHelper.h */,
 				0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */,
 				0775FBD81625943900D8BDA7 /* OHWSettings.h */,
@@ -547,9 +557,11 @@
 				0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */,
 				0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */,
 				07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */,
-				07FB6B7916285E8C006E0F01 /* User.m in Sources */,
-				07FB6B7C16285E8D006E0F01 /* UserLocation.m in Sources */,
-				07FB6B7F16285E8D006E0F01 /* UserProvider.m in Sources */,
+				07FB6B8216289F12006E0F01 /* UserProvider.m in Sources */,
+				07FB6B8516289F14006E0F01 /* UserLocation.m in Sources */,
+				07FB6B8816289F14006E0F01 /* User.m in Sources */,
+				07FB6B8B16289F15006E0F01 /* Location.m in Sources */,
+				071EE426162C55C5008C6519 /* HudView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
