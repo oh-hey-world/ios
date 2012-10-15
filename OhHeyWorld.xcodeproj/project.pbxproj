@@ -20,6 +20,7 @@
 		07141AE416230BA7001C346A /* OHWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AE316230BA7001C346A /* OHWLoginViewController.m */; };
 		07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AF216230D33001C346A /* OHWCheckinViewController.m */; };
 		071EE426162C55C5008C6519 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EE425162C55C5008C6519 /* HudView.m */; };
+		071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071EE427162C9BF2008C6519 /* AddressBookUI.framework */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
 		0768B0D6161F73AA002DD6F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D5161F73AA002DD6F2 /* CoreGraphics.framework */; };
@@ -126,6 +127,7 @@
 		07141AF216230D33001C346A /* OHWCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWCheckinViewController.m; sourceTree = "<group>"; };
 		071EE424162C55C5008C6519 /* HudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudView.h; sourceTree = "<group>"; };
 		071EE425162C55C5008C6519 /* HudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudView.m; sourceTree = "<group>"; };
+		071EE427162C9BF2008C6519 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0768B0D1161F73AA002DD6F2 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0768B0D3161F73AA002DD6F2 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -182,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */,
 				0775FBD41624B77200D8BDA7 /* libRestKit.a in Frameworks */,
 				0775F69C1624669500D8BDA7 /* CFNetwork.framework in Frameworks */,
 				0775F69D1624669500D8BDA7 /* libxml2.dylib in Frameworks */,
@@ -228,6 +231,7 @@
 		0768B0C2161F73AA002DD6F2 = {
 			isa = PBXGroup;
 			children = (
+				071EE427162C9BF2008C6519 /* AddressBookUI.framework */,
 				0775FBBD1624AECC00D8BDA7 /* RestKit.xcodeproj */,
 				0768B0D7161F73AA002DD6F2 /* OhHeyWorld */,
 				0768B106161F73AB002DD6F2 /* OhHeyWorldTests */,

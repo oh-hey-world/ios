@@ -55,7 +55,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
   _user = [objects objectAtIndex:0];
-  NSLog(@"%@", _user.email);
   if (_user != nil) {
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
   }
@@ -63,11 +62,13 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)setupRK {
   _manager = [RKObjectManager objectManagerWithBaseURL:_baseUrl];
+  _manager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"app.sqlite"];
   _manager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
 }
 
 - (void)setupRKUser {
-  RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[User class]];
+  RKManagedObjectMapping *userMapping = [RKManagedObjectMapping mappingForClass:[User class] inManagedObjectStore:_manager.objectStore];
+  //TODO review RKManagedObjectMapping
   [userMapping mapKeyPath:@"email" toAttribute:@"email"];
   [userMapping mapKeyPath:@"birthday" toAttribute:@"birthday"];
   [userMapping mapKeyPath:@"agrees_to_terms" toAttribute:@"agreesToTerms"];
@@ -89,9 +90,10 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   [userMapping mapKeyPath:@"home_location" toAttribute:@"homeLocation"];
   [userMapping mapKeyPath:@"residence_location" toAttribute:@"residenceLocation"];
+  //userMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
   
-  RKObjectMapping *userProviderMapping = [RKObjectMapping mappingForClass:[UserProvider class]];
+  RKManagedObjectMapping *userProviderMapping = [RKManagedObjectMapping mappingForClass:[UserProvider class] inManagedObjectStore:_manager.objectStore];
   [userProviderMapping mapKeyPath:@"uid" toAttribute:@"uid"];
   [userProviderMapping mapKeyPath:@"link" toAttribute:@"link"];
   [userProviderMapping mapKeyPath:@"provider" toAttribute:@"provider"];
@@ -108,7 +110,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userProviderMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderMapping withRootKeyPath:@"user_provider"];
   
-  RKObjectMapping *locationMapping = [RKObjectMapping mappingForClass:[Location class]];
+  RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForClass:[Location class] inManagedObjectStore:_manager.objectStore];
   [locationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   [locationMapping mapKeyPath:@"latitude" toAttribute:@"latitude"];
   [locationMapping mapKeyPath:@"longitude" toAttribute:@"longitude"];
@@ -123,7 +125,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [locationMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
   [locationMapping mapKeyPath:@"user_input" toAttribute:@"userInput"];
   [locationMapping mapKeyPath:@"residence" toAttribute:@"residence"];
-  [[RKObjectManager sharedManager].mappingProvider registerMapping:locationMapping withRootKeyPath:@"location"];
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:locationMapping withRootKeyPath:@"locations.location"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
@@ -168,13 +170,13 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
                                                       object:session];
   
   if (error) {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %@",
-                                                                 [OHWAppDelegate FBErrorCodeDescription:error.code]]
-                                              message:error.localizedDescription
-                                              delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    [alertView show];
+    BlockAlertView *alert = [BlockAlertView alertWithTitle:[NSString stringWithFormat:@"Error: %@",
+                                                            [OHWAppDelegate FBErrorCodeDescription:error.code]]
+                                                   message:error.localizedDescription];
+    [alert setCancelButtonWithTitle:@"Ok" block:^{
+      // Do something or nothing.... This block can even be nil!
+    }];
+    [alert show];
   }
 }
 
