@@ -49,7 +49,6 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
-  NSLog(@"%@", @"found location");
   if (!oldLocation ||
       (oldLocation.coordinate.latitude != newLocation.coordinate.latitude &&
        oldLocation.coordinate.longitude != newLocation.coordinate.longitude &&
@@ -74,10 +73,12 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-  NSLog(@"%@", @"error for location");
+  NSLog(@"%@", error);
+  NSLog(@"%@", objectLoader.response.bodyAsString);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  NSLog(@"here: it is : sdf %@", objectLoader.response.bodyAsString);
   if (objects.count == 0) {
     BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure"
                                                    message:@"We were unable to find your location"];
@@ -85,14 +86,30 @@
     }];
     [alert show];
   } else {
-    Location *location = [objects objectAtIndex:0];
-    UserLocation* userLocation = [NSEntityDescription insertNewObjectForEntityForName:@"UserLocation" inManagedObjectContext:[appDelegate managedObjectContext]];
-    User *user = [appDelegate user];
-    userLocation.user = user;
-    userLocation.userId = user.externalId;
-    userLocation.locationId = location.externalId;
-    userLocation.location = location;
-    //[[RKObjectManager sharedManager] postObject:userLocation delegate:self];
+    if ([@"userLocation" isEqualToString:(NSString*) objectLoader.userData]) {
+      NSLog(@"%i", [appDelegate user].userUserLocations.count);
+      [appDelegate saveContext];
+    } else {
+      Location *location = [objects objectAtIndex:0];
+      UserLocation* userLocation = [NSEntityDescription insertNewObjectForEntityForName:@"UserLocation" inManagedObjectContext:[appDelegate managedObjectContext]];
+      User *user = [appDelegate user];
+      userLocation.user = user;
+      userLocation.userId = user.externalId;
+      userLocation.locationId = location.externalId;
+      userLocation.location = location;
+      
+      RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
+      NSError* error = nil;
+      NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userLocation mapping:serializationMapping] serializedObject:&error];
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+      [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+      [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
+        loader.method = RKRequestMethodPOST;
+        loader.userData = @"userLocation";
+        loader.params = params;
+        loader.delegate = self;
+      }];
+    }
   }
 }
 
