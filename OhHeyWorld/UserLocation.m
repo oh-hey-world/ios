@@ -2,25 +2,29 @@
 //  UserLocation.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/12/12.
+//  Created by Eric Roland on 10/16/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import "UserLocation.h"
+#import "Location.h"
+#import "User.h"
 
 
 @implementation UserLocation
 
-@dynamic externalId;
-@dynamic userId;
 @dynamic createdAt;
-@dynamic updatedAt;
-@dynamic locationId;
 @dynamic current;
 @dynamic endedAt;
-@dynamic residence;
-@dynamic slug;
+@dynamic externalId;
+@dynamic locationId;
 @dynamic name;
+@dynamic residence;
 @dynamic sentSnapshot;
+@dynamic slug;
+@dynamic updatedAt;
+@dynamic userId;
+@dynamic location;
+@dynamic user;
 
 @end

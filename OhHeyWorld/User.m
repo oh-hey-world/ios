@@ -2,11 +2,12 @@
 //  User.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/12/12.
+//  Created by Eric Roland on 10/16/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import "User.h"
+#import "UserLocation.h"
 #import "UserProvider.h"
 
 
@@ -22,17 +23,18 @@
 @dynamic externalId;
 @dynamic firstName;
 @dynamic gender;
+@dynamic homeLocation;
 @dynamic lastName;
 @dynamic link;
 @dynamic locale;
 @dynamic nickname;
 @dynamic pictureUrl;
+@dynamic residenceLocation;
 @dynamic rolesMask;
 @dynamic slug;
 @dynamic timezone;
 @dynamic updatedAt;
-@dynamic homeLocation;
-@dynamic residenceLocation;
+@dynamic userUserLocations;
 @dynamic userUserProviders;
 
 @end
