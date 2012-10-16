@@ -52,13 +52,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-  NSLog(@"%@", @"error for user");
+  NSLog(@"%@", objectLoader.response.bodyAsString);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
   NSError *jsonParsingError = nil;
   NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
-  NSLog(@"%@", json);
   if (objects.count == 0) {
     BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure" message:@"Could not find your location."];
     [alert setCancelButtonWithTitle:@"Ok" block:^{
@@ -123,21 +122,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userProviderMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   userProviderMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderMapping withRootKeyPath:@"user_provider"];
-
-  RKManagedObjectMapping *userLocationMapping = [RKManagedObjectMapping mappingForClass:[UserLocation class] inManagedObjectStore:_manager.objectStore];
-  [userLocationMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
-  [userLocationMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
-  [userLocationMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
-  [userLocationMapping mapKeyPath:@"location_id" toAttribute:@"locationId"];
-  [userLocationMapping mapKeyPath:@"current" toAttribute:@"current"];
-  [userLocationMapping mapKeyPath:@"ended_at" toAttribute:@"endedAt"];
-  [userLocationMapping mapKeyPath:@"residence" toAttribute:@"residence"];
-  [userLocationMapping mapKeyPath:@"slug" toAttribute:@"slug"];
-  [userLocationMapping mapKeyPath:@"name" toAttribute:@"name"];
-  [userLocationMapping mapKeyPath:@"sent_snapshot" toAttribute:@"sentSnapshot"];
-  [userLocationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
-  userLocationMapping.primaryKeyAttribute = @"externalId";
-  [[RKObjectManager sharedManager].mappingProvider registerMapping:userLocationMapping withRootKeyPath:@"user_location"];
   
   RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForClass:[Location class] inManagedObjectStore:_manager.objectStore];
   [locationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
@@ -156,9 +140,27 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [locationMapping mapKeyPath:@"residence" toAttribute:@"residence"];
   locationMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:locationMapping withRootKeyPath:@"locations.location"];
+
+  RKManagedObjectMapping *userLocationMapping = [RKManagedObjectMapping mappingForClass:[UserLocation class] inManagedObjectStore:_manager.objectStore];
+  [userLocationMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [userLocationMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [userLocationMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [userLocationMapping mapKeyPath:@"location_id" toAttribute:@"locationId"];
+  [userLocationMapping mapKeyPath:@"current" toAttribute:@"current"];
+  [userLocationMapping mapKeyPath:@"ended_at" toAttribute:@"endedAt"];
+  [userLocationMapping mapKeyPath:@"residence" toAttribute:@"residence"];
+  [userLocationMapping mapKeyPath:@"slug" toAttribute:@"slug"];
+  [userLocationMapping mapKeyPath:@"name" toAttribute:@"name"];
+  [userLocationMapping mapKeyPath:@"sent_snapshot" toAttribute:@"sentSnapshot"];
+  [userLocationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  userLocationMapping.primaryKeyAttribute = @"externalId";
+  [userLocationMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userLocationMapping withRootKeyPath:@"user_locations.user_location"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
+  
+  [router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
