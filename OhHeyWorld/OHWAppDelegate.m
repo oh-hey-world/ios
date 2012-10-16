@@ -22,6 +22,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize baseUrl = _baseUrl;
 @synthesize manager = _manager;
 @synthesize user = _user;
+@synthesize authToken = _authToken;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream
@@ -55,9 +56,20 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  _user = [objects objectAtIndex:0];
-  if (_user != nil) {
-    [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+  NSError *jsonParsingError = nil;
+  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
+  NSLog(@"%@", json);
+  if (objects.count == 0) {
+    BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure" message:@"Could not find your location."];
+    [alert setCancelButtonWithTitle:@"Ok" block:^{
+    }];
+    [alert show];
+  } else {
+    _authToken = [json valueForKey:@"auth_token"];
+    _user = [objects objectAtIndex:0];
+    if (_user != nil) {
+      [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    }
   }
 }
 
@@ -111,6 +123,21 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userProviderMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   userProviderMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderMapping withRootKeyPath:@"user_provider"];
+
+  RKManagedObjectMapping *userLocationMapping = [RKManagedObjectMapping mappingForClass:[UserLocation class] inManagedObjectStore:_manager.objectStore];
+  [userLocationMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [userLocationMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [userLocationMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [userLocationMapping mapKeyPath:@"location_id" toAttribute:@"locationId"];
+  [userLocationMapping mapKeyPath:@"current" toAttribute:@"current"];
+  [userLocationMapping mapKeyPath:@"ended_at" toAttribute:@"endedAt"];
+  [userLocationMapping mapKeyPath:@"residence" toAttribute:@"residence"];
+  [userLocationMapping mapKeyPath:@"slug" toAttribute:@"slug"];
+  [userLocationMapping mapKeyPath:@"name" toAttribute:@"name"];
+  [userLocationMapping mapKeyPath:@"sent_snapshot" toAttribute:@"sentSnapshot"];
+  [userLocationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  userLocationMapping.primaryKeyAttribute = @"externalId";
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userLocationMapping withRootKeyPath:@"user_location"];
   
   RKManagedObjectMapping *locationMapping = [RKManagedObjectMapping mappingForClass:[Location class] inManagedObjectStore:_manager.objectStore];
   [locationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
@@ -177,7 +204,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
                                                             [OHWAppDelegate FBErrorCodeDescription:error.code]]
                                                    message:error.localizedDescription];
     [alert setCancelButtonWithTitle:@"Ok" block:^{
-      // Do something or nothing.... This block can even be nil!
     }];
     [alert show];
   }

@@ -39,6 +39,7 @@
 @property (nonatomic, retain) NSURL *baseUrl;
 @property (nonatomic, retain) RKObjectManager *manager;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) NSString *authToken;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;

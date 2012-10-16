@@ -82,18 +82,24 @@
     BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure"
                                                    message:@"We were unable to find your location"];
     [alert setCancelButtonWithTitle:@"Ok" block:^{
-      // Do something or nothing.... This block can even be nil!
     }];
     [alert show];
   } else {
     Location *location = [objects objectAtIndex:0];
+    UserLocation* userLocation = [NSEntityDescription insertNewObjectForEntityForName:@"UserLocation" inManagedObjectContext:[appDelegate managedObjectContext]];
+    User *user = [appDelegate user];
+    userLocation.user = user;
+    userLocation.userId = user.externalId;
+    userLocation.locationId = location.externalId;
+    userLocation.location = location;
+    //[[RKObjectManager sharedManager] postObject:userLocation delegate:self];
   }
 }
 
 - (IBAction)checkin:(id)sender {
-  //[_placeMark.addressDictionary valueForKey:@"FormattedAddressLines"]
   NSDictionary *params = [NSDictionary dictionaryWithKeysAndObjects:
                           @"user_input", ABCreateStringWithAddressDictionary(_placeMark.addressDictionary, YES),
+                          @"auth_token", [appDelegate authToken],
                           nil];
   
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[@"/api/locations/search" stringByAppendingQueryParameters:params] delegate:self];
