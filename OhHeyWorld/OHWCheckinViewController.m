@@ -18,9 +18,9 @@
 @synthesize placeCacheDescriptor = _placeCacheDescriptor;
 @synthesize hudView = _hudView;
 @synthesize placeMark = _placeMark;
+@synthesize location = _location;
 
 - (void)startLocationManager {
-  NSLog(@"%@", @"starting");
   [self.locationManager startUpdatingLocation];
 }
 
@@ -74,11 +74,18 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
-  NSLog(@"%@", objectLoader.response.bodyAsString);
+  //NSLog(@"%@", objectLoader.response.bodyAsString);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  NSLog(@"here: it is : sdf %@", objectLoader.response.bodyAsString);
+  //User *user = [appDelegate user];
+  /*
+  if (user != nil) {
+    NSLog(@"user id: %@", user.externalId);
+    NSLog(@"user location count: %u", user.userUserLocations.count);
+    NSLog(@"location count: %u", [Location allObjects].count);
+  }
+  */
   if (objects.count == 0) {
     BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure"
                                                    message:@"We were unable to find your location"];
@@ -86,29 +93,47 @@
     }];
     [alert show];
   } else {
+    User *user = [appDelegate user];
     if ([@"userLocation" isEqualToString:(NSString*) objectLoader.userData]) {
-      NSLog(@"%i", [appDelegate user].userUserLocations.count);
-      [appDelegate saveContext];
-    } else {
-      Location *location = [objects objectAtIndex:0];
-      UserLocation* userLocation = [NSEntityDescription insertNewObjectForEntityForName:@"UserLocation" inManagedObjectContext:[appDelegate managedObjectContext]];
-      User *user = [appDelegate user];
+      UserLocation *userLocation = [objects objectAtIndex:0];
       userLocation.user = user;
       userLocation.userId = user.externalId;
-      userLocation.locationId = location.externalId;
-      userLocation.location = location;
+      userLocation.locationId = _location.externalId;
+      userLocation.location = _location;
+      if (userLocation.externalId != nil) {
+        [appDelegate saveContext];
+      }
+      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
+      NSMutableArray* userLocations = [CoreDataHelper searchObjectsInContext:@"UserLocation" :predicate :nil :NO :[appDelegate managedObjectContext]];
+      UserLocation *zeroUserLocation = [userLocations objectAtIndex:0];
+      if (zeroUserLocation != nil)
+        [ModelHelper deleteObject:zeroUserLocation];
+       NSLog(@"user locations: %u", user.userUserLocations.count);
+    } else {
+      _location = [objects objectAtIndex:0];
       
-      RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
-      NSError* error = nil;
-      NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userLocation mapping:serializationMapping] serializedObject:&error];
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-      [params setValue:@"auth_token" forKey: [appDelegate authToken]];
-      [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
-        loader.method = RKRequestMethodPOST;
-        loader.userData = @"userLocation";
-        loader.params = params;
-        loader.delegate = self;
-      }];
+      UserLocation* lastUserLocation = [ModelHelper getLastUserLocation];
+      NSLog(@"%@ %@", lastUserLocation.userId, user.externalId);
+      if ([lastUserLocation.userId intValue] != [user.externalId intValue] && (lastUserLocation == nil ||
+          !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
+        UserLocation* userLocation = [UserLocation object];
+        userLocation.user = user;
+        userLocation.userId = user.externalId;
+        userLocation.locationId = _location.externalId;
+        userLocation.location = _location;
+        
+        RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
+        NSError* error = nil;
+        NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userLocation mapping:serializationMapping] serializedObject:&error];
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+        [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
+          loader.method = RKRequestMethodPOST;
+          loader.userData = @"userLocation";
+          loader.params = params;
+          loader.delegate = self;
+        }];
+      }
     }
   }
 }

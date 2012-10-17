@@ -175,8 +175,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
                                          NSError *error) {
          if (!error) {
            [_manager.client setValue:session.appID forHTTPHeaderField:@"X-APP-ID"]; //TODO this needs to be an https call
-           User *user = [ModelHelper getFacebookUser:fbUser];
-           [[RKObjectManager sharedManager] postObject:user delegate:self];
+           _user = [ModelHelper getFacebookUser:fbUser];
+           [[RKObjectManager sharedManager] postObject:_user delegate:self];
          }
        }];
       
@@ -272,7 +272,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
   if (managedObjectContext != nil)
   {
-    if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
+    BOOL hasSaved = [managedObjectContext save:&error];
+    if ([managedObjectContext hasChanges] && !hasSaved)
     {
       /*
        Replace this implementation with code to handle the error appropriately.

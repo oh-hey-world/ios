@@ -11,6 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "OHWAppDelegate.h"
 #import "HudView.h"
+#import "Location.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 #import <AddressBookUI/AddressBookUI.h>
@@ -22,6 +23,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) HudView *hudView;
 @property (nonatomic, retain) CLPlacemark *placeMark;
+@property (nonatomic, retain) Location *location;
 
 //- (void)setPlaceCacheDescriptorForCoordinates:(CLLocationCoordinate2D)coordinates;
 - (void)startLocationManager;

@@ -111,4 +111,8 @@
   return currentUser;
 }
 
++ (UserLocation*)getLastUserLocation {
+  return [UserLocation findFirstWithPredicate:nil sortedBy:@"createdAt" ascending:NO];
+}
+
 @end
