@@ -25,6 +25,7 @@
 		074EE8DA162DA1FC0043B485 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE8D9162DA1FC0043B485 /* Location.m */; };
 		074EE8DD162DA1FC0043B485 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE8DC162DA1FC0043B485 /* UserProvider.m */; };
 		074EE8E0162DA1FC0043B485 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE8DF162DA1FC0043B485 /* User.m */; };
+		074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE91D16305C120043B485 /* ExtendedManagedObject.m */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
 		0768B0D6161F73AA002DD6F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D5161F73AA002DD6F2 /* CoreGraphics.framework */; };
@@ -136,6 +137,8 @@
 		074EE8DC162DA1FC0043B485 /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
 		074EE8DE162DA1FC0043B485 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		074EE8DF162DA1FC0043B485 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		074EE91C16305C120043B485 /* ExtendedManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedManagedObject.h; sourceTree = "<group>"; };
+		074EE91D16305C120043B485 /* ExtendedManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedManagedObject.m; sourceTree = "<group>"; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0768B0D1161F73AA002DD6F2 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0768B0D3161F73AA002DD6F2 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -373,6 +376,8 @@
 				0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */,
 				0775FBD81625943900D8BDA7 /* OHWSettings.h */,
 				0775FBD91625943900D8BDA7 /* OHWSettings.m */,
+				074EE91C16305C120043B485 /* ExtendedManagedObject.h */,
+				074EE91D16305C120043B485 /* ExtendedManagedObject.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				074EE8DA162DA1FC0043B485 /* Location.m in Sources */,
 				074EE8DD162DA1FC0043B485 /* UserProvider.m in Sources */,
 				074EE8E0162DA1FC0043B485 /* User.m in Sources */,
+				074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

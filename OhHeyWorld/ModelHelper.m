@@ -65,7 +65,7 @@
 }
 
 
-+ (UserProvider*)getUserProvider:(User*)user:(NSString*)providerName {
++ (UserProvider*)getUserProvider:(User*)user:(NSString*)providerName{
   UserProvider *userProvider = nil;
   for(UserProvider *item in user.userUserProviders) {
     if([item.provider isEqualToString:providerName]) {
@@ -111,8 +111,9 @@
   return currentUser;
 }
 
-+ (UserLocation*)getLastUserLocation {
-  return [UserLocation findFirstWithPredicate:nil sortedBy:@"createdAt" ascending:NO];
++ (UserLocation*)getLastUserLocation:(User*)user {
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", user.externalId];
+  return [UserLocation findFirstWithPredicate:predicate sortedBy:@"createdAt" ascending:NO];
 }
 
 @end
