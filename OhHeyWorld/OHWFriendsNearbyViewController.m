@@ -16,12 +16,13 @@
 @implementation OHWFriendsNearbyViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-  UserLocation* lastUserLocation = [ModelHelper getLastUserLocation];
   User *user = [appDelegate user];
-  [[UserLocation allObjects] enumerateObjectsUsingBlock:^(UserLocation* obj, NSUInteger index, BOOL *stop){
-    NSLog(@"Object Found: %@", obj.externalId);
-  }];
-  NSLog(@"user location id: %@ user locations: %u", lastUserLocation.externalId, user.userUserLocations.count);
+  UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:user];
+  if (lastUserLocation != nil) {
+    NSDictionary *json = [lastUserLocation toDictionary];
+    NSLog(@"user location: %@", json);
+  }
+  NSLog(@"user locations: %u", user.userUserLocations.count);
 }
 
 - (id)initWithStyle:(UITableViewStyle)style

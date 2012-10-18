@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "ExtendedManagedObject.h"
 
 @class Location, User;
 
-@interface UserLocation : NSManagedObject
+@interface UserLocation : ExtendedManagedObject
 
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSNumber * current;

@@ -95,6 +95,11 @@
   } else {
     User *user = [appDelegate user];
     if ([@"userLocation" isEqualToString:(NSString*) objectLoader.userData]) {
+      
+      NSError *jsonParsingError = nil;
+      NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
+      NSLog(@"%@", json);
+      
       UserLocation *userLocation = [objects objectAtIndex:0];
       userLocation.user = user;
       userLocation.userId = user.externalId;
@@ -103,16 +108,18 @@
       if (userLocation.externalId != nil) {
         [appDelegate saveContext];
       }
+      
       NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
       NSMutableArray* userLocations = [CoreDataHelper searchObjectsInContext:@"UserLocation" :predicate :nil :NO :[appDelegate managedObjectContext]];
       UserLocation *zeroUserLocation = [userLocations objectAtIndex:0];
-      if (zeroUserLocation != nil)
+      if (zeroUserLocation != nil) {
         [ModelHelper deleteObject:zeroUserLocation];
+      }
        NSLog(@"user locations: %u", user.userUserLocations.count);
     } else {
       _location = [objects objectAtIndex:0];
       
-      UserLocation* lastUserLocation = [ModelHelper getLastUserLocation];
+      UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:user];
       NSLog(@"%@ %@", lastUserLocation.userId, user.externalId);
       if ([lastUserLocation.userId intValue] != [user.externalId intValue] && (lastUserLocation == nil ||
           !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
