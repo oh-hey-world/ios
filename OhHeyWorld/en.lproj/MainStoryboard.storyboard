@@ -99,6 +99,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="checkin:" destination="Pge-bN-hq2" eventType="touchUpInside" id="MYP-OE-91p"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-tz-eM0" customClass="GCPlaceholderTextView">
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -137,6 +140,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="95j-dN-MJL"/>
                     <connections>
+                        <outlet property="checkinButton" destination="sjs-0K-bzB" id="Pxl-dM-amw"/>
                         <outlet property="cityLabel" destination="2mg-yg-VF5" id="mHX-hd-0MG"/>
                         <outlet property="textView" destination="Ldb-tz-eM0" id="DA5-aY-gf8"/>
                     </connections>
@@ -355,6 +359,8 @@
         <class className="OHWCityCheckinViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCityCheckinViewController.h"/>
             <relationships>
+                <relationship kind="action" name="checkin:"/>
+                <relationship kind="outlet" name="checkinButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
             </relationships>

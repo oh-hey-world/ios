@@ -11,10 +11,18 @@
 #import "GCPlaceholderTextView.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
+#import <Foundation/Foundation.h>
+#import "Location.h"
+#import "User.h"
 
 @interface OHWCityCheckinViewController : UIViewController <RKObjectLoaderDelegate>
 
+@property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UILabel *cityLabel;
 @property (nonatomic, retain) IBOutlet GCPlaceholderTextView *textView;
+@property (nonatomic, retain) Location *location;
+@property (nonatomic, retain) User *user;
+
+- (IBAction)checkin:(id)sender;
 
 @end
