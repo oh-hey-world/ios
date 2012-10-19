@@ -15,13 +15,14 @@
 #import "Location.h"
 #import "User.h"
 
-@interface OHWCityCheckinViewController : UIViewController <RKObjectLoaderDelegate>
+@interface OHWCityCheckinViewController : UIViewController <RKObjectLoaderDelegate, MKMapViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UILabel *cityLabel;
 @property (nonatomic, retain) IBOutlet GCPlaceholderTextView *textView;
 @property (nonatomic, retain) Location *location;
 @property (nonatomic, retain) User *user;
+@property(nonatomic,retain) IBOutlet MKMapView *mapView;
 
 - (IBAction)checkin:(id)sender;
 

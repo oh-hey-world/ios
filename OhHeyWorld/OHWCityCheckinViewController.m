@@ -19,6 +19,7 @@
 @synthesize checkinButton = _checkinButton;
 @synthesize location = _location;
 @synthesize user = _user;
+@synthesize mapView = _mapView;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
@@ -26,7 +27,6 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  NSLog(@"%@", objectLoader.response.bodyAsString);
   UserLocation *userLocation = [objects objectAtIndex:0];
   userLocation.user = _user;
   userLocation.userId = _user.externalId;
@@ -52,11 +52,43 @@
   NSString *locationText = [[NSArray arrayWithObjects:_location.city, _location.state, _location.countryCode , nil] componentsJoinedByString:@", "];
   _cityLabel.text = locationText;
   _textView.placeholder = @"Add message (optional)";
+
+  float latitude = [_location.latitude floatValue];
+  float longitude = [_location.longitude floatValue];
+  CLLocationCoordinate2D center = {latitude, longitude};
+  MKCoordinateRegion region;
+  MKCoordinateSpan span;
+  span.latitudeDelta = .025;
+  span.longitudeDelta = .025;
+  region.center = center;
+  region.span = span;
+  [_mapView setRegion:region animated:TRUE];
+  [_mapView regionThatFits:region];
+  [_mapView setCenterCoordinate:_mapView.region.center animated:NO];
+  
+  MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+  [point setCoordinate:(center)];
+  [point setTitle:_location.address];
+  [_mapView addAnnotation:point];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+  NSLog(@"Center: %f %f", mapView.region.center.latitude, mapView.region.center.longitude);
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)currentMapView viewForAnnotation:(id <MKAnnotation>) annotation {
+  if (annotation == currentMapView.userLocation) {
+    return nil; //default to blue dot
+  }
+  MKPinAnnotationView *dropPin=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
+  dropPin.pinColor = MKPinAnnotationColorGreen;
+  dropPin.animatesDrop = YES;
+  dropPin.canShowCallout = YES;
+  return dropPin;
 }
 
 - (IBAction)checkin:(id)sender {
-  _user = [appDelegate user];
-  _location = [appDelegate location];
   UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:_user];
   if ([lastUserLocation.userId intValue] != [_user.externalId intValue] && (lastUserLocation == nil ||
                                                                             !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
@@ -80,6 +112,15 @@
   }
 }
 
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(40, 240, 240, 240)];
+  _mapView.delegate = self;
+  _mapView.showsUserLocation = YES;
+  [self.view addSubview:_mapView];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -87,12 +128,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

@@ -85,11 +85,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pjM-7v-mh1">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="206" id="CWd-A3-q3e"/>
-                                        </constraints>
-                                    </mapView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjs-0K-bzB">
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Check In">
@@ -107,26 +102,23 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="J3R-kg-4Gw"/>
-                                            <constraint firstAttribute="height" constant="90" id="eog-LR-6yn"/>
+                                            <constraint firstAttribute="height" constant="110" id="RLL-QX-C3Y"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="top" secondItem="Ldb-tz-eM0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4OG-hh-FdR"/>
+                                    <constraint firstAttribute="bottom" secondItem="sjs-0K-bzB" secondAttribute="bottom" constant="224" id="6Ht-yB-QVS"/>
                                     <constraint firstItem="sjs-0K-bzB" firstAttribute="trailing" secondItem="Ldb-tz-eM0" secondAttribute="trailing" type="default" id="8ub-m0-bMO"/>
-                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="leading" secondItem="pjM-7v-mh1" secondAttribute="leading" type="default" id="Cvd-vb-AsX"/>
-                                    <constraint firstItem="pjM-7v-mh1" firstAttribute="top" secondItem="28c-42-K2T" secondAttribute="top" constant="249" id="FPw-WZ-40A"/>
                                     <constraint firstItem="2mg-yg-VF5" firstAttribute="leading" secondItem="28c-42-K2T" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="GXy-uz-uvp"/>
-                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="trailing" secondItem="pjM-7v-mh1" secondAttribute="trailing" type="default" id="I3Z-mE-aTL"/>
-                                    <constraint firstItem="2mg-yg-VF5" firstAttribute="centerX" secondItem="28c-42-K2T" secondAttribute="centerX" type="default" id="NqP-Oi-dTO"/>
                                     <constraint firstItem="2mg-yg-VF5" firstAttribute="centerX" secondItem="Ldb-tz-eM0" secondAttribute="centerX" type="default" id="QLd-qP-KL8"/>
                                     <constraint firstItem="2mg-yg-VF5" firstAttribute="top" secondItem="28c-42-K2T" secondAttribute="top" constant="41" id="WHc-Ap-qCL"/>
                                     <constraint firstItem="Ldb-tz-eM0" firstAttribute="top" secondItem="2mg-yg-VF5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YdI-bK-4zb"/>
+                                    <constraint firstItem="2mg-yg-VF5" firstAttribute="centerX" secondItem="28c-42-K2T" secondAttribute="centerX" type="default" id="ZtK-im-A1r"/>
                                     <constraint firstAttribute="trailing" secondItem="2mg-yg-VF5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ccm-l3-Zbh"/>
                                     <constraint firstItem="sjs-0K-bzB" firstAttribute="leading" secondItem="Ldb-tz-eM0" secondAttribute="leading" type="default" id="jYJ-EK-lEj"/>
-                                    <constraint firstItem="pjM-7v-mh1" firstAttribute="bottom" secondItem="28c-42-K2T" secondAttribute="bottom" type="default" id="nWH-hW-nHN"/>
-                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="top" secondItem="28c-42-K2T" secondAttribute="top" constant="188" id="rpG-zq-C70"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -362,6 +354,7 @@
                 <relationship kind="action" name="checkin:"/>
                 <relationship kind="outlet" name="checkinButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
             </relationships>
         </class>
