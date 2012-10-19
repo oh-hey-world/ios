@@ -20,6 +20,7 @@
 #import "CoreDataHelper.h"
 #import "HudView.h"
 #import "BlockAlertView.h"
+#import "GCPlaceholderTextView.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 

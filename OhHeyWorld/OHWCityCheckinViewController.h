@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "OHWAppDelegate.h"
+#import "GCPlaceholderTextView.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 
 @interface OHWCityCheckinViewController : UIViewController <RKObjectLoaderDelegate>
 
 @property (nonatomic, retain) IBOutlet UILabel *cityLabel;
+@property (nonatomic, retain) IBOutlet GCPlaceholderTextView *textView;
 
 @end

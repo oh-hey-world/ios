@@ -15,11 +15,13 @@
 
 @implementation OHWCityCheckinViewController
 @synthesize cityLabel = _cityLabel;
+@synthesize textView = _textView;
 
 - (void)viewWillAppear:(BOOL)animated {
   Location *location = [appDelegate location];
   NSString *locationText = [[NSArray arrayWithObjects:location.city, location.state, location.countryCode , nil] componentsJoinedByString:@", "];
   _cityLabel.text = locationText;
+  _textView.placeholder = @"Add message (optional)";
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
