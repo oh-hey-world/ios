@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
@@ -70,6 +70,87 @@
             </objects>
             <point key="canvasLocation" x="933" y="180"/>
         </scene>
+        <!--City Checkin View Controller-->
+        <scene sceneID="qHh-oz-n4A">
+            <objects>
+                <viewController storyboardIdentifier="CityCheckinView" id="Pge-bN-hq2" customClass="OHWCityCheckinViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q6P-cW-lT4">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28c-42-K2T">
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mg-yg-VF5">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pjM-7v-mh1">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="206" id="CWd-A3-q3e"/>
+                                        </constraints>
+                                    </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjs-0K-bzB">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="xb7-Nl-nLN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Check In">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="leading" secondItem="pjM-7v-mh1" secondAttribute="leading" type="default" id="Cvd-vb-AsX"/>
+                                    <constraint firstItem="pjM-7v-mh1" firstAttribute="top" secondItem="28c-42-K2T" secondAttribute="top" constant="249" id="FPw-WZ-40A"/>
+                                    <constraint firstItem="2mg-yg-VF5" firstAttribute="leading" secondItem="28c-42-K2T" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="GXy-uz-uvp"/>
+                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="trailing" secondItem="pjM-7v-mh1" secondAttribute="trailing" type="default" id="I3Z-mE-aTL"/>
+                                    <constraint firstItem="2mg-yg-VF5" firstAttribute="top" secondItem="28c-42-K2T" secondAttribute="top" constant="41" id="WHc-Ap-qCL"/>
+                                    <constraint firstAttribute="trailing" secondItem="2mg-yg-VF5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ccm-l3-Zbh"/>
+                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="top" secondItem="28c-42-K2T" secondAttribute="top" constant="188" id="gzW-TL-ghE"/>
+                                    <constraint firstItem="sjs-0K-bzB" firstAttribute="centerX" secondItem="2mg-yg-VF5" secondAttribute="centerX" type="default" id="lmh-Di-5Xa"/>
+                                    <constraint firstItem="pjM-7v-mh1" firstAttribute="bottom" secondItem="28c-42-K2T" secondAttribute="bottom" type="default" id="nWH-hW-nHN"/>
+                                    <constraint firstItem="pjM-7v-mh1" firstAttribute="centerX" secondItem="28c-42-K2T" secondAttribute="centerX" type="default" id="xtp-d5-Bv0"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="28c-42-K2T" firstAttribute="top" secondItem="Q6P-cW-lT4" secondAttribute="top" type="default" id="8n5-qg-oIW"/>
+                            <constraint firstItem="28c-42-K2T" firstAttribute="bottom" secondItem="Q6P-cW-lT4" secondAttribute="bottom" type="default" id="FkS-17-9xY"/>
+                            <constraint firstItem="28c-42-K2T" firstAttribute="leading" secondItem="Q6P-cW-lT4" secondAttribute="leading" type="default" id="W3W-BH-nAF"/>
+                            <constraint firstItem="28c-42-K2T" firstAttribute="trailing" secondItem="Q6P-cW-lT4" secondAttribute="trailing" type="default" id="bic-ax-zn9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="95j-dN-MJL"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="2mg-yg-VF5" id="mHX-hd-0MG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rmz-EQ-6VX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1746" y="-518"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0dQ-LZ-BNs">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="NDv-BY-0BQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KjB-ET-xsR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CGb-85-zkj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Pge-bN-hq2" kind="relationship" relationship="rootViewController" id="hBD-cJ-3Nc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9VU-xS-y2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="-518"/>
+        </scene>
         <!--Checkin View Controller-->
         <scene sceneID="DsU-m5-0Ib">
             <objects>
@@ -94,16 +175,37 @@
                                     <action selector="checkin:" destination="bJO-7w-svo" eventType="touchUpInside" id="P87-6x-Y7e"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="waj-fU-EUD">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="204" id="PEa-uU-sZW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Where are you today?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrx-3X-YOG">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="173" id="14c-D0-jDl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="R2W-Es-fc3" firstAttribute="centerX" secondItem="OoJ-XK-KRt" secondAttribute="centerX" type="default" id="EUG-Yw-0RD"/>
+                            <constraint firstItem="waj-fU-EUD" firstAttribute="centerX" secondItem="OoJ-XK-KRt" secondAttribute="centerX" type="default" id="1vW-4S-PLF"/>
+                            <constraint firstItem="waj-fU-EUD" firstAttribute="top" secondItem="OoJ-XK-KRt" secondAttribute="top" constant="153" id="CDf-Bm-h48"/>
+                            <constraint firstItem="waj-fU-EUD" firstAttribute="centerX" secondItem="R2W-Es-fc3" secondAttribute="centerX" type="default" id="PZ2-26-xSZ"/>
                             <constraint firstItem="R2W-Es-fc3" firstAttribute="centerY" secondItem="OoJ-XK-KRt" secondAttribute="centerY" type="default" id="dSe-rv-ZL7"/>
+                            <constraint firstItem="Rrx-3X-YOG" firstAttribute="top" secondItem="OoJ-XK-KRt" secondAttribute="top" constant="107" id="jAt-5L-48f"/>
+                            <constraint firstItem="Rrx-3X-YOG" firstAttribute="centerX" secondItem="waj-fU-EUD" secondAttribute="centerX" type="default" id="v7R-Ig-e4B"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pWR-6G-HDP"/>
                     <connections>
                         <outlet property="checkinButton" destination="R2W-Es-fc3" id="7Oa-R6-wav"/>
+                        <outlet property="checkinText" destination="waj-fU-EUD" id="sxH-RW-rLS"/>
+                        <segue destination="NDv-BY-0BQ" kind="push" id="GN6-a6-dRc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPp-3n-XMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,6 +336,13 @@
             <relationships>
                 <relationship kind="action" name="checkin:"/>
                 <relationship kind="outlet" name="checkinButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkinText" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="OHWCityCheckinViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCityCheckinViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="OHWFriendsNearbyViewController" superclassName="UITableViewController">

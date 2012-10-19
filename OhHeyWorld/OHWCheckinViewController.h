@@ -21,9 +21,9 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) FBCacheDescriptor *placeCacheDescriptor;
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
+@property (nonatomic, retain) IBOutlet UITextField *checkinText;
 @property (nonatomic, retain) HudView *hudView;
 @property (nonatomic, retain) CLPlacemark *placeMark;
-@property (nonatomic, retain) Location *location;
 
 //- (void)setPlaceCacheDescriptorForCoordinates:(CLLocationCoordinate2D)coordinates;
 - (void)startLocationManager;

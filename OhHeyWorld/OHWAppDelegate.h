@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "OHWLoginViewController.h"
 #import "OHWCheckinViewController.h"
+#import "OHWCityCheckinViewController.h"
 #import "OHWSettings.h"
 #import "User.h"
 #import "UserProvider.h"
@@ -40,6 +41,8 @@
 @property (nonatomic, retain) RKObjectManager *manager;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) NSString *authToken;
+@property (nonatomic, retain) CLPlacemark *placeMark;
+@property (nonatomic, retain) Location *location;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;
