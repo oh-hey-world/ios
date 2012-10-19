@@ -21,7 +21,6 @@
 		07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AF216230D33001C346A /* OHWCheckinViewController.m */; };
 		071EE426162C55C5008C6519 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EE425162C55C5008C6519 /* HudView.m */; };
 		071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071EE427162C9BF2008C6519 /* AddressBookUI.framework */; };
-		074EE8D7162DA1FB0043B485 /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE8D6162DA1FB0043B485 /* UserLocation.m */; };
 		074EE8DA162DA1FC0043B485 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE8D9162DA1FC0043B485 /* Location.m */; };
 		074EE8DD162DA1FC0043B485 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE8DC162DA1FC0043B485 /* UserProvider.m */; };
 		074EE8E0162DA1FC0043B485 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE8DF162DA1FC0043B485 /* User.m */; };
@@ -57,6 +56,7 @@
 		0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBFC1626004600D8BDA7 /* CoreDataHelper.m */; };
 		079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD83716309110002F594A /* OHWCityCheckinViewController.m */; };
 		079CD8591631A79C002F594A /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD8581631A79C002F594A /* GCPlaceholderTextView.m */; };
+		079CD87D1631D621002F594A /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD87C1631D621002F594A /* UserLocation.m */; };
 		07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -131,8 +131,6 @@
 		071EE424162C55C5008C6519 /* HudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudView.h; sourceTree = "<group>"; };
 		071EE425162C55C5008C6519 /* HudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudView.m; sourceTree = "<group>"; };
 		071EE427162C9BF2008C6519 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		074EE8D5162DA1FB0043B485 /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
-		074EE8D6162DA1FB0043B485 /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
 		074EE8D8162DA1FC0043B485 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		074EE8D9162DA1FC0043B485 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		074EE8DB162DA1FC0043B485 /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
@@ -182,6 +180,8 @@
 		079CD83716309110002F594A /* OHWCityCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWCityCheckinViewController.m; sourceTree = "<group>"; };
 		079CD8571631A79C002F594A /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
 		079CD8581631A79C002F594A /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
+		079CD87B1631D621002F594A /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
+		079CD87C1631D621002F594A /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
 		07FB6AD716270D13006E0F01 /* OHWFriendsNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWFriendsNearbyViewController.h; sourceTree = "<group>"; };
 		07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWFriendsNearbyViewController.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -349,14 +349,14 @@
 			isa = PBXGroup;
 			children = (
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
+				079CD87B1631D621002F594A /* UserLocation.h */,
+				079CD87C1631D621002F594A /* UserLocation.m */,
 				074EE8DE162DA1FC0043B485 /* User.h */,
 				074EE8DF162DA1FC0043B485 /* User.m */,
 				074EE8DB162DA1FC0043B485 /* UserProvider.h */,
 				074EE8DC162DA1FC0043B485 /* UserProvider.m */,
 				074EE8D8162DA1FC0043B485 /* Location.h */,
 				074EE8D9162DA1FC0043B485 /* Location.m */,
-				074EE8D5162DA1FB0043B485 /* UserLocation.h */,
-				074EE8D6162DA1FB0043B485 /* UserLocation.m */,
 				0775FBF81625F93400D8BDA7 /* ModelHelper.h */,
 				0775FBF91625F93400D8BDA7 /* ModelHelper.m */,
 			);
@@ -577,13 +577,13 @@
 				0775FBFD1626004600D8BDA7 /* CoreDataHelper.m in Sources */,
 				07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */,
 				071EE426162C55C5008C6519 /* HudView.m in Sources */,
-				074EE8D7162DA1FB0043B485 /* UserLocation.m in Sources */,
 				074EE8DA162DA1FC0043B485 /* Location.m in Sources */,
 				074EE8DD162DA1FC0043B485 /* UserProvider.m in Sources */,
 				074EE8E0162DA1FC0043B485 /* User.m in Sources */,
 				074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */,
 				079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */,
 				079CD8591631A79C002F594A /* GCPlaceholderTextView.m in Sources */,
+				079CD87D1631D621002F594A /* UserLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

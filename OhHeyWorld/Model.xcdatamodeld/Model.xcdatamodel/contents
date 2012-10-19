@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C54" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,6 +45,7 @@
     <entity name="UserLocation" representedClassName="UserLocation" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="current" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="customMessage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="locationId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -88,7 +89,7 @@
     <elements>
         <element name="Location" positionX="160" positionY="192" width="128" height="268"/>
         <element name="User" positionX="-72" positionY="-204" width="128" height="390"/>
-        <element name="UserLocation" positionX="304" positionY="-51" width="128" height="238"/>
+        <element name="UserLocation" positionX="304" positionY="-51" width="128" height="255"/>
         <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="433"/>
     </elements>
 </model>

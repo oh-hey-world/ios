@@ -2,7 +2,7 @@
 //  UserLocation.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/16/12.
+//  Created by Eric Roland on 10/19/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -24,6 +24,7 @@
 @dynamic slug;
 @dynamic updatedAt;
 @dynamic userId;
+@dynamic customMessage;
 @dynamic location;
 @dynamic user;
 

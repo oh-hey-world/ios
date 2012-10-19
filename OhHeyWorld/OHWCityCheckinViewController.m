@@ -23,7 +23,6 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
-  //NSLog(@"%@", objectLoader.response.bodyAsString);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
@@ -32,6 +31,10 @@
   userLocation.userId = _user.externalId;
   userLocation.locationId = _location.externalId;
   userLocation.location = _location;
+  
+  NSLog(@"%@", objectLoader.response.bodyAsString);
+  NSLog(@"%@", userLocation.customMessage);
+  
   if (userLocation.externalId != nil) {
     [appDelegate saveContext];
   }
@@ -42,7 +45,7 @@
   if (zeroUserLocation != nil) {
     [ModelHelper deleteObject:zeroUserLocation];
   }
-  NSLog(@"user locations: %u", _user.userUserLocations.count);
+  //TODO push to the next view
 }
 
 
@@ -72,11 +75,6 @@
   [_mapView addAnnotation:point];
 }
 
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
-{
-  NSLog(@"Center: %f %f", mapView.region.center.latitude, mapView.region.center.longitude);
-}
-
 - (MKAnnotationView *) mapView:(MKMapView *)currentMapView viewForAnnotation:(id <MKAnnotation>) annotation {
   if (annotation == currentMapView.userLocation) {
     return nil; //default to blue dot
@@ -90,13 +88,15 @@
 
 - (IBAction)checkin:(id)sender {
   UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:_user];
-  if ([lastUserLocation.userId intValue] != [_user.externalId intValue] && (lastUserLocation == nil ||
-                                                                            !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
+  NSLog(@"%@ %@", lastUserLocation.customMessage, lastUserLocation.externalId);
+  if ([lastUserLocation.userId intValue] != [_user.externalId intValue]
+      && (lastUserLocation == nil || !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
     UserLocation* userLocation = [UserLocation object];
     userLocation.user = _user;
     userLocation.userId = _user.externalId;
     userLocation.locationId = _location.externalId;
     userLocation.location = _location;
+    userLocation.customMessage = _textView.text;
     
     RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
     NSError* error = nil;

@@ -154,6 +154,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userLocationMapping mapKeyPath:@"slug" toAttribute:@"slug"];
   [userLocationMapping mapKeyPath:@"name" toAttribute:@"name"];
   [userLocationMapping mapKeyPath:@"sent_snapshot" toAttribute:@"sentSnapshot"];
+  [userLocationMapping mapKeyPath:@"custom_message" toAttribute:@"customMessage"];
   [userLocationMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   userLocationMapping.primaryKeyAttribute = @"externalId";
   [userLocationMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];

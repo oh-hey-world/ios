@@ -2,7 +2,7 @@
 //  UserLocation.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/16/12.
+//  Created by Eric Roland on 10/19/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSString * slug;
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSNumber * userId;
+@property (nonatomic, retain) NSString * customMessage;
 @property (nonatomic, retain) Location *location;
 @property (nonatomic, retain) User *user;
 
