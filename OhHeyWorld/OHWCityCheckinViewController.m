@@ -32,8 +32,8 @@
   userLocation.locationId = _location.externalId;
   userLocation.location = _location;
   
-  NSLog(@"%@", objectLoader.response.bodyAsString);
-  NSLog(@"%@", userLocation.customMessage);
+  //NSLog(@"%@", objectLoader.response.bodyAsString);
+  //NSLog(@"%@", userLocation.customMessage);
   
   if (userLocation.externalId != nil) {
     [appDelegate saveContext];
@@ -45,7 +45,8 @@
   if (zeroUserLocation != nil) {
     [ModelHelper deleteObject:zeroUserLocation];
   }
-  //TODO push to the next view
+  OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
+  [self.navigationController pushViewController:controller animated:YES];
 }
 
 
@@ -88,7 +89,6 @@
 
 - (IBAction)checkin:(id)sender {
   UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:_user];
-  NSLog(@"%@ %@", lastUserLocation.customMessage, lastUserLocation.externalId);
   if ([lastUserLocation.userId intValue] != [_user.externalId intValue]
       && (lastUserLocation == nil || !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
     UserLocation* userLocation = [UserLocation object];
@@ -109,12 +109,16 @@
       loader.params = params;
       loader.delegate = self;
     }];
+  } else {
+    OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
+    [self.navigationController pushViewController:controller animated:YES];
   }
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  self.title = @"City Check In";
   _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(40, 240, 240, 240)];
   _mapView.delegate = self;
   _mapView.showsUserLocation = YES;

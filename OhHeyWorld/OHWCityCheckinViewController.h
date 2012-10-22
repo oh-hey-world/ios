@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OHWAppDelegate.h"
+#import "OHWCheckedinViewController.h"
 #import "GCPlaceholderTextView.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>

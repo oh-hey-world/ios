@@ -19,10 +19,10 @@
   User *user = [appDelegate user];
   UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:user];
   if (lastUserLocation != nil) {
-    NSDictionary *json = [lastUserLocation toDictionary];
-    NSLog(@"user location: %@", json);
+    //NSDictionary *json = [lastUserLocation toDictionary];
+    //NSLog(@"user location: %@", json);
   }
-  NSLog(@"user locations: %u", user.userUserLocations.count);
+  //NSLog(@"user locations: %u", user.userUserLocations.count);
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
