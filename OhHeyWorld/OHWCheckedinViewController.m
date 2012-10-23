@@ -14,6 +14,11 @@
 @end
 
 @implementation OHWCheckedinViewController
+@synthesize sendNotificationsButton = _sendNotificationsButton;
+@synthesize dateLabel = _dateLabel;
+@synthesize cityLabel = _cityLabel;
+@synthesize tableView = _tableView;
+@synthesize firstCheckinNotifcation = _firstCheckinNotifcation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,15 +30,28 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  //User *user = [appDelegate User];
-  //user.
-  //if (user.)
+  User *user = [appDelegate user];
+  if ([user.completedFirstCheckin intValue] == 1) {
+    [_firstCheckinNotifcation removeFromSuperview];
+  } else {
+    
+  }
+  UserLocation *lastLocation = [ModelHelper getLastUserLocation:user];
+  _cityLabel.text = [[NSArray arrayWithObjects:@"Congrats you made it to", lastLocation.name, nil] componentsJoinedByString:@" "];
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+  _dateLabel.text = [dateFormatter stringFromDate:lastLocation.createdAt];
+  
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   self.title = @"Checked In";
+}
+
+- (IBAction)sendNotifiction:(id)sender {
+  
 }
 
 #pragma mark - Table view data source
@@ -76,6 +94,7 @@
   }
   
   cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+  cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   
   return cell;
 }

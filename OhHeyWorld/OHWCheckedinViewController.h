@@ -13,5 +13,11 @@
 @interface OHWCheckedinViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UIButton *sendNotificationsButton;
+@property (nonatomic, retain) IBOutlet UILabel *dateLabel;
+@property (nonatomic, retain) IBOutlet UILabel *cityLabel;
+@property (nonatomic, retain) IBOutlet UILabel *firstCheckinNotifcation;
+
+- (IBAction)sendNotifiction:(id)sender;
 
 @end

@@ -2,7 +2,7 @@
 //  UserLocation.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/22/12.
+//  Created by Eric Roland on 10/23/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 

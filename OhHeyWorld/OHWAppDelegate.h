@@ -16,6 +16,8 @@
 #import "UserProvider.h"
 #import "Location.h"
 #import "UserLocation.h"
+#import "UserProviderFriend.h"
+#import "ProviderFriend.h"
 #import "ModelHelper.h"
 #import "CoreDataHelper.h"
 #import "HudView.h"

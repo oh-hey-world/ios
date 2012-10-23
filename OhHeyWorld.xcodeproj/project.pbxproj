@@ -50,14 +50,16 @@
 		0775FBD61625939E00D8BDA7 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0775FBD51625939E00D8BDA7 /* defaults.plist */; };
 		0775FBDA1625943900D8BDA7 /* OHWSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBD91625943900D8BDA7 /* OHWSettings.m */; };
 		0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBF91625F93400D8BDA7 /* ModelHelper.m */; };
-		07833A041635E7E8003DF2FA /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 07833A031635E7E8003DF2FA /* Location.m */; };
-		07833A071635E7E9003DF2FA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07833A061635E7E9003DF2FA /* User.m */; };
-		07833A0A1635E7E9003DF2FA /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07833A091635E7E9003DF2FA /* UserLocation.m */; };
-		07833A0D1635E7E9003DF2FA /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07833A0C1635E7E9003DF2FA /* UserProvider.m */; };
 		07833A101635E8C7003DF2FA /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07833A0F1635E8C7003DF2FA /* CoreDataHelper.m */; };
 		079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD83716309110002F594A /* OHWCityCheckinViewController.m */; };
 		079CD8591631A79C002F594A /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD8581631A79C002F594A /* GCPlaceholderTextView.m */; };
 		079CD8901635CF0E002F594A /* OHWCheckedinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */; };
+		07C9A2081636DFCF007323CC /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2071636DFCF007323CC /* UserLocation.m */; };
+		07C9A20B1636DFD0007323CC /* ProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A20A1636DFD0007323CC /* ProviderFriend.m */; };
+		07C9A20E1636DFD0007323CC /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A20D1636DFD0007323CC /* Location.m */; };
+		07C9A2111636DFD0007323CC /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2101636DFD0007323CC /* UserProvider.m */; };
+		07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2131636DFD0007323CC /* UserProviderFriend.m */; };
+		07C9A2171636DFD0007323CC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2161636DFD0007323CC /* User.m */; };
 		07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -169,14 +171,6 @@
 		0775FBD91625943900D8BDA7 /* OHWSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWSettings.m; sourceTree = "<group>"; };
 		0775FBF81625F93400D8BDA7 /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
 		0775FBF91625F93400D8BDA7 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
-		07833A021635E7E8003DF2FA /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		07833A031635E7E8003DF2FA /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		07833A051635E7E9003DF2FA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		07833A061635E7E9003DF2FA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		07833A081635E7E9003DF2FA /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
-		07833A091635E7E9003DF2FA /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
-		07833A0B1635E7E9003DF2FA /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
-		07833A0C1635E7E9003DF2FA /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
 		07833A0E1635E8C7003DF2FA /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		07833A0F1635E8C7003DF2FA /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		079CD83616309110002F594A /* OHWCityCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWCityCheckinViewController.h; sourceTree = "<group>"; };
@@ -185,6 +179,18 @@
 		079CD8581631A79C002F594A /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		079CD88E1635CF0E002F594A /* OHWCheckedinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWCheckedinViewController.h; sourceTree = "<group>"; };
 		079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWCheckedinViewController.m; sourceTree = "<group>"; };
+		07C9A2061636DFCF007323CC /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
+		07C9A2071636DFCF007323CC /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
+		07C9A2091636DFD0007323CC /* ProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderFriend.h; sourceTree = "<group>"; };
+		07C9A20A1636DFD0007323CC /* ProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderFriend.m; sourceTree = "<group>"; };
+		07C9A20C1636DFD0007323CC /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		07C9A20D1636DFD0007323CC /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		07C9A20F1636DFD0007323CC /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
+		07C9A2101636DFD0007323CC /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
+		07C9A2121636DFD0007323CC /* UserProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProviderFriend.h; sourceTree = "<group>"; };
+		07C9A2131636DFD0007323CC /* UserProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProviderFriend.m; sourceTree = "<group>"; };
+		07C9A2151636DFD0007323CC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		07C9A2161636DFD0007323CC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		07FB6AD716270D13006E0F01 /* OHWFriendsNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWFriendsNearbyViewController.h; sourceTree = "<group>"; };
 		07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWFriendsNearbyViewController.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -354,14 +360,18 @@
 			isa = PBXGroup;
 			children = (
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
-				07833A0B1635E7E9003DF2FA /* UserProvider.h */,
-				07833A0C1635E7E9003DF2FA /* UserProvider.m */,
-				07833A081635E7E9003DF2FA /* UserLocation.h */,
-				07833A091635E7E9003DF2FA /* UserLocation.m */,
-				07833A051635E7E9003DF2FA /* User.h */,
-				07833A061635E7E9003DF2FA /* User.m */,
-				07833A021635E7E8003DF2FA /* Location.h */,
-				07833A031635E7E8003DF2FA /* Location.m */,
+				07C9A2151636DFD0007323CC /* User.h */,
+				07C9A2161636DFD0007323CC /* User.m */,
+				07C9A2121636DFD0007323CC /* UserProviderFriend.h */,
+				07C9A2131636DFD0007323CC /* UserProviderFriend.m */,
+				07C9A20F1636DFD0007323CC /* UserProvider.h */,
+				07C9A2101636DFD0007323CC /* UserProvider.m */,
+				07C9A20C1636DFD0007323CC /* Location.h */,
+				07C9A20D1636DFD0007323CC /* Location.m */,
+				07C9A2091636DFD0007323CC /* ProviderFriend.h */,
+				07C9A20A1636DFD0007323CC /* ProviderFriend.m */,
+				07C9A2061636DFCF007323CC /* UserLocation.h */,
+				07C9A2071636DFCF007323CC /* UserLocation.m */,
 				0775FBF81625F93400D8BDA7 /* ModelHelper.h */,
 				0775FBF91625F93400D8BDA7 /* ModelHelper.m */,
 			);
@@ -585,11 +595,13 @@
 				079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */,
 				079CD8591631A79C002F594A /* GCPlaceholderTextView.m in Sources */,
 				079CD8901635CF0E002F594A /* OHWCheckedinViewController.m in Sources */,
-				07833A041635E7E8003DF2FA /* Location.m in Sources */,
-				07833A071635E7E9003DF2FA /* User.m in Sources */,
-				07833A0A1635E7E9003DF2FA /* UserLocation.m in Sources */,
-				07833A0D1635E7E9003DF2FA /* UserProvider.m in Sources */,
 				07833A101635E8C7003DF2FA /* CoreDataHelper.m in Sources */,
+				07C9A2081636DFCF007323CC /* UserLocation.m in Sources */,
+				07C9A20B1636DFD0007323CC /* ProviderFriend.m in Sources */,
+				07C9A20E1636DFD0007323CC /* Location.m in Sources */,
+				07C9A2111636DFD0007323CC /* UserProvider.m in Sources */,
+				07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */,
+				07C9A2171636DFD0007323CC /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

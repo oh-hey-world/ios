@@ -58,19 +58,45 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  NSError *jsonParsingError = nil;
-  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
-  if (objects.count == 0) {
-    BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure" message:@"Could not find your location."];
-    [alert setCancelButtonWithTitle:@"Ok" block:^{
-    }];
-    [alert show];
-  } else {
-    _authToken = [json valueForKey:@"auth_token"];
-    _user = [objects objectAtIndex:0];
-    if (_user != nil) {
-      [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+  @try {
+    if ([objectLoader.userData isEqualToString:@"userProviderFriends"]) {
+      _user.userUserProviderFriends = nil;
+      for (UserProviderFriend *userProviderFriend in objects) {
+        [_user addUserUserProviderFriendsObject:userProviderFriend];
+      }
+      [self saveContext];
+    } else {
+      NSError *jsonParsingError = nil;
+      NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
+      if (objects.count == 0) {
+        BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure" message:@"Could not find your location."];
+        [alert setCancelButtonWithTitle:@"Ok" block:^{
+        }];
+        [alert show];
+      } else {
+        _authToken = [json valueForKey:@"auth_token"];
+        _user = [objects objectAtIndex:0];
+        if (_user != nil) {
+          if (_user.userUserProviderFriends.count == 0) {
+            NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+            [params setValue:@"auth_token" forKey: [self authToken]];
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/users/import_facebook_friends" usingBlock:^(RKObjectLoader *loader) {
+              loader.method = RKRequestMethodGET;
+              loader.userData = @"userProviderFriends";
+              loader.params = params;
+              loader.delegate = self;
+            }];
+          }
+          [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+      }
     }
+  }
+  @catch (NSException *e) {
+    NSLog(@"%@", e);
+  }
+  @finally {
+
   }
 }
 
@@ -82,7 +108,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)setupRKUser {
   RKManagedObjectMapping *userMapping = [RKManagedObjectMapping mappingForClass:[User class] inManagedObjectStore:_manager.objectStore];
-  //TODO review RKManagedObjectMapping
   [userMapping mapKeyPath:@"email" toAttribute:@"email"];
   [userMapping mapKeyPath:@"birthday" toAttribute:@"birthday"];
   [userMapping mapKeyPath:@"agrees_to_terms" toAttribute:@"agreesToTerms"];
@@ -159,6 +184,30 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   userLocationMapping.primaryKeyAttribute = @"externalId";
   [userLocationMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userLocationMapping withRootKeyPath:@"user_locations.user_location"];
+  
+  RKManagedObjectMapping *providerFriendMapping = [RKManagedObjectMapping mappingForClass:[ProviderFriend class] inManagedObjectStore:_manager.objectStore];
+  [providerFriendMapping mapKeyPath:@"user_name" toAttribute:@"userName"];
+  [providerFriendMapping mapKeyPath:@"uid" toAttribute:@"uid"];
+  [providerFriendMapping mapKeyPath:@"picture_url" toAttribute:@"pictureUrl"];
+  [providerFriendMapping mapKeyPath:@"link" toAttribute:@"link"];
+  [providerFriendMapping mapKeyPath:@"location_id" toAttribute:@"locationId"];
+  [providerFriendMapping mapKeyPath:@"provider_name" toAttribute:@"providerName"];
+  [providerFriendMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [providerFriendMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [providerFriendMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [providerFriendMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  providerFriendMapping.primaryKeyAttribute = @"externalId";
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:providerFriendMapping withRootKeyPath:@"provider_friends.provider_friend"];
+  
+  RKManagedObjectMapping *userProviderFriendMapping = [RKManagedObjectMapping mappingForClass:[UserProviderFriend class] inManagedObjectStore:_manager.objectStore];
+  [userProviderFriendMapping mapKeyPath:@"provider_friend_id" toAttribute:@"providerFriendId"];
+  [userProviderFriendMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [userProviderFriendMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [userProviderFriendMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [userProviderFriendMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  userProviderFriendMapping.primaryKeyAttribute = @"externalId";
+  [userProviderFriendMapping mapKeyPath:@"provider_friend" toRelationship:@"providerFriend" withMapping:providerFriendMapping];
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderFriendMapping withRootKeyPath:@"user_provider_friends.user_provider_friend"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];

@@ -2,14 +2,14 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/22/12.
+//  Created by Eric Roland on 10/23/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class UserLocation, UserProvider;
+@class UserLocation, UserProvider, UserProviderFriend;
 
 @interface User : NSManagedObject
 
@@ -24,6 +24,8 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSString * homeLocation;
+@property (nonatomic, retain) NSDate * importJobFinishedAt;
+@property (nonatomic, retain) NSNumber * importJobId;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * link;
 @property (nonatomic, retain) NSString * locale;
@@ -35,6 +37,7 @@
 @property (nonatomic, retain) NSNumber * timezone;
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSSet *userUserLocations;
+@property (nonatomic, retain) NSSet *userUserProviderFriends;
 @property (nonatomic, retain) NSSet *userUserProviders;
 @end
 
@@ -44,6 +47,11 @@
 - (void)removeUserUserLocationsObject:(UserLocation *)value;
 - (void)addUserUserLocations:(NSSet *)values;
 - (void)removeUserUserLocations:(NSSet *)values;
+
+- (void)addUserUserProviderFriendsObject:(UserProviderFriend *)value;
+- (void)removeUserUserProviderFriendsObject:(UserProviderFriend *)value;
+- (void)addUserUserProviderFriends:(NSSet *)values;
+- (void)removeUserUserProviderFriends:(NSSet *)values;
 
 - (void)addUserUserProvidersObject:(UserProvider *)value;
 - (void)removeUserUserProvidersObject:(UserProvider *)value;
