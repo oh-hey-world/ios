@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "OHWAppDelegate.h"
 #import "User.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/RKRequestSerialization.h>
 
-@interface OHWCheckedinViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface OHWCheckedinViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIButton *sendNotificationsButton;

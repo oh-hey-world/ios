@@ -46,6 +46,9 @@
 @property (nonatomic, retain) NSString *authToken;
 @property (nonatomic, retain) CLPlacemark *placeMark;
 @property (nonatomic, retain) Location *location;
+@property (nonatomic, retain) NSArray *userFriendsNotOhwUser;
+@property (nonatomic, retain) NSArray *userFriendsOhwUser;
+@property (nonatomic, retain) NSArray *usersAtLocation;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;

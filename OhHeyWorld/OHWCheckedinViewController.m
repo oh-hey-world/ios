@@ -29,6 +29,21 @@
     return self;
 }
 
+- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
+  NSLog(@"%@", objectLoader.response.bodyAsString);
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  if ([@"userFriendsNotOhwUser" isEqualToString:objectLoader.userData]) {
+    [appDelegate setUserFriendsNotOhwUser:objects];
+  } else if ([@"userFriendsOhwUser" isEqualToString:objectLoader.userData]) {
+    [appDelegate setUserFriendsOhwUser:objects];
+  } else {
+    [appDelegate setUsersAtLocation:objects];
+  }
+  [_tableView reloadData];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
   User *user = [appDelegate user];
   if ([user.completedFirstCheckin intValue] == 1) {
@@ -42,6 +57,33 @@
   [dateFormatter setDateFormat:@"MM/dd/yyyy"];
   _dateLabel.text = [dateFormatter stringFromDate:lastLocation.createdAt];
   
+  NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+  [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+  NSString *url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_not_ohw_user", lastLocation.externalId];
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodGET;
+    loader.userData = @"userFriendsNotOhwUser";
+    loader.params = params;
+    loader.delegate = self;
+  }];
+  
+  url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_ohw_user", lastLocation.externalId];
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodGET;
+    loader.userData = @"userFriendsOhwUser";
+    loader.params = params;
+    loader.delegate = self;
+  }];
+  
+  /*
+  url = [NSString stringWithFormat:@"/api/user_locations/%@/users_at_location", lastLocation.externalId];
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodGET;
+    loader.userData = @"usersAtLocation";
+    loader.params = params;
+    loader.delegate = self;
+  }];
+  */
 }
 
 - (void)viewDidLoad
@@ -74,13 +116,23 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     if (indexPath.row == 0) {
-      UILabel *nearbyFriendsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 280, 35)];
+      UILabel *nearbyFriendsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 130, 35)];
       nearbyFriendsLabel.tag = 1;
       [cell.contentView addSubview:nearbyFriendsLabel];
+      
+      UILabel *nearbyFriendsCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(135, 0, 80, 35)];
+      nearbyFriendsCountLabel.tag = 2;
+      nearbyFriendsCountLabel.textColor = [UIColor lightGrayColor];
+      [cell.contentView addSubview:nearbyFriendsCountLabel];
     } else {
-      UILabel *nearbyTravelersLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 280, 35)];
-      nearbyTravelersLabel.tag = 2;
+      UILabel *nearbyTravelersLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 160, 35)];
+      nearbyTravelersLabel.tag = 3;
       [cell.contentView addSubview:nearbyTravelersLabel];
+      
+      UILabel *nearbyTravelersCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 0, 80, 35)];
+      nearbyTravelersCountLabel.tag = 4;
+      nearbyTravelersCountLabel.textColor = [UIColor lightGrayColor];
+      [cell.contentView addSubview:nearbyTravelersCountLabel];
     }
 
   }
@@ -88,9 +140,20 @@
   if (indexPath.row == 0) {
     UILabel *nearbyFriendsLabel = (UILabel*)[cell viewWithTag:1];
     nearbyFriendsLabel.text = @"Nearby Friends";
+    
+    if ([appDelegate userFriendsNotOhwUser] != nil) {
+      UILabel *nearbyFriendsCountLabel = (UILabel*)[cell viewWithTag:2];
+      NSLog(@"%u", [appDelegate userFriendsNotOhwUser].count);
+      nearbyFriendsCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate userFriendsNotOhwUser].count];
+    }
   } else {
-    UILabel *nearbyTravelersLabel = (UILabel*)[cell viewWithTag:2];
+    UILabel *nearbyTravelersLabel = (UILabel*)[cell viewWithTag:3];
     nearbyTravelersLabel.text = @"Nearby Travelers";
+    
+    if ([appDelegate usersAtLocation] != nil) {
+      UILabel *nearbyTravelersCountLabel = (UILabel*)[cell viewWithTag:4];
+      nearbyTravelersCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate usersAtLocation].count];
+    }
   }
   
   cell.selectionStyle = UITableViewCellSelectionStyleBlue;
