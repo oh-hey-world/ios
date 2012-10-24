@@ -1,7 +1,9 @@
 PODS:
   - BlockAlertsAnd-ActionSheets (1.0.0)
+  - JMImageCache (0.2.1)
   - SBJson (3.1.1)
 
 DEPENDENCIES:
   - BlockAlertsAnd-ActionSheets (>= 1.0.0)
+  - JMImageCache
   - SBJson (>= 3.1.1)

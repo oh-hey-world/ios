@@ -1,1416 +1,404 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>004590DEDBC14BA6BD38D929</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AA61DDE5C3E641728B1C512F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>0C4D7A1796674582848D02AE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>238786AE4E5E435287A8E2F5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>0DD6D79375FB4E07A17E6B17</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.xcconfig</string>
-			<key>path</key>
-			<string>Pods.xcconfig</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>1289E3BF806B4499A56D9E11</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>CE7F0782EC4143438021D4C7</string>
-				<string>C1156FF8EAD54C22BC1FB800</string>
-				<string>F9978CCA357C40BAAC531F4F</string>
-				<string>F1DB86A799F840329BA7C3FE</string>
-				<string>DF4193AF880B41169CAAB968</string>
-				<string>D7E0BF192AB8478EA21FFE57</string>
-				<string>20F1C0A62B624E6489894654</string>
-				<string>27D35842F029490E8AB2AB47</string>
-				<string>3A9BBC5F84D2438AA7662973</string>
-				<string>DFB1FAB42DE048789FBE8E8E</string>
-				<string>7F6356B685A44118BF42354B</string>
-				<string>9CA19714FD5E46F89BDECC4B</string>
-				<string>EDBB683C1D2E49829B687F5E</string>
-				<string>DF28DB0AF8D34D529816500B</string>
-				<string>AA61DDE5C3E641728B1C512F</string>
-				<string>CA4AA81CE60049688D9614B1</string>
-				<string>9640BD2E0CB34983A2371775</string>
-				<string>552FC6A3DDE34AD4BAE8C56F</string>
-				<string>1E587881DB2B485C9AB2FBCB</string>
-				<string>8E1921E8AC8C415FB488F0AA</string>
-				<string>DC4D44C7DF97406294847347</string>
-				<string>A62E4F4249134468824A5B57</string>
-				<string>C3C458758A6548F098C0A358</string>
-				<string>C7157578FDD64988A6F085E9</string>
-				<string>4EF9CCA2919D4EC583B41920</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>SBJson</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1472D942B1FB40F3AD01E27A</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0420</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>E415292ECC924CFABFF00C80</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>760DA0A53BE546EB90855750</string>
-			<key>productRefGroup</key>
-			<string>60B610CD79EB43A88A1B5F8A</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>1CC755D6287349E3A3669CB4</string>
-			</array>
-		</dict>
-		<key>1CC755D6287349E3A3669CB4</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>E91FAC4EE78342639845E3E9</string>
-			<key>buildPhases</key>
-			<array>
-				<string>CF9C978731634D71823A378E</string>
-				<string>DB8F9507849F476C90FA4BE3</string>
-				<string>443977CAD5EF455F86319CAC</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>productName</key>
-			<string>Pods</string>
-			<key>productReference</key>
-			<string>2AD50455D3B14C33955757C7</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>1E587881DB2B485C9AB2FBCB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParserState.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParserState.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>1F6F3D22E3E447449759549F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockAlertView.h</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockAlertView.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>20F1C0A62B624E6489894654</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParserState.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParserState.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>238786AE4E5E435287A8E2F5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>PodsDummy.m</string>
-			<key>path</key>
-			<string>PodsDummy.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>27D35842F029490E8AB2AB47</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamWriter.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamWriter.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>2AD50455D3B14C33955757C7</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libPods.a</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>2D3F5ACFE5A34E9BB2B9E271</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DF4193AF880B41169CAAB968</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>3184D99839364873981DC8FA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockTextPromptAlertView.h</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockTextPromptAlertView.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>365828E386D3434EB8D84EF5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>42B65B580140419490377983</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>37B6978A72E24D83AEC35BEF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockActionSheet.m</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockActionSheet.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>3A9BBC5F84D2438AA7662973</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamWriterAccumulator.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamWriterAccumulator.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>3F1670EC3D784A56BD90C904</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockBackground.h</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockBackground.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>42B65B580140419490377983</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockAlertView.m</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockAlertView.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>443977CAD5EF455F86319CAC</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>8F0BA6B7A1FA485682C1243D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>4614B65DA6C74455B81346AB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7F6356B685A44118BF42354B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>4929D98AC4AF4BB3A5E6A60B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods-resources.sh</string>
-			<key>path</key>
-			<string>Pods-resources.sh</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>49B3302E5CF3469F81E9280C</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict/>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>49EF0B9582A64BE68E1F3D87</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A9BBC5F84D2438AA7662973</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>4BB1D1F0C0A34240BEBDF721</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DF28DB0AF8D34D529816500B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>4C2B77D7C1EC4747BDC20C83</key>
-		<dict>
-			<key>fileRef</key>
-			<string>27D35842F029490E8AB2AB47</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>4EF9CCA2919D4EC583B41920</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonWriter.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonWriter.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>51778C47F3CA4BDDB3FCC9B0</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict/>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>552FC6A3DDE34AD4BAE8C56F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParserAdapter.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParserAdapter.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>5A649DF83E72434AAC87676C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C7157578FDD64988A6F085E9</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>5F18A61CC9144FA295D0714D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>9F3AE8753456431FB80CEDFE</string>
-				<string>238786AE4E5E435287A8E2F5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60B610CD79EB43A88A1B5F8A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>2AD50455D3B14C33955757C7</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>696D29CF41384798A4A385DD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods-prefix.pch</string>
-			<key>path</key>
-			<string>Pods-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>6A783854630C433E8F9DE742</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9CA19714FD5E46F89BDECC4B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>760DA0A53BE546EB90855750</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60B610CD79EB43A88A1B5F8A</string>
-				<string>E75E9289C5F24E6E83C0BC51</string>
-				<string>5F18A61CC9144FA295D0714D</string>
-				<string>A469DED6D30B4131BE99C0E2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>77543D257A4E4477B2765635</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockActionSheet.h</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockActionSheet.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>7E66459552B04F6BABE000C5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4EF9CCA2919D4EC583B41920</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>7F6356B685A44118BF42354B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonTokeniser.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonTokeniser.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>8164F001940F4A238F82C3BE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A62E4F4249134468824A5B57</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>872AA8F016AF489982053997</key>
-		<dict>
-			<key>fileRef</key>
-			<string>552FC6A3DDE34AD4BAE8C56F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>8A48A30538684B74BD786572</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>0DD6D79375FB4E07A17E6B17</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_32_BIT)</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DSTROOT</key>
-				<string>/tmp/xcodeproj.dst</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Pods-prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_VERSION</key>
-				<string>com.apple.compilers.llvm.clang.1_0</string>
-				<key>GCC_WARN_ABOUT_MISSING_PROTOTYPES</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>INSTALL_PATH</key>
-				<string>$(BUILT_PRODUCTS_DIR)</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.0</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>${SRCROOT}</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>8CE3EB37E8FF43EA8D8F2687</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>8E1921E8AC8C415FB488F0AA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamWriter.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamWriter.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>8F0BA6B7A1FA485682C1243D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8CE3EB37E8FF43EA8D8F2687</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>8F3A1001C52646909127C63B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CA4AA81CE60049688D9614B1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>917D4A84690D4F958C74A50A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EDBB683C1D2E49829B687F5E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>943D7E4B698444E6928BBFF2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockUI.h</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ProjectSpecific/BlockUI.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>9640BD2E0CB34983A2371775</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParserAccumulator.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParserAccumulator.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>9CA19714FD5E46F89BDECC4B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonUTF8Stream.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonUTF8Stream.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>9DC509A63711400EAECFC2B7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9640BD2E0CB34983A2371775</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>9F3AE8753456431FB80CEDFE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4929D98AC4AF4BB3A5E6A60B</string>
-				<string>696D29CF41384798A4A385DD</string>
-				<string>0DD6D79375FB4E07A17E6B17</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9F8647A1DA3C493CB7B8235F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C1156FF8EAD54C22BC1FB800</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>A2340399F32E4621A23C1088</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>0DD6D79375FB4E07A17E6B17</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_32_BIT)</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>DSTROOT</key>
-				<string>/tmp/xcodeproj.dst</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Pods-prefix.pch</string>
-				<key>GCC_VERSION</key>
-				<string>com.apple.compilers.llvm.clang.1_0</string>
-				<key>GCC_WARN_ABOUT_MISSING_PROTOTYPES</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>INSTALL_PATH</key>
-				<string>$(BUILT_PRODUCTS_DIR)</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.0</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>${SRCROOT}</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>A469DED6D30B4131BE99C0E2</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>8CE3EB37E8FF43EA8D8F2687</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A62E4F4249134468824A5B57</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamWriterState.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamWriterState.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>A98386F463FE4B42AC44027A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8E1921E8AC8C415FB488F0AA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>AA61DDE5C3E641728B1C512F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonParser.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonParser.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>AC123D6B06EF43B2B2974D0B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F1DB86A799F840329BA7C3FE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>B1719BD7C0144EA9829EE564</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C3C458758A6548F098C0A358</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>B8F0EFAAF7A94ECDBE58237D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockBackground.m</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockBackground.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>BB6A39E13EE448B3BBA0DD0E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DA83C21CD1114EE0835F31C4</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>BE555A23F7964555BF29326B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3F1670EC3D784A56BD90C904</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>C1156FF8EAD54C22BC1FB800</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJson.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJson.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>C3C458758A6548F098C0A358</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonTokeniser.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonTokeniser.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>C7157578FDD64988A6F085E9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonUTF8Stream.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonUTF8Stream.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>C7E1484C47BD4493BEDE15A7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DFB1FAB42DE048789FBE8E8E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>CA4AA81CE60049688D9614B1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParser.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParser.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>CE7F0782EC4143438021D4C7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>NSObject+SBJson.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/NSObject+SBJson.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>CF9C978731634D71823A378E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>EA85B280510645AFA3591906</string>
-				<string>365828E386D3434EB8D84EF5</string>
-				<string>F65DEF86135744F397A4857D</string>
-				<string>BB6A39E13EE448B3BBA0DD0E</string>
-				<string>4BB1D1F0C0A34240BEBDF721</string>
-				<string>004590DEDBC14BA6BD38D929</string>
-				<string>8F3A1001C52646909127C63B</string>
-				<string>9DC509A63711400EAECFC2B7</string>
-				<string>872AA8F016AF489982053997</string>
-				<string>F9E54AB4630F4C52B0A56AF6</string>
-				<string>A98386F463FE4B42AC44027A</string>
-				<string>FF8B193871DD44C495B8AC04</string>
-				<string>8164F001940F4A238F82C3BE</string>
-				<string>B1719BD7C0144EA9829EE564</string>
-				<string>5A649DF83E72434AAC87676C</string>
-				<string>7E66459552B04F6BABE000C5</string>
-				<string>0C4D7A1796674582848D02AE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>D0E0444E409E4C35A3D9ADF7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3184D99839364873981DC8FA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>D7B3F5DCA49947CDA034A351</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CE7F0782EC4143438021D4C7</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>D7E0BF192AB8478EA21FFE57</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParserAdapter.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParserAdapter.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>DA83C21CD1114EE0835F31C4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>BlockTextPromptAlertView.m</string>
-			<key>path</key>
-			<string>BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockTextPromptAlertView.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>DB8F9507849F476C90FA4BE3</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>dstPath</key>
-			<string>$(PRODUCT_NAME)</string>
-			<key>dstSubfolderSpec</key>
-			<string>16</string>
-			<key>files</key>
-			<array>
-				<string>E93C567A3DE54FF58E8A906D</string>
-				<string>DEF1DC7474A24F08BBD736FC</string>
-				<string>BE555A23F7964555BF29326B</string>
-				<string>D0E0444E409E4C35A3D9ADF7</string>
-				<string>E989E80652FF49BF862769D7</string>
-				<string>D7B3F5DCA49947CDA034A351</string>
-				<string>9F8647A1DA3C493CB7B8235F</string>
-				<string>DBD4BC0C90D14DD4B8287B0D</string>
-				<string>AC123D6B06EF43B2B2974D0B</string>
-				<string>2D3F5ACFE5A34E9BB2B9E271</string>
-				<string>F3878426C7BB4FFD9CCA4625</string>
-				<string>F7197F22A65E451780B65CF8</string>
-				<string>4C2B77D7C1EC4747BDC20C83</string>
-				<string>49EF0B9582A64BE68E1F3D87</string>
-				<string>C7E1484C47BD4493BEDE15A7</string>
-				<string>4614B65DA6C74455B81346AB</string>
-				<string>6A783854630C433E8F9DE742</string>
-				<string>917D4A84690D4F958C74A50A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXCopyFilesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>DBD4BC0C90D14DD4B8287B0D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F9978CCA357C40BAAC531F4F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>DC4D44C7DF97406294847347</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamWriterAccumulator.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamWriterAccumulator.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>DEF1DC7474A24F08BBD736FC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1F6F3D22E3E447449759549F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>DF28DB0AF8D34D529816500B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>NSObject+SBJson.m</string>
-			<key>path</key>
-			<string>SBJson/Classes/NSObject+SBJson.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>DF4193AF880B41169CAAB968</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParserAccumulator.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParserAccumulator.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>DFB1FAB42DE048789FBE8E8E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamWriterState.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamWriterState.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>E415292ECC924CFABFF00C80</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>51778C47F3CA4BDDB3FCC9B0</string>
-				<string>49B3302E5CF3469F81E9280C</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>E75E9289C5F24E6E83C0BC51</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E79DB88E897F46DD9AB62B51</string>
-				<string>1289E3BF806B4499A56D9E11</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E79DB88E897F46DD9AB62B51</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>77543D257A4E4477B2765635</string>
-				<string>1F6F3D22E3E447449759549F</string>
-				<string>3F1670EC3D784A56BD90C904</string>
-				<string>3184D99839364873981DC8FA</string>
-				<string>37B6978A72E24D83AEC35BEF</string>
-				<string>42B65B580140419490377983</string>
-				<string>B8F0EFAAF7A94ECDBE58237D</string>
-				<string>DA83C21CD1114EE0835F31C4</string>
-				<string>943D7E4B698444E6928BBFF2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>BlockAlertsAnd-ActionSheets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E91FAC4EE78342639845E3E9</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>8A48A30538684B74BD786572</string>
-				<string>A2340399F32E4621A23C1088</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>E93C567A3DE54FF58E8A906D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>77543D257A4E4477B2765635</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>E989E80652FF49BF862769D7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>943D7E4B698444E6928BBFF2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>EA85B280510645AFA3591906</key>
-		<dict>
-			<key>fileRef</key>
-			<string>37B6978A72E24D83AEC35BEF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>EDBB683C1D2E49829B687F5E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonWriter.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonWriter.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>F1DB86A799F840329BA7C3FE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonStreamParser.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonStreamParser.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>F3878426C7BB4FFD9CCA4625</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D7E0BF192AB8478EA21FFE57</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>F65DEF86135744F397A4857D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B8F0EFAAF7A94ECDBE58237D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7197F22A65E451780B65CF8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>20F1C0A62B624E6489894654</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>F9978CCA357C40BAAC531F4F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>SBJsonParser.h</string>
-			<key>path</key>
-			<string>SBJson/Classes/SBJsonParser.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>F9E54AB4630F4C52B0A56AF6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1E587881DB2B485C9AB2FBCB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>FF8B193871DD44C495B8AC04</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DC4D44C7DF97406294847347</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>1472D942B1FB40F3AD01E27A</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		028F884077E24740A33990AF /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8C9BEB577D41079F3FB22E /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		04C13C76B8F640DAB3B23233 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F02AC89C8D84B0883FB2004 /* NSObject+SBJson.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0914CD7D780D49E39F7F63DB /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E14975EC420CB48F6852 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		09E3C8CC5DE741CEA1B04873 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA46A3FEE4D14E9681D33C7D /* Foundation.framework */; };
+		0A7204DFDED44F42950A7927 /* NSObject+SBJson.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 217D77B6C6A2461FB980521E /* NSObject+SBJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		182DF71F5ABF46D98AAD698B /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6D4C21AB7D4F0CA8074A3D /* SBJsonStreamParserAdapter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		18C098E99689460BB0C2A8A6 /* BlockBackground.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F802CEA4348047A7BC30F0E5 /* BlockBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23D43D54FC8A4FFB84768C21 /* BlockAlertView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 47E2A1AD59FD46B0B77F59A4 /* BlockAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C473CD348EC4AF5BAEDC93E /* SBJsonTokeniser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 020CA2C55CEC4121A1476FE4 /* SBJsonTokeniser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		419CD1336E0049B98B5C393F /* SBJsonWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30BA14927811432D9C8CAB4F /* SBJsonWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49293176BFD849F3915055F8 /* SBJsonStreamParserAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CB06809941CD479C8551C55B /* SBJsonStreamParserAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		498FDAE8C7AE4D4DA7BBE2C3 /* SBJsonStreamWriterAccumulator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 429A20151FC349B2BDD7FA5D /* SBJsonStreamWriterAccumulator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5405F12841E4440D98038E16 /* BlockUI.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A6091390FF6E48998271D042 /* BlockUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5AD9B76937614928975EBAE9 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA34D05B6D488EAB3913D7 /* SBJsonStreamParserAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		74C8377E5D1E4ADBAA18AA8C /* SBJsonUTF8Stream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B0ABE01D2DB4D47BF9489A2 /* SBJsonUTF8Stream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7754232E6A7848E7AB6FB215 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD697D56BF440199B51C40D /* BlockAlertView.m */; };
+		87190ACDB37340D3BCDCE4D3 /* PodsDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 699720CCBC9F4DC9AA71632B /* PodsDummy.m */; };
+		890DE4E9E9104A249BAB3FAE /* SBJsonStreamParserAccumulator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CBC1E84EC8BE4EAEA28342BE /* SBJsonStreamParserAccumulator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E5D69E384214B1D8A2FB5C6 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 85364414DFF74D9C8F992E2E /* SBJsonUTF8Stream.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		8F6336E351D9424D977D1972 /* SBJsonParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F47B0DE29F47A9819A90D0 /* SBJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F7E1F878C284E53B00F7ACC /* SBJsonStreamWriter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7EA700D1C78240BFB3943B25 /* SBJsonStreamWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		998B974FBF0A4900B89DF652 /* BlockActionSheet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9964EB5E7B774D44B4E7E7CD /* BlockActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4A26EF44370457582AB2E8F /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C00F49CCAD44E5AB913E7C /* SBJsonStreamWriterAccumulator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		ADB592D6DD2042D5AD28FBE5 /* BlockTextPromptAlertView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AA473E65D4B460A8A038EE3 /* BlockTextPromptAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0D68F058B994BA1B998C376 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 493D993A97214573BC61FA7F /* SBJsonStreamWriterState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B10DFAE1650C44FAAF119566 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B976FA93E00B41C8AE722C28 /* BlockActionSheet.m */; };
+		B318C1CAF190440581BBAC6B /* SBJsonStreamWriterState.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAADDF35261B4F26853B3029 /* SBJsonStreamWriterState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5C76D4E9FEB4F66A3663D49 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7AB4D0133C43AA9148FCC7 /* SBJsonTokeniser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C19103F4148045BC84F58439 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5558498B1464B19833E3A24 /* BlockTextPromptAlertView.m */; };
+		CA440FF626394ED7B7CB1322 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE67312AAAE24C788EE570A2 /* SBJsonStreamWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		CB4E1BC33A594B4D95524066 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8A1522FED14B59AC124851 /* SBJsonStreamParserState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DAA880F4E5AD4630928EDA4F /* SBJsonStreamParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD821DAC611242A9B895C00F /* SBJsonStreamParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE56F88CF7E4188A9796635 /* SBJsonStreamParserState.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 590F9B8750E6440C9402B7E0 /* SBJsonStreamParserState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E23A7BB30EDA464D81BB8E16 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF0ABDE387F4BB1A2B46445 /* SBJsonStreamParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F78384E9622C410585CF2803 /* SBJson.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D12ADF52F62244E696420529 /* SBJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE21DFF7ED074297BB623D0F /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B7EA96F52F4B2689D02A6C /* BlockBackground.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		52A1E80D66BE4B51AB8291C1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				998B974FBF0A4900B89DF652 /* BlockActionSheet.h in CopyFiles */,
+				23D43D54FC8A4FFB84768C21 /* BlockAlertView.h in CopyFiles */,
+				18C098E99689460BB0C2A8A6 /* BlockBackground.h in CopyFiles */,
+				ADB592D6DD2042D5AD28FBE5 /* BlockTextPromptAlertView.h in CopyFiles */,
+				5405F12841E4440D98038E16 /* BlockUI.h in CopyFiles */,
+				0A7204DFDED44F42950A7927 /* NSObject+SBJson.h in CopyFiles */,
+				F78384E9622C410585CF2803 /* SBJson.h in CopyFiles */,
+				8F6336E351D9424D977D1972 /* SBJsonParser.h in CopyFiles */,
+				DAA880F4E5AD4630928EDA4F /* SBJsonStreamParser.h in CopyFiles */,
+				890DE4E9E9104A249BAB3FAE /* SBJsonStreamParserAccumulator.h in CopyFiles */,
+				49293176BFD849F3915055F8 /* SBJsonStreamParserAdapter.h in CopyFiles */,
+				DDE56F88CF7E4188A9796635 /* SBJsonStreamParserState.h in CopyFiles */,
+				8F7E1F878C284E53B00F7ACC /* SBJsonStreamWriter.h in CopyFiles */,
+				498FDAE8C7AE4D4DA7BBE2C3 /* SBJsonStreamWriterAccumulator.h in CopyFiles */,
+				B318C1CAF190440581BBAC6B /* SBJsonStreamWriterState.h in CopyFiles */,
+				2C473CD348EC4AF5BAEDC93E /* SBJsonTokeniser.h in CopyFiles */,
+				74C8377E5D1E4ADBAA18AA8C /* SBJsonUTF8Stream.h in CopyFiles */,
+				419CD1336E0049B98B5C393F /* SBJsonWriter.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		020CA2C55CEC4121A1476FE4 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonTokeniser.h; path = SBJson/Classes/SBJsonTokeniser.h; sourceTree = SOURCE_ROOT; };
+		05DA34D05B6D488EAB3913D7 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserAccumulator.m; path = SBJson/Classes/SBJsonStreamParserAccumulator.m; sourceTree = SOURCE_ROOT; };
+		15BCD274A9554357B3B1FD5C /* Pods-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-prefix.pch"; sourceTree = SOURCE_ROOT; };
+		1B0ABE01D2DB4D47BF9489A2 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonUTF8Stream.h; path = SBJson/Classes/SBJsonUTF8Stream.h; sourceTree = SOURCE_ROOT; };
+		1DB57A79E4894B429403CDB2 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = SOURCE_ROOT; };
+		217D77B6C6A2461FB980521E /* NSObject+SBJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJson.h"; path = "SBJson/Classes/NSObject+SBJson.h"; sourceTree = SOURCE_ROOT; };
+		24C00F49CCAD44E5AB913E7C /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriterAccumulator.m; path = SBJson/Classes/SBJsonStreamWriterAccumulator.m; sourceTree = SOURCE_ROOT; };
+		30BA14927811432D9C8CAB4F /* SBJsonWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = SBJson/Classes/SBJsonWriter.h; sourceTree = SOURCE_ROOT; };
+		40384BAE43874C40BD688B42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		429A20151FC349B2BDD7FA5D /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriterAccumulator.h; path = SBJson/Classes/SBJsonStreamWriterAccumulator.h; sourceTree = SOURCE_ROOT; };
+		46F47B0DE29F47A9819A90D0 /* SBJsonParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonParser.h; path = SBJson/Classes/SBJsonParser.h; sourceTree = SOURCE_ROOT; };
+		47E2A1AD59FD46B0B77F59A4 /* BlockAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlockAlertView.h; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockAlertView.h"; sourceTree = SOURCE_ROOT; };
+		493D993A97214573BC61FA7F /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriterState.m; path = SBJson/Classes/SBJsonStreamWriterState.m; sourceTree = SOURCE_ROOT; };
+		4AA473E65D4B460A8A038EE3 /* BlockTextPromptAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlockTextPromptAlertView.h; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockTextPromptAlertView.h"; sourceTree = SOURCE_ROOT; };
+		4CD697D56BF440199B51C40D /* BlockAlertView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlockAlertView.m; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockAlertView.m"; sourceTree = SOURCE_ROOT; };
+		54B7EA96F52F4B2689D02A6C /* BlockBackground.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlockBackground.m; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockBackground.m"; sourceTree = SOURCE_ROOT; };
+		590F9B8750E6440C9402B7E0 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserState.h; path = SBJson/Classes/SBJsonStreamParserState.h; sourceTree = SOURCE_ROOT; };
+		699720CCBC9F4DC9AA71632B /* PodsDummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PodsDummy.m; sourceTree = SOURCE_ROOT; };
+		6F02AC89C8D84B0883FB2004 /* NSObject+SBJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJson.m"; path = "SBJson/Classes/NSObject+SBJson.m"; sourceTree = SOURCE_ROOT; };
+		7EA700D1C78240BFB3943B25 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriter.h; path = SBJson/Classes/SBJsonStreamWriter.h; sourceTree = SOURCE_ROOT; };
+		7F8A1522FED14B59AC124851 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserState.m; path = SBJson/Classes/SBJsonStreamParserState.m; sourceTree = SOURCE_ROOT; };
+		85364414DFF74D9C8F992E2E /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonUTF8Stream.m; path = SBJson/Classes/SBJsonUTF8Stream.m; sourceTree = SOURCE_ROOT; };
+		8BF8E14975EC420CB48F6852 /* SBJsonParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = SBJson/Classes/SBJsonParser.m; sourceTree = SOURCE_ROOT; };
+		9964EB5E7B774D44B4E7E7CD /* BlockActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlockActionSheet.h; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockActionSheet.h"; sourceTree = SOURCE_ROOT; };
+		A6091390FF6E48998271D042 /* BlockUI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlockUI.h; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ProjectSpecific/BlockUI.h"; sourceTree = SOURCE_ROOT; };
+		B976FA93E00B41C8AE722C28 /* BlockActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlockActionSheet.m; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockActionSheet.m"; sourceTree = SOURCE_ROOT; };
+		BA8C9BEB577D41079F3FB22E /* SBJsonWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = SBJson/Classes/SBJsonWriter.m; sourceTree = SOURCE_ROOT; };
+		BD821DAC611242A9B895C00F /* SBJsonStreamParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParser.h; path = SBJson/Classes/SBJsonStreamParser.h; sourceTree = SOURCE_ROOT; };
+		CA6D4C21AB7D4F0CA8074A3D /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserAdapter.m; path = SBJson/Classes/SBJsonStreamParserAdapter.m; sourceTree = SOURCE_ROOT; };
+		CB06809941CD479C8551C55B /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserAdapter.h; path = SBJson/Classes/SBJsonStreamParserAdapter.h; sourceTree = SOURCE_ROOT; };
+		CBC1E84EC8BE4EAEA28342BE /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserAccumulator.h; path = SBJson/Classes/SBJsonStreamParserAccumulator.h; sourceTree = SOURCE_ROOT; };
+		CBF0ABDE387F4BB1A2B46445 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParser.m; path = SBJson/Classes/SBJsonStreamParser.m; sourceTree = SOURCE_ROOT; };
+		CE67312AAAE24C788EE570A2 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriter.m; path = SBJson/Classes/SBJsonStreamWriter.m; sourceTree = SOURCE_ROOT; };
+		D12ADF52F62244E696420529 /* SBJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJson.h; path = SBJson/Classes/SBJson.h; sourceTree = SOURCE_ROOT; };
+		E5AFBC44B7954B4CADBACE5A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA46A3FEE4D14E9681D33C7D /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EB7AB4D0133C43AA9148FCC7 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SBJsonTokeniser.m; path = SBJson/Classes/SBJsonTokeniser.m; sourceTree = SOURCE_ROOT; };
+		F5558498B1464B19833E3A24 /* BlockTextPromptAlertView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlockTextPromptAlertView.m; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockTextPromptAlertView.m"; sourceTree = SOURCE_ROOT; };
+		F802CEA4348047A7BC30F0E5 /* BlockBackground.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlockBackground.h; path = "BlockAlertsAnd-ActionSheets/BlockAlertsDemo/ToAddToYourProjects/BlockBackground.h"; sourceTree = SOURCE_ROOT; };
+		FAADDF35261B4F26853B3029 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriterState.h; path = SBJson/Classes/SBJsonStreamWriterState.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DAC4C34873549C7BD28865E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09E3C8CC5DE741CEA1B04873 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1775CB00DB794AF28E6FC214 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5AFBC44B7954B4CADBACE5A /* libPods.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		38E2EC954E274A3DA2EE2D89 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A489E8F6308646DC8FA16434 /* Pods */,
+				699720CCBC9F4DC9AA71632B /* PodsDummy.m */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9C32CE6706494D4EA3627AEB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F89E9EDC90D4EA8A080DEF0 /* BlockAlertsAnd-ActionSheets */,
+				A0147076B92443F1897E82BE /* SBJson */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F89E9EDC90D4EA8A080DEF0 /* BlockAlertsAnd-ActionSheets */ = {
+			isa = PBXGroup;
+			children = (
+				9964EB5E7B774D44B4E7E7CD /* BlockActionSheet.h */,
+				47E2A1AD59FD46B0B77F59A4 /* BlockAlertView.h */,
+				F802CEA4348047A7BC30F0E5 /* BlockBackground.h */,
+				4AA473E65D4B460A8A038EE3 /* BlockTextPromptAlertView.h */,
+				B976FA93E00B41C8AE722C28 /* BlockActionSheet.m */,
+				4CD697D56BF440199B51C40D /* BlockAlertView.m */,
+				54B7EA96F52F4B2689D02A6C /* BlockBackground.m */,
+				F5558498B1464B19833E3A24 /* BlockTextPromptAlertView.m */,
+				A6091390FF6E48998271D042 /* BlockUI.h */,
+			);
+			name = "BlockAlertsAnd-ActionSheets";
+			sourceTree = "<group>";
+		};
+		A0147076B92443F1897E82BE /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				217D77B6C6A2461FB980521E /* NSObject+SBJson.h */,
+				D12ADF52F62244E696420529 /* SBJson.h */,
+				46F47B0DE29F47A9819A90D0 /* SBJsonParser.h */,
+				BD821DAC611242A9B895C00F /* SBJsonStreamParser.h */,
+				CBC1E84EC8BE4EAEA28342BE /* SBJsonStreamParserAccumulator.h */,
+				CB06809941CD479C8551C55B /* SBJsonStreamParserAdapter.h */,
+				590F9B8750E6440C9402B7E0 /* SBJsonStreamParserState.h */,
+				7EA700D1C78240BFB3943B25 /* SBJsonStreamWriter.h */,
+				429A20151FC349B2BDD7FA5D /* SBJsonStreamWriterAccumulator.h */,
+				FAADDF35261B4F26853B3029 /* SBJsonStreamWriterState.h */,
+				020CA2C55CEC4121A1476FE4 /* SBJsonTokeniser.h */,
+				1B0ABE01D2DB4D47BF9489A2 /* SBJsonUTF8Stream.h */,
+				30BA14927811432D9C8CAB4F /* SBJsonWriter.h */,
+				6F02AC89C8D84B0883FB2004 /* NSObject+SBJson.m */,
+				8BF8E14975EC420CB48F6852 /* SBJsonParser.m */,
+				CBF0ABDE387F4BB1A2B46445 /* SBJsonStreamParser.m */,
+				05DA34D05B6D488EAB3913D7 /* SBJsonStreamParserAccumulator.m */,
+				CA6D4C21AB7D4F0CA8074A3D /* SBJsonStreamParserAdapter.m */,
+				7F8A1522FED14B59AC124851 /* SBJsonStreamParserState.m */,
+				CE67312AAAE24C788EE570A2 /* SBJsonStreamWriter.m */,
+				24C00F49CCAD44E5AB913E7C /* SBJsonStreamWriterAccumulator.m */,
+				493D993A97214573BC61FA7F /* SBJsonStreamWriterState.m */,
+				EB7AB4D0133C43AA9148FCC7 /* SBJsonTokeniser.m */,
+				85364414DFF74D9C8F992E2E /* SBJsonUTF8Stream.m */,
+				BA8C9BEB577D41079F3FB22E /* SBJsonWriter.m */,
+			);
+			name = SBJson;
+			sourceTree = "<group>";
+		};
+		A489E8F6308646DC8FA16434 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1DB57A79E4894B429403CDB2 /* Pods-resources.sh */,
+				15BCD274A9554357B3B1FD5C /* Pods-prefix.pch */,
+				40384BAE43874C40BD688B42 /* Pods.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD4C186EC0504BC8B3C7DF02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA46A3FEE4D14E9681D33C7D /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F46A1A451F904B98BB06507B = {
+			isa = PBXGroup;
+			children = (
+				1775CB00DB794AF28E6FC214 /* Products */,
+				9C32CE6706494D4EA3627AEB /* Pods */,
+				38E2EC954E274A3DA2EE2D89 /* Targets Support Files */,
+				AD4C186EC0504BC8B3C7DF02 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4C1F2596779402CA3B41299 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41BE9101174A48D3AE5D89B1 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				0B0A0316712A4B19BEA1F5DD /* Sources */,
+				52A1E80D66BE4B51AB8291C1 /* CopyFiles */,
+				4DAC4C34873549C7BD28865E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = E5AFBC44B7954B4CADBACE5A /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		095D951CE712404A830993AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 093C9EFEC0744685B1233ADF /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F46A1A451F904B98BB06507B;
+			productRefGroup = 1775CB00DB794AF28E6FC214 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4C1F2596779402CA3B41299 /* Pods */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B0A0316712A4B19BEA1F5DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10DFAE1650C44FAAF119566 /* BlockActionSheet.m in Sources */,
+				7754232E6A7848E7AB6FB215 /* BlockAlertView.m in Sources */,
+				FE21DFF7ED074297BB623D0F /* BlockBackground.m in Sources */,
+				C19103F4148045BC84F58439 /* BlockTextPromptAlertView.m in Sources */,
+				04C13C76B8F640DAB3B23233 /* NSObject+SBJson.m in Sources */,
+				0914CD7D780D49E39F7F63DB /* SBJsonParser.m in Sources */,
+				E23A7BB30EDA464D81BB8E16 /* SBJsonStreamParser.m in Sources */,
+				5AD9B76937614928975EBAE9 /* SBJsonStreamParserAccumulator.m in Sources */,
+				182DF71F5ABF46D98AAD698B /* SBJsonStreamParserAdapter.m in Sources */,
+				CB4E1BC33A594B4D95524066 /* SBJsonStreamParserState.m in Sources */,
+				CA440FF626394ED7B7CB1322 /* SBJsonStreamWriter.m in Sources */,
+				A4A26EF44370457582AB2E8F /* SBJsonStreamWriterAccumulator.m in Sources */,
+				B0D68F058B994BA1B998C376 /* SBJsonStreamWriterState.m in Sources */,
+				B5C76D4E9FEB4F66A3663D49 /* SBJsonTokeniser.m in Sources */,
+				8E5D69E384214B1D8A2FB5C6 /* SBJsonUTF8Stream.m in Sources */,
+				028F884077E24740A33990AF /* SBJsonWriter.m in Sources */,
+				87190ACDB37340D3BCDCE4D3 /* PodsDummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3EB409B0C9BA42F49F4A9A0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		89E4EAE8104841F68CEE9651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		CFCB5B54A727458DA6053222 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40384BAE43874C40BD688B42 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				PODS_ROOT = "${SRCROOT}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E734ADAB3DD0433FAB02D796 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40384BAE43874C40BD688B42 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				PODS_ROOT = "${SRCROOT}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		093C9EFEC0744685B1233ADF /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89E4EAE8104841F68CEE9651 /* Debug */,
+				3EB409B0C9BA42F49F4A9A0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41BE9101174A48D3AE5D89B1 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFCB5B54A727458DA6053222 /* Debug */,
+				E734ADAB3DD0433FAB02D796 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 095D951CE712404A830993AE /* Project object */;
+}

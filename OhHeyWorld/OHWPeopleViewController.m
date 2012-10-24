@@ -69,11 +69,20 @@
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 240, 35)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 240, 35)];
     nameLabel.tag = 1;
     [cell.contentView addSubview:nameLabel];
+    
+    UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(5,5,33,33)];
+    userImage.tag = 2;
+    [cell.contentView addSubview:userImage];
   }
   
+  //NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@?type=large", providerFriend.pictureUrl]]];
+  NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:providerFriend.pictureUrl]];
+  UIImageView *userImage = (UIImageView*)[cell viewWithTag:2];
+  userImage.image = [UIImage imageWithData:data];
+
   UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
   nameLabel.text = [NSString stringWithFormat:@"%@", providerFriend.userName];
   

@@ -60,6 +60,7 @@
 		07C9A2111636DFD0007323CC /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2101636DFD0007323CC /* UserProvider.m */; };
 		07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2131636DFD0007323CC /* UserProviderFriend.m */; };
 		07C9A2171636DFD0007323CC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2161636DFD0007323CC /* User.m */; };
+		07C9A22C16382DB2007323CC /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07C9A22B16382DB2007323CC /* placeholder.gif */; };
 		07FB6AD916270D13006E0F01 /* OHWPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -191,6 +192,7 @@
 		07C9A2131636DFD0007323CC /* UserProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProviderFriend.m; sourceTree = "<group>"; };
 		07C9A2151636DFD0007323CC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		07C9A2161636DFD0007323CC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		07C9A22B16382DB2007323CC /* placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeholder.gif; sourceTree = "<group>"; };
 		07FB6AD716270D13006E0F01 /* OHWPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWPeopleViewController.h; sourceTree = "<group>"; };
 		07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWPeopleViewController.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -242,6 +244,7 @@
 		07141ADF16230B37001C346A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				07C9A22B16382DB2007323CC /* placeholder.gif */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				0775F6371624566D00D8BDA7 /* Podfile in Resources */,
 				0775F6381624566D00D8BDA7 /* Podfile.lock in Resources */,
 				0775FBD61625939E00D8BDA7 /* defaults.plist in Resources */,
+				07C9A22C16382DB2007323CC /* placeholder.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
