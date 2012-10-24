@@ -75,7 +75,33 @@
     loader.delegate = self;
   }];
   
-  /*
+  RKManagedObjectMapping* userMapping = [RKManagedObjectMapping mappingForClass:[User class] inManagedObjectStore:[appDelegate manager].objectStore];
+  userMapping.primaryKeyAttribute = @"externalId";
+  userMapping.rootKeyPath = @"users";
+  [userMapping mapKeyPathsToAttributes:@"id", @"externalId",
+   @"email", @"email",
+   @"birthday", @"birthday",
+   @"agrees_to_terms", @"agreesToTerms",
+   @"blog_url", @"blogUrl",
+   @"blurb", @"blurb",
+   @"completed_first_checkin", @"completedFirstCheckin",
+   @"created_at", @"createdAt",
+   @"first_name", @"firstName",
+   @"gender", @"gender",
+   @"last_name", @"lastName",
+   @"link", @"link",
+   @"locale", @"locale",
+   @"nickname", @"nickname",
+   @"picture_url", @"pictureUrl",
+   @"roles_mask", @"rolesMask",
+   @"slug", @"slug",
+   @"timezone", @"timezone",
+   @"updated_at", @"updatedAt",
+   @"home_location", @"homeLocation",
+   @"residence_location", @"residenceLocation",
+   nil];
+  [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"users"];
+  
   url = [NSString stringWithFormat:@"/api/user_locations/%@/users_at_location", lastLocation.externalId];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodGET;
@@ -83,7 +109,6 @@
     loader.params = params;
     loader.delegate = self;
   }];
-  */
 }
 
 - (void)viewDidLoad
@@ -125,11 +150,11 @@
       nearbyFriendsCountLabel.textColor = [UIColor lightGrayColor];
       [cell.contentView addSubview:nearbyFriendsCountLabel];
     } else {
-      UILabel *nearbyTravelersLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 160, 35)];
+      UILabel *nearbyTravelersLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 135, 35)];
       nearbyTravelersLabel.tag = 3;
       [cell.contentView addSubview:nearbyTravelersLabel];
       
-      UILabel *nearbyTravelersCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(170, 0, 80, 35)];
+      UILabel *nearbyTravelersCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(148, 0, 80, 35)];
       nearbyTravelersCountLabel.tag = 4;
       nearbyTravelersCountLabel.textColor = [UIColor lightGrayColor];
       [cell.contentView addSubview:nearbyTravelersCountLabel];
