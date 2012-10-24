@@ -116,4 +116,9 @@
   return [UserLocation findFirstWithPredicate:predicate sortedBy:@"createdAt" ascending:NO];
 }
 
++ (NSArray*)getUserProviderFriends:(User*)user {
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", user.externalId];
+  return [UserProviderFriend findAllWithPredicate:predicate];
+}
+
 @end

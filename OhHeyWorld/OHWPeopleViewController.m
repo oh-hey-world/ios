@@ -1,28 +1,25 @@
 //
-//  OHWFriendsNearbyViewController.m
+//  OHWPeopleViewController.m
 //  OhHeyWorld
 //
 //  Created by Eric Roland on 10/11/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
-#import "OHWFriendsNearbyViewController.h"
+#import "OHWPeopleViewController.h"
 #define appDelegate (OHWAppDelegate *)[[UIApplication sharedApplication] delegate]
 
-@interface OHWFriendsNearbyViewController ()
+@interface OHWPeopleViewController ()
 
 @end
 
-@implementation OHWFriendsNearbyViewController
+@implementation OHWPeopleViewController
+@synthesize people = _people;
 
 - (void)viewWillAppear:(BOOL)animated {
   User *user = [appDelegate user];
-  UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:user];
-  if (lastUserLocation != nil) {
-    //NSDictionary *json = [lastUserLocation toDictionary];
-    //NSLog(@"user location: %@", json);
-  }
-  //NSLog(@"user locations: %u", user.userUserLocations.count);
+  _people = [ModelHelper getUserProviderFriends:user];
+  [self.tableView reloadData];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -55,26 +52,32 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+  return _people.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+  UserProviderFriend* userProviderFriend = [_people objectAtIndex:indexPath.row];
+  ProviderFriend* providerFriend = userProviderFriend.providerFriend;
+  static NSString *CellIdentifier = @"Cell";
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil) {
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    // Configure the cell...
-    
-    return cell;
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 240, 35)];
+    nameLabel.tag = 1;
+    [cell.contentView addSubview:nameLabel];
+  }
+  
+  UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
+  nameLabel.text = [NSString stringWithFormat:@"%@", providerFriend.userName];
+  
+  return cell;
 }
 
 /*

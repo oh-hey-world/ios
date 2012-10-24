@@ -1,5 +1,5 @@
 //
-//  OHWFriendsNearbyViewController.h
+//  OHWPeopleViewController.h
 //  OhHeyWorld
 //
 //  Created by Eric Roland on 10/11/12.
@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "OHWAppDelegate.h"
 
-@interface OHWFriendsNearbyViewController : UITableViewController
+@interface OHWPeopleViewController : UITableViewController
+
+@property (nonatomic, retain) NSArray* people;
 
 @end

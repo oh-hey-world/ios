@@ -60,7 +60,7 @@
 		07C9A2111636DFD0007323CC /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2101636DFD0007323CC /* UserProvider.m */; };
 		07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2131636DFD0007323CC /* UserProviderFriend.m */; };
 		07C9A2171636DFD0007323CC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2161636DFD0007323CC /* User.m */; };
-		07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */; };
+		07FB6AD916270D13006E0F01 /* OHWPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -191,8 +191,8 @@
 		07C9A2131636DFD0007323CC /* UserProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProviderFriend.m; sourceTree = "<group>"; };
 		07C9A2151636DFD0007323CC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		07C9A2161636DFD0007323CC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		07FB6AD716270D13006E0F01 /* OHWFriendsNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWFriendsNearbyViewController.h; sourceTree = "<group>"; };
-		07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWFriendsNearbyViewController.m; sourceTree = "<group>"; };
+		07FB6AD716270D13006E0F01 /* OHWPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWPeopleViewController.h; sourceTree = "<group>"; };
+		07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWPeopleViewController.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBE417732F6642FCBE38D17D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -309,8 +309,8 @@
 				079CD83716309110002F594A /* OHWCityCheckinViewController.m */,
 				079CD88E1635CF0E002F594A /* OHWCheckedinViewController.h */,
 				079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */,
-				07FB6AD716270D13006E0F01 /* OHWFriendsNearbyViewController.h */,
-				07FB6AD816270D13006E0F01 /* OHWFriendsNearbyViewController.m */,
+				07FB6AD716270D13006E0F01 /* OHWPeopleViewController.h */,
+				07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */,
 				07141AE216230BA7001C346A /* OHWLoginViewController.h */,
 				07141AE316230BA7001C346A /* OHWLoginViewController.m */,
 				0768B0E9161F73AB002DD6F2 /* MainStoryboard.storyboard */,
@@ -589,7 +589,7 @@
 				0775F6A5162470AF00D8BDA7 /* Model.xcdatamodeld in Sources */,
 				0775FBDA1625943900D8BDA7 /* OHWSettings.m in Sources */,
 				0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */,
-				07FB6AD916270D13006E0F01 /* OHWFriendsNearbyViewController.m in Sources */,
+				07FB6AD916270D13006E0F01 /* OHWPeopleViewController.m in Sources */,
 				071EE426162C55C5008C6519 /* HudView.m in Sources */,
 				074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */,
 				079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */,

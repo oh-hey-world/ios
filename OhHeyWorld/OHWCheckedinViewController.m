@@ -130,7 +130,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 2;
+  return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,7 +149,7 @@
       nearbyFriendsCountLabel.tag = 2;
       nearbyFriendsCountLabel.textColor = [UIColor lightGrayColor];
       [cell.contentView addSubview:nearbyFriendsCountLabel];
-    } else {
+    } else if (indexPath.row == 1) {
       UILabel *nearbyTravelersLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 135, 35)];
       nearbyTravelersLabel.tag = 3;
       [cell.contentView addSubview:nearbyTravelersLabel];
@@ -158,6 +158,15 @@
       nearbyTravelersCountLabel.tag = 4;
       nearbyTravelersCountLabel.textColor = [UIColor lightGrayColor];
       [cell.contentView addSubview:nearbyTravelersCountLabel];
+    } else {
+      UILabel *nearbyFriendsOhwLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 170, 35)];
+      nearbyFriendsOhwLabel.tag = 5;
+      [cell.contentView addSubview:nearbyFriendsOhwLabel];
+      
+      UILabel *nearbyFriendsOhwCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(180, 0, 80, 35)];
+      nearbyFriendsOhwCountLabel.tag = 6;
+      nearbyFriendsOhwCountLabel.textColor = [UIColor lightGrayColor];
+      [cell.contentView addSubview:nearbyFriendsOhwCountLabel];
     }
 
   }
@@ -168,16 +177,23 @@
     
     if ([appDelegate userFriendsNotOhwUser] != nil) {
       UILabel *nearbyFriendsCountLabel = (UILabel*)[cell viewWithTag:2];
-      NSLog(@"%u", [appDelegate userFriendsNotOhwUser].count);
       nearbyFriendsCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate userFriendsNotOhwUser].count];
     }
-  } else {
+  } else if (indexPath.row == 1) {
     UILabel *nearbyTravelersLabel = (UILabel*)[cell viewWithTag:3];
     nearbyTravelersLabel.text = @"Nearby Travelers";
     
     if ([appDelegate usersAtLocation] != nil) {
       UILabel *nearbyTravelersCountLabel = (UILabel*)[cell viewWithTag:4];
       nearbyTravelersCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate usersAtLocation].count];
+    }
+  } else {
+    UILabel *nearbyFriendsOhwLabel = (UILabel*)[cell viewWithTag:5];
+    nearbyFriendsOhwLabel.text = @"Nearby OHW Friends";
+    
+    if ([appDelegate userFriendsOhwUser] != nil) {
+      UILabel *nearbyFriendsOhwCountLabel = (UILabel*)[cell viewWithTag:6];
+      nearbyFriendsOhwCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate userFriendsOhwUser].count];
     }
   }
   

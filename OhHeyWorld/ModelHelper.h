@@ -17,5 +17,6 @@
 + (UserProvider*)getUserProvider:(User*)user:(NSString*)providerName;
 + (UserProvider*)getOrSaveUserProvider:(NSDictionary<FBGraphUser>*)fbUser:(User*)user:(NSString*)providerName;
 + (UserLocation*)getLastUserLocation:(User*)user;
++ (NSArray*)getUserProviderFriends:(User*)user;
 
 @end
