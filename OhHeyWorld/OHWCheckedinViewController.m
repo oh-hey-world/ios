@@ -246,9 +246,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-  //UCClosestHomesViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PropertyEditStoryboard"];
-  //[self.navigationController pushViewController:controller animated:YES];
+  OHWPeopleViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleView"];
+  [self.navigationController pushViewController:controller animated:YES];
 }
 
 

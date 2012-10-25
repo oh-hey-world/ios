@@ -43,7 +43,7 @@
         <!--People View Controller-->
         <scene sceneID="AAe-he-5Hv">
             <objects>
-                <tableViewController id="gpf-Yj-f1f" customClass="OHWPeopleViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PeopleView" id="gpf-Yj-f1f" customClass="OHWPeopleViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JWa-wu-tU7">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

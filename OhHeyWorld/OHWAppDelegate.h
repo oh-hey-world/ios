@@ -11,6 +11,7 @@
 #import "OHWLoginViewController.h"
 #import "OHWCheckinViewController.h"
 #import "OHWCityCheckinViewController.h"
+#import "OHWPeopleViewController.h"
 #import "OHWSettings.h"
 #import "User.h"
 #import "UserProvider.h"
