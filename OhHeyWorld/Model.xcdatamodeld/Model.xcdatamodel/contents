@@ -17,6 +17,17 @@
         <attribute name="userInput" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="userLocations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserLocation" inverseName="location" inverseEntity="UserLocation" syncable="YES"/>
     </entity>
+    <entity name="NotificationContactDetail" representedClassName="NotificationContactDetail" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="enabledToSendNotification" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="users" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userNotificationContactDetails" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="ProviderFriend" representedClassName="ProviderFriend" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -54,6 +65,7 @@
         <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timezone" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="userNotificationContactDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotificationContactDetail" inverseName="users" inverseEntity="NotificationContactDetail" syncable="YES"/>
         <relationship name="userUserLocations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserLocation" inverseName="user" inverseEntity="UserLocation" syncable="YES"/>
         <relationship name="userUserProviderFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProviderFriend" inverseName="user" inverseEntity="UserProviderFriend" syncable="YES"/>
         <relationship name="userUserProviders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProvider" inverseName="user" inverseEntity="UserProvider" syncable="YES"/>
@@ -114,9 +126,10 @@
     <elements>
         <element name="Location" positionX="160" positionY="192" width="128" height="268"/>
         <element name="ProviderFriend" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="User" positionX="-72" positionY="-204" width="128" height="435"/>
+        <element name="User" positionX="-72" positionY="-204" width="128" height="450"/>
         <element name="UserLocation" positionX="304" positionY="-51" width="128" height="255"/>
         <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="433"/>
         <element name="UserProviderFriend" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="NotificationContactDetail" positionX="160" positionY="192" width="128" height="180"/>
     </elements>
 </model>

@@ -2,14 +2,14 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/23/12.
+//  Created by Eric Roland on 10/29/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class UserLocation, UserProvider, UserProviderFriend;
+@class NotificationContactDetail, UserLocation, UserProvider, UserProviderFriend;
 
 @interface User : NSManagedObject
 
@@ -39,6 +39,7 @@
 @property (nonatomic, retain) NSSet *userUserLocations;
 @property (nonatomic, retain) NSSet *userUserProviderFriends;
 @property (nonatomic, retain) NSSet *userUserProviders;
+@property (nonatomic, retain) NSSet *userNotificationContactDetails;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
@@ -57,5 +58,10 @@
 - (void)removeUserUserProvidersObject:(UserProvider *)value;
 - (void)addUserUserProviders:(NSSet *)values;
 - (void)removeUserUserProviders:(NSSet *)values;
+
+- (void)addUserNotificationContactDetailsObject:(NotificationContactDetail *)value;
+- (void)removeUserNotificationContactDetailsObject:(NotificationContactDetail *)value;
+- (void)addUserNotificationContactDetails:(NSSet *)values;
+- (void)removeUserNotificationContactDetails:(NSSet *)values;
 
 @end

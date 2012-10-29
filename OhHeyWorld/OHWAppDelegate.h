@@ -19,6 +19,7 @@
 #import "UserLocation.h"
 #import "UserProviderFriend.h"
 #import "ProviderFriend.h"
+#import "NotificationContactDetail.h"
 #import "ModelHelper.h"
 #import "CoreDataHelper.h"
 #import "HudView.h"

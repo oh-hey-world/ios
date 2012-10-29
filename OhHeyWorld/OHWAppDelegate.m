@@ -65,6 +65,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [_user addUserUserProviderFriendsObject:userProviderFriend];
       }
       [self saveContext];
+    } else if ([objectLoader.userData isEqualToString:@"notificatioContactDetails"]) {
+      _user.userNotificationContactDetails = nil;
+      for (NotificationContactDetail* notificationContactDetail in objects) {
+        [_user addUserNotificationContactDetailsObject:notificationContactDetail];
+      }
+      [self saveContext];
     } else {
       NSError *jsonParsingError = nil;
       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
@@ -87,13 +93,25 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
               loader.delegate = self;
             }];
           }
+          
+          if (_user.userNotificationContactDetails.count == 0) {
+            NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+            [params setValue:@"auth_token" forKey:_authToken];
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/users/notification_contact_details" usingBlock:^(RKObjectLoader *loader) {
+              loader.method = RKRequestMethodGET;
+              loader.userData = @"notificatioContactDetails";
+              loader.params = params;
+              loader.delegate = self;
+            }];
+          }
+          
           [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
         }
       }
     }
   }
   @catch (NSException *e) {
-    NSLog(@"%@", e);
+    NSLog(@"error pulling request %@", e);
   }
   @finally {
 
@@ -208,6 +226,20 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   userProviderFriendMapping.primaryKeyAttribute = @"externalId";
   [userProviderFriendMapping mapKeyPath:@"provider_friend" toRelationship:@"providerFriend" withMapping:providerFriendMapping];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderFriendMapping withRootKeyPath:@"user_provider_friends.user_provider_friend"];
+  
+  
+  RKManagedObjectMapping *notificatioContactDetailMapping = [RKManagedObjectMapping mappingForClass:[NotificationContactDetail class] inManagedObjectStore:_manager.objectStore];
+  [notificatioContactDetailMapping mapKeyPath:@"name" toAttribute:@"name"];
+  [notificatioContactDetailMapping mapKeyPath:@"value" toAttribute:@"value"];
+  [notificatioContactDetailMapping mapKeyPath:@"type" toAttribute:@"type"];
+  [notificatioContactDetailMapping mapKeyPath:@"enabled_to_send_notification" toAttribute:@"enabledToSendNotification"];
+  [notificatioContactDetailMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [notificatioContactDetailMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [notificatioContactDetailMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [notificatioContactDetailMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  notificatioContactDetailMapping.primaryKeyAttribute = @"externalId";
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:notificatioContactDetailMapping withRootKeyPath:@"notification_contact_details.notification_contact_detail"];
+
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];

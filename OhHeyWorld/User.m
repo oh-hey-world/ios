@@ -2,11 +2,12 @@
 //  User.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/23/12.
+//  Created by Eric Roland on 10/29/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import "User.h"
+#import "NotificationContactDetail.h"
 #import "UserLocation.h"
 #import "UserProvider.h"
 #import "UserProviderFriend.h"
@@ -40,5 +41,6 @@
 @dynamic userUserLocations;
 @dynamic userUserProviderFriends;
 @dynamic userUserProviders;
+@dynamic userNotificationContactDetails;
 
 @end
