@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -45,7 +45,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="PeopleView" id="gpf-Yj-f1f" customClass="OHWPeopleViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JWa-wu-tU7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -69,6 +69,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqX-iW-gsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933" y="180"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uFs-WI-COm">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Ik2-Zr-nQy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cci-Z5-jvx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BcO-vM-feq" kind="relationship" relationship="rootViewController" id="7BS-DQ-GeH"/>
+                        <segue destination="gpf-Yj-f1f" kind="push" id="t3W-rC-iTI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thT-yi-SMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="180"/>
+        </scene>
+        <!--Provider Friend View Controller-->
+        <scene sceneID="9o8-ah-mjl">
+            <objects>
+                <viewController storyboardIdentifier="ProviderFriendView" id="BcO-vM-feq" customClass="OHWProviderFriendViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="goC-Va-HPf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Eu8-YY-VCp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ca-5a-gaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1746" y="180"/>
         </scene>
         <!--City Checkin View Controller-->
         <scene sceneID="qHh-oz-n4A">
@@ -501,6 +532,9 @@
         <class className="OHWPeopleViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWPeopleViewController.h"/>
         </class>
+        <class className="OHWProviderFriendViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWProviderFriendViewController.h"/>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -509,5 +543,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="iXf-2G-Dz4"/>
+        <segue reference="t3W-rC-iTI"/>
     </inferredMetricsTieBreakers>
 </document>

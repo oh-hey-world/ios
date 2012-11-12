@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OHWAppDelegate.h"
+#import "OHWProviderFriendViewController.h"
 
 @interface OHWPeopleViewController : UITableViewController
 

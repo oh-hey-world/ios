@@ -12,3 +12,9 @@
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
 #endif
+
+#ifndef DEBUG
+# define BASE_URL = "http://192.168.1.76:3000"
+#else
+# define BASE_URL = "http://beta.ohheyworld.com"
+#endif

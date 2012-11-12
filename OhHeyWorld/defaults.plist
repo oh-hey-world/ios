@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>DevelopmentBaseUrl</key>
-	<string>http://localhost:3000</string>
+	<string>http://192.168.1.76:3000</string>
+	<key>ProductionBaseUrl</key>
+	<string>http://beta.ohheyworld.com</string>
 	<key>FBGraphUrl</key>
 	<string>http://graph.facebook.com</string>
 </dict>

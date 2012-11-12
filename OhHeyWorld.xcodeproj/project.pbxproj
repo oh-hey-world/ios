@@ -62,6 +62,8 @@
 		07C9A22C16382DB2007323CC /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07C9A22B16382DB2007323CC /* placeholder.gif */; };
 		07C9A257163ED36A007323CC /* NotificationContactDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A256163ED36A007323CC /* NotificationContactDetail.m */; };
 		07C9A25A163ED36B007323CC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A259163ED36B007323CC /* User.m */; };
+		07E0637F165160D7009288C9 /* OHWProviderFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E0637E165160D7009288C9 /* OHWProviderFriendViewController.m */; };
+		07E063A616518F75009288C9 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E063A516518F75009288C9 /* Globals.m */; };
 		07FB6AD916270D13006E0F01 /* OHWPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -196,6 +198,10 @@
 		07C9A256163ED36A007323CC /* NotificationContactDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationContactDetail.m; sourceTree = "<group>"; };
 		07C9A258163ED36B007323CC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		07C9A259163ED36B007323CC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		07E0637D165160D7009288C9 /* OHWProviderFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWProviderFriendViewController.h; sourceTree = "<group>"; };
+		07E0637E165160D7009288C9 /* OHWProviderFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWProviderFriendViewController.m; sourceTree = "<group>"; };
+		07E063A416518F75009288C9 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		07E063A516518F75009288C9 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
 		07FB6AD716270D13006E0F01 /* OHWPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWPeopleViewController.h; sourceTree = "<group>"; };
 		07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWPeopleViewController.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -317,6 +323,8 @@
 				079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */,
 				07FB6AD716270D13006E0F01 /* OHWPeopleViewController.h */,
 				07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */,
+				07E0637D165160D7009288C9 /* OHWProviderFriendViewController.h */,
+				07E0637E165160D7009288C9 /* OHWProviderFriendViewController.m */,
 				07141AE216230BA7001C346A /* OHWLoginViewController.h */,
 				07141AE316230BA7001C346A /* OHWLoginViewController.m */,
 				0768B0E9161F73AB002DD6F2 /* MainStoryboard.storyboard */,
@@ -411,6 +419,8 @@
 				0775FBD91625943900D8BDA7 /* OHWSettings.m */,
 				074EE91C16305C120043B485 /* ExtendedManagedObject.h */,
 				074EE91D16305C120043B485 /* ExtendedManagedObject.m */,
+				07E063A416518F75009288C9 /* Globals.h */,
+				07E063A516518F75009288C9 /* Globals.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -612,6 +622,8 @@
 				07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */,
 				07C9A257163ED36A007323CC /* NotificationContactDetail.m in Sources */,
 				07C9A25A163ED36B007323CC /* User.m in Sources */,
+				07E0637F165160D7009288C9 /* OHWProviderFriendViewController.m in Sources */,
+				07E063A616518F75009288C9 /* Globals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

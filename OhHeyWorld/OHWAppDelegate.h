@@ -25,6 +25,7 @@
 #import "HudView.h"
 #import "BlockAlertView.h"
 #import "GCPlaceholderTextView.h"
+#import "Globals.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 

@@ -8,6 +8,12 @@
 
 #import "OHWAppDelegate.h"
 
+#ifdef DEBUG
+  #define kAPIBaseUrl @"http://192.168.1.76:3000"
+#else
+  #define kAPIBaseUrl @"http://beta.ohheyworld.com"
+#endif
+
 NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:SessionStateChangedNotification";
 
 @implementation OHWAppDelegate
@@ -28,12 +34,36 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream
-  NSArray *permissions = [NSArray arrayWithObjects:@"user_location", @"email", @"user_birthday", @"friends_location", @"offline_access", nil];
+  /*
   return [FBSession openActiveSessionWithReadPermissions:permissions
                                             allowLoginUI:allowLoginUI
                                        completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
                                          [self sessionStateChanged:session state:state error:error];
                                        }];
+  */
+  NSArray *permissions = [NSArray arrayWithObjects:@"user_location", @"email", @"user_birthday", @"friends_location", nil];
+  return [FBSession openActiveSessionWithPermissions:permissions
+                                        allowLoginUI:allowLoginUI
+                                   completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                     switch (state) {
+                                       case FBSessionStateOpen:
+                                         [self sessionStateChanged:session state:state error:error];
+                                         break;
+                                       case FBSessionStateClosed:
+                                         break;
+                                       case FBSessionStateCreated:
+                                         break;
+                                       case FBSessionStateCreatedOpening:
+                                         break;
+                                       case FBSessionStateClosedLoginFailed:
+                                         break;
+                                       case FBSessionStateOpenTokenExtended:
+                                         break;
+                                       case FBSessionStateCreatedTokenLoaded:
+                                         break;
+                                     }
+                                     
+                                   }];
 }
 
 - (void)createAndPresentLoginView {
@@ -54,7 +84,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
-  NSLog(@"%@", objectLoader.response.bodyAsString);
+  NSLog(@"%@ %@", objectLoader.response, error);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
@@ -81,8 +111,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [alert show];
       } else {
         _authToken = [json valueForKey:@"auth_token"];
-        _user = [objects objectAtIndex:0];
-        if (_user != nil) {
+        if (objects.count > 0) {
+          _user = [objects objectAtIndex:0];
           if (_user.userUserProviderFriends.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
             [params setValue:@"auth_token" forKey: [self authToken]];
@@ -257,7 +287,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
        startForMeWithCompletionHandler:^(FBRequestConnection *connection,
                                          NSDictionary<FBGraphUser> *fbUser,
                                          NSError *error) {
-         if (!error) {
+         if (_user == nil && !error) {
            [_manager.client setValue:session.appID forHTTPHeaderField:@"X-APP-ID"]; //TODO this needs to be an https call
            _user = [ModelHelper getFacebookUser:fbUser];
            [[RKObjectManager sharedManager] postObject:_user delegate:self];
@@ -334,15 +364,14 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-  NSString *developmentBaseUrl = [OHWSettings.defaultList objectForKey:@"DevelopmentBaseUrl"];
   if (_baseUrl == nil) {
-    _baseUrl = [NSURL URLWithString:developmentBaseUrl];
+    _baseUrl = [NSURL URLWithString:kAPIBaseUrl];
     [self setupRK];
     [self setupRKUser];
   }
-  if (![self openSessionWithAllowLoginUI:NO]) {
+  //if (![self openSessionWithAllowLoginUI:NO]) {
     [self showLoginView];
-  }
+  //}
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
