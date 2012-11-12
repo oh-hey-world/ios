@@ -78,11 +78,10 @@
     [cell.contentView addSubview:userImage];
   }
   
-  //NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@?type=large", providerFriend.pictureUrl]]];
-  NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:providerFriend.pictureUrl]];
   UIImageView *userImage = (UIImageView*)[cell viewWithTag:2];
-  userImage.image = [UIImage imageWithData:data];
-
+  [userImage setImageWithURL:[NSURL URLWithString:providerFriend.pictureUrl]
+                 placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
+  
   UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
   nameLabel.text = [NSString stringWithFormat:@"%@", providerFriend.userName];
   

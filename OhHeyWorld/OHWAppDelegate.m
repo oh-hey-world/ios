@@ -369,9 +369,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
     [self setupRK];
     [self setupRKUser];
   }
-  //if (![self openSessionWithAllowLoginUI:NO]) {
+  if (![self openSessionWithAllowLoginUI:NO]) {
     [self showLoginView];
-  //}
+  }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

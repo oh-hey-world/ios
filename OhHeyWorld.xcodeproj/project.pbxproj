@@ -50,6 +50,8 @@
 		0775FBD61625939E00D8BDA7 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0775FBD51625939E00D8BDA7 /* defaults.plist */; };
 		0775FBDA1625943900D8BDA7 /* OHWSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBD91625943900D8BDA7 /* OHWSettings.m */; };
 		0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBF91625F93400D8BDA7 /* ModelHelper.m */; };
+		077CC3951651AB8D00E1D988 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077CC3941651AB8D00E1D988 /* SDWebImage.framework */; };
+		077CC3971651ABE100E1D988 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077CC3961651ABE100E1D988 /* ImageIO.framework */; };
 		07833A101635E8C7003DF2FA /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07833A0F1635E8C7003DF2FA /* CoreDataHelper.m */; };
 		079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD83716309110002F594A /* OHWCityCheckinViewController.m */; };
 		079CD8591631A79C002F594A /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD8581631A79C002F594A /* GCPlaceholderTextView.m */; };
@@ -175,6 +177,8 @@
 		0775FBD91625943900D8BDA7 /* OHWSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWSettings.m; sourceTree = "<group>"; };
 		0775FBF81625F93400D8BDA7 /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
 		0775FBF91625F93400D8BDA7 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
+		077CC3941651AB8D00E1D988 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		077CC3961651ABE100E1D988 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		07833A0E1635E8C7003DF2FA /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		07833A0F1635E8C7003DF2FA /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		079CD83616309110002F594A /* OHWCityCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWCityCheckinViewController.h; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				077CC3971651ABE100E1D988 /* ImageIO.framework in Frameworks */,
 				071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */,
 				0775FBD41624B77200D8BDA7 /* libRestKit.a in Frameworks */,
 				0775F69C1624669500D8BDA7 /* CFNetwork.framework in Frameworks */,
@@ -234,6 +239,7 @@
 				0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */,
 				5F625F920F8B49B481779525 /* libPods.a in Frameworks */,
 				07141AD0162304A1001C346A /* FacebookSDK.framework in Frameworks */,
+				077CC3951651AB8D00E1D988 /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +267,7 @@
 		0768B0C2161F73AA002DD6F2 = {
 			isa = PBXGroup;
 			children = (
+				077CC3961651ABE100E1D988 /* ImageIO.framework */,
 				0775FBBD1624AECC00D8BDA7 /* RestKit.xcodeproj */,
 				0768B0D7161F73AA002DD6F2 /* OhHeyWorld */,
 				0768B106161F73AB002DD6F2 /* OhHeyWorldTests */,
@@ -331,6 +338,7 @@
 				07141ADF16230B37001C346A /* Assets */,
 				0775F6A216246FFF00D8BDA7 /* Models */,
 				0768B0D8161F73AB002DD6F2 /* Supporting Files */,
+				077CC3931651AB6300E1D988 /* SDWebImage */,
 				0775FBD7162593F900D8BDA7 /* Utilities */,
 			);
 			path = OhHeyWorld;
@@ -423,6 +431,14 @@
 				07E063A516518F75009288C9 /* Globals.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		077CC3931651AB6300E1D988 /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				077CC3941651AB8D00E1D988 /* SDWebImage.framework */,
+			);
+			name = SDWebImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -746,6 +762,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/RestKit/Tests/Vendor/OCHamcrest\"",
+					"\"$(SRCROOT)/OhHeyWorld\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
@@ -774,6 +791,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/RestKit/Tests/Vendor/OCHamcrest\"",
+					"\"$(SRCROOT)/OhHeyWorld\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
