@@ -52,12 +52,13 @@
 		0775FBFA1625F93400D8BDA7 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0775FBF91625F93400D8BDA7 /* ModelHelper.m */; };
 		077CC3951651AB8D00E1D988 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077CC3941651AB8D00E1D988 /* SDWebImage.framework */; };
 		077CC3971651ABE100E1D988 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077CC3961651ABE100E1D988 /* ImageIO.framework */; };
+		077CC39E1652A39C00E1D988 /* OHWProviderFriendWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077CC39D1652A39C00E1D988 /* OHWProviderFriendWebViewController.m */; };
+		077CC3A41652D86C00E1D988 /* ProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 077CC3A31652D86C00E1D988 /* ProviderFriend.m */; };
 		07833A101635E8C7003DF2FA /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07833A0F1635E8C7003DF2FA /* CoreDataHelper.m */; };
 		079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD83716309110002F594A /* OHWCityCheckinViewController.m */; };
 		079CD8591631A79C002F594A /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD8581631A79C002F594A /* GCPlaceholderTextView.m */; };
 		079CD8901635CF0E002F594A /* OHWCheckedinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */; };
 		07C9A2081636DFCF007323CC /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2071636DFCF007323CC /* UserLocation.m */; };
-		07C9A20B1636DFD0007323CC /* ProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A20A1636DFD0007323CC /* ProviderFriend.m */; };
 		07C9A20E1636DFD0007323CC /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A20D1636DFD0007323CC /* Location.m */; };
 		07C9A2111636DFD0007323CC /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2101636DFD0007323CC /* UserProvider.m */; };
 		07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2131636DFD0007323CC /* UserProviderFriend.m */; };
@@ -179,6 +180,10 @@
 		0775FBF91625F93400D8BDA7 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
 		077CC3941651AB8D00E1D988 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		077CC3961651ABE100E1D988 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		077CC39C1652A39C00E1D988 /* OHWProviderFriendWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWProviderFriendWebViewController.h; sourceTree = "<group>"; };
+		077CC39D1652A39C00E1D988 /* OHWProviderFriendWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWProviderFriendWebViewController.m; sourceTree = "<group>"; };
+		077CC3A21652D86C00E1D988 /* ProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderFriend.h; sourceTree = "<group>"; };
+		077CC3A31652D86C00E1D988 /* ProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderFriend.m; sourceTree = "<group>"; };
 		07833A0E1635E8C7003DF2FA /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		07833A0F1635E8C7003DF2FA /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		079CD83616309110002F594A /* OHWCityCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWCityCheckinViewController.h; sourceTree = "<group>"; };
@@ -189,8 +194,6 @@
 		079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWCheckedinViewController.m; sourceTree = "<group>"; };
 		07C9A2061636DFCF007323CC /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
 		07C9A2071636DFCF007323CC /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
-		07C9A2091636DFD0007323CC /* ProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderFriend.h; sourceTree = "<group>"; };
-		07C9A20A1636DFD0007323CC /* ProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderFriend.m; sourceTree = "<group>"; };
 		07C9A20C1636DFD0007323CC /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		07C9A20D1636DFD0007323CC /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		07C9A20F1636DFD0007323CC /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 				07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */,
 				07E0637D165160D7009288C9 /* OHWProviderFriendViewController.h */,
 				07E0637E165160D7009288C9 /* OHWProviderFriendViewController.m */,
+				077CC39C1652A39C00E1D988 /* OHWProviderFriendWebViewController.h */,
+				077CC39D1652A39C00E1D988 /* OHWProviderFriendWebViewController.m */,
 				07141AE216230BA7001C346A /* OHWLoginViewController.h */,
 				07141AE316230BA7001C346A /* OHWLoginViewController.m */,
 				0768B0E9161F73AB002DD6F2 /* MainStoryboard.storyboard */,
@@ -381,6 +386,8 @@
 		0775F6A216246FFF00D8BDA7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				077CC3A21652D86C00E1D988 /* ProviderFriend.h */,
+				077CC3A31652D86C00E1D988 /* ProviderFriend.m */,
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
 				07C9A255163ED36A007323CC /* NotificationContactDetail.h */,
 				07C9A258163ED36B007323CC /* User.h */,
@@ -392,8 +399,6 @@
 				07C9A2101636DFD0007323CC /* UserProvider.m */,
 				07C9A20C1636DFD0007323CC /* Location.h */,
 				07C9A20D1636DFD0007323CC /* Location.m */,
-				07C9A2091636DFD0007323CC /* ProviderFriend.h */,
-				07C9A20A1636DFD0007323CC /* ProviderFriend.m */,
 				07C9A2061636DFCF007323CC /* UserLocation.h */,
 				07C9A2071636DFCF007323CC /* UserLocation.m */,
 				0775FBF81625F93400D8BDA7 /* ModelHelper.h */,
@@ -632,7 +637,6 @@
 				079CD8901635CF0E002F594A /* OHWCheckedinViewController.m in Sources */,
 				07833A101635E8C7003DF2FA /* CoreDataHelper.m in Sources */,
 				07C9A2081636DFCF007323CC /* UserLocation.m in Sources */,
-				07C9A20B1636DFD0007323CC /* ProviderFriend.m in Sources */,
 				07C9A20E1636DFD0007323CC /* Location.m in Sources */,
 				07C9A2111636DFD0007323CC /* UserProvider.m in Sources */,
 				07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */,
@@ -640,6 +644,8 @@
 				07C9A25A163ED36B007323CC /* User.m in Sources */,
 				07E0637F165160D7009288C9 /* OHWProviderFriendViewController.m in Sources */,
 				07E063A616518F75009288C9 /* Globals.m in Sources */,
+				077CC39E1652A39C00E1D988 /* OHWProviderFriendWebViewController.m in Sources */,
+				077CC3A41652D86C00E1D988 /* ProviderFriend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

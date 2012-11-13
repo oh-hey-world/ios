@@ -45,6 +45,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   User *user = [appDelegate user];
   if ([user.completedFirstCheckin intValue] == 1) {
     [_firstCheckinNotifcation removeFromSuperview];

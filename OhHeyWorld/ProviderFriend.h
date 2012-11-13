@@ -2,14 +2,14 @@
 //  ProviderFriend.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/23/12.
+//  Created by Eric Roland on 11/13/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class UserProviderFriend;
+@class Location, UserProviderFriend;
 
 @interface ProviderFriend : NSManagedObject
 
@@ -23,6 +23,8 @@
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSString * userName;
+@property (nonatomic, retain) NSString * fullName;
 @property (nonatomic, retain) UserProviderFriend *userProviderFriends;
+@property (nonatomic, retain) Location *location;
 
 @end

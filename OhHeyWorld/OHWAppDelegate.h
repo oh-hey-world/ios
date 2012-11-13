@@ -52,6 +52,8 @@
 @property (nonatomic, retain) NSArray *userFriendsNotOhwUser;
 @property (nonatomic, retain) NSArray *userFriendsOhwUser;
 @property (nonatomic, retain) NSArray *usersAtLocation;
+@property (nonatomic, retain) UserProviderFriend *userProviderFriend;
+@property (nonatomic, retain) NSString *urlAddress;
 
 - (void)saveContext;
 - (NSString *)applicationDocumentsDirectory;

@@ -83,7 +83,7 @@
                  placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
   
   UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
-  nameLabel.text = [NSString stringWithFormat:@"%@", providerFriend.userName];
+  nameLabel.text = [NSString stringWithFormat:@"%@", providerFriend.fullName];
   
   return cell;
 }
@@ -131,6 +131,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  [appDelegate setUserProviderFriend:[_people objectAtIndex:indexPath.row]];
   OHWProviderFriendViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderFriendView"];
   [self.navigationController pushViewController:controller animated:YES];
 }

@@ -2,11 +2,12 @@
 //  ProviderFriend.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/23/12.
+//  Created by Eric Roland on 11/13/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import "ProviderFriend.h"
+#import "Location.h"
 #import "UserProviderFriend.h"
 
 
@@ -22,6 +23,8 @@
 @dynamic updatedAt;
 @dynamic userId;
 @dynamic userName;
+@dynamic fullName;
 @dynamic userProviderFriends;
+@dynamic location;
 
 @end

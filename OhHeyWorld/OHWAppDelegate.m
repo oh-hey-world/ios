@@ -31,6 +31,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize authToken = _authToken;
 @synthesize location = _location;
 @synthesize placeMark = _placeMark;
+@synthesize userProviderFriend = _userProviderFriend;
+@synthesize urlAddress = _urlAddress;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream
@@ -234,7 +236,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userLocationMapping withRootKeyPath:@"user_locations.user_location"];
   
   RKManagedObjectMapping *providerFriendMapping = [RKManagedObjectMapping mappingForClass:[ProviderFriend class] inManagedObjectStore:_manager.objectStore];
-  [providerFriendMapping mapKeyPath:@"user_name" toAttribute:@"userName"];
+  [providerFriendMapping mapKeyPath:@"user_name" toAttribute:@"fullName"];
+  [providerFriendMapping mapKeyPath:@"username" toAttribute:@"userName"];
   [providerFriendMapping mapKeyPath:@"uid" toAttribute:@"uid"];
   [providerFriendMapping mapKeyPath:@"picture_url" toAttribute:@"pictureUrl"];
   [providerFriendMapping mapKeyPath:@"link" toAttribute:@"link"];
@@ -245,6 +248,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [providerFriendMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
   [providerFriendMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   providerFriendMapping.primaryKeyAttribute = @"externalId";
+  [providerFriendMapping mapKeyPath:@"location" toRelationship:@"location" withMapping:locationMapping];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:providerFriendMapping withRootKeyPath:@"provider_friends.provider_friend"];
   
   RKManagedObjectMapping *userProviderFriendMapping = [RKManagedObjectMapping mappingForClass:[UserProviderFriend class] inManagedObjectStore:_manager.objectStore];
