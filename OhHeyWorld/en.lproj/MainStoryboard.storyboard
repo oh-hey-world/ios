@@ -181,6 +181,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O8b-1q-Y09"/>
+                    <connections>
+                        <outlet property="webView" destination="ADK-a8-JaH" id="qaB-r8-1H9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiT-Tg-ss1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -631,6 +634,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWProviderFriendWebViewController.h"/>
             <relationships>
                 <relationship kind="action" name="openBrowser:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
     </classes>

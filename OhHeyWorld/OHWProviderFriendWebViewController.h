@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OHWAppDelegate.h"
+#import "HudView.h"
 
-@interface OHWProviderFriendWebViewController : UIViewController
+@interface OHWProviderFriendWebViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, retain) UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) HudView *hudView;
+@property (nonatomic, retain) NSURL *url;
 
 - (IBAction)openBrowser:(id)sender;
 

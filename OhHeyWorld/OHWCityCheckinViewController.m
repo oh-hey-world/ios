@@ -119,7 +119,7 @@
 {
   [super viewDidLoad];
   self.title = @"City Check In";
-  _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(40, 240, 240, 240)];
+  _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(40, 240, 240, 200)];
   _mapView.delegate = self;
   _mapView.showsUserLocation = YES;
   [self.view addSubview:_mapView];

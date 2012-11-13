@@ -270,7 +270,6 @@
 		0768B0C2161F73AA002DD6F2 = {
 			isa = PBXGroup;
 			children = (
-				077CC3961651ABE100E1D988 /* ImageIO.framework */,
 				0775FBBD1624AECC00D8BDA7 /* RestKit.xcodeproj */,
 				0768B0D7161F73AA002DD6F2 /* OhHeyWorld */,
 				0768B106161F73AB002DD6F2 /* OhHeyWorldTests */,
@@ -294,6 +293,8 @@
 		0768B0D0161F73AA002DD6F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				077CC3931651AB6300E1D988 /* SDWebImage */,
+				077CC3961651ABE100E1D988 /* ImageIO.framework */,
 				071EE427162C9BF2008C6519 /* AddressBookUI.framework */,
 				0775F6961624669500D8BDA7 /* CFNetwork.framework */,
 				0775F6971624669500D8BDA7 /* libxml2.dylib */,
@@ -343,7 +344,6 @@
 				07141ADF16230B37001C346A /* Assets */,
 				0775F6A216246FFF00D8BDA7 /* Models */,
 				0768B0D8161F73AB002DD6F2 /* Supporting Files */,
-				077CC3931651AB6300E1D988 /* SDWebImage */,
 				0775FBD7162593F900D8BDA7 /* Utilities */,
 			);
 			path = OhHeyWorld;
@@ -444,6 +444,7 @@
 				077CC3941651AB8D00E1D988 /* SDWebImage.framework */,
 			);
 			name = SDWebImage;
+			path = OhHeyWorld;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
