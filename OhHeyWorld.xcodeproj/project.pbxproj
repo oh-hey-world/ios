@@ -13,9 +13,9 @@
 		071385E21623144800936674 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385E11623144800936674 /* MapKit.framework */; };
 		07141AD0162304A1001C346A /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141ACF162304A1001C346A /* FacebookSDK.framework */; };
 		07141AD21623052B001C346A /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07141AD11623052B001C346A /* FacebookSDKResources.bundle */; };
-		07141AD716230571001C346A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD316230571001C346A /* Accounts.framework */; };
-		07141AD816230571001C346A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD416230571001C346A /* AdSupport.framework */; };
-		07141AD916230571001C346A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD516230571001C346A /* Social.framework */; };
+		07141AD716230571001C346A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD316230571001C346A /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		07141AD816230571001C346A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD416230571001C346A /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		07141AD916230571001C346A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD516230571001C346A /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		07141ADA16230571001C346A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07141AD616230571001C346A /* Twitter.framework */; };
 		07141AE416230BA7001C346A /* OHWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AE316230BA7001C346A /* OHWLoginViewController.m */; };
 		07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AF216230D33001C346A /* OHWCheckinViewController.m */; };
@@ -724,7 +724,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -749,7 +749,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
