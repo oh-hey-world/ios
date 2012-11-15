@@ -104,7 +104,7 @@
                                 <rect key="frame" x="36" y="29" width="60" height="60"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JXP-N9-Rxs">
-                                <rect key="frame" x="20" y="110" width="280" height="44"/>
+                                <rect key="frame" x="20" y="129" width="280" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Facebook Profile">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -117,11 +117,16 @@
                                     <action selector="openWebView:" destination="BcO-vM-feq" eventType="touchUpInside" id="To9-ue-x2X"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="kou-KM-8I2">
+                                <rect key="frame" x="20" y="180" width="280" height="175"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Eu8-YY-VCp"/>
                     <connections>
+                        <outlet property="mapView" destination="kou-KM-8I2" id="dLC-eg-aUy"/>
                         <outlet property="userImage" destination="qRU-wo-Wp1" id="S6x-nF-f91"/>
                         <outlet property="userNameLabel" destination="MsY-ft-s5k" id="bT0-T4-3FN"/>
                         <outlet property="webViewButton" destination="JXP-N9-Rxs" id="F5g-S0-UCY"/>
@@ -183,13 +188,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2mg-yg-VF5">
-                                        <rect key="frame" x="20" y="41" width="280" height="21"/>
+                                        <rect key="frame" x="20" y="70" width="280" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sjs-0K-bzB">
-                                        <rect key="frame" x="40" y="188" width="240" height="44"/>
+                                        <rect key="frame" x="40" y="189" width="240" height="44"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Check In">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -203,11 +208,15 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Ldb-tz-eM0" customClass="GCPlaceholderTextView">
-                                        <rect key="frame" x="40" y="70" width="240" height="110"/>
+                                        <rect key="frame" x="40" y="96" width="240" height="88"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="sC8-Zw-3vc">
+                                        <rect key="frame" x="40" y="240" width="240" height="189"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </mapView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -217,6 +226,7 @@
                     <connections>
                         <outlet property="checkinButton" destination="sjs-0K-bzB" id="Pxl-dM-amw"/>
                         <outlet property="cityLabel" destination="2mg-yg-VF5" id="mHX-hd-0MG"/>
+                        <outlet property="mapView" destination="sC8-Zw-3vc" id="iFR-O3-2gc"/>
                         <outlet property="textView" destination="Ldb-tz-eM0" id="DA5-aY-gf8"/>
                     </connections>
                 </viewController>
@@ -250,12 +260,14 @@
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V2d-kb-lC5">
                                 <rect key="frame" x="20" y="10" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RKK-w4-ODl">
-                                <rect key="frame" x="20" y="251" width="280" height="44"/>
+                                <rect key="frame" x="20" y="210" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Send notifications">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,24 +280,25 @@
                                     <action selector="sendNotifiction:" destination="YxA-EE-v5B" eventType="touchUpInside" id="gmk-hg-eJn"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="auI-hI-VpQ">
-                                <rect key="frame" x="20" y="302" width="280" height="171"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="35" sectionHeaderHeight="10" sectionFooterHeight="10" id="auI-hI-VpQ">
+                                <rect key="frame" x="20" y="261" width="280" height="129"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kLU-PO-tnk">
-                                        <rect key="frame" x="0.0" y="22" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="10" width="280" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Zei-rz-Qao">
-                                        <rect key="frame" x="0.0" y="66" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="45" width="280" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -299,12 +312,14 @@
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V1u-JQ-bbK">
                                 <rect key="frame" x="20" y="39" width="280" height="48"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lfW-hj-fvP">
-                                <rect key="frame" x="20" y="95" width="280" height="142"/>
+                                <rect key="frame" x="20" y="70" width="280" height="142"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <string key="text">This is your first check in on Oh Hey World.  We help you share where you are with those who care, log your travels with one click, and discover friends and other travelers as you travel.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -404,10 +419,10 @@
             </objects>
             <point key="canvasLocation" x="524" y="854"/>
         </scene>
-        <!--Table View Controller-->
+        <!--History View Controller-->
         <scene sceneID="CZj-wN-O7V">
             <objects>
-                <tableViewController id="Sij-4h-r5S" sceneMemberID="viewController">
+                <tableViewController id="Sij-4h-r5S" customClass="OHWHistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vrr-C4-baP">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -529,6 +544,9 @@
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
             </relationships>
+        </class>
+        <class className="OHWHistoryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWHistoryViewController.h"/>
         </class>
         <class className="OHWLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLoginViewController.h"/>

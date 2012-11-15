@@ -119,10 +119,10 @@
 {
   [super viewDidLoad];
   self.title = @"City Check In";
-  _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(40, 240, 240, 200)];
+  //CGRect frame = CGRectMake(40, self.view.bounds.size.height - 290, 240, self.view.bounds.size.height - 300);
+  //_mapView = [[MKMapView alloc] initWithFrame:frame];
   _mapView.delegate = self;
   _mapView.showsUserLocation = YES;
-  [self.view addSubview:_mapView];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

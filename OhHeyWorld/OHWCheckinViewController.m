@@ -95,14 +95,16 @@
 }
 
 - (IBAction)checkin:(id)sender {
-  NSString *locationInfo = (_checkinText.text.length == 0) ? ABCreateStringWithAddressDictionary(_placeMark.addressDictionary, YES) : _checkinText.text;
-  NSDictionary *params = [NSDictionary dictionaryWithKeysAndObjects:
-                          @"user_input", locationInfo,
-                          @"auth_token", [appDelegate authToken],
-                          nil];
-  
-  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[@"/api/locations/search" stringByAppendingQueryParameters:params] delegate:self];
-  [_locationManager stopUpdatingLocation];
+  if (_placeMark != nil || _checkinText.text.length > 0) {
+    NSString *locationInfo = (_checkinText.text.length == 0) ? ABCreateStringWithAddressDictionary(_placeMark.addressDictionary, YES) : _checkinText.text;
+    NSDictionary *params = [NSDictionary dictionaryWithKeysAndObjects:
+                            @"user_input", locationInfo,
+                            @"auth_token", [appDelegate authToken],
+                            nil];
+    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[@"/api/locations/search" stringByAppendingQueryParameters:params] delegate:self];
+    [_locationManager stopUpdatingLocation];
+  }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

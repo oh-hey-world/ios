@@ -103,6 +103,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [_user addUserNotificationContactDetailsObject:notificationContactDetail];
       }
       [self saveContext];
+    } else if ([objectLoader.userData isEqualToString:@"userLocations"]) {
+      _user.userUserLocations = nil;
+      for (UserLocation* userLocation in objects) {
+        [_user addUserUserLocationsObject:userLocation];
+      }
+      [self saveContext];
     } else {
       NSError *jsonParsingError = nil;
       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
@@ -112,6 +118,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         }];
         [alert show];
       } else {
+        [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
         _authToken = [json valueForKey:@"auth_token"];
         if (objects.count > 0) {
           _user = [objects objectAtIndex:0];
@@ -137,7 +144,16 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
             }];
           }
           
-          [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+          if (_user.userUserLocations.count == 0) {
+            NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+            [params setValue:@"auth_token" forKey:_authToken];
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
+              loader.method = RKRequestMethodGET;
+              loader.userData = @"userLocations";
+              loader.params = params;
+              loader.delegate = self;
+            }];
+          }
         }
       }
     }
@@ -205,11 +221,11 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [locationMapping mapKeyPath:@"latitude" toAttribute:@"latitude"];
   [locationMapping mapKeyPath:@"longitude" toAttribute:@"longitude"];
   [locationMapping mapKeyPath:@"address" toAttribute:@"address"];
-  [locationMapping mapKeyPath:@"city" toAttribute:@"city"];
-  [locationMapping mapKeyPath:@"state" toAttribute:@"state"];
+  [locationMapping mapKeyPath:@"city_name" toAttribute:@"city"];
+  [locationMapping mapKeyPath:@"state_name" toAttribute:@"state"];
   [locationMapping mapKeyPath:@"state_code" toAttribute:@"stateCode"];
   [locationMapping mapKeyPath:@"postal_code" toAttribute:@"postalCode"];
-  [locationMapping mapKeyPath:@"country" toAttribute:@"country"];
+  [locationMapping mapKeyPath:@"country_name" toAttribute:@"country"];
   [locationMapping mapKeyPath:@"country_code" toAttribute:@"countryCode"];
   [locationMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
   [locationMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
@@ -357,6 +373,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
     default:
       return @"[Unknown]";
   }
+}
+
+- (BOOL)isRetina {
+  BOOL returnValue = ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
+          ([UIScreen mainScreen].scale == 2.0))?YES:NO;
+  return returnValue;
 }
 
 - (BOOL)application:(UIApplication *)application

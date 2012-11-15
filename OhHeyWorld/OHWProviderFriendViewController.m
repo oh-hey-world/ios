@@ -79,11 +79,10 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(20, 160, 280, 280)];
+  //CGRect frame = ([appDelegate isRetina])? CGRectMake(20, 190, 280, 240) : CGRectMake(20, 160, 240, 180);
+  //_mapView = [[MKMapView alloc] initWithFrame:frame];
   _mapView.delegate = self;
   _mapView.showsUserLocation = YES;
-  [self.view addSubview:_mapView];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

@@ -21,6 +21,7 @@
 		07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AF216230D33001C346A /* OHWCheckinViewController.m */; };
 		071EE426162C55C5008C6519 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EE425162C55C5008C6519 /* HudView.m */; };
 		071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071EE427162C9BF2008C6519 /* AddressBookUI.framework */; };
+		0723775A16541FCF0044FDE5 /* OHWHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */; };
 		074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE91D16305C120043B485 /* ExtendedManagedObject.m */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
@@ -141,6 +142,8 @@
 		071EE424162C55C5008C6519 /* HudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudView.h; sourceTree = "<group>"; };
 		071EE425162C55C5008C6519 /* HudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudView.m; sourceTree = "<group>"; };
 		071EE427162C9BF2008C6519 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		0723775816541FCF0044FDE5 /* OHWHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWHistoryViewController.h; sourceTree = "<group>"; };
+		0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWHistoryViewController.m; sourceTree = "<group>"; };
 		074EE91C16305C120043B485 /* ExtendedManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedManagedObject.h; sourceTree = "<group>"; };
 		074EE91D16305C120043B485 /* ExtendedManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedManagedObject.m; sourceTree = "<group>"; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +329,8 @@
 			children = (
 				0768B0E0161F73AB002DD6F2 /* OHWAppDelegate.h */,
 				0768B0E1161F73AB002DD6F2 /* OHWAppDelegate.m */,
+				07141AE216230BA7001C346A /* OHWLoginViewController.h */,
+				07141AE316230BA7001C346A /* OHWLoginViewController.m */,
 				07141AF116230D33001C346A /* OHWCheckinViewController.h */,
 				07141AF216230D33001C346A /* OHWCheckinViewController.m */,
 				079CD83616309110002F594A /* OHWCityCheckinViewController.h */,
@@ -338,8 +343,8 @@
 				07E0637E165160D7009288C9 /* OHWProviderFriendViewController.m */,
 				077CC39C1652A39C00E1D988 /* OHWProviderFriendWebViewController.h */,
 				077CC39D1652A39C00E1D988 /* OHWProviderFriendWebViewController.m */,
-				07141AE216230BA7001C346A /* OHWLoginViewController.h */,
-				07141AE316230BA7001C346A /* OHWLoginViewController.m */,
+				0723775816541FCF0044FDE5 /* OHWHistoryViewController.h */,
+				0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */,
 				0768B0E9161F73AB002DD6F2 /* MainStoryboard.storyboard */,
 				07141ADF16230B37001C346A /* Assets */,
 				0775F6A216246FFF00D8BDA7 /* Models */,
@@ -647,6 +652,7 @@
 				07E063A616518F75009288C9 /* Globals.m in Sources */,
 				077CC39E1652A39C00E1D988 /* OHWProviderFriendWebViewController.m in Sources */,
 				077CC3A41652D86C00E1D988 /* ProviderFriend.m in Sources */,
+				0723775A16541FCF0044FDE5 /* OHWHistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +799,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Roland";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -814,6 +821,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C5A13018-0B12-47DF-9B4F-AD83838DC314";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -59,6 +59,7 @@
 - (NSString *)applicationDocumentsDirectory;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
+- (BOOL)isRetina;
 - (void)showLoginView;
 - (void)sessionStateChanged:(FBSession *)session
                       state:(FBSessionState)state
