@@ -52,7 +52,7 @@
   } else {
     
   }
-  UserLocation *lastLocation = [ModelHelper getLastUserLocation:user];
+  UserLocation *lastLocation = [appDelegate userLocation];
   _cityLabel.text = [[NSArray arrayWithObjects:@"Congrats you made it to", lastLocation.name, nil] componentsJoinedByString:@" "];
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"MM/dd/yyyy"];

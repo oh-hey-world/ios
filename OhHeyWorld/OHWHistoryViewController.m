@@ -19,8 +19,8 @@
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   User *user = [appDelegate user];
-  _userLocations = user.userUserLocations.allObjects;
-  NSLog(@"%u %@", user.userUserLocations.count, user.email);
+  NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
+  _userLocations = [user.userUserLocations sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -35,12 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,13 +68,16 @@
     nameLabel.tag = 1;
     [cell.contentView addSubview:nameLabel];
     
-    UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(5,5,33,33)];
-    userImage.tag = 2;
-    [cell.contentView addSubview:userImage];
+    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(5,5,33,33)];
+    image.tag = 2;
+    [cell.contentView addSubview:image];
   }
   
   UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
   nameLabel.text = [NSString stringWithFormat:@"%@", location.address];
+  
+  UIImageView *imageView = (UIImageView*)[cell viewWithTag:2];
+  imageView.image = [UIImage imageNamed:@"default_location.jpg"];
   
   return cell;
 }
@@ -128,13 +125,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+  UserLocation* userLocation = [_userLocations objectAtIndex:indexPath.row];
+  [appDelegate setUserLocation:userLocation];
+  OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
+  [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

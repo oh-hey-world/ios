@@ -33,6 +33,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize placeMark = _placeMark;
 @synthesize userProviderFriend = _userProviderFriend;
 @synthesize urlAddress = _urlAddress;
+@synthesize userLocation = _userLocation;
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   //publish_checkins,publish_stream

@@ -22,6 +22,8 @@
 		071EE426162C55C5008C6519 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EE425162C55C5008C6519 /* HudView.m */; };
 		071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071EE427162C9BF2008C6519 /* AddressBookUI.framework */; };
 		0723775A16541FCF0044FDE5 /* OHWHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */; };
+		0723775D16552B1E0044FDE5 /* default_location.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0723775B16552B1E0044FDE5 /* default_location.jpg */; };
+		0723775E16552B1E0044FDE5 /* default_location@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0723775C16552B1E0044FDE5 /* default_location@2x.jpg */; };
 		074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE91D16305C120043B485 /* ExtendedManagedObject.m */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
@@ -144,6 +146,8 @@
 		071EE427162C9BF2008C6519 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		0723775816541FCF0044FDE5 /* OHWHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWHistoryViewController.h; sourceTree = "<group>"; };
 		0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWHistoryViewController.m; sourceTree = "<group>"; };
+		0723775B16552B1E0044FDE5 /* default_location.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_location.jpg; sourceTree = "<group>"; };
+		0723775C16552B1E0044FDE5 /* default_location@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "default_location@2x.jpg"; sourceTree = "<group>"; };
 		074EE91C16305C120043B485 /* ExtendedManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedManagedObject.h; sourceTree = "<group>"; };
 		074EE91D16305C120043B485 /* ExtendedManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedManagedObject.m; sourceTree = "<group>"; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +269,8 @@
 		07141ADF16230B37001C346A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				0723775B16552B1E0044FDE5 /* default_location.jpg */,
+				0723775C16552B1E0044FDE5 /* default_location@2x.jpg */,
 				07C9A22B16382DB2007323CC /* placeholder.gif */,
 			);
 			name = Assets;
@@ -580,6 +586,8 @@
 				0775F6381624566D00D8BDA7 /* Podfile.lock in Resources */,
 				0775FBD61625939E00D8BDA7 /* defaults.plist in Resources */,
 				07C9A22C16382DB2007323CC /* placeholder.gif in Resources */,
+				0723775D16552B1E0044FDE5 /* default_location.jpg in Resources */,
+				0723775E16552B1E0044FDE5 /* default_location@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,6 +45,7 @@
   if (zeroUserLocation != nil) {
     [ModelHelper deleteObject:zeroUserLocation];
   }
+  [appDelegate setUserLocation:userLocation];
   OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
   [self.navigationController pushViewController:controller animated:YES];
 }
