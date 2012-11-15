@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "OHWAppDelegate.h"
 
-@interface OHWHistoryViewController : UITableViewController
+@interface OHWHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 
 @property (nonatomic, retain) NSArray* userLocations;
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
+@property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, retain) IBOutlet UIButton *friendsViewButton;
+@property (nonatomic, retain) Location *location;
+
+- (IBAction)showFriendsMapView:(id)sender;
 
 @end

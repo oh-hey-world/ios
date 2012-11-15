@@ -20,6 +20,7 @@
 #import "UserProviderFriend.h"
 #import "ProviderFriend.h"
 #import "NotificationContactDetail.h"
+#import "OHWFriendsMapViewController.h"
 #import "ModelHelper.h"
 #import "CoreDataHelper.h"
 #import "HudView.h"

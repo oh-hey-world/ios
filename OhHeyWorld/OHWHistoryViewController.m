@@ -15,21 +15,63 @@
 
 @implementation OHWHistoryViewController
 @synthesize userLocations = _userLocations;
+@synthesize tableView = _tableView;
+@synthesize location = _location;
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   User *user = [appDelegate user];
   NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
   _userLocations = [user.userUserLocations sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
+  [self.tableView reloadData];
+  
+  UserLocation *userLocation = [ModelHelper getLastUserLocation:user];
+  _location = userLocation.location;
+  
+  if (_location != nil) {
+    float latitude = [_location.latitude floatValue];
+    float longitude = [_location.longitude floatValue];
+    CLLocationCoordinate2D location = {latitude, longitude};
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = .025;
+    span.longitudeDelta = .025;
+    region.center = location;
+    region.span = span;
+    [_mapView setRegion:region animated:TRUE];
+    [_mapView regionThatFits:region];
+    [_mapView setCenterCoordinate:_mapView.region.center animated:NO];
+    
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    [point setCoordinate:(region.center)];
+    [point setTitle:_location.address];
+    [_mapView addAnnotation:point];
+  }
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (MKAnnotationView *) mapView:(MKMapView *)currentMapView viewForAnnotation:(id <MKAnnotation>) annotation {
+  if (annotation == currentMapView.userLocation) {
+    return nil; //default to blue dot
+  }
+  MKPinAnnotationView *dropPin=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
+  dropPin.pinColor = MKPinAnnotationColorGreen;
+  dropPin.animatesDrop = YES;
+  dropPin.canShowCallout = YES;
+  return dropPin;
+}
+
+- (IBAction)showFriendsMapView:(id)sender {
+  OHWFriendsMapViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"FriendMapView"];
+  [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
+  }
+  return self;
 }
 
 - (void)viewDidLoad

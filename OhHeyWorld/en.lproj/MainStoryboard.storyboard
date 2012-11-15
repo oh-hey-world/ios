@@ -338,7 +338,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="utm-FP-ryx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="-518"/>
+            <point key="canvasLocation" x="1789" y="854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ck2-lY-HcL">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="aWD-cm-MuD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1LA-FO-oV6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zLe-Lm-02F" kind="relationship" relationship="rootViewController" id="fnk-lL-5HD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="79B-ln-Ls3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928" y="1545"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GcP-Pe-PBc">
+            <objects>
+                <viewController storyboardIdentifier="FriendMapView" id="zLe-Lm-02F" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yTa-bh-TCH">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="2Qj-Al-GOe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OaU-l6-xT2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="769-2p-oRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="1545"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v9w-lL-cjU">
@@ -350,11 +386,12 @@
                     <connections>
                         <segue destination="YxA-EE-v5B" kind="relationship" relationship="rootViewController" id="PEt-Im-Atj"/>
                         <segue destination="Pge-bN-hq2" kind="push" id="iXf-2G-Dz4"/>
+                        <segue destination="wWC-oR-XPw" kind="push" id="cYZ-0z-282"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYk-bq-GwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2187" y="-518"/>
+            <point key="canvasLocation" x="1346" y="854"/>
         </scene>
         <!--Checkin View Controller - Check In!-->
         <scene sceneID="DsU-m5-0Ib">
@@ -412,7 +449,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Sij-4h-r5S" kind="relationship" relationship="rootViewController" id="fFC-XP-q3J"/>
+                        <segue destination="wWC-oR-XPw" kind="relationship" relationship="rootViewController" id="rIi-z8-8C0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SB6-CA-QAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -420,32 +457,59 @@
             <point key="canvasLocation" x="524" y="854"/>
         </scene>
         <!--History View Controller-->
-        <scene sceneID="CZj-wN-O7V">
+        <scene sceneID="8kB-9n-kkc">
             <objects>
-                <tableViewController id="Sij-4h-r5S" customClass="OHWHistoryViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vrr-C4-baP">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rVS-9x-0UH">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Sij-4h-r5S" id="76q-ca-Qus"/>
-                            <outlet property="delegate" destination="Sij-4h-r5S" id="zFa-iJ-43a"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="NmR-z6-Ccy"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q25-yd-FWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="HistoryView" id="wWC-oR-XPw" customClass="OHWHistoryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Ee-Ds-Nz7">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cKN-Tw-SJz">
+                                <rect key="frame" x="0.0" y="234" width="320" height="270"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wWC-oR-XPw" id="3tN-mR-KUV"/>
+                                    <outlet property="delegate" destination="wWC-oR-XPw" id="oOP-dJ-n91"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="smm-uz-VrV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="s0M-UH-r5o">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WSi-Sh-ENR">
+                                        <rect key="frame" x="154" y="35" width="146" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Friends">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showFriendsMapView:" destination="wWC-oR-XPw" eventType="touchUpInside" id="Vsi-s8-mqP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ar0-8T-Ttw"/>
+                    <connections>
+                        <outlet property="friendsViewButton" destination="WSi-Sh-ENR" id="Tze-rZ-Lax"/>
+                        <outlet property="mapView" destination="s0M-UH-r5o" id="vZi-BR-SKr"/>
+                        <outlet property="tableView" destination="cKN-Tw-SJz" id="6W0-2e-1CN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MMB-a2-X4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928" y="854"/>
         </scene>
@@ -545,8 +609,14 @@
                 <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
             </relationships>
         </class>
-        <class className="OHWHistoryViewController" superclassName="UITableViewController">
+        <class className="OHWHistoryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWHistoryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showFriendsMapView:"/>
+                <relationship kind="outlet" name="friendsViewButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="OHWLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLoginViewController.h"/>
@@ -583,6 +653,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="gtg-Xl-gok"/>
+        <segue reference="cYZ-0z-282"/>
         <segue reference="iXf-2G-Dz4"/>
         <segue reference="7jJ-En-0Sn"/>
     </inferredMetricsTieBreakers>
