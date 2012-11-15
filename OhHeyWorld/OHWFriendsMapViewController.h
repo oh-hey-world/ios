@@ -12,7 +12,7 @@
 
 @interface OHWFriendsMapViewController : UIViewController <MKMapViewDelegate>
 
-@property (nonatomic, retain) NSArray* userLocations;
+@property (nonatomic, retain) NSArray* people;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 
 @end

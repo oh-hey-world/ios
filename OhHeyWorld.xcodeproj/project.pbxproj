@@ -402,9 +402,9 @@
 		0775F6A216246FFF00D8BDA7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
 				077CC3A21652D86C00E1D988 /* ProviderFriend.h */,
 				077CC3A31652D86C00E1D988 /* ProviderFriend.m */,
-				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
 				07C9A255163ED36A007323CC /* NotificationContactDetail.h */,
 				07C9A258163ED36B007323CC /* User.h */,
 				07C9A259163ED36B007323CC /* User.m */,
