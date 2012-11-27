@@ -41,6 +41,9 @@
   _hudView = [[HudView alloc] init];
   [_hudView loadActivityIndicator];
   [_hudView startActivityIndicator:self.view];
+  
+  UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title-logo.png"]];
+  self.navigationItem.titleView = img;
 }
 
 #pragma mark -
