@@ -17,6 +17,10 @@
 @synthesize loginButton = _loginButton;
 
 - (void)loginFailed {
+  BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Login Failure" message:@"Could not log you into the application."];
+  [alert setCancelButtonWithTitle:@"Ok" block:^{
+  }];
+  [alert show];
 }
 
 - (IBAction)performLogin:(id)sender {
@@ -34,14 +38,12 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
 }
 
 @end
