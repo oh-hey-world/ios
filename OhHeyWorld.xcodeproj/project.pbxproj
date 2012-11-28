@@ -149,6 +149,8 @@
 		07941BEF1664FCB300B15846 /* title-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07941B951664FCB300B15846 /* title-logo@2x.png */; };
 		07941BF01664FCB300B15846 /* title-profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 07941B961664FCB300B15846 /* title-profile.png */; };
 		07941BF11664FCB300B15846 /* title-profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07941B971664FCB300B15846 /* title-profile@2x.png */; };
+		07941BF81665577B00B15846 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 07941BF71665577B00B15846 /* TransparentToolbar.m */; };
+		07941BFA1665587D00B15846 /* 10542413.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07941BF91665587600B15846 /* 10542413.jpg */; };
 		079CD83816309110002F594A /* OHWCityCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD83716309110002F594A /* OHWCityCheckinViewController.m */; };
 		079CD8591631A79C002F594A /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD8581631A79C002F594A /* GCPlaceholderTextView.m */; };
 		079CD8901635CF0E002F594A /* OHWCheckedinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */; };
@@ -376,6 +378,9 @@
 		07941B951664FCB300B15846 /* title-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-logo@2x.png"; sourceTree = "<group>"; };
 		07941B961664FCB300B15846 /* title-profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-profile.png"; sourceTree = "<group>"; };
 		07941B971664FCB300B15846 /* title-profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-profile@2x.png"; sourceTree = "<group>"; };
+		07941BF61665577B00B15846 /* TransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentToolbar.h; sourceTree = "<group>"; };
+		07941BF71665577B00B15846 /* TransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentToolbar.m; sourceTree = "<group>"; };
+		07941BF91665587600B15846 /* 10542413.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10542413.jpg; sourceTree = "<group>"; };
 		079CD83616309110002F594A /* OHWCityCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWCityCheckinViewController.h; sourceTree = "<group>"; };
 		079CD83716309110002F594A /* OHWCityCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWCityCheckinViewController.m; sourceTree = "<group>"; };
 		079CD8571631A79C002F594A /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -452,6 +457,7 @@
 		07141ADF16230B37001C346A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				07941BF91665587600B15846 /* 10542413.jpg */,
 				07941B3E1664FCB300B15846 /* button-checkbox-active.png */,
 				07941B3F1664FCB300B15846 /* button-checkbox-active@2x.png */,
 				07941B401664FCB300B15846 /* button-checkbox-inactive.png */,
@@ -720,6 +726,8 @@
 				074EE91D16305C120043B485 /* ExtendedManagedObject.m */,
 				07E063A416518F75009288C9 /* Globals.h */,
 				07E063A516518F75009288C9 /* Globals.m */,
+				07941BF61665577B00B15846 /* TransparentToolbar.h */,
+				07941BF71665577B00B15846 /* TransparentToolbar.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -953,6 +961,7 @@
 				07941BEF1664FCB300B15846 /* title-logo@2x.png in Resources */,
 				07941BF01664FCB300B15846 /* title-profile.png in Resources */,
 				07941BF11664FCB300B15846 /* title-profile@2x.png in Resources */,
+				07941BFA1665587D00B15846 /* 10542413.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,6 +1036,7 @@
 				077CC3A41652D86C00E1D988 /* ProviderFriend.m in Sources */,
 				0723775A16541FCF0044FDE5 /* OHWHistoryViewController.m in Sources */,
 				07237768165579210044FDE5 /* OHWFriendsMapViewController.m in Sources */,
+				07941BF81665577B00B15846 /* TransparentToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

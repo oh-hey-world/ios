@@ -10,14 +10,22 @@
 #import <MapKit/MapKit.h>
 #import "OHWAppDelegate.h"
 
-@interface OHWHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
+@interface OHWHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSArray* userLocations;
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
-@property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet UIButton *friendsViewButton;
 @property (nonatomic, retain) Location *location;
+@property (nonatomic, retain) User *user;
+@property (nonatomic, retain) UILabel *nameLabel;
+@property (nonatomic, retain) UILabel *locationLabel;
+@property (strong, nonatomic) IBOutlet UIButton *followButton;
+@property (strong, nonatomic) IBOutlet UIButton *sendMessageButton;
+@property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
+@property (strong, nonatomic) IBOutlet UILabel *blurbLabel;
 
 - (IBAction)showFriendsMapView:(id)sender;
+- (IBAction)followUser:(id)sender;
+- (IBAction)sendMessage:(id)sender;
 
 @end

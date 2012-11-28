@@ -17,47 +17,27 @@
 @synthesize userLocations = _userLocations;
 @synthesize tableView = _tableView;
 @synthesize location = _location;
+@synthesize user = _user;
+@synthesize nameLabel = _nameLabel;
+@synthesize locationLabel = _locationLabel;
+@synthesize followButton = _followButton;
+@synthesize sendMessageButton = _sendMessageButton;
+@synthesize profilePicture = _profilePicture;
+@synthesize blurbLabel = _blurbLabel;
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  User *user = [appDelegate user];
+  _user = [appDelegate user];
+  
+  _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
+  
   NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
-  _userLocations = [user.userUserLocations sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
+  _userLocations = [_user.userUserLocations sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
   [self.tableView reloadData];
   
-  UserLocation *userLocation = [ModelHelper getLastUserLocation:user];
+  UserLocation *userLocation = [ModelHelper getLastUserLocation:_user];
   _location = userLocation.location;
-  
-  if (_location != nil) {
-    float latitude = [_location.latitude floatValue];
-    float longitude = [_location.longitude floatValue];
-    CLLocationCoordinate2D location = {latitude, longitude};
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    span.latitudeDelta = .025;
-    span.longitudeDelta = .025;
-    region.center = location;
-    region.span = span;
-    [_mapView setRegion:region animated:TRUE];
-    [_mapView regionThatFits:region];
-    [_mapView setCenterCoordinate:_mapView.region.center animated:NO];
-    
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    [point setCoordinate:(region.center)];
-    [point setTitle:_location.address];
-    [_mapView addAnnotation:point];
-  }
-}
-
-- (MKAnnotationView *) mapView:(MKMapView *)currentMapView viewForAnnotation:(id <MKAnnotation>) annotation {
-  if (annotation == currentMapView.userLocation) {
-    return nil; //default to blue dot
-  }
-  MKPinAnnotationView *dropPin=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
-  dropPin.pinColor = MKPinAnnotationColorGreen;
-  dropPin.animatesDrop = YES;
-  dropPin.canShowCallout = YES;
-  return dropPin;
+  _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
 }
 
 - (IBAction)showFriendsMapView:(id)sender {
@@ -74,9 +54,44 @@
   return self;
 }
 
+- (IBAction)followUser:(id)sender {
+  
+}
+
+- (IBAction)sendMessage:(id)sender {
+  
+}
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title-profile.png"]];
+  self.navigationItem.titleView = img;
+  
+  TransparentToolbar *toolbar = [[TransparentToolbar alloc] init];
+  [toolbar sizeToFit];
+  CGFloat toolbarHeight = [toolbar frame].size.height;
+  CGRect viewBounds = self.navigationController.navigationBar.frame;
+  CGFloat rootViewWidth = CGRectGetWidth(viewBounds);
+  CGRect rectArea = CGRectMake(0, 70, rootViewWidth, toolbarHeight);
+  [toolbar setFrame:rectArea];
+  
+  [toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]] atIndex:1];
+  
+  float center = (self.view.frame.size.width / 2);
+  _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 115, 0, 230, 30)];
+  _nameLabel.textAlignment = UITextAlignmentCenter;
+  _nameLabel.backgroundColor = [UIColor clearColor];
+  _nameLabel.textColor = [UIColor whiteColor];
+  [toolbar insertSubview:_nameLabel atIndex:2];
+  
+  _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 115, 18, 230, 30)];
+  _locationLabel.textAlignment = UITextAlignmentCenter;
+  _locationLabel.backgroundColor = [UIColor clearColor];
+  _locationLabel.textColor = [UIColor whiteColor];
+  [toolbar insertSubview:_locationLabel atIndex:2];
+  
+  [self.view addSubview:toolbar];
 }
 
 - (void)didReceiveMemoryWarning

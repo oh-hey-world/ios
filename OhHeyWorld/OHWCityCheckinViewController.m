@@ -119,11 +119,22 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.title = @"City Check In";
+  self.title = @"Checked In";
   //CGRect frame = CGRectMake(40, self.view.bounds.size.height - 290, 240, self.view.bounds.size.height - 300);
   //_mapView = [[MKMapView alloc] initWithFrame:frame];
   _mapView.delegate = self;
   _mapView.showsUserLocation = YES;
+  
+  _textView.delegate = self;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+  if([text isEqualToString:@"\n"]) {
+    [textView resignFirstResponder];
+    return NO;
+  }
+  
+  return YES;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
