@@ -15,10 +15,19 @@
 
 @implementation OHWPeopleViewController
 @synthesize people = _people;
+@synthesize viewType = _viewType;
 
 - (void)viewWillAppear:(BOOL)animated {
   User *user = [appDelegate user];
-  _people = [ModelHelper getUserProviderFriends:user];
+  if ([_viewType isEqualToString:@"userFriendsNotOhwUser"]) {
+    _people = [appDelegate userFriendsNotOhwUser];
+  } else if ([_viewType isEqualToString:@"usersAtLocation"]) {
+    _people = [appDelegate usersAtLocation];
+  } else if ([_viewType isEqualToString:@"userFriendsOhwUser"]) {
+    _people = [appDelegate userFriendsOhwUser];
+  } else {
+    _people = [ModelHelper getUserProviderFriends:user];
+  }
   [self.tableView reloadData];
 }
 
@@ -62,8 +71,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UserProviderFriend* userProviderFriend = [_people objectAtIndex:indexPath.row];
-  ProviderFriend* providerFriend = userProviderFriend.providerFriend;
+  id person = [_people objectAtIndex:indexPath.row];
+  ProviderFriend* providerFriend = nil;
+  NSLog(@"%@", [person description]);
+  if ([person isKindOfClass:[UserProviderFriend class]]) {
+    UserProviderFriend* userProviderFriend = person;
+    providerFriend = userProviderFriend.providerFriend;
+  } else if ([person isKindOfClass:[ProviderFriend class]]) {
+    providerFriend = person;
+  }
   static NSString *CellIdentifier = @"Cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {

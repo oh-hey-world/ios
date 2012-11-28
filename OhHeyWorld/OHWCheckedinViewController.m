@@ -248,6 +248,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   OHWPeopleViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleView"];
+  if (indexPath.row == 0) {
+    controller.viewType = @"userFriendsNotOhwUser";
+  } else if (indexPath.row == 1) {
+    controller.viewType = @"usersAtLocation";
+  } else if (indexPath.row == 2) {
+    controller.viewType = @"userFriendsOhwUser";
+  }
   [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -14,5 +14,6 @@
 @interface OHWPeopleViewController : UITableViewController
 
 @property (nonatomic, retain) NSArray* people;
+@property (nonatomic, retain) NSString* viewType;
 
 @end
