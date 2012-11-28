@@ -90,6 +90,7 @@
 
 - (IBAction)checkin:(id)sender {
   UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:_user];
+  [appDelegate setUserLocation:lastUserLocation];
   if ([lastUserLocation.userId intValue] != [_user.externalId intValue]
       && (lastUserLocation == nil || !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
     UserLocation* userLocation = [UserLocation object];

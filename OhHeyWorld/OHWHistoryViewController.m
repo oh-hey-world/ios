@@ -31,6 +31,10 @@
   
   _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
   
+  if (_user.blurb != nil && _user.blurb.length > 0) {
+    _blurbLabel.text = _user.blurb;
+  }
+  
   NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
   _userLocations = [_user.userUserLocations sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
   [self.tableView reloadData];
@@ -68,30 +72,25 @@
   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title-profile.png"]];
   self.navigationItem.titleView = img;
   
-  TransparentToolbar *toolbar = [[TransparentToolbar alloc] init];
-  [toolbar sizeToFit];
-  CGFloat toolbarHeight = [toolbar frame].size.height;
-  CGRect viewBounds = self.navigationController.navigationBar.frame;
-  CGFloat rootViewWidth = CGRectGetWidth(viewBounds);
-  CGRect rectArea = CGRectMake(0, 70, rootViewWidth, toolbarHeight);
-  [toolbar setFrame:rectArea];
-  
-  [toolbar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]] atIndex:1];
+  UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]];
+  CGRect frame = nameBar.frame;
+  frame.origin = CGPointMake(0, _profilePicture.frame.size.height - nameBar.frame.size.height);
+  nameBar.frame = frame;
   
   float center = (self.view.frame.size.width / 2);
   _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 115, 0, 230, 30)];
   _nameLabel.textAlignment = UITextAlignmentCenter;
   _nameLabel.backgroundColor = [UIColor clearColor];
   _nameLabel.textColor = [UIColor whiteColor];
-  [toolbar insertSubview:_nameLabel atIndex:2];
+  [nameBar insertSubview:_nameLabel atIndex:2];
   
   _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 115, 18, 230, 30)];
   _locationLabel.textAlignment = UITextAlignmentCenter;
   _locationLabel.backgroundColor = [UIColor clearColor];
   _locationLabel.textColor = [UIColor whiteColor];
-  [toolbar insertSubview:_locationLabel atIndex:2];
+  [nameBar insertSubview:_locationLabel atIndex:2];
   
-  [self.view addSubview:toolbar];
+  [self.view addSubview:nameBar];
 }
 
 - (void)didReceiveMemoryWarning

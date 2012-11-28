@@ -81,8 +81,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 - (void)showLoginView {
   if (self.loginViewController == nil) {
     [self createAndPresentLoginView];
-  } else {
-    [self.loginViewController loginFailed];
   }
 }
 

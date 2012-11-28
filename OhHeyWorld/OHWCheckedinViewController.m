@@ -175,7 +175,7 @@
   if (indexPath.row == 0) {
     UILabel *nearbyFriendsLabel = (UILabel*)[cell viewWithTag:1];
     nearbyFriendsLabel.text = @"Nearby Friends";
-    
+    //TODO fill this array
     if ([appDelegate userFriendsNotOhwUser] != nil) {
       UILabel *nearbyFriendsCountLabel = (UILabel*)[cell viewWithTag:2];
       nearbyFriendsCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate userFriendsNotOhwUser].count];

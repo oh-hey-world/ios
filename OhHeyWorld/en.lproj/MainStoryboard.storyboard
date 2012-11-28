@@ -329,7 +329,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.93000000000000005" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.92894616789999995" alpha="0.93000000000000005" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="kaI-9w-VFf"/>
                     <connections>
@@ -526,7 +526,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="text-travel-log.png" id="uSc-gG-zJ4">
-                                        <rect key="frame" x="20" y="211" width="119" height="28"/>
+                                        <rect key="frame" x="20" y="211" width="105" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider-horizontal.png" id="qNN-wQ-5cQ">
@@ -600,7 +600,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.92894616788321172" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.92894616788321172" alpha="0.93000000000000005" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="nCL-mt-wA2"/>
                 </viewController>
