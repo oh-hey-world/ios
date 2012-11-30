@@ -1,7 +1,17 @@
+
 PODS:
-  - BlockAlertsAnd-ActionSheets (1.0.0)
-  - SBJson (3.1.1)
+- BlockAlertsAnd-ActionSheets (1.0.0)
+- KKGridView (0.6.8.2)
+- SBJson (3.1.1)
 
 DEPENDENCIES:
-  - BlockAlertsAnd-ActionSheets (>= 1.0.0)
-  - SBJson (>= 3.1.1)
+- BlockAlertsAnd-ActionSheets (>= 1.0.0)
+- KKGridView (>= 0.6.8.2)
+- SBJson (>= 3.1.1)
+
+SPEC CHECKSUMS:
+  BlockAlertsAnd-ActionSheets: cb6379caff86c068616d112b8bfb862b0ec932a6
+  KKGridView: ca91fc93e91ddbeab8b46d07af1efda289f324e7
+  SBJson: d917ef596960a977b6c20235a90810bc306a48f0
+
+COCOAPODS: 0.16.0
