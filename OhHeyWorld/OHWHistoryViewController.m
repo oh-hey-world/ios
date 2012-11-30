@@ -110,7 +110,7 @@
   userFriend.userId = _user.externalId;
   userFriend.friendId = _location.externalId;
 
-  RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
+  RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserFriend class]];
   NSError* error = nil;
   NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userFriend mapping:serializationMapping] serializedObject:&error];
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
