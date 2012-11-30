@@ -15,7 +15,7 @@
 
 @implementation OHWHistoryViewController
 @synthesize userLocations = _userLocations;
-@synthesize tableView = _tableView;
+@synthesize collectionView = _collectionView;
 @synthesize location = _location;
 @synthesize user = _user;
 @synthesize nameLabel = _nameLabel;
@@ -24,24 +24,70 @@
 @synthesize sendMessageButton = _sendMessageButton;
 @synthesize profilePicture = _profilePicture;
 @synthesize blurbLabel = _blurbLabel;
+@synthesize selectedModel = _selectedModel;
+@synthesize gridView = _gridView;
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
+  NSLog(@"%@", error);
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  NSLog(@"%@", objectLoader.response.bodyAsString);
+  UserLocation *userLocation = [objects objectAtIndex:0];
+  userLocation.user = _user;
+  userLocation.userId = _user.externalId;
+  userLocation.locationId = _location.externalId;
+  userLocation.location = _location;
+  
+  //NSLog(@"%@", userLocation.customMessage);
+  
+  if (userLocation.externalId != nil) {
+    [appDelegate saveContext];
+  }
+  
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
+  NSMutableArray* userLocations = [CoreDataHelper searchObjectsInContext:@"UserLocation" :predicate :nil :NO :[appDelegate managedObjectContext]];
+  UserLocation *zeroUserLocation = [userLocations objectAtIndex:0];
+  if (zeroUserLocation != nil) {
+    [ModelHelper deleteObject:zeroUserLocation];
+  }
+}
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  _user = [appDelegate user];
   
-  _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
+  if (_selectedModel == nil) {
+    _selectedModel = [appDelegate loggedInUser];
+  }  
   
-  if (_user.blurb != nil && _user.blurb.length > 0) {
-    _blurbLabel.text = _user.blurb;
+  if ([_selectedModel isKindOfClass:[User class]]) {
+    _user = _selectedModel;
+    _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
+    
+    if (_user.blurb != nil && _user.blurb.length > 0) {
+      _blurbLabel.text = _user.blurb;
+    }
+    
+    _userLocations = [ModelHelper getUserLocations:_user];
+    
+    [_collectionView reloadData];
+    
+    UserLocation *userLocation = [ModelHelper getLastUserLocation:_user];
+    _location = userLocation.location;
+    _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
+    
+    _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
+    
+    NSString *url = [NSString stringWithFormat:@"%@?type=large", _user.pictureUrl];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    
+    UIImage *image = [UIImage imageWithData:imageData];
+    _profilePicture.image = image;
+    
   }
   
-  NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
-  _userLocations = [_user.userUserLocations sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
-  [self.tableView reloadData];
-  
-  UserLocation *userLocation = [ModelHelper getLastUserLocation:_user];
-  _location = userLocation.location;
-  _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
+  [_gridView reloadData];
+  [_gridView deselectAll:NO];
 }
 
 - (IBAction)showFriendsMapView:(id)sender {
@@ -59,7 +105,21 @@
 }
 
 - (IBAction)followUser:(id)sender {
-  
+  UserFriend* userFriend = [UserFriend object];
+  userFriend.user = _user;
+  userFriend.userId = _user.externalId;
+  userFriend.friendId = _location.externalId;
+
+  RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
+  NSError* error = nil;
+  NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userFriend mapping:serializationMapping] serializedObject:&error];
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+  [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_friends" usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodPOST;
+    loader.params = params;
+    loader.delegate = self;
+  }];
 }
 
 - (IBAction)sendMessage:(id)sender {
@@ -91,100 +151,86 @@
   [nameBar insertSubview:_locationLabel atIndex:2];
   
   [self.view addSubview:nameBar];
+  
+  _gridView.scrollsToTop = YES;
+  _gridView.backgroundColor = [UIColor colorWithWhite:0.93 alpha:1.0];
+  _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+  _gridView.cellSize = CGSizeMake(90.f, 90.f);
+  _gridView.cellPadding = CGSizeMake(10.f, 10.f);
+  _gridView.allowsMultipleSelection = NO;
+}
+
+- (NSUInteger)numberOfSectionsInGridView:(KKGridView *)gridView
+{
+  return 1;
+}
+
+- (NSUInteger)gridView:(KKGridView *)gridView numberOfItemsInSection:(NSUInteger)section
+{
+  return _userLocations.count;
+}
+
+- (KKGridViewCell *)gridView:(KKGridView *)gridView cellForItemAtIndexPath:(KKIndexPath *)indexPath
+{
+  UserLocation *userLocation = [_userLocations objectAtIndex:indexPath.index];
+  static NSString *CellIdentifier = @"Cell";
+  KKGridViewCell *cell = [gridView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil) {
+    cell = [[KKGridViewCell alloc] initWithFrame:CGRectMake(0, 0, 92.f, 92.f) reuseIdentifier:CellIdentifier];
+    UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,92,92)];
+    userImage.tag = 1;
+    [cell.contentView addSubview:userImage];
+    
+    UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-small.png"]];
+    CGRect frame = nameBar.frame;
+    nameBar.tag = 4;
+    frame.origin = CGPointMake(0, 68);
+    nameBar.frame = frame;
+    [cell.contentView insertSubview:nameBar aboveSubview:userImage];
+
+    UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, 92.f, 11)];
+    locationLabel.tag = 2;
+    locationLabel.font = [locationLabel.font fontWithSize:10];
+    locationLabel.textColor = [UIColor whiteColor];
+    locationLabel.backgroundColor = [UIColor clearColor];
+    locationLabel.textAlignment = UITextAlignmentCenter;
+    [cell.contentView insertSubview:locationLabel aboveSubview:nameBar];
+    
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 78, 92.f, 11)];
+    dateLabel.tag = 3;
+    dateLabel.font = [dateLabel.font fontWithSize:6];
+    dateLabel.textColor = [UIColor whiteColor];
+    dateLabel.backgroundColor = [UIColor clearColor];
+    dateLabel.textAlignment = UITextAlignmentCenter;
+    [cell.contentView insertSubview:dateLabel aboveSubview:nameBar];
+  }
+  
+  UIImageView *locationImage = (UIImageView*)[cell viewWithTag:1];
+  locationImage.image = [UIImage imageNamed:@"default_location.jpg"];
+  
+  UILabel *locationLabel = (UILabel*)[cell viewWithTag:2];
+  locationLabel.text = userLocation.name;
+  
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  dateFormatter.dateFormat = @"MM/dd/yyyy";
+  NSString *ended = (userLocation.endedAt == nil) ? @"Now" : [dateFormatter stringFromDate:userLocation.endedAt];
+  
+  UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
+  dateLabel.text = ended;
+  
+  return cell;
+}
+
+- (void)gridView:(KKGridView *)gridView didSelectItemAtIndexPath:(KKIndexPath *)indexPath {
+  OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
+  controller.selectedUserLocation = [_userLocations objectAtIndex:indexPath.index];
+  [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-  return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-  return _userLocations.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  UserLocation* userLocation = [_userLocations objectAtIndex:indexPath.row];
-  Location* location = userLocation.location;
-  static NSString *CellIdentifier = @"Cell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 240, 35)];
-    nameLabel.tag = 1;
-    [cell.contentView addSubview:nameLabel];
-    
-    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(5,5,33,33)];
-    image.tag = 2;
-    [cell.contentView addSubview:image];
-  }
-  
-  UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
-  nameLabel.text = [NSString stringWithFormat:@"%@", location.address];
-  
-  UIImageView *imageView = (UIImageView*)[cell viewWithTag:2];
-  imageView.image = [UIImage imageNamed:@"default_location.jpg"];
-  
-  return cell;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  UserLocation* userLocation = [_userLocations objectAtIndex:indexPath.row];
-  [appDelegate setUserLocation:userLocation];
-  OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
-  [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
