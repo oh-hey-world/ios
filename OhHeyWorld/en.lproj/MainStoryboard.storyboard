@@ -473,15 +473,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cKN-Tw-SJz">
-                                <rect key="frame" x="0.0" y="252" width="320" height="203"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="wWC-oR-XPw" id="3tN-mR-KUV"/>
-                                    <outlet property="delegate" destination="wWC-oR-XPw" id="oOP-dJ-n91"/>
-                                </connections>
-                            </tableView>
                             <view contentMode="scaleToFill" id="smm-uz-VrV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="251"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -537,12 +528,21 @@
                                         <rect key="frame" x="10" y="207" width="300" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="10542413.jpg" id="RqU-si-WTC">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="RqU-si-WTC">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.92911724452554756" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="FIR-9C-8Be" customClass="KKGridView">
+                                <rect key="frame" x="0.0" y="252" width="320" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wWC-oR-XPw" id="mKC-vs-Fim"/>
+                                    <outlet property="delegate" destination="wWC-oR-XPw" id="hzH-BC-qGs"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -551,9 +551,9 @@
                     <connections>
                         <outlet property="blurbLabel" destination="ltN-Wb-IZS" id="04u-lk-stV"/>
                         <outlet property="followButton" destination="ZeE-Pb-wvT" id="UMy-T9-Lhb"/>
+                        <outlet property="gridView" destination="FIR-9C-8Be" id="bmU-JX-w7m"/>
                         <outlet property="profilePicture" destination="RqU-si-WTC" id="GAf-g1-Swa"/>
                         <outlet property="sendMessageButton" destination="GCB-4r-FxW" id="VTX-aY-j38"/>
-                        <outlet property="tableView" destination="cKN-Tw-SJz" id="6W0-2e-1CN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMB-a2-X4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -628,7 +628,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="10542413.jpg" width="168" height="113"/>
         <image name="button-checkin.png" width="227" height="46"/>
         <image name="button-follow.png" width="151" height="31"/>
         <image name="button-message.png" width="151" height="31"/>
@@ -638,6 +637,13 @@
     <classes>
         <class className="GCPlaceholderTextView" superclassName="UITextView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GCPlaceholderTextView.h"/>
+        </class>
+        <class className="KKGridView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KKGridView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
         </class>
         <class className="OHWCheckedinViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckedinViewController.h"/>
@@ -681,11 +687,12 @@
                 <relationship kind="action" name="sendMessage:"/>
                 <relationship kind="action" name="showFriendsMapView:"/>
                 <relationship kind="outlet" name="blurbLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="friendsViewButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
                 <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="sendMessageButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="OHWLoginViewController" superclassName="UIViewController">

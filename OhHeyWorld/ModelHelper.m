@@ -121,4 +121,9 @@
   return [UserProviderFriend findAllWithPredicate:predicate];
 }
 
++ (NSArray*)getUserLocations:(User*)user {
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", user.externalId];
+  return [CoreDataHelper searchObjectsInContext:@"UserLocation" :predicate :@"createdAt" :NO :[appDelegate managedObjectContext]];
+}
+
 @end

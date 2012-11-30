@@ -28,7 +28,7 @@
   CLLocationDegrees minLongitude = DBL_MAX;
   CLLocationDegrees maxLongitude = -DBL_MAX;
   
-  User *user = [appDelegate user];
+  User *user = [appDelegate loggedInUser];
   _people = [ModelHelper getUserProviderFriends:user];
 
   for (UserProviderFriend *userProviderFriend in _people) {

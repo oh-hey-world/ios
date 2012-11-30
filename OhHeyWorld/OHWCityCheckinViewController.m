@@ -32,7 +32,7 @@
   userLocation.locationId = _location.externalId;
   userLocation.location = _location;
   
-  //NSLog(@"%@", objectLoader.response.bodyAsString);
+  NSLog(@"%@", objectLoader.response.bodyAsString);
   //NSLog(@"%@", userLocation.customMessage);
   
   if (userLocation.externalId != nil) {
@@ -53,7 +53,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   _location = [appDelegate location];
-  _user = [appDelegate user];
+  _user = [appDelegate loggedInUser];
   NSString *locationText = [[NSArray arrayWithObjects:_location.city, _location.state, _location.countryCode , nil] componentsJoinedByString:@", "];
   _cityLabel.text = locationText;
   _textView.placeholder = @"Add message (optional)";
@@ -91,8 +91,7 @@
 - (IBAction)checkin:(id)sender {
   UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:_user];
   [appDelegate setUserLocation:lastUserLocation];
-  if ([lastUserLocation.userId intValue] != [_user.externalId intValue]
-      && (lastUserLocation == nil || !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state]))) {
+  if (lastUserLocation == nil || !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state])) {
     UserLocation* userLocation = [UserLocation object];
     userLocation.user = _user;
     userLocation.userId = _user.externalId;
@@ -111,6 +110,8 @@
       loader.params = params;
       loader.delegate = self;
     }];
+    
+    
   } else {
     OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
     [self.navigationController pushViewController:controller animated:YES];

@@ -19,6 +19,7 @@
 #import "UserLocation.h"
 #import "UserProviderFriend.h"
 #import "ProviderFriend.h"
+#import "UserFriend.h"
 #import "NotificationContactDetail.h"
 #import "OHWFriendsMapViewController.h"
 #import "ModelHelper.h"
@@ -47,7 +48,7 @@
 @property (nonatomic, retain) NSMutableData *data;
 @property (nonatomic, retain) NSURL *baseUrl;
 @property (nonatomic, retain) RKObjectManager *manager;
-@property (nonatomic, retain) User *user;
+@property (nonatomic, retain) User *loggedInUser;
 @property (nonatomic, retain) NSString *authToken;
 @property (nonatomic, retain) CLPlacemark *placeMark;
 @property (nonatomic, retain) Location *location;

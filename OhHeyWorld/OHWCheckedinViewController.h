@@ -19,6 +19,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *dateLabel;
 @property (nonatomic, retain) IBOutlet UILabel *cityLabel;
 @property (nonatomic, retain) IBOutlet UILabel *firstCheckinNotifcation;
+@property (nonatomic, retain) UserLocation *selectedUserLocation;
 
 - (IBAction)sendNotifiction:(id)sender;
 

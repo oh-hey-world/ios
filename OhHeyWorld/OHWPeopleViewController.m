@@ -18,7 +18,7 @@
 @synthesize viewType = _viewType;
 
 - (void)viewWillAppear:(BOOL)animated {
-  User *user = [appDelegate user];
+  User *user = [appDelegate loggedInUser];
   if ([_viewType isEqualToString:@"userFriendsNotOhwUser"]) {
     _people = [appDelegate userFriendsNotOhwUser];
   } else if ([_viewType isEqualToString:@"usersAtLocation"]) {
@@ -73,7 +73,6 @@
 {
   id person = [_people objectAtIndex:indexPath.row];
   ProviderFriend* providerFriend = nil;
-  NSLog(@"%@", [person description]);
   if ([person isKindOfClass:[UserProviderFriend class]]) {
     UserProviderFriend* userProviderFriend = person;
     providerFriend = userProviderFriend.providerFriend;

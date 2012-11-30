@@ -27,7 +27,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize loginViewController = _loginViewController;
 @synthesize baseUrl = _baseUrl;
 @synthesize manager = _manager;
-@synthesize user = _user;
+@synthesize loggedInUser = _loggedInUser;
 @synthesize authToken = _authToken;
 @synthesize location = _location;
 @synthesize placeMark = _placeMark;
@@ -91,21 +91,21 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
   @try {
     if ([objectLoader.userData isEqualToString:@"userProviderFriends"]) {
-      _user.userUserProviderFriends = nil;
+      _loggedInUser.userUserProviderFriends = nil;
       for (UserProviderFriend *userProviderFriend in objects) {
-        [_user addUserUserProviderFriendsObject:userProviderFriend];
+        [_loggedInUser addUserUserProviderFriendsObject:userProviderFriend];
       }
       [self saveContext];
     } else if ([objectLoader.userData isEqualToString:@"notificatioContactDetails"]) {
-      _user.userNotificationContactDetails = nil;
+      _loggedInUser.userNotificationContactDetails = nil;
       for (NotificationContactDetail* notificationContactDetail in objects) {
-        [_user addUserNotificationContactDetailsObject:notificationContactDetail];
+        [_loggedInUser addUserNotificationContactDetailsObject:notificationContactDetail];
       }
       [self saveContext];
     } else if ([objectLoader.userData isEqualToString:@"userLocations"]) {
-      _user.userUserLocations = nil;
+      _loggedInUser.userUserLocations = nil;
       for (UserLocation* userLocation in objects) {
-        [_user addUserUserLocationsObject:userLocation];
+        [_loggedInUser addUserUserLocationsObject:userLocation];
       }
       [self saveContext];
     } else {
@@ -120,8 +120,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
         _authToken = [json valueForKey:@"auth_token"];
         if (objects.count > 0) {
-          _user = [objects objectAtIndex:0];
-          if (_user.userUserProviderFriends.count == 0) {
+          _loggedInUser = [objects objectAtIndex:0];
+          if (_loggedInUser.userUserProviderFriends.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
             [params setValue:@"auth_token" forKey: [self authToken]];
             [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/users/import_facebook_friends" usingBlock:^(RKObjectLoader *loader) {
@@ -132,7 +132,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
             }];
           }
           
-          if (_user.userNotificationContactDetails.count == 0) {
+          if (_loggedInUser.userNotificationContactDetails.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
             [params setValue:@"auth_token" forKey:_authToken];
             [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/users/notification_contact_details" usingBlock:^(RKObjectLoader *loader) {
@@ -143,7 +143,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
             }];
           }
           
-          if (_user.userUserLocations.count == 0) {
+          if (_loggedInUser.userUserLocations.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
             [params setValue:@"auth_token" forKey:_authToken];
             [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
@@ -288,7 +288,18 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [notificatioContactDetailMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   notificatioContactDetailMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:notificatioContactDetailMapping withRootKeyPath:@"notification_contact_details.notification_contact_detail"];
-
+  
+  RKManagedObjectMapping *userFriendMapping = [RKManagedObjectMapping mappingForClass:[UserFriend class] inManagedObjectStore:_manager.objectStore];
+  [userFriendMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [userFriendMapping mapKeyPath:@"friend_id" toAttribute:@"friendId"];
+  [userFriendMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [userFriendMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [userFriendMapping mapKeyPath:@"send_sms" toAttribute:@"sendSms"];
+  [userFriendMapping mapKeyPath:@"sendE_email" toAttribute:@"sendEmail"];
+  [userFriendMapping mapKeyPath:@"phone" toAttribute:@"phone"];
+  [userFriendMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  userFriendMapping.primaryKeyAttribute = @"externalId";
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userFriendMapping withRootKeyPath:@"user_friend"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
@@ -306,10 +317,10 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
        startForMeWithCompletionHandler:^(FBRequestConnection *connection,
                                          NSDictionary<FBGraphUser> *fbUser,
                                          NSError *error) {
-         if (_user == nil && !error) {
+         if (_loggedInUser == nil && !error) {
            [_manager.client setValue:session.appID forHTTPHeaderField:@"X-APP-ID"]; //TODO this needs to be an https call
-           _user = [ModelHelper getFacebookUser:fbUser];
-           [[RKObjectManager sharedManager] postObject:_user delegate:self];
+           _loggedInUser = [ModelHelper getFacebookUser:fbUser];
+           [[RKObjectManager sharedManager] postObject:_loggedInUser delegate:self];
          }
        }];
       

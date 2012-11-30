@@ -19,6 +19,7 @@
 @synthesize cityLabel = _cityLabel;
 @synthesize tableView = _tableView;
 @synthesize firstCheckinNotifcation = _firstCheckinNotifcation;
+@synthesize selectedUserLocation = _selectedUserLocation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,21 +47,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  User *user = [appDelegate user];
+  User *user = [appDelegate loggedInUser];
   if ([user.completedFirstCheckin intValue] == 1) {
     [_firstCheckinNotifcation removeFromSuperview];
   } else {
     
   }
-  UserLocation *lastLocation = [appDelegate userLocation];
-  _cityLabel.text = [[NSArray arrayWithObjects:@"Congrats you made it to", lastLocation.name, nil] componentsJoinedByString:@" "];
+  UserLocation* lastUserLocation = (_selectedUserLocation == nil) ? [ModelHelper getLastUserLocation:user] : _selectedUserLocation;
+  _cityLabel.text = [[NSArray arrayWithObjects:@"Congrats you made it to", lastUserLocation.name, nil] componentsJoinedByString:@" "];
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-  _dateLabel.text = [dateFormatter stringFromDate:lastLocation.createdAt];
+  _dateLabel.text = [dateFormatter stringFromDate:lastUserLocation.createdAt];
   
   NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
   [params setValue:@"auth_token" forKey: [appDelegate authToken]];
-  NSString *url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_not_ohw_user", lastLocation.externalId];
+  NSString *url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_not_ohw_user", lastUserLocation.externalId];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodGET;
     loader.userData = @"userFriendsNotOhwUser";
@@ -68,7 +69,7 @@
     loader.delegate = self;
   }];
   
-  url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_ohw_user", lastLocation.externalId];
+  url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_ohw_user", lastUserLocation.externalId];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodGET;
     loader.userData = @"userFriendsOhwUser";
@@ -103,7 +104,7 @@
    nil];
   [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"users"];
   
-  url = [NSString stringWithFormat:@"/api/user_locations/%@/users_at_location", lastLocation.externalId];
+  url = [NSString stringWithFormat:@"/api/user_locations/%@/users_at_location", lastUserLocation.externalId];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodGET;
     loader.userData = @"usersAtLocation";
