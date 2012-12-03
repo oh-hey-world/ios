@@ -108,7 +108,7 @@
         <attribute name="externalUserId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="failedAppDeauthorized" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="failedPostDeauthorized" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="failedToke" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="failedToken" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
@@ -133,6 +133,7 @@
     <entity name="UserProviderFriend" representedClassName="UserProviderFriend" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="following" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="providerFriendId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -144,9 +145,9 @@
         <element name="NotificationContactDetail" positionX="-72" positionY="342" width="128" height="180"/>
         <element name="ProviderFriend" positionX="531" positionY="246" width="128" height="240"/>
         <element name="User" positionX="-72" positionY="-204" width="128" height="478"/>
-        <element name="UserLocation" positionX="441" positionY="-54" width="128" height="255"/>
-        <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="433"/>
-        <element name="UserProviderFriend" positionX="151" positionY="-18" width="128" height="150"/>
         <element name="UserFriend" positionX="241" positionY="-270" width="128" height="193"/>
+        <element name="UserLocation" positionX="441" positionY="-54" width="128" height="255"/>
+        <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="435"/>
+        <element name="UserProviderFriend" positionX="151" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

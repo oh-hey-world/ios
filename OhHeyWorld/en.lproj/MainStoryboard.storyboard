@@ -96,19 +96,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MsY-ft-s5k">
-                                <rect key="frame" x="104" y="48" width="196" height="21"/>
+                                <rect key="frame" x="104" y="39" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" id="qRU-wo-Wp1">
-                                <rect key="frame" x="36" y="29" width="60" height="60"/>
+                                <rect key="frame" x="36" y="20" width="60" height="60"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JXP-N9-Rxs">
-                                <rect key="frame" x="20" y="129" width="280" height="44"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Facebook Profile">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="180" y="97" width="120" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="FB Profile">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -119,14 +120,30 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="kou-KM-8I2">
-                                <rect key="frame" x="20" y="180" width="280" height="175"/>
+                                <rect key="frame" x="20" y="146" width="280" height="175"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dWZ-5F-5QF">
+                                <rect key="frame" x="36" y="97" width="120" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="button-follow.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="followUser:" destination="BcO-vM-feq" eventType="touchUpInside" id="nmo-QB-U4k"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.92894616789999995" alpha="0.93000000000000005" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Eu8-YY-VCp"/>
                     <connections>
+                        <outlet property="followButton" destination="dWZ-5F-5QF" id="lGa-gb-kFE"/>
                         <outlet property="mapView" destination="kou-KM-8I2" id="dLC-eg-aUy"/>
                         <outlet property="userImage" destination="qRU-wo-Wp1" id="S6x-nF-f91"/>
                         <outlet property="userNameLabel" destination="MsY-ft-s5k" id="bT0-T4-3FN"/>
@@ -691,7 +708,9 @@
         <class className="OHWProviderFriendViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWProviderFriendViewController.h"/>
             <relationships>
+                <relationship kind="action" name="followUser:"/>
                 <relationship kind="action" name="openWebView:"/>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>

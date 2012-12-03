@@ -2,7 +2,7 @@
 //  UserProvider.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/23/12.
+//  Created by Eric Roland on 12/3/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSNumber * externalUserId;
 @property (nonatomic, retain) NSNumber * failedAppDeauthorized;
 @property (nonatomic, retain) NSNumber * failedPostDeauthorized;
-@property (nonatomic, retain) NSNumber * failedToke;
+@property (nonatomic, retain) NSNumber * failedToken;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * fullName;
 @property (nonatomic, retain) NSString * gender;

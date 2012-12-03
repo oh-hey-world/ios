@@ -19,10 +19,45 @@
 @synthesize userNameLabel = _userNameLabel;
 @synthesize location = _location;
 @synthesize webViewButton = _webViewButton;
+@synthesize userProviderFriend = _userProviderFriend;
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
+  NSLog(@"%@", error);
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+}
+
+- (IBAction)followUser:(id)sender {
+  if ([_userProviderFriend.following boolValue] == YES) {
+    _userProviderFriend.following = [NSNumber numberWithBool:NO];
+    [_followButton setImage:[UIImage imageNamed:@"button-follow.png"] forState:UIControlStateNormal];
+  } else {
+    _userProviderFriend.following = [NSNumber numberWithBool:YES];
+    [_followButton setImage:[UIImage imageNamed:@"button-unfollow.png"] forState:UIControlStateNormal];
+  }  
+  
+  RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserProviderFriend class]];
+  NSError* error = nil;
+  NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:_userProviderFriend mapping:serializationMapping] serializedObject:&error];
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+  [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+  [[RKObjectManager sharedManager] putObject:_userProviderFriend usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodPUT;
+    loader.params = params;
+    loader.delegate = self;
+  }];
+}
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  ProviderFriend *providerFriend = [appDelegate userProviderFriend].providerFriend;
+  _userProviderFriend = [appDelegate userProviderFriend];
+  
+  if ([_userProviderFriend.following boolValue] == YES) {
+    [_followButton setImage:[UIImage imageNamed:@"button-unfollow.png"] forState:UIControlStateNormal];
+  }
+  
+  ProviderFriend *providerFriend = _userProviderFriend.providerFriend;
   _userNameLabel.text = providerFriend.fullName;
   NSString *url = [providerFriend.pictureUrl stringByAppendingString:@"?type=large"];
   [_userImage setImageWithURL:[NSURL URLWithString:url]

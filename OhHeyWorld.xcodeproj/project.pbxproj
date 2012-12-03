@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		07047DD1166CFB4600DD6741 /* button-unfollow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07047DCF166CFB4600DD6741 /* button-unfollow.png */; };
 		07047DD2166CFB4600DD6741 /* button-unfollow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */; };
+		07047DD5166D276400DD6741 /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07047DD4166D276400DD6741 /* UserProviderFriend.m */; };
+		07047DD8166D2DF200DD6741 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07047DD7166D2DF200DD6741 /* UserProvider.m */; };
 		071385DA1623122200936674 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D81623122200936674 /* CoreData.framework */; };
 		071385DB1623122200936674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D91623122200936674 /* CoreLocation.framework */; };
 		071385E01623135100936674 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385DF1623135100936674 /* AddressBook.framework */; };
@@ -160,8 +162,6 @@
 		079CD8901635CF0E002F594A /* OHWCheckedinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CD88F1635CF0E002F594A /* OHWCheckedinViewController.m */; };
 		07C9A2081636DFCF007323CC /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2071636DFCF007323CC /* UserLocation.m */; };
 		07C9A20E1636DFD0007323CC /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A20D1636DFD0007323CC /* Location.m */; };
-		07C9A2111636DFD0007323CC /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2101636DFD0007323CC /* UserProvider.m */; };
-		07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A2131636DFD0007323CC /* UserProviderFriend.m */; };
 		07C9A22C16382DB2007323CC /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07C9A22B16382DB2007323CC /* placeholder.gif */; };
 		07C9A257163ED36A007323CC /* NotificationContactDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C9A256163ED36A007323CC /* NotificationContactDetail.m */; };
 		07E0637F165160D7009288C9 /* OHWProviderFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E0637E165160D7009288C9 /* OHWProviderFriendViewController.m */; };
@@ -225,6 +225,10 @@
 /* Begin PBXFileReference section */
 		07047DCF166CFB4600DD6741 /* button-unfollow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-unfollow.png"; sourceTree = "<group>"; };
 		07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-unfollow@2x.png"; sourceTree = "<group>"; };
+		07047DD3166D276400DD6741 /* UserProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProviderFriend.h; sourceTree = "<group>"; };
+		07047DD4166D276400DD6741 /* UserProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProviderFriend.m; sourceTree = "<group>"; };
+		07047DD6166D2DF200DD6741 /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
+		07047DD7166D2DF200DD6741 /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
 		071385D81623122200936674 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		071385D91623122200936674 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		071385DF1623135100936674 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -400,10 +404,6 @@
 		07C9A2071636DFCF007323CC /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
 		07C9A20C1636DFD0007323CC /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		07C9A20D1636DFD0007323CC /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		07C9A20F1636DFD0007323CC /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
-		07C9A2101636DFD0007323CC /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
-		07C9A2121636DFD0007323CC /* UserProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProviderFriend.h; sourceTree = "<group>"; };
-		07C9A2131636DFD0007323CC /* UserProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProviderFriend.m; sourceTree = "<group>"; };
 		07C9A22B16382DB2007323CC /* placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeholder.gif; sourceTree = "<group>"; };
 		07C9A255163ED36A007323CC /* NotificationContactDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationContactDetail.h; sourceTree = "<group>"; };
 		07C9A256163ED36A007323CC /* NotificationContactDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationContactDetail.m; sourceTree = "<group>"; };
@@ -696,6 +696,10 @@
 			isa = PBXGroup;
 			children = (
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
+				07047DD6166D2DF200DD6741 /* UserProvider.h */,
+				07047DD7166D2DF200DD6741 /* UserProvider.m */,
+				07047DD3166D276400DD6741 /* UserProviderFriend.h */,
+				07047DD4166D276400DD6741 /* UserProviderFriend.m */,
 				07941C031666744C00B15846 /* UserFriend.h */,
 				07941C041666744D00B15846 /* UserFriend.m */,
 				07941C0016666EEC00B15846 /* User.h */,
@@ -704,10 +708,6 @@
 				077CC3A31652D86C00E1D988 /* ProviderFriend.m */,
 				07C9A255163ED36A007323CC /* NotificationContactDetail.h */,
 				07C9A256163ED36A007323CC /* NotificationContactDetail.m */,
-				07C9A2121636DFD0007323CC /* UserProviderFriend.h */,
-				07C9A2131636DFD0007323CC /* UserProviderFriend.m */,
-				07C9A20F1636DFD0007323CC /* UserProvider.h */,
-				07C9A2101636DFD0007323CC /* UserProvider.m */,
 				07C9A20C1636DFD0007323CC /* Location.h */,
 				07C9A20D1636DFD0007323CC /* Location.m */,
 				07C9A2061636DFCF007323CC /* UserLocation.h */,
@@ -1047,8 +1047,6 @@
 				07833A101635E8C7003DF2FA /* CoreDataHelper.m in Sources */,
 				07C9A2081636DFCF007323CC /* UserLocation.m in Sources */,
 				07C9A20E1636DFD0007323CC /* Location.m in Sources */,
-				07C9A2111636DFD0007323CC /* UserProvider.m in Sources */,
-				07C9A2141636DFD0007323CC /* UserProviderFriend.m in Sources */,
 				07C9A257163ED36A007323CC /* NotificationContactDetail.m in Sources */,
 				07E0637F165160D7009288C9 /* OHWProviderFriendViewController.m in Sources */,
 				07E063A616518F75009288C9 /* Globals.m in Sources */,
@@ -1059,6 +1057,8 @@
 				07941BF81665577B00B15846 /* TransparentToolbar.m in Sources */,
 				07941C0216666EEC00B15846 /* User.m in Sources */,
 				07941C051666744D00B15846 /* UserFriend.m in Sources */,
+				07047DD5166D276400DD6741 /* UserProviderFriend.m in Sources */,
+				07047DD8166D2DF200DD6741 /* UserProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

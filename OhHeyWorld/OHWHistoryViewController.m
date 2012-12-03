@@ -102,6 +102,7 @@
     
     UIImage *image = [UIImage imageWithData:imageData];
     _profilePicture.image = image;
+  } else {
     
   }
   
@@ -140,7 +141,6 @@
       loader.delegate = self;
     }];
   } else {
-    NSLog(@"%@ %@ %@", _userFriend.externalId, _userFriend.userId, _userFriend.friendId);
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:nil];
     [params setValue:@"auth_token" forKey: [appDelegate authToken]];
     [[RKObjectManager sharedManager] deleteObject:_userFriend usingBlock:^(RKObjectLoader *loader) {

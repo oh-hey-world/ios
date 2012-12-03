@@ -130,7 +130,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
           if (_loggedInUser.userUserProviderFriends.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
             [params setValue:@"auth_token" forKey: [self authToken]];
-            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/users/import_facebook_friends" usingBlock:^(RKObjectLoader *loader) {
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_provider_friends" usingBlock:^(RKObjectLoader *loader) {
               loader.method = RKRequestMethodGET;
               loader.userData = @"userProviderFriends";
               loader.params = params;
@@ -288,6 +288,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userProviderFriendMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
   [userProviderFriendMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
   [userProviderFriendMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [userProviderFriendMapping mapKeyPath:@"following" toAttribute:@"following"];
   [userProviderFriendMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   userProviderFriendMapping.primaryKeyAttribute = @"externalId";
   [userProviderFriendMapping mapKeyPath:@"provider_friend" toRelationship:@"providerFriend" withMapping:providerFriendMapping];
@@ -319,9 +320,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userFriendMapping withRootKeyPath:@"user_friends.user_friend"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
+  
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
   
-  [router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
+  //[router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
+  
+  [router routeClass:[UserProviderFriend class] toResourcePath:@"/api/user_provider_friends/:externalId" forMethod:RKRequestMethodPUT];
   
   [router routeClass:[UserFriend class] toResourcePath:@"/api/user_friends/:externalId" forMethod:RKRequestMethodDELETE];
 }

@@ -13,14 +13,17 @@
 #import "ProviderFriend.h"
 #import "OHWProviderFriendWebViewController.h"
 
-@interface OHWProviderFriendViewController : UIViewController <MKMapViewDelegate>
+@interface OHWProviderFriendViewController : UIViewController <MKMapViewDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, retain) IBOutlet UILabel *userNameLabel;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet UIImageView *userImage;
 @property (nonatomic, retain) Location *location;
 @property (nonatomic, retain) IBOutlet UIButton *webViewButton;
+@property (strong, nonatomic) IBOutlet UIButton *followButton;
+@property (strong, nonatomic) UserProviderFriend *userProviderFriend;
 
+- (IBAction)followUser:(id)sender;
 - (IBAction)openWebView:(id)sender;
 
 @end

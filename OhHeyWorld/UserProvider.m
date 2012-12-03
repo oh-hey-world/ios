@@ -2,7 +2,7 @@
 //  UserProvider.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/23/12.
+//  Created by Eric Roland on 12/3/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -17,7 +17,7 @@
 @dynamic externalUserId;
 @dynamic failedAppDeauthorized;
 @dynamic failedPostDeauthorized;
-@dynamic failedToke;
+@dynamic failedToken;
 @dynamic firstName;
 @dynamic fullName;
 @dynamic gender;
