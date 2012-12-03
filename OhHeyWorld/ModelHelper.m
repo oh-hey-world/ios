@@ -126,4 +126,9 @@
   return [CoreDataHelper searchObjectsInContext:@"UserLocation" :predicate :@"createdAt" :NO :[appDelegate managedObjectContext]];
 }
 
++ (UserFriend*)getUserFriend:(User*)user:(User*)friend {
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@ AND friendId == %@", user.externalId, friend.externalId];
+  return [UserFriend findFirstWithPredicate:predicate sortedBy:nil ascending:NO];
+}
+
 @end

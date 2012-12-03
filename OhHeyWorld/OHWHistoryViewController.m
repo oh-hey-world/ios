@@ -18,6 +18,8 @@
 @synthesize collectionView = _collectionView;
 @synthesize location = _location;
 @synthesize user = _user;
+@synthesize loggedInUser = _loggedInUser;
+@synthesize userFriend = _userFriend;
 @synthesize nameLabel = _nameLabel;
 @synthesize locationLabel = _locationLabel;
 @synthesize followButton = _followButton;
@@ -32,29 +34,40 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  NSLog(@"%@", objectLoader.response.bodyAsString);
-  UserLocation *userLocation = [objects objectAtIndex:0];
-  userLocation.user = _user;
-  userLocation.userId = _user.externalId;
-  userLocation.locationId = _location.externalId;
-  userLocation.location = _location;
-  
-  //NSLog(@"%@", userLocation.customMessage);
-  
-  if (userLocation.externalId != nil) {
+  if (objectLoader.isDELETE) {
+    [[appDelegate managedObjectContext] deleteObject:_userFriend];
     [appDelegate saveContext];
+    _userFriend = nil;
+  } else {
+    _userFriend = [objects objectAtIndex:0];
+    _userFriend.user = _user;
+    _userFriend.userId = _user.externalId;
+    if ([_selectedModel isKindOfClass:[User class]]) {
+      User *friend = (User*)_selectedModel;
+      _userFriend.friend = friend;
+      _userFriend.friendId = friend.externalId;
+    }
+    
+    if (_userFriend.externalId != nil) {
+      [appDelegate saveContext];
+    }
+    _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
   }
   
+  /*
   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
   NSMutableArray* userLocations = [CoreDataHelper searchObjectsInContext:@"UserLocation" :predicate :nil :NO :[appDelegate managedObjectContext]];
   UserLocation *zeroUserLocation = [userLocations objectAtIndex:0];
   if (zeroUserLocation != nil) {
     [ModelHelper deleteObject:zeroUserLocation];
   }
+  */
 }
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  
+  _loggedInUser = [appDelegate loggedInUser];
   
   if (_selectedModel == nil) {
     _selectedModel = [appDelegate loggedInUser];
@@ -62,6 +75,12 @@
   
   if ([_selectedModel isKindOfClass:[User class]]) {
     _user = _selectedModel;
+    
+    _userFriend = [ModelHelper getUserFriend:_loggedInUser :_user];
+    if (_userFriend != nil) {
+      _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
+    }
+    
     _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
     
     if (_user.blurb != nil && _user.blurb.length > 0) {
@@ -105,21 +124,31 @@
 }
 
 - (IBAction)followUser:(id)sender {
-  UserFriend* userFriend = [UserFriend object];
-  userFriend.user = _user;
-  userFriend.userId = _user.externalId;
-  userFriend.friendId = _location.externalId;
+  if (_userFriend == nil) {
+    UserFriend* userFriend = [UserFriend object];
+    userFriend.userId = _loggedInUser.externalId;
+    userFriend.friendId = _user.externalId;
 
-  RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserFriend class]];
-  NSError* error = nil;
-  NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userFriend mapping:serializationMapping] serializedObject:&error];
-  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-  [params setValue:@"auth_token" forKey: [appDelegate authToken]];
-  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_friends" usingBlock:^(RKObjectLoader *loader) {
-    loader.method = RKRequestMethodPOST;
-    loader.params = params;
-    loader.delegate = self;
-  }];
+    RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserFriend class]];
+    NSError* error = nil;
+    NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userFriend mapping:serializationMapping] serializedObject:&error];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+    [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_friends" usingBlock:^(RKObjectLoader *loader) {
+      loader.method = RKRequestMethodPOST;
+      loader.params = params;
+      loader.delegate = self;
+    }];
+  } else {
+    NSLog(@"%@ %@ %@", _userFriend.externalId, _userFriend.userId, _userFriend.friendId);
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:nil];
+    [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+    [[RKObjectManager sharedManager] deleteObject:_userFriend usingBlock:^(RKObjectLoader *loader) {
+      loader.method = RKRequestMethodDELETE;
+      loader.params = params;
+      loader.delegate = self;
+    }];
+  }
 }
 
 - (IBAction)sendMessage:(id)sender {

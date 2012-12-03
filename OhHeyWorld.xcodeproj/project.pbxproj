@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07047DD1166CFB4600DD6741 /* button-unfollow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07047DCF166CFB4600DD6741 /* button-unfollow.png */; };
+		07047DD2166CFB4600DD6741 /* button-unfollow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */; };
 		071385DA1623122200936674 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D81623122200936674 /* CoreData.framework */; };
 		071385DB1623122200936674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D91623122200936674 /* CoreLocation.framework */; };
 		071385E01623135100936674 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385DF1623135100936674 /* AddressBook.framework */; };
@@ -221,6 +223,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07047DCF166CFB4600DD6741 /* button-unfollow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-unfollow.png"; sourceTree = "<group>"; };
+		07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-unfollow@2x.png"; sourceTree = "<group>"; };
 		071385D81623122200936674 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		071385D91623122200936674 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		071385DF1623135100936674 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -460,6 +464,8 @@
 		07141ADF16230B37001C346A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				07047DCF166CFB4600DD6741 /* button-unfollow.png */,
+				07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */,
 				07941BFB16664EA200B15846 /* splash_screen.png */,
 				07941B3E1664FCB300B15846 /* button-checkbox-active.png */,
 				07941B3F1664FCB300B15846 /* button-checkbox-active@2x.png */,
@@ -975,6 +981,8 @@
 				07941BF01664FCB300B15846 /* title-profile.png in Resources */,
 				07941BF11664FCB300B15846 /* title-profile@2x.png in Resources */,
 				07941BFC16664EA700B15846 /* splash_screen.png in Resources */,
+				07047DD1166CFB4600DD6741 /* button-unfollow.png in Resources */,
+				07047DD2166CFB4600DD6741 /* button-unfollow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1220,7 +1228,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C5A13018-0B12-47DF-9B4F-AD83838DC314";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "42336911-FE64-4EA8-9C4D-3C93715268F5";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};

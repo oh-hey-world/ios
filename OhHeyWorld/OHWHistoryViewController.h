@@ -20,6 +20,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *friendsViewButton;
 @property (nonatomic, retain) Location *location;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) User *loggedInUser;
+@property (nonatomic, retain) UserFriend *userFriend;
 @property (nonatomic, retain) UILabel *nameLabel;
 @property (nonatomic, retain) UILabel *locationLabel;
 @property (nonatomic, retain) id selectedModel;

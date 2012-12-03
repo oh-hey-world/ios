@@ -108,6 +108,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [_loggedInUser addUserUserLocationsObject:userLocation];
       }
       [self saveContext];
+    } else if ([objectLoader.userData isEqualToString:@"userFriends"]) {
+      _loggedInUser.userFriends = nil;
+      for (UserFriend* userFriend in objects) {
+        [_loggedInUser addUserFriendsObject:userFriend];
+      }
+      [self saveContext];
     } else {
       NSError *jsonParsingError = nil;
       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
@@ -149,6 +155,17 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
             [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
               loader.method = RKRequestMethodGET;
               loader.userData = @"userLocations";
+              loader.params = params;
+              loader.delegate = self;
+            }];
+          }
+          
+          if (_loggedInUser.userFriends.count == 0) {
+            NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+            [params setValue:@"auth_token" forKey:_authToken];
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_friends" usingBlock:^(RKObjectLoader *loader) {
+              loader.method = RKRequestMethodGET;
+              loader.userData = @"userFriends";
               loader.params = params;
               loader.delegate = self;
             }];
@@ -295,16 +312,18 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userFriendMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
   [userFriendMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
   [userFriendMapping mapKeyPath:@"send_sms" toAttribute:@"sendSms"];
-  [userFriendMapping mapKeyPath:@"sendE_email" toAttribute:@"sendEmail"];
+  [userFriendMapping mapKeyPath:@"send_email" toAttribute:@"sendEmail"];
   [userFriendMapping mapKeyPath:@"phone" toAttribute:@"phone"];
   [userFriendMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   userFriendMapping.primaryKeyAttribute = @"externalId";
-  [[RKObjectManager sharedManager].mappingProvider registerMapping:userFriendMapping withRootKeyPath:@"user_friend"];
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userFriendMapping withRootKeyPath:@"user_friends.user_friend"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
   
   [router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
+  
+  [router routeClass:[UserFriend class] toResourcePath:@"/api/user_friends/:externalId" forMethod:RKRequestMethodDELETE];
 }
 
 - (void)sessionStateChanged:(FBSession *)session

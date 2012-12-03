@@ -19,5 +19,6 @@
 + (UserLocation*)getLastUserLocation:(User*)user;
 + (NSArray*)getUserProviderFriends:(User*)user;
 + (NSArray*)getUserLocations:(User*)user;
++ (UserFriend*)getUserFriend:(User*)user:(User*)friend;
 
 @end
