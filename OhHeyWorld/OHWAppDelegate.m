@@ -423,8 +423,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-  //[self.navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics: UIBarMetricsDefault];
-  [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics:UIBarMetricsDefault];
   if (_baseUrl == nil) {
     _baseUrl = [NSURL URLWithString:kAPIBaseUrl];
     [self setupRK];
@@ -437,6 +435,14 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  /*
+  self.viewController = [[JASidePanelController alloc] init];
+  self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
+  UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+  self.viewController.leftPanel = [storyboard instantiateViewControllerWithIdentifier:@"LeftView"];
+	self.viewController.centerPanel = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
+  self.window.rootViewController = self.viewController;
+  */
   return YES;
 }
 

@@ -1,5 +1,5 @@
 //
-//  OHWBaseViewController.h
+//  OHWLeftViewController.h
 //  OhHeyWorld
 //
 //  Created by Eric Roland on 12/4/12.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UITabBarController+HideTabBar.h"
 
-@interface OHWBaseViewController : UIViewController
+@interface OHWLeftViewController : UIViewController
 
 @end
