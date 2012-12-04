@@ -21,16 +21,23 @@
             </objects>
             <point key="canvasLocation" x="524" y="180"/>
         </scene>
-        <!--View Controller-->
+        <!--People View Controller-->
         <scene sceneID="kKv-yM-olO">
             <objects>
-                <viewController id="FUn-vj-56B" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2jq-Eo-kbe">
+                <viewController storyboardIdentifier="FriendsView" id="FUn-vj-56B" customClass="OHWPeopleViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2jq-Eo-kbe" customClass="KKGridView">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="FUn-vj-56B" id="fdo-Ck-X5e"/>
+                            <outlet property="delegate" destination="FUn-vj-56B" id="rZP-7N-M7i"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="0Us-nV-O2F"/>
+                    <connections>
+                        <outlet property="gridView" destination="2jq-Eo-kbe" id="77W-jh-yJT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNU-Nm-FZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,10 +233,100 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="hb5-0R-Yo3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu-bg.png" id="hb5-0R-Yo3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yMe-PZ-EdS">
+                                <rect key="frame" x="55" y="265" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="Yea-9h-oVv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hP5-Qi-m7J">
+                                <rect key="frame" x="55" y="218" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Find Friends">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="Wnc-kM-fmQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mcx-uc-YRO">
+                                <rect key="frame" x="55" y="166" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Friends">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="ocN-rJ-qUT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fB7-La-Z0v">
+                                <rect key="frame" x="55" y="119" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="My Profile">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="0Fh-yD-nZ6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ifD-ug-XZB">
+                                <rect key="frame" x="55" y="67" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Dashboard">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="J6U-O7-1yA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BbB-S0-GgQ">
+                                <rect key="frame" x="55" y="20" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Check In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="Mjs-oU-Hdz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -617,6 +714,7 @@
         <image name="button-checkin.png" width="227" height="46"/>
         <image name="button-follow.png" width="151" height="31"/>
         <image name="divider-horizontal.png" width="304" height="1"/>
+        <image name="menu-bg.png" width="320" height="568"/>
         <image name="text-travel-log.png" width="91" height="21"/>
     </resources>
     <classes>
@@ -687,12 +785,21 @@
         </class>
         <class className="OHWLeftViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLeftViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="navigate:"/>
+            </relationships>
         </class>
         <class className="OHWLoginViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="performLogin:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="OHWPeopleViewController" superclassName="OHWBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWPeopleViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
             </relationships>
         </class>
         <class className="OHWProviderFriendViewController" superclassName="OHWBaseViewController">

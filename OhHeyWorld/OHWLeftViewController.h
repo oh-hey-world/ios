@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OHWAppDelegate.h"
 
 @interface OHWLeftViewController : UIViewController
+
+- (IBAction)navigate:(id)sender;
 
 @end

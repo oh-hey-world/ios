@@ -23,6 +23,40 @@
     return self;
 }
 
+- (IBAction)navigate:(id)sender {
+  NSString *viewName = nil;
+  NSInteger tag = ((UIButton*)sender).tag;
+  switch (tag) {
+    case 0:
+      viewName = @"CheckinView";
+      break;
+    case 1:
+      viewName = nil;
+      break;
+    case 2:
+      viewName = @"HistoryView";
+      break;
+    case 3:
+      viewName = @"FriendsView";
+      break;
+    case 4:
+      viewName = nil;
+      break;
+    case 5:
+      viewName = nil;
+      break;
+    default:
+      break;
+  }
+  
+  //TODO remove check after i have implemented the views
+  if (viewName != nil) {
+    UIViewController *centerController = [self.storyboard instantiateViewControllerWithIdentifier:viewName];
+    self.viewDeckController.centerController = [[UINavigationController alloc]initWithRootViewController:centerController];
+    [self.viewDeckController toggleLeftViewAnimated:YES];
+  }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
