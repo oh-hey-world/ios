@@ -10,6 +10,9 @@
 		0700DA54166E4E060054089E /* OHWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0700DA53166E4E060054089E /* OHWBaseViewController.m */; };
 		0700DA5E166E636F0054089E /* UITabBarController+HideTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0700DA5D166E636F0054089E /* UITabBarController+HideTabBar.m */; };
 		0700DA6B166E75BC0054089E /* OHWLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0700DA6A166E75BC0054089E /* OHWLeftViewController.m */; };
+		0700DA8A166E8D010054089E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6991624669500D8BDA7 /* QuartzCore.framework */; };
+		0700DAA1166E8DBE0054089E /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0700DA9E166E8DBE0054089E /* IIViewDeckController.m */; };
+		0700DAA2166E8DBE0054089E /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0700DAA0166E8DBE0054089E /* WrapController.m */; };
 		07047DD1166CFB4600DD6741 /* button-unfollow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07047DCF166CFB4600DD6741 /* button-unfollow.png */; };
 		07047DD2166CFB4600DD6741 /* button-unfollow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */; };
 		07047DD5166D276400DD6741 /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07047DD4166D276400DD6741 /* UserProviderFriend.m */; };
@@ -53,7 +56,6 @@
 		0775F69C1624669500D8BDA7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6961624669500D8BDA7 /* CFNetwork.framework */; };
 		0775F69D1624669500D8BDA7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6971624669500D8BDA7 /* libxml2.dylib */; };
 		0775F69E1624669500D8BDA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6981624669500D8BDA7 /* MobileCoreServices.framework */; };
-		0775F69F1624669500D8BDA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F6991624669500D8BDA7 /* QuartzCore.framework */; };
 		0775F6A01624669500D8BDA7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F69A1624669500D8BDA7 /* Security.framework */; };
 		0775F6A11624669500D8BDA7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0775F69B1624669500D8BDA7 /* SystemConfiguration.framework */; };
 		0775F6A5162470AF00D8BDA7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */; };
@@ -232,6 +234,10 @@
 		0700DA5D166E636F0054089E /* UITabBarController+HideTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+HideTabBar.m"; sourceTree = "<group>"; };
 		0700DA69166E75BC0054089E /* OHWLeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWLeftViewController.h; sourceTree = "<group>"; };
 		0700DA6A166E75BC0054089E /* OHWLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWLeftViewController.m; sourceTree = "<group>"; };
+		0700DA9D166E8DBE0054089E /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		0700DA9E166E8DBE0054089E /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		0700DA9F166E8DBE0054089E /* WrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapController.h; sourceTree = "<group>"; };
+		0700DAA0166E8DBE0054089E /* WrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrapController.m; sourceTree = "<group>"; };
 		07047DCF166CFB4600DD6741 /* button-unfollow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-unfollow.png"; sourceTree = "<group>"; };
 		07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-unfollow@2x.png"; sourceTree = "<group>"; };
 		07047DD3166D276400DD6741 /* UserProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProviderFriend.h; sourceTree = "<group>"; };
@@ -431,13 +437,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0700DA8A166E8D010054089E /* QuartzCore.framework in Frameworks */,
 				077CC3971651ABE100E1D988 /* ImageIO.framework in Frameworks */,
 				071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */,
 				0775FBD41624B77200D8BDA7 /* libRestKit.a in Frameworks */,
 				0775F69C1624669500D8BDA7 /* CFNetwork.framework in Frameworks */,
 				0775F69D1624669500D8BDA7 /* libxml2.dylib in Frameworks */,
 				0775F69E1624669500D8BDA7 /* MobileCoreServices.framework in Frameworks */,
-				0775F69F1624669500D8BDA7 /* QuartzCore.framework in Frameworks */,
 				0775F6A01624669500D8BDA7 /* Security.framework in Frameworks */,
 				0775F6A11624669500D8BDA7 /* SystemConfiguration.framework in Frameworks */,
 				071385E21623144800936674 /* MapKit.framework in Frameworks */,
@@ -470,6 +476,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0700DA9C166E8D920054089E /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				0700DA9D166E8DBE0054089E /* IIViewDeckController.h */,
+				0700DA9E166E8DBE0054089E /* IIViewDeckController.m */,
+				0700DA9F166E8DBE0054089E /* WrapController.h */,
+				0700DAA0166E8DBE0054089E /* WrapController.m */,
+			);
+			name = ViewDeck;
+			sourceTree = "<group>";
+		};
 		07141ADF16230B37001C346A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +593,7 @@
 		071C8602166800D000B86776 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				0700DA9C166E8D920054089E /* ViewDeck */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -1077,6 +1095,8 @@
 				0700DA54166E4E060054089E /* OHWBaseViewController.m in Sources */,
 				0700DA5E166E636F0054089E /* UITabBarController+HideTabBar.m in Sources */,
 				0700DA6B166E75BC0054089E /* OHWLeftViewController.m in Sources */,
+				0700DAA1166E8DBE0054089E /* IIViewDeckController.m in Sources */,
+				0700DAA2166E8DBE0054089E /* WrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,6 +43,12 @@
   
   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title-logo.png"]];
   self.navigationItem.titleView = img;
+  
+  /*
+  UIBarButtonItem *revealButton = [[UIBarButtonItem alloc]
+                                    initWithImage:[UIImage imageNamed:@"button-label-menu.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealSidebar:)];
+  self.navigationItem.leftBarButtonItem = revealButton;
+  */
 }
 
 #pragma mark -

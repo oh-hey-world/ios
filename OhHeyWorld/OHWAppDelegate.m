@@ -19,6 +19,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @implementation OHWAppDelegate
 
 @synthesize window = _window;
+@synthesize deckController = _deckController;
+@synthesize leftController = _leftController;
+@synthesize centerController = _centerController;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
@@ -435,14 +438,17 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  /*
-  self.viewController = [[JASidePanelController alloc] init];
-  self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
   UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-  self.viewController.leftPanel = [storyboard instantiateViewControllerWithIdentifier:@"LeftView"];
-	self.viewController.centerPanel = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
-  self.window.rootViewController = self.viewController;
-  */
+  UIViewController *centerController = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
+  self.centerController = [[UINavigationController alloc]initWithRootViewController:centerController];
+  
+  self.leftController = [storyboard instantiateViewControllerWithIdentifier:@"LeftView"];
+  
+  _deckController = [[IIViewDeckController alloc] init];
+  _deckController.centerController = self.centerController;
+  _deckController.leftController = self.leftController;
+  self.window.rootViewController = _deckController;
+
   return YES;
 }
 

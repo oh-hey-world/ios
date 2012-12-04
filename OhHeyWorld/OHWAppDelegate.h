@@ -30,6 +30,7 @@
 #import "GCPlaceholderTextView.h"
 #import "Globals.h"
 #import "TransparentToolbar.h"
+#import "IIViewDeckController.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 
@@ -39,6 +40,9 @@
 @interface OHWAppDelegate : UIResponder <UIApplicationDelegate, RKObjectLoaderDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UINavigationController *centerController;
+@property (strong, nonatomic) UIViewController *leftController;
+@property (strong, nonatomic) IIViewDeckController *deckController;
 @property (strong, nonatomic) UINavigationController *navController;
 @property (strong, nonatomic) OHWCheckinViewController *checkinViewController;
 @property (strong, nonatomic) OHWLoginViewController *loginViewController;

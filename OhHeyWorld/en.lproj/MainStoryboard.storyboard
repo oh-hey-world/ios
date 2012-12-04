@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Itj-uu-QqS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="15">
-            <objects>
-                <tabBarController id="4" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="5">
-                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Itj-uu-QqS" kind="relationship" relationship="viewControllers" id="TSy-Og-cDE"/>
-                        <segue destination="w2D-jI-Ucu" kind="relationship" relationship="viewControllers" id="Wro-Db-llw"/>
-                        <segue destination="IpM-UX-hlI" kind="relationship" relationship="viewControllers" id="a0A-sm-NbY"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="132" y="180"/>
-        </scene>
         <!--Navigation Controller - Friends-->
         <scene sceneID="YdY-Z0-pcc">
             <objects>
@@ -46,7 +26,7 @@
             <objects>
                 <viewController id="FUn-vj-56B" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2jq-Eo-kbe">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -185,7 +165,7 @@
             <objects>
                 <viewController storyboardIdentifier="CityCheckinView" title="Current Location" id="Pge-bN-hq2" customClass="OHWCityCheckinViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q6P-cW-lT4">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="28c-42-K2T">
@@ -422,11 +402,11 @@
             <objects>
                 <viewController storyboardIdentifier="CheckinView" title="Check In!" id="bJO-7w-svo" customClass="OHWCheckinViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OoJ-XK-KRt">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="R2W-Es-fc3">
-                                <rect key="frame" x="58" y="206" width="204" height="44"/>
+                                <rect key="frame" x="58" y="230" width="204" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Check In" image="button-checkin.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -440,12 +420,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="waj-fU-EUD">
-                                <rect key="frame" x="58" y="153" width="204" height="30"/>
+                                <rect key="frame" x="58" y="170" width="204" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Where are you today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rrx-3X-YOG">
-                                <rect key="frame" x="20" y="96" width="280" height="41"/>
+                                <rect key="frame" x="20" y="107" width="280" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -486,7 +466,7 @@
             <objects>
                 <viewController storyboardIdentifier="HistoryView" id="wWC-oR-XPw" customClass="OHWHistoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ee-Ds-Nz7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="smm-uz-VrV">

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "UITabBarController+HideTabBar.h"
+#import "IIViewDeckController.h"
 
 @interface OHWBaseViewController : UIViewController
+
+- (IBAction)revealSidebar:(UIBarButtonItem *)sender;
 
 @end
