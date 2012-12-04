@@ -15,7 +15,6 @@
 
 @implementation OHWHistoryViewController
 @synthesize userLocations = _userLocations;
-@synthesize collectionView = _collectionView;
 @synthesize location = _location;
 @synthesize user = _user;
 @synthesize loggedInUser = _loggedInUser;
@@ -88,8 +87,6 @@
     }
     
     _userLocations = [ModelHelper getUserLocations:_user];
-    
-    [_collectionView reloadData];
     
     UserLocation *userLocation = [ModelHelper getLastUserLocation:_user];
     _location = userLocation.location;

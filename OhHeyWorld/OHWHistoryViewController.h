@@ -16,7 +16,6 @@
 @interface OHWHistoryViewController : OHWBaseViewController <RKObjectLoaderDelegate, KKGridViewDataSource, KKGridViewDelegate>
 
 @property (nonatomic, retain) NSArray* userLocations;
-@property (nonatomic, retain) IBOutlet UICollectionView* collectionView;
 @property (nonatomic, retain) IBOutlet UIButton *friendsViewButton;
 @property (nonatomic, retain) Location *location;
 @property (nonatomic, retain) User *user;

@@ -16,6 +16,7 @@
 @implementation OHWPeopleViewController
 @synthesize people = _people;
 @synthesize viewType = _viewType;
+@synthesize gridView = _gridView;
 
 - (void)viewWillAppear:(BOOL)animated {
   User *user = [appDelegate loggedInUser];
@@ -28,7 +29,8 @@
   } else {
     _people = [ModelHelper getUserProviderFriends:user];
   }
-  //[self.tableView reloadData];
+  [_gridView reloadData];
+  [_gridView deselectAll:NO];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,6 +45,13 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  _gridView.scrollsToTop = YES;
+  _gridView.backgroundColor = [UIColor colorWithWhite:0.93 alpha:1.0];
+  _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+  _gridView.cellSize = CGSizeMake(90.f, 90.f);
+  _gridView.cellPadding = CGSizeMake(10.f, 10.f);
+  _gridView.allowsMultipleSelection = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,22 +60,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSUInteger)numberOfSectionsInGridView:(KKGridView *)gridView
 {
   return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSUInteger)gridView:(KKGridView *)gridView numberOfItemsInSection:(NSUInteger)section
 {
   return _people.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (KKGridViewCell *)gridView:(KKGridView *)gridView cellForItemAtIndexPath:(KKIndexPath *)indexPath
 {
-  id person = [_people objectAtIndex:indexPath.row];
+  id person = [_people objectAtIndex:indexPath.index];
   ProviderFriend* providerFriend = nil;
   if ([person isKindOfClass:[UserProviderFriend class]]) {
     UserProviderFriend* userProviderFriend = person;
@@ -75,36 +81,58 @@
     providerFriend = person;
   }
   static NSString *CellIdentifier = @"Cell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  KKGridViewCell *cell = [gridView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 240, 35)];
-    nameLabel.tag = 1;
-    [cell.contentView addSubview:nameLabel];
-    
-    UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(5,5,33,33)];
+    cell = [[KKGridViewCell alloc] initWithFrame:CGRectMake(0, 0, 92.f, 92.f) reuseIdentifier:CellIdentifier];
+
+    UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,92,92)];
     userImage.tag = 2;
     [cell.contentView addSubview:userImage];
+
+    UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-small.png"]];
+    CGRect frame = nameBar.frame;
+    nameBar.tag = 4;
+    frame.origin = CGPointMake(0, 70);
+    nameBar.frame = frame;
+    [cell.contentView insertSubview:nameBar aboveSubview:userImage];
+
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, 92.f, 11)];
+    nameLabel.tag = 1;
+    nameLabel.font = [nameLabel.font fontWithSize:10];
+    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.textAlignment = UITextAlignmentCenter;
+    [cell.contentView insertSubview:nameLabel aboveSubview:nameBar];
+
+    UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, 92.f, 11)];
+    locationLabel.tag = 3;
+    locationLabel.font = [locationLabel.font fontWithSize:7];
+    locationLabel.textColor = [UIColor whiteColor];
+    locationLabel.backgroundColor = [UIColor clearColor];
+    locationLabel.textAlignment = UITextAlignmentCenter;
+    [cell.contentView insertSubview:locationLabel aboveSubview:nameBar];
   }
   
+  NSString *url = [NSString stringWithFormat:@"%@?type=large", providerFriend.pictureUrl];
   UIImageView *userImage = (UIImageView*)[cell viewWithTag:2];
-  [userImage setImageWithURL:[NSURL URLWithString:providerFriend.pictureUrl]
-                 placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
+  [userImage setImageWithURL:[NSURL URLWithString:url]
+            placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
   
   UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
-  nameLabel.text = [NSString stringWithFormat:@"%@", providerFriend.fullName];
+  nameLabel.text = providerFriend.fullName;
+  
+  UILabel *locationLabel = (UILabel*)[cell viewWithTag:3];
+  locationLabel.text = providerFriend.location.address;
   
   return cell;
 }
 
 #pragma mark - view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)gridView:(KKGridView *)gridView didSelectItemAtIndexPath:(KKIndexPath *)indexPath
 {
-  [appDelegate setUserProviderFriend:[_people objectAtIndex:indexPath.row]];
+  [appDelegate setUserProviderFriend:[_people objectAtIndex:indexPath.index]];
   OHWProviderFriendViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderFriendView"];
   [self.navigationController pushViewController:controller animated:YES];
 }
-*/
 @end

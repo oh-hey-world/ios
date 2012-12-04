@@ -10,10 +10,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "OHWAppDelegate.h"
 #import "OHWProviderFriendViewController.h"
+#import <KKGridView/KKGridView.h>
 
-@interface OHWPeopleViewController : OHWBaseViewController
+@interface OHWPeopleViewController : OHWBaseViewController <KKGridViewDataSource, KKGridViewDelegate>
 
 @property (nonatomic, retain) NSArray* people;
 @property (nonatomic, retain) NSString* viewType;
+@property (strong, nonatomic) IBOutlet KKGridView *gridView;
 
 @end

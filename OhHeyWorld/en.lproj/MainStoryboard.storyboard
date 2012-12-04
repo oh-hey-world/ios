@@ -41,16 +41,23 @@
             </objects>
             <point key="canvasLocation" x="524" y="180"/>
         </scene>
-        <!--View Controller - Friends-->
+        <!--People View Controller - Friends-->
         <scene sceneID="kKv-yM-olO">
             <objects>
-                <viewController storyboardIdentifier="PeopleView" title="Friends" id="FUn-vj-56B" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2jq-Eo-kbe">
+                <viewController storyboardIdentifier="PeopleView" title="Friends" id="FUn-vj-56B" customClass="OHWPeopleViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2jq-Eo-kbe" customClass="KKGridView">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="FUn-vj-56B" id="gpq-ZB-OlH"/>
+                            <outlet property="delegate" destination="FUn-vj-56B" id="nFX-34-W7P"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="0Us-nV-O2F"/>
+                    <connections>
+                        <outlet property="gridView" destination="2jq-Eo-kbe" id="83K-Km-RnJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNU-Nm-FZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -675,7 +682,6 @@
                 <relationship kind="action" name="sendMessage:"/>
                 <relationship kind="action" name="showFriendsMapView:"/>
                 <relationship kind="outlet" name="blurbLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="friendsViewButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
@@ -688,6 +694,12 @@
             <relationships>
                 <relationship kind="action" name="performLogin:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="OHWPeopleViewController" superclassName="OHWBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWPeopleViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
             </relationships>
         </class>
         <class className="OHWProviderFriendViewController" superclassName="OHWBaseViewController">
