@@ -10,7 +10,7 @@
 #import "OHWAppDelegate.h"
 #import "HudView.h"
 
-@interface OHWProviderFriendWebViewController : UIViewController <UIWebViewDelegate>
+@interface OHWProviderFriendWebViewController : OHWBaseViewController <UIWebViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) HudView *hudView;

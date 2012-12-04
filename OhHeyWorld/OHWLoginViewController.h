@@ -11,7 +11,7 @@
 
 @class FBSession;
 
-@interface OHWLoginViewController : UIViewController
+@interface OHWLoginViewController : OHWBaseViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 

@@ -13,7 +13,7 @@
 #import "ProviderFriend.h"
 #import "OHWProviderFriendWebViewController.h"
 
-@interface OHWProviderFriendViewController : UIViewController <MKMapViewDelegate, RKObjectLoaderDelegate>
+@interface OHWProviderFriendViewController : OHWBaseViewController <MKMapViewDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, retain) IBOutlet UILabel *userNameLabel;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;

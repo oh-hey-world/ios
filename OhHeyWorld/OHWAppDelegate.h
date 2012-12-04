@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "OHWBaseViewController.h"
 #import "OHWLoginViewController.h"
 #import "OHWCheckinViewController.h"
 #import "OHWCityCheckinViewController.h"

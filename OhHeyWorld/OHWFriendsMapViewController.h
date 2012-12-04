@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "OHWAppDelegate.h"
 
-@interface OHWFriendsMapViewController : UIViewController <MKMapViewDelegate>
+@interface OHWFriendsMapViewController : OHWBaseViewController <MKMapViewDelegate>
 
 @property (nonatomic, retain) NSArray* people;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;

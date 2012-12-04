@@ -16,7 +16,7 @@
 #import <RestKit/RKRequestSerialization.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface OHWCheckinViewController : UIViewController <CLLocationManagerDelegate, RKObjectLoaderDelegate>
+@interface OHWCheckinViewController : OHWBaseViewController <CLLocationManagerDelegate, RKObjectLoaderDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) FBCacheDescriptor *placeCacheDescriptor;

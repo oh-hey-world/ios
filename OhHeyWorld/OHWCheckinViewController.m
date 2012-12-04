@@ -30,7 +30,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.title = @"Check In";
   
   // Get the CLLocationManager going.
   self.locationManager = [[CLLocationManager alloc] init];

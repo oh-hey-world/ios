@@ -13,7 +13,7 @@
 #import <KKGridView/KKGridView.h>
 #import "OHWAppDelegate.h"
 
-@interface OHWHistoryViewController : UIViewController <RKObjectLoaderDelegate, KKGridViewDataSource, KKGridViewDelegate>
+@interface OHWHistoryViewController : OHWBaseViewController <RKObjectLoaderDelegate, KKGridViewDataSource, KKGridViewDelegate>
 
 @property (nonatomic, retain) NSArray* userLocations;
 @property (nonatomic, retain) IBOutlet UICollectionView* collectionView;

@@ -16,7 +16,7 @@
 #import "Location.h"
 #import "User.h"
 
-@interface OHWCityCheckinViewController : UIViewController <RKObjectLoaderDelegate, MKMapViewDelegate, UITextViewDelegate>
+@interface OHWCityCheckinViewController : OHWBaseViewController <RKObjectLoaderDelegate, MKMapViewDelegate, UITextViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *checkinButton;
 @property (nonatomic, retain) IBOutlet UILabel *cityLabel;

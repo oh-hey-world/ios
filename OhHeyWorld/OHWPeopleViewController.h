@@ -11,7 +11,7 @@
 #import "OHWAppDelegate.h"
 #import "OHWProviderFriendViewController.h"
 
-@interface OHWPeopleViewController : UITableViewController
+@interface OHWPeopleViewController : OHWBaseViewController
 
 @property (nonatomic, retain) NSArray* people;
 @property (nonatomic, retain) NSString* viewType;

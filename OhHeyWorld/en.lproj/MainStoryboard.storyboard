@@ -34,42 +34,27 @@
                         <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="gpf-Yj-f1f" kind="relationship" relationship="rootViewController" id="7jJ-En-0Sn"/>
+                        <segue destination="FUn-vj-56B" kind="relationship" relationship="rootViewController" id="rvP-tz-ysU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZL-sn-kKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="524" y="180"/>
         </scene>
-        <!--People View Controller - Facebook Friends-->
-        <scene sceneID="AAe-he-5Hv">
+        <!--View Controller - Friends-->
+        <scene sceneID="kKv-yM-olO">
             <objects>
-                <tableViewController storyboardIdentifier="PeopleView" title="Facebook Friends" id="gpf-Yj-f1f" customClass="OHWPeopleViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JWa-wu-tU7">
+                <viewController storyboardIdentifier="PeopleView" title="Friends" id="FUn-vj-56B" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2jq-Eo-kbe">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Oft-CZ-eiL">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="gpf-Yj-f1f" id="E5F-Jw-l1N"/>
-                            <outlet property="delegate" destination="gpf-Yj-f1f" id="T12-Dl-mpk"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="6GE-5u-vgw"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aqX-iW-gsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Us-nV-O2F"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YNU-Nm-FZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933" y="180"/>
+            <point key="canvasLocation" x="928" y="180"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uFs-WI-COm">
@@ -80,7 +65,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="BcO-vM-feq" kind="relationship" relationship="rootViewController" id="7BS-DQ-GeH"/>
-                        <segue destination="gpf-Yj-f1f" kind="push" id="t3W-rC-iTI"/>
+                        <segue destination="FUn-vj-56B" kind="push" id="CV3-sq-hHU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thT-yi-SMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -614,10 +599,10 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="Itj-uu-QqS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Check In" id="9zQ-cg-S64"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bjp-pb-CSd">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="bjp-pb-CSd">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="bJO-7w-svo" kind="relationship" relationship="rootViewController" id="tPe-dN-hrf"/>
@@ -645,7 +630,10 @@
                 <relationship kind="outlet" name="delegate"/>
             </relationships>
         </class>
-        <class className="OHWCheckedinViewController" superclassName="UIViewController">
+        <class className="OHWBaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWBaseViewController.h"/>
+        </class>
+        <class className="OHWCheckedinViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckedinViewController.h"/>
             <relationships>
                 <relationship kind="action" name="sendNotifiction:"/>
@@ -656,7 +644,7 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="OHWCheckinViewController" superclassName="UIViewController">
+        <class className="OHWCheckinViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckinViewController.h"/>
             <relationships>
                 <relationship kind="action" name="checkin:"/>
@@ -664,7 +652,7 @@
                 <relationship kind="outlet" name="checkinText" candidateClass="UITextField"/>
             </relationships>
         </class>
-        <class className="OHWCityCheckinViewController" superclassName="UIViewController">
+        <class className="OHWCityCheckinViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCityCheckinViewController.h"/>
             <relationships>
                 <relationship kind="action" name="checkin:"/>
@@ -674,13 +662,13 @@
                 <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
             </relationships>
         </class>
-        <class className="OHWFriendsMapViewController" superclassName="UIViewController">
+        <class className="OHWFriendsMapViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWFriendsMapViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
-        <class className="OHWHistoryViewController" superclassName="UIViewController">
+        <class className="OHWHistoryViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWHistoryViewController.h"/>
             <relationships>
                 <relationship kind="action" name="followUser:"/>
@@ -695,17 +683,14 @@
                 <relationship kind="outlet" name="sendMessageButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="OHWLoginViewController" superclassName="UIViewController">
+        <class className="OHWLoginViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="performLogin:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="OHWPeopleViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWPeopleViewController.h"/>
-        </class>
-        <class className="OHWProviderFriendViewController" superclassName="UIViewController">
+        <class className="OHWProviderFriendViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWProviderFriendViewController.h"/>
             <relationships>
                 <relationship kind="action" name="followUser:"/>
@@ -717,7 +702,7 @@
                 <relationship kind="outlet" name="webViewButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="OHWProviderFriendWebViewController" superclassName="UIViewController">
+        <class className="OHWProviderFriendWebViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWProviderFriendWebViewController.h"/>
             <relationships>
                 <relationship kind="action" name="openBrowser:"/>
@@ -731,8 +716,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7jJ-En-0Sn"/>
         <segue reference="hBD-cJ-3Nc"/>
+        <segue reference="rvP-tz-ysU"/>
         <segue reference="rIi-z8-8C0"/>
         <segue reference="7BS-DQ-GeH"/>
     </inferredMetricsTieBreakers>
