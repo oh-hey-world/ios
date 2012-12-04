@@ -225,6 +225,12 @@
                     <view key="view" contentMode="scaleToFill" id="wMq-N5-dQn">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="hb5-0R-Yo3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -626,6 +632,9 @@
         </class>
         <class className="OHWBaseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWBaseViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="revealSidebar:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="OHWCheckedinViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckedinViewController.h"/>
