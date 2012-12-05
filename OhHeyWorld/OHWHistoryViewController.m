@@ -34,6 +34,7 @@
 @synthesize headerHeight = _headerHeight;
 @synthesize blurbY = _blurbY;
 @synthesize secondDividerY = _secondDividerY;
+@synthesize editButton = _editButton;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
@@ -98,34 +99,32 @@
   
   _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
 
-  CGRect headerFrame = _headerView.frame;
-  CGRect blurbFrame = _blurbLabel.frame;
-  CGRect secondDividerFrame = _secondDivider.frame;
   if ([ModelHelper isSameUser:_loggedInUser :_user]) {
     _followButton.hidden = YES;
-    _firstDivider.hidden = YES;
-    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight - 42.0);
-    _blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY - 42, blurbFrame.size.width, blurbFrame.size.height);
-    _secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY - 42, secondDividerFrame.size.width, secondDividerFrame.size.height);
-    
+    _editButton.hidden = NO;
+    //_firstDivider.hidden = YES;
+    //_headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight - 42.0);
+    //_blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY - 42, blurbFrame.size.width, blurbFrame.size.height);
+    //_secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY - 42, secondDividerFrame.size.width, secondDividerFrame.size.height);
   } else {
     _followButton.hidden = NO;
-    _firstDivider.hidden = NO;
-    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight);
-    _blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY, blurbFrame.size.width, blurbFrame.size.height);
-    _secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY, secondDividerFrame.size.width, secondDividerFrame.size.height);
+    _editButton.hidden = YES;
+    //_firstDivider.hidden = NO;
+    //_headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight);
+    //_blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY, blurbFrame.size.width, blurbFrame.size.height);
+    //_secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY, secondDividerFrame.size.width, secondDividerFrame.size.height);
   }
 
-  headerFrame = _headerView.frame;
+  CGRect headerFrame = _headerView.frame;
   if (_user.blurb == nil || _user.blurb.length == 0) {
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight - 42.0);
     _blurbLabel.hidden = YES;
     _secondDivider.hidden = YES;
-    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, headerFrame.size.height - 42);
   } else {
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight);
     _blurbLabel.text = _user.blurb;
     _blurbLabel.hidden = NO;
     _secondDivider.hidden = NO;
-    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, headerFrame.size.height);
   }
   
   [_gridView reloadData];
@@ -144,6 +143,10 @@
     // Custom initialization
   }
   return self;
+}
+
+- (IBAction)editProfile:(id)sender {
+  NSLog(@"%@", @"clicked");
 }
 
 - (IBAction)followUser:(id)sender {
@@ -175,7 +178,53 @@
 }
 
 - (IBAction)sendMessage:(id)sender {
+
+}
+
+- (IBAction)changeProfilePicture:(id)sender {
+  UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+  UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+  imagePickerController.delegate = self;
+  imagePickerController.allowsEditing = NO;
+  if ([UIImagePickerController isSourceTypeAvailable:sourceType])
+  {
+    imagePickerController.sourceType = sourceType;
+    NSArray* mediaTypes = [NSArray arrayWithObject:(id)kUTTypeImage];
+    imagePickerController.mediaTypes = mediaTypes;
+    
+    [self presentModalViewController:imagePickerController animated:YES];
+  } else {
+    BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Photo error" message:@"Option unavailable on this device"];
+    [alert setCancelButtonWithTitle:@"Okay" block:^{
+    }];
+    [alert show];
+  }
+}
+
+#pragma mark - UIImagePickerControllerDelegate methods
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+  [picker dismissModalViewControllerAnimated:YES];
+  //UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+  //NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  //NSString* documentsDirectory = [paths objectAtIndex:0];
   
+  //NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+  //NSString *fullPathToImage = [documentsDirectory stringByAppendingPathComponent:CURRENT_IMAGE_KEY];
+  //[imageData writeToFile:fullPathToImage atomically:NO];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error
+  contextInfo:(void *)contextInfo
+{
+  if (error == NULL) {
+
+  } else {
+    BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Photo error" message:@"We were unable to save your photo"];
+    [alert setCancelButtonWithTitle:@"Okay" block:^{
+    }];
+    [alert show];
+  }
 }
 
 - (void)viewDidLoad
@@ -187,6 +236,12 @@
   float yHeight = 164.0f;
   
   _profilePicture = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"profile-photo-default.png"]];
+  UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(changeProfilePicture:)];
+  [tapRecognizer setNumberOfTouchesRequired:1];
+  [tapRecognizer setDelegate:self];
+  _profilePicture.userInteractionEnabled = YES;
+  [_profilePicture addGestureRecognizer:tapRecognizer];
   _profilePicture.frame = CGRectMake(0, 0, self.view.bounds.size.width, yHeight);
   
   UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]];
@@ -214,6 +269,13 @@
   _followButton = [[UIButton alloc] initWithFrame:CGRectMake(center - (151 / 2), yHeight, 151, 31)];
   [_followButton setImage:followImage forState:UIControlStateNormal];
   [_followButton addTarget:self action:@selector(followUser:) forControlEvents:UIControlEventTouchUpInside];
+  
+  
+  _editButton = [[UIButton alloc] initWithFrame:CGRectMake(center - (151 / 2), yHeight, 151, 31)];
+  _editButton.backgroundColor = [UIColor blueColor];
+  [_editButton setTitle:@"Edit Profile" forState:UIControlStateNormal];
+  [_editButton addTarget:self action:@selector(editProfile:) forControlEvents:UIControlEventTouchUpInside];
+  _editButton.hidden = YES;
   
   yHeight += 36.0;
   
@@ -243,6 +305,7 @@
   [_headerView addSubview:nameBar];
   [_headerView addSubview:_followButton];
   [_headerView addSubview:_firstDivider];
+  [_headerView addSubview:_editButton];
   [_headerView addSubview:_blurbLabel];
   [_headerView addSubview:_secondDivider];
   _gridView.gridHeaderView = _headerView;
@@ -265,6 +328,7 @@
 
 - (NSUInteger)gridView:(KKGridView *)gridView numberOfItemsInSection:(NSUInteger)section
 {
+  NSLog(@"%u", _userLocations.count);
   return _userLocations.count;
 }
 

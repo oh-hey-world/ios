@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 #import <KKGridView/KKGridView.h>
 #import "OHWAppDelegate.h"
 
-@interface OHWHistoryViewController : OHWBaseViewController <RKObjectLoaderDelegate, KKGridViewDataSource, KKGridViewDelegate>
+@interface OHWHistoryViewController : OHWBaseViewController <RKObjectLoaderDelegate, KKGridViewDataSource, KKGridViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, retain) NSArray* userLocations;
 @property (nonatomic, retain) IBOutlet UIButton *friendsViewButton;
@@ -36,9 +37,12 @@
 @property (readwrite) float headerHeight;
 @property (readwrite) float blurbY;
 @property (readwrite) float secondDividerY;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
 - (IBAction)showFriendsMapView:(id)sender;
 - (IBAction)followUser:(id)sender;
+- (IBAction)editProfile:(id)sender;
 - (IBAction)sendMessage:(id)sender;
+- (IBAction)changeProfilePicture:(id)sender;
 
 @end
