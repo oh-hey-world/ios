@@ -25,7 +25,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-@synthesize checkinViewController = _checkinViewController;
+@synthesize storyBoard = _storyBoard;
 @synthesize navController = _navController;
 @synthesize loginViewController = _loginViewController;
 @synthesize baseUrl = _baseUrl;
@@ -74,10 +74,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)createAndPresentLoginView {
   if (self.loginViewController == nil) {
-    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-    self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginView"];
-    self.checkinViewController = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
-    [self.window.rootViewController presentViewController:self.loginViewController animated:YES completion:nil];
+    self.loginViewController = [_storyBoard instantiateViewControllerWithIdentifier:@"LoginView"];
+    [_deckController presentViewController:self.loginViewController animated:YES completion:nil];
   }
 }
 
@@ -438,11 +436,11 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-  UIViewController *centerController = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
+  _storyBoard = self.window.rootViewController.storyboard;
+  UIViewController *centerController = [_storyBoard instantiateViewControllerWithIdentifier:@"CheckinView"];
   self.centerController = [[UINavigationController alloc]initWithRootViewController:centerController];
   
-  self.leftController = [storyboard instantiateViewControllerWithIdentifier:@"LeftView"];
+  self.leftController = [_storyBoard instantiateViewControllerWithIdentifier:@"LeftView"];
   
   _deckController = [[IIViewDeckController alloc] init];
   _deckController.centerController = self.centerController;

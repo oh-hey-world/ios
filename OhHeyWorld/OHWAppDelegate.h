@@ -44,7 +44,7 @@
 @property (strong, nonatomic) UIViewController *leftController;
 @property (strong, nonatomic) IIViewDeckController *deckController;
 @property (strong, nonatomic) UINavigationController *navController;
-@property (strong, nonatomic) OHWCheckinViewController *checkinViewController;
+@property (strong, nonatomic) UIStoryboard *storyBoard;
 @property (strong, nonatomic) OHWLoginViewController *loginViewController;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
