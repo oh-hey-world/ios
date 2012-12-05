@@ -28,6 +28,12 @@
 @synthesize selectedModel = _selectedModel;
 @synthesize gridView = _gridView;
 @synthesize hudView = _hudView;
+@synthesize firstDivider = _firstDivider;
+@synthesize secondDivider = _secondDivider;
+@synthesize headerView = _headerView;
+@synthesize headerHeight = _headerHeight;
+@synthesize blurbY = _blurbY;
+@synthesize secondDividerY = _secondDividerY;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
@@ -45,7 +51,7 @@
       [ModelHelper deleteObject:zero];
       [appDelegate saveContext];
     }
-    _followButton.imageView.image = [UIImage imageNamed:@"button-follow.png"];
+    [_followButton setImage:[UIImage imageNamed:@"button-follow.png"] forState:UIControlStateNormal];
     _userFriend = nil;
   } else {
     _userFriend = [objects objectAtIndex:0];
@@ -60,7 +66,7 @@
     if (_userFriend.externalId != nil) {
       [appDelegate saveContext];
     }
-    _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
+    [_followButton setImage:[UIImage imageNamed:@"button-unfollow.png"] forState:UIControlStateNormal];
   }
   [_hudView stopActivityIndicator];
 }
@@ -74,30 +80,52 @@
     _selectedModel = [appDelegate loggedInUser];
   }  
   
-  if ([_selectedModel isKindOfClass:[User class]]) {
-    _user = _selectedModel;
+  _user = _selectedModel;
+  
+  _userFriend = [ModelHelper getUserFriend:_loggedInUser :_user];
+  
+  if (_userFriend != nil) {
+    _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
+  }
+  
+  _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
+  
+  _userLocations = [ModelHelper getUserLocations:_user];
+  
+  UserLocation *userLocation = [ModelHelper getLastUserLocation:_user];
+  _location = userLocation.location;
+  _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
+  
+  _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
+
+  CGRect headerFrame = _headerView.frame;
+  CGRect blurbFrame = _blurbLabel.frame;
+  CGRect secondDividerFrame = _secondDivider.frame;
+  if ([ModelHelper isSameUser:_loggedInUser :_user]) {
+    _followButton.hidden = YES;
+    _firstDivider.hidden = YES;
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight - 42.0);
+    _blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY - 42, blurbFrame.size.width, blurbFrame.size.height);
+    _secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY - 42, secondDividerFrame.size.width, secondDividerFrame.size.height);
     
-    _userFriend = [ModelHelper getUserFriend:_loggedInUser :_user];
-    
-    if (_userFriend != nil) {
-      _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
-    }
-    
-    _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
-    
-    if (_user.blurb != nil && _user.blurb.length > 0) {
-      _blurbLabel.text = _user.blurb;
-    }
-    
-    _userLocations = [ModelHelper getUserLocations:_user];
-    
-    UserLocation *userLocation = [ModelHelper getLastUserLocation:_user];
-    _location = userLocation.location;
-    _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
-    
-    _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
   } else {
-    
+    _followButton.hidden = NO;
+    _firstDivider.hidden = NO;
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight);
+    _blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY, blurbFrame.size.width, blurbFrame.size.height);
+    _secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY, secondDividerFrame.size.width, secondDividerFrame.size.height);
+  }
+
+  headerFrame = _headerView.frame;
+  if (_user.blurb == nil || _user.blurb.length == 0) {
+    _blurbLabel.hidden = YES;
+    _secondDivider.hidden = YES;
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, headerFrame.size.height - 42);
+  } else {
+    _blurbLabel.text = _user.blurb;
+    _blurbLabel.hidden = NO;
+    _secondDivider.hidden = NO;
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, headerFrame.size.height);
   }
   
   [_gridView reloadData];
@@ -156,6 +184,11 @@
   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title-profile.png"]];
   self.navigationItem.titleView = img;
   
+  float yHeight = 164.0f;
+  
+  _profilePicture = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"profile-photo-default.png"]];
+  _profilePicture.frame = CGRectMake(0, 0, self.view.bounds.size.width, yHeight);
+  
   UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]];
   CGRect frame = nameBar.frame;
   frame.origin = CGPointMake(0, _profilePicture.frame.size.height - nameBar.frame.size.height);
@@ -171,10 +204,48 @@
   _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 115, 18, 230, 30)];
   _locationLabel.textAlignment = UITextAlignmentCenter;
   _locationLabel.backgroundColor = [UIColor clearColor];
+  _locationLabel.font = [_locationLabel.font fontWithSize:10];
   _locationLabel.textColor = [UIColor whiteColor];
   [nameBar insertSubview:_locationLabel atIndex:2];
+
+  yHeight += 5.0;
   
-  [self.view addSubview:nameBar];
+  UIImage *followImage = [UIImage imageNamed:@"button-follow.png"];
+  _followButton = [[UIButton alloc] initWithFrame:CGRectMake(center - (151 / 2), yHeight, 151, 31)];
+  [_followButton setImage:followImage forState:UIControlStateNormal];
+  [_followButton addTarget:self action:@selector(followUser:) forControlEvents:UIControlEventTouchUpInside];
+  
+  yHeight += 36.0;
+  
+  _firstDivider = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-horizontal.png"]];
+  _firstDivider.frame = CGRectMake(0, yHeight, _firstDivider.frame.size.width, _firstDivider.frame.size.height);
+  
+  yHeight += 5.0;
+  
+  _blurbY = yHeight;
+  _blurbLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, _blurbY, 280, 31)];
+  _blurbLabel.font = [_blurbLabel.font fontWithSize:11];
+  _blurbLabel.lineBreakMode = UILineBreakModeWordWrap;
+  _blurbLabel.numberOfLines = 0;
+  _blurbLabel.backgroundColor = [UIColor colorWithWhite:0.93 alpha:1.0];
+  
+  yHeight += 36.0;
+  
+  _secondDividerY = yHeight;
+  _secondDivider = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-horizontal.png"]];
+  _secondDivider.frame = CGRectMake(0, _secondDividerY, _secondDivider.frame.size.width, _secondDivider.frame.size.height);
+  
+  yHeight += 5.0;
+  
+  _headerHeight = yHeight;
+  _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, _headerHeight)];
+  [_headerView addSubview:_profilePicture];
+  [_headerView addSubview:nameBar];
+  [_headerView addSubview:_followButton];
+  [_headerView addSubview:_firstDivider];
+  [_headerView addSubview:_blurbLabel];
+  [_headerView addSubview:_secondDivider];
+  _gridView.gridHeaderView = _headerView;
   
   _gridView.scrollsToTop = YES;
   _gridView.backgroundColor = [UIColor colorWithWhite:0.93 alpha:1.0];

@@ -131,4 +131,8 @@
   return [UserFriend findFirstWithPredicate:predicate sortedBy:nil ascending:NO];
 }
 
++ (BOOL)isSameUser:(User*)user:(User*)otherUser {
+  return ([user.externalId isEqualToNumber:otherUser.externalId]);
+}
+
 @end

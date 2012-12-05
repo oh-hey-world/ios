@@ -602,55 +602,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="smm-uz-VrV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="251"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZeE-Pb-wvT">
-                                        <rect key="frame" x="100" y="121" width="120" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Button" image="button-follow.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="followUser:" destination="wWC-oR-XPw" eventType="touchUpInside" id="0Rm-wK-9sd"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ltN-Wb-IZS">
-                                        <rect key="frame" x="20" y="164" width="280" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis massa quis dui congue egestas. Aliquam pulvinar ultrices placerat. Curabitur augue ipsum, pharetra eu lobortis ut</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="text-travel-log.png" id="uSc-gG-zJ4">
-                                        <rect key="frame" x="20" y="211" width="105" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider-horizontal.png" id="qNN-wQ-5cQ">
-                                        <rect key="frame" x="10" y="164" width="300" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider-horizontal.png" id="nT7-94-9zx">
-                                        <rect key="frame" x="10" y="207" width="300" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="profile-photo-default.png" id="RqU-si-WTC">
-                                        <rect key="frame" x="0.0" y="0.0" width="333" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.92911724452554756" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="FIR-9C-8Be" customClass="KKGridView">
-                                <rect key="frame" x="0.0" y="252" width="320" height="210"/>
+                            <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" id="FIR-9C-8Be" customClass="KKGridView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -663,10 +616,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ar0-8T-Ttw"/>
                     <connections>
-                        <outlet property="blurbLabel" destination="ltN-Wb-IZS" id="04u-lk-stV"/>
-                        <outlet property="followButton" destination="ZeE-Pb-wvT" id="UMy-T9-Lhb"/>
                         <outlet property="gridView" destination="FIR-9C-8Be" id="bmU-JX-w7m"/>
-                        <outlet property="profilePicture" destination="RqU-si-WTC" id="GAf-g1-Swa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMB-a2-X4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -743,12 +693,9 @@
     <resources>
         <image name="button-checkin.png" width="227" height="46"/>
         <image name="button-follow.png" width="151" height="31"/>
-        <image name="divider-horizontal.png" width="304" height="1"/>
         <image name="input-city.png" width="272" height="52"/>
         <image name="menu-bg.png" width="320" height="568"/>
         <image name="menu-divider-horizontal.png" width="276" height="1"/>
-        <image name="profile-photo-default.png" width="320" height="164"/>
-        <image name="text-travel-log.png" width="91" height="21"/>
         <image name="text-where-are-you-today.png" width="305" height="28"/>
     </resources>
     <classes>

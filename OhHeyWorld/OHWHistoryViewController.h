@@ -29,7 +29,13 @@
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (strong, nonatomic) IBOutlet UILabel *blurbLabel;
 @property (strong, nonatomic) IBOutlet KKGridView *gridView;
+@property (strong, nonatomic) UIImageView *firstDivider;
+@property (strong, nonatomic) UIImageView *secondDivider;
+@property (strong, nonatomic) UIView *headerView;
 @property (nonatomic, retain) HudView *hudView;
+@property (readwrite) float headerHeight;
+@property (readwrite) float blurbY;
+@property (readwrite) float secondDividerY;
 
 - (IBAction)showFriendsMapView:(id)sender;
 - (IBAction)followUser:(id)sender;
