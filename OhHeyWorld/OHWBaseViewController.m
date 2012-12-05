@@ -29,6 +29,7 @@
   [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics: UIBarMetricsDefault];
   UIBarButtonItem *revealButton = [[UIBarButtonItem alloc]
                                    initWithImage:[UIImage imageNamed:@"button-label-menu.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealSidebar:)];
+  revealButton.tintColor = [UIColor colorWithRed:.28 green:.28 blue:.28 alpha:1.f];
   self.navigationItem.leftBarButtonItem = revealButton;
 }
 

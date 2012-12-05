@@ -27,13 +27,13 @@
 @synthesize blurbLabel = _blurbLabel;
 @synthesize selectedModel = _selectedModel;
 @synthesize gridView = _gridView;
+@synthesize hudView = _hudView;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  _followButton.enabled = YES;
   if (objectLoader.isDELETE) {
     [[appDelegate managedObjectContext] deleteObject:_userFriend];
     [appDelegate saveContext];
@@ -62,6 +62,7 @@
     }
     _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
   }
+  [_hudView stopActivityIndicator];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -95,10 +96,6 @@
     _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
     
     _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
-    
-    NSString *url = [NSString stringWithFormat:@"%@?type=large", _user.pictureUrl];
-    [_profilePicture setImageWithURL:[NSURL URLWithString:url]
-              placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
   } else {
     
   }
@@ -122,7 +119,7 @@
 }
 
 - (IBAction)followUser:(id)sender {
-  _followButton.enabled = NO;
+  [_hudView startActivityIndicator:self.view];
   if (_userFriend == nil) {
     UserFriend* userFriend = [UserFriend object];
     userFriend.userId = _loggedInUser.externalId;
@@ -185,6 +182,9 @@
   _gridView.cellSize = CGSizeMake(90.f, 90.f);
   _gridView.cellPadding = CGSizeMake(10.f, 10.f);
   _gridView.allowsMultipleSelection = NO;
+  
+  _hudView = [[HudView alloc] init];
+  [_hudView loadActivityIndicator];
 }
 
 - (NSUInteger)numberOfSectionsInGridView:(KKGridView *)gridView

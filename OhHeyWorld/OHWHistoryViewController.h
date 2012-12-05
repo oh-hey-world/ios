@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (strong, nonatomic) IBOutlet UILabel *blurbLabel;
 @property (strong, nonatomic) IBOutlet KKGridView *gridView;
+@property (nonatomic, retain) HudView *hudView;
 
 - (IBAction)showFriendsMapView:(id)sender;
 - (IBAction)followUser:(id)sender;

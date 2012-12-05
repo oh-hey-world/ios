@@ -553,7 +553,7 @@
                                     <action selector="checkin:" destination="bJO-7w-svo" eventType="touchUpInside" id="P87-6x-Y7e"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="input-city.png" id="waj-fU-EUD">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="input-city.png" id="waj-fU-EUD">
                                 <rect key="frame" x="41" y="147" width="239" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -642,7 +642,7 @@
                                         <rect key="frame" x="10" y="207" width="300" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="RqU-si-WTC">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="profile-photo-default.png" id="RqU-si-WTC">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -747,6 +747,7 @@
         <image name="input-city.png" width="272" height="52"/>
         <image name="menu-bg.png" width="320" height="568"/>
         <image name="menu-divider-horizontal.png" width="276" height="1"/>
+        <image name="profile-photo-default.png" width="320" height="164"/>
         <image name="text-travel-log.png" width="91" height="21"/>
         <image name="text-where-are-you-today.png" width="305" height="28"/>
     </resources>
