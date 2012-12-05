@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Itj-uu-QqS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="15">
-            <objects>
-                <tabBarController id="4" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="5">
-                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Itj-uu-QqS" kind="relationship" relationship="viewControllers" id="TSy-Og-cDE"/>
-                        <segue destination="w2D-jI-Ucu" kind="relationship" relationship="viewControllers" id="Wro-Db-llw"/>
-                        <segue destination="IpM-UX-hlI" kind="relationship" relationship="viewControllers" id="a0A-sm-NbY"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="132" y="180"/>
-        </scene>
         <!--Navigation Controller - Friends-->
         <scene sceneID="YdY-Z0-pcc">
             <objects>
@@ -41,22 +21,22 @@
             </objects>
             <point key="canvasLocation" x="524" y="180"/>
         </scene>
-        <!--People View Controller - Friends-->
+        <!--People View Controller-->
         <scene sceneID="kKv-yM-olO">
             <objects>
-                <viewController storyboardIdentifier="PeopleView" title="Friends" id="FUn-vj-56B" customClass="OHWPeopleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendsView" id="FUn-vj-56B" customClass="OHWPeopleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2jq-Eo-kbe" customClass="KKGridView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
-                            <outlet property="dataSource" destination="FUn-vj-56B" id="gpq-ZB-OlH"/>
-                            <outlet property="delegate" destination="FUn-vj-56B" id="nFX-34-W7P"/>
+                            <outlet property="dataSource" destination="FUn-vj-56B" id="fdo-Ck-X5e"/>
+                            <outlet property="delegate" destination="FUn-vj-56B" id="rZP-7N-M7i"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="0Us-nV-O2F"/>
                     <connections>
-                        <outlet property="gridView" destination="2jq-Eo-kbe" id="83K-Km-RnJ"/>
+                        <outlet property="gridView" destination="2jq-Eo-kbe" id="77W-jh-yJT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNU-Nm-FZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,7 +172,7 @@
             <objects>
                 <viewController storyboardIdentifier="CityCheckinView" title="Current Location" id="Pge-bN-hq2" customClass="OHWCityCheckinViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q6P-cW-lT4">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="28c-42-K2T">
@@ -244,6 +224,116 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rmz-EQ-6VX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1746" y="-518"/>
+        </scene>
+        <!--Left View Controller-->
+        <scene sceneID="TLF-ys-HrM">
+            <objects>
+                <viewController storyboardIdentifier="LeftView" id="di7-ki-clD" customClass="OHWLeftViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wMq-N5-dQn">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menu-bg.png" id="hb5-0R-Yo3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yMe-PZ-EdS">
+                                <rect key="frame" x="55" y="265" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="Yea-9h-oVv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hP5-Qi-m7J">
+                                <rect key="frame" x="55" y="218" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Find Friends">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="Wnc-kM-fmQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mcx-uc-YRO">
+                                <rect key="frame" x="55" y="166" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Friends">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="ocN-rJ-qUT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fB7-La-Z0v">
+                                <rect key="frame" x="55" y="119" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="My Profile">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="0Fh-yD-nZ6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ifD-ug-XZB">
+                                <rect key="frame" x="55" y="67" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Dashboard">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="J6U-O7-1yA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BbB-S0-GgQ">
+                                <rect key="frame" x="55" y="20" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Check In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigate:" destination="di7-ki-clD" eventType="touchUpInside" id="Mjs-oU-Hdz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMG-cQ-oz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928" y="-1210"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0dQ-LZ-BNs">
@@ -415,11 +505,11 @@
             <objects>
                 <viewController storyboardIdentifier="CheckinView" title="Check In!" id="bJO-7w-svo" customClass="OHWCheckinViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OoJ-XK-KRt">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="R2W-Es-fc3">
-                                <rect key="frame" x="58" y="206" width="204" height="44"/>
+                                <rect key="frame" x="58" y="230" width="204" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Check In" image="button-checkin.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -433,12 +523,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="waj-fU-EUD">
-                                <rect key="frame" x="58" y="153" width="204" height="30"/>
+                                <rect key="frame" x="58" y="170" width="204" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Where are you today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rrx-3X-YOG">
-                                <rect key="frame" x="20" y="96" width="280" height="41"/>
+                                <rect key="frame" x="20" y="107" width="280" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -479,7 +569,7 @@
             <objects>
                 <viewController storyboardIdentifier="HistoryView" id="wWC-oR-XPw" customClass="OHWHistoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ee-Ds-Nz7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="smm-uz-VrV">
@@ -624,6 +714,7 @@
         <image name="button-checkin.png" width="227" height="46"/>
         <image name="button-follow.png" width="151" height="31"/>
         <image name="divider-horizontal.png" width="304" height="1"/>
+        <image name="menu-bg.png" width="320" height="568"/>
         <image name="text-travel-log.png" width="91" height="21"/>
     </resources>
     <classes>
@@ -639,6 +730,9 @@
         </class>
         <class className="OHWBaseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWBaseViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="revealSidebar:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="OHWCheckedinViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckedinViewController.h"/>
@@ -687,6 +781,12 @@
                 <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
                 <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="sendMessageButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="OHWLeftViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLeftViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="navigate:"/>
             </relationships>
         </class>
         <class className="OHWLoginViewController" superclassName="OHWBaseViewController">

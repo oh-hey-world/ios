@@ -19,6 +19,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 @implementation OHWAppDelegate
 
 @synthesize window = _window;
+@synthesize deckController = _deckController;
+@synthesize leftController = _leftController;
+@synthesize centerController = _centerController;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
@@ -423,8 +426,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-  //[self.navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics: UIBarMetricsDefault];
-  [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics:UIBarMetricsDefault];
   if (_baseUrl == nil) {
     _baseUrl = [NSURL URLWithString:kAPIBaseUrl];
     [self setupRK];
@@ -437,6 +438,17 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+  UIViewController *centerController = [storyboard instantiateViewControllerWithIdentifier:@"CheckinView"];
+  self.centerController = [[UINavigationController alloc]initWithRootViewController:centerController];
+  
+  self.leftController = [storyboard instantiateViewControllerWithIdentifier:@"LeftView"];
+  
+  _deckController = [[IIViewDeckController alloc] init];
+  _deckController.centerController = self.centerController;
+  _deckController.leftController = self.leftController;
+  self.window.rootViewController = _deckController;
+
   return YES;
 }
 

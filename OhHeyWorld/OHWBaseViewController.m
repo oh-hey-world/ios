@@ -27,6 +27,13 @@
 {
   [super viewDidLoad];
   [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav-bar.png"] forBarMetrics: UIBarMetricsDefault];
+  UIBarButtonItem *revealButton = [[UIBarButtonItem alloc]
+                                   initWithImage:[UIImage imageNamed:@"button-label-menu.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealSidebar:)];
+  self.navigationItem.leftBarButtonItem = revealButton;
+}
+
+- (IBAction)revealSidebar:(UIBarButtonItem *)sender {
+  [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
