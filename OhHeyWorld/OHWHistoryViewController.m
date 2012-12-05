@@ -33,9 +33,19 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  _followButton.enabled = YES;
   if (objectLoader.isDELETE) {
     [[appDelegate managedObjectContext] deleteObject:_userFriend];
     [appDelegate saveContext];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
+    NSMutableArray* userFriends = [CoreDataHelper searchObjectsInContext:@"UserFriend" :predicate :nil :NO :[appDelegate managedObjectContext]];
+    UserFriend *zero = [userFriends objectAtIndex:0];
+    if (zero != nil) {
+      [ModelHelper deleteObject:zero];
+      [appDelegate saveContext];
+    }
+    _followButton.imageView.image = [UIImage imageNamed:@"button-follow.png"];
     _userFriend = nil;
   } else {
     _userFriend = [objects objectAtIndex:0];
@@ -52,15 +62,6 @@
     }
     _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
   }
-  
-  /*
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
-  NSMutableArray* userLocations = [CoreDataHelper searchObjectsInContext:@"UserLocation" :predicate :nil :NO :[appDelegate managedObjectContext]];
-  UserLocation *zeroUserLocation = [userLocations objectAtIndex:0];
-  if (zeroUserLocation != nil) {
-    [ModelHelper deleteObject:zeroUserLocation];
-  }
-  */
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -76,6 +77,7 @@
     _user = _selectedModel;
     
     _userFriend = [ModelHelper getUserFriend:_loggedInUser :_user];
+    
     if (_userFriend != nil) {
       _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
     }
@@ -95,10 +97,8 @@
     _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
     
     NSString *url = [NSString stringWithFormat:@"%@?type=large", _user.pictureUrl];
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-    
-    UIImage *image = [UIImage imageWithData:imageData];
-    _profilePicture.image = image;
+    [_profilePicture setImageWithURL:[NSURL URLWithString:url]
+              placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
   } else {
     
   }
@@ -122,6 +122,7 @@
 }
 
 - (IBAction)followUser:(id)sender {
+  _followButton.enabled = NO;
   if (_userFriend == nil) {
     UserFriend* userFriend = [UserFriend object];
     userFriend.userId = _loggedInUser.externalId;
