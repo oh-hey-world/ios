@@ -27,6 +27,7 @@
 		07047DD2166CFB4600DD6741 /* button-unfollow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07047DD0166CFB4600DD6741 /* button-unfollow@2x.png */; };
 		07047DD5166D276400DD6741 /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07047DD4166D276400DD6741 /* UserProviderFriend.m */; };
 		07047DD8166D2DF200DD6741 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07047DD7166D2DF200DD6741 /* UserProvider.m */; };
+		070BA3A71670DE3C00179C5C /* UserAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 070BA3A61670DE3C00179C5C /* UserAsset.m */; };
 		071385DA1623122200936674 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D81623122200936674 /* CoreData.framework */; };
 		071385DB1623122200936674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D91623122200936674 /* CoreLocation.framework */; };
 		071385E01623135100936674 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385DF1623135100936674 /* AddressBook.framework */; };
@@ -258,6 +259,8 @@
 		07047DD4166D276400DD6741 /* UserProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProviderFriend.m; sourceTree = "<group>"; };
 		07047DD6166D2DF200DD6741 /* UserProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProvider.h; sourceTree = "<group>"; };
 		07047DD7166D2DF200DD6741 /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
+		070BA3A51670DE3C00179C5C /* UserAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAsset.h; sourceTree = "<group>"; };
+		070BA3A61670DE3C00179C5C /* UserAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAsset.m; sourceTree = "<group>"; };
 		071385D81623122200936674 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		071385D91623122200936674 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		071385DF1623135100936674 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -738,6 +741,8 @@
 		0775F6A216246FFF00D8BDA7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				070BA3A51670DE3C00179C5C /* UserAsset.h */,
+				070BA3A61670DE3C00179C5C /* UserAsset.m */,
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
 				07047DD6166D2DF200DD6741 /* UserProvider.h */,
 				07047DD7166D2DF200DD6741 /* UserProvider.m */,
@@ -1113,6 +1118,7 @@
 				0700DA6B166E75BC0054089E /* OHWLeftViewController.m in Sources */,
 				0700DAA1166E8DBE0054089E /* IIViewDeckController.m in Sources */,
 				0700DAA2166E8DBE0054089E /* WrapController.m in Sources */,
+				070BA3A71670DE3C00179C5C /* UserAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

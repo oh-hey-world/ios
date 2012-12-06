@@ -14,7 +14,7 @@
 #import <KKGridView/KKGridView.h>
 #import "OHWAppDelegate.h"
 
-@interface OHWHistoryViewController : OHWBaseViewController <RKObjectLoaderDelegate, KKGridViewDataSource, KKGridViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate>
+@interface OHWHistoryViewController : OHWBaseViewController <RKObjectLoaderDelegate, KKGridViewDataSource, KKGridViewDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, retain) NSArray* userLocations;
 @property (nonatomic, retain) IBOutlet UIButton *friendsViewButton;

@@ -295,7 +295,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userProviderFriendMapping mapKeyPath:@"provider_friend" toRelationship:@"providerFriend" withMapping:providerFriendMapping];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userProviderFriendMapping withRootKeyPath:@"user_provider_friends.user_provider_friend"];
   
-  
   RKManagedObjectMapping *notificatioContactDetailMapping = [RKManagedObjectMapping mappingForClass:[NotificationContactDetail class] inManagedObjectStore:_manager.objectStore];
   [notificatioContactDetailMapping mapKeyPath:@"name" toAttribute:@"name"];
   [notificatioContactDetailMapping mapKeyPath:@"value" toAttribute:@"value"];
@@ -320,11 +319,25 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   userFriendMapping.primaryKeyAttribute = @"externalId";
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userFriendMapping withRootKeyPath:@"user_friends.user_friend"];
   
+  RKManagedObjectMapping *userAssetMapping = [RKManagedObjectMapping mappingForClass:[UserAsset class] inManagedObjectStore:_manager.objectStore];
+  [userAssetMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [userAssetMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  [userAssetMapping mapKeyPath:@"asset_file_name" toAttribute:@"assetFileName"];
+  [userAssetMapping mapKeyPath:@"asset_content_type" toAttribute:@"assetContentType"];
+  [userAssetMapping mapKeyPath:@"asset_file_size" toAttribute:@"assetFileSize"];
+  [userAssetMapping mapKeyPath:@"asset_updated_at" toAttribute:@"assetUpdatedAt"];
+  [userAssetMapping mapKeyPath:@"type" toAttribute:@"type"];
+  [userAssetMapping mapKeyPath:@"is_default" toAttribute:@"isDefault"];
+  [userAssetMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [userAssetMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  userAssetMapping.primaryKeyAttribute = @"externalId";
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userAssetMapping withRootKeyPath:@"user_assets.user_asset"];
+  
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
   
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
   
-  //[router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
+  [router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
   
   [router routeClass:[UserProviderFriend class] toResourcePath:@"/api/user_provider_friends/:externalId" forMethod:RKRequestMethodPUT];
   

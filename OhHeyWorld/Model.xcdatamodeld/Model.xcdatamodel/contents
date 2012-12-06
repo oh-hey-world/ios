@@ -74,6 +74,18 @@
         <relationship name="userUserProviderFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProviderFriend" inverseName="user" inverseEntity="UserProviderFriend" syncable="YES"/>
         <relationship name="userUserProviders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProvider" inverseName="user" inverseEntity="UserProvider" syncable="YES"/>
     </entity>
+    <entity name="UserAsset" representedClassName="UserAsset" syncable="YES">
+        <attribute name="assetContentType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetFileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetFileSize" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="assetUpdatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isDefault" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="UserFriend" representedClassName="UserFriend" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -149,5 +161,6 @@
         <element name="UserLocation" positionX="441" positionY="-54" width="128" height="255"/>
         <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="435"/>
         <element name="UserProviderFriend" positionX="151" positionY="-18" width="128" height="165"/>
+        <element name="UserAsset" positionX="160" positionY="192" width="128" height="195"/>
     </elements>
 </model>

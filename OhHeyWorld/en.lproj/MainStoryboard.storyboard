@@ -602,10 +602,10 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" id="FIR-9C-8Be" customClass="KKGridView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="FIR-9C-8Be" customClass="KKGridView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="560"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.93085652372262773" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="wWC-oR-XPw" id="mKC-vs-Fim"/>
                                     <outlet property="delegate" destination="wWC-oR-XPw" id="hzH-BC-qGs"/>
@@ -753,10 +753,13 @@
         <class className="OHWHistoryViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWHistoryViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeProfilePicture:"/>
+                <relationship kind="action" name="editProfile:"/>
                 <relationship kind="action" name="followUser:"/>
                 <relationship kind="action" name="sendMessage:"/>
                 <relationship kind="action" name="showFriendsMapView:"/>
                 <relationship kind="outlet" name="blurbLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="friendsViewButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>

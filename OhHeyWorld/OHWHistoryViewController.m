@@ -328,7 +328,6 @@
 
 - (NSUInteger)gridView:(KKGridView *)gridView numberOfItemsInSection:(NSUInteger)section
 {
-  NSLog(@"%u", _userLocations.count);
   return _userLocations.count;
 }
 

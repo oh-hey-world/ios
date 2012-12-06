@@ -21,6 +21,7 @@
 #import "UserProviderFriend.h"
 #import "ProviderFriend.h"
 #import "UserFriend.h"
+#import "UserAsset.h"
 #import "NotificationContactDetail.h"
 #import "OHWFriendsMapViewController.h"
 #import "ModelHelper.h"
