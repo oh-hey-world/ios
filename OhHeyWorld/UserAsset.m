@@ -7,6 +7,7 @@
 //
 
 #import "UserAsset.h"
+#import "User.h"
 
 
 @implementation UserAsset
@@ -21,5 +22,6 @@
 @dynamic isDefault;
 @dynamic createdAt;
 @dynamic updatedAt;
+@dynamic user;
 
 @end

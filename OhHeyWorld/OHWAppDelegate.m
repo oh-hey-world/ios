@@ -115,6 +115,12 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [_loggedInUser addUserFriendsObject:userFriend];
       }
       [self saveContext];
+    } else if ([objectLoader.userData isEqualToString:@"userAssets"]) {
+      _loggedInUser.userAssets = nil;
+      for (UserAsset* userAsset in objects) {
+        [_loggedInUser addUserAssetsObject:userAsset];
+      }
+      [self saveContext];
     } else {
       NSError *jsonParsingError = nil;
       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
@@ -167,6 +173,17 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
             [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_friends" usingBlock:^(RKObjectLoader *loader) {
               loader.method = RKRequestMethodGET;
               loader.userData = @"userFriends";
+              loader.params = params;
+              loader.delegate = self;
+            }];
+          }
+
+          if (_loggedInUser.userAssets.count == 0) {
+            NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+            [params setValue:@"auth_token" forKey:_authToken];
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_assets" usingBlock:^(RKObjectLoader *loader) {
+              loader.method = RKRequestMethodGET;
+              loader.userData = @"userAssets";
               loader.params = params;
               loader.delegate = self;
             }];

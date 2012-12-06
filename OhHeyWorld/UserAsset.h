@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class User;
 
 @interface UserAsset : NSManagedObject
 
@@ -22,5 +23,6 @@
 @property (nonatomic, retain) NSNumber * isDefault;
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) User *user;
 
 @end

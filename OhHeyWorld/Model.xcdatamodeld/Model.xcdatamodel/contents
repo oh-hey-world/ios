@@ -67,6 +67,7 @@
         <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timezone" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="userAssets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserAsset" inverseName="user" inverseEntity="UserAsset" syncable="YES"/>
         <relationship name="userFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserFriend" inverseName="friend" inverseEntity="UserFriend" syncable="YES"/>
         <relationship name="userFriendUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserFriend" inverseName="user" inverseEntity="UserFriend" syncable="YES"/>
         <relationship name="userNotificationContactDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotificationContactDetail" inverseName="users" inverseEntity="NotificationContactDetail" syncable="YES"/>
@@ -85,6 +86,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userAssets" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="UserFriend" representedClassName="UserFriend" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -156,11 +158,11 @@
         <element name="Location" positionX="144" positionY="243" width="128" height="268"/>
         <element name="NotificationContactDetail" positionX="-72" positionY="342" width="128" height="180"/>
         <element name="ProviderFriend" positionX="531" positionY="246" width="128" height="240"/>
-        <element name="User" positionX="-72" positionY="-204" width="128" height="478"/>
+        <element name="User" positionX="-72" positionY="-204" width="128" height="493"/>
         <element name="UserFriend" positionX="241" positionY="-270" width="128" height="193"/>
         <element name="UserLocation" positionX="441" positionY="-54" width="128" height="255"/>
         <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="435"/>
         <element name="UserProviderFriend" positionX="151" positionY="-18" width="128" height="165"/>
-        <element name="UserAsset" positionX="160" positionY="192" width="128" height="195"/>
+        <element name="UserAsset" positionX="160" positionY="192" width="128" height="208"/>
     </elements>
 </model>
