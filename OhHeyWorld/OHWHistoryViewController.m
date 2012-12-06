@@ -18,6 +18,7 @@
 @synthesize location = _location;
 @synthesize user = _user;
 @synthesize loggedInUser = _loggedInUser;
+@synthesize userAsset = _userAsset;
 @synthesize userFriend = _userFriend;
 @synthesize nameLabel = _nameLabel;
 @synthesize locationLabel = _locationLabel;
@@ -35,39 +36,54 @@
 @synthesize blurbY = _blurbY;
 @synthesize secondDividerY = _secondDividerY;
 @synthesize editButton = _editButton;
+@synthesize selectedImage = _selectedImage;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-  if (objectLoader.isDELETE) {
-    [[appDelegate managedObjectContext] deleteObject:_userFriend];
-    [appDelegate saveContext];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
-    NSMutableArray* userFriends = [CoreDataHelper searchObjectsInContext:@"UserFriend" :predicate :nil :NO :[appDelegate managedObjectContext]];
-    UserFriend *zero = [userFriends objectAtIndex:0];
-    if (zero != nil) {
-      [ModelHelper deleteObject:zero];
+  if ([objectLoader.userData isEqualToString:@"follow"]) {
+    if (objectLoader.isDELETE) {
+      [[appDelegate managedObjectContext] deleteObject:_userFriend];
       [appDelegate saveContext];
+      
+      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"externalId == 0"];
+      NSMutableArray* userFriends = [CoreDataHelper searchObjectsInContext:@"UserFriend" :predicate :nil :NO :[appDelegate managedObjectContext]];
+      UserFriend *zero = [userFriends objectAtIndex:0];
+      if (zero != nil) {
+        [ModelHelper deleteObject:zero];
+        [appDelegate saveContext];
+      }
+      [_followButton setImage:[UIImage imageNamed:@"button-follow.png"] forState:UIControlStateNormal];
+      _userFriend = nil;
+    } else {
+      _userFriend = [objects objectAtIndex:0];
+      _userFriend.user = _user;
+      _userFriend.userId = _user.externalId;
+      if ([_selectedModel isKindOfClass:[User class]]) {
+        User *friend = (User*)_selectedModel;
+        _userFriend.friend = friend;
+        _userFriend.friendId = friend.externalId;
+      }
+      
+      if (_userFriend.externalId != nil) {
+        [appDelegate saveContext];
+      }
+      [_followButton setImage:[UIImage imageNamed:@"button-unfollow.png"] forState:UIControlStateNormal];
     }
-    [_followButton setImage:[UIImage imageNamed:@"button-follow.png"] forState:UIControlStateNormal];
-    _userFriend = nil;
   } else {
-    _userFriend = [objects objectAtIndex:0];
-    _userFriend.user = _user;
-    _userFriend.userId = _user.externalId;
-    if ([_selectedModel isKindOfClass:[User class]]) {
-      User *friend = (User*)_selectedModel;
-      _userFriend.friend = friend;
-      _userFriend.friendId = friend.externalId;
-    }
+    [ModelHelper setOldAssetDefaultsFalse:_user];
     
-    if (_userFriend.externalId != nil) {
+    _userAsset = [objects objectAtIndex:0];
+    _userAsset.user = _user;
+    _userAsset.userId = _user.externalId;
+    _userAsset.isDefault = [NSNumber numberWithBool:YES];
+    _userAsset.asset = UIImageJPEGRepresentation(_selectedImage, 1.0);
+    _profilePicture.image = _selectedImage;
+    if (_userAsset.externalId != nil) {
       [appDelegate saveContext];
     }
-    [_followButton setImage:[UIImage imageNamed:@"button-unfollow.png"] forState:UIControlStateNormal];
   }
   [_hudView stopActivityIndicator];
 }
@@ -89,6 +105,25 @@
     _followButton.imageView.image = [UIImage imageNamed:@"button-unfollow.png"];
   }
   
+  _userAsset = [ModelHelper getDefaultUserAsset:_user];
+  
+  if (_userAsset != nil) {
+    if (_userAsset.asset.length == 0) {
+      NSString *assetUrl = [NSString stringWithFormat:@"%@%@", [appDelegate baseUrl], _userAsset.assetUrl];
+      NSLog(@"%@", assetUrl);
+      [_profilePicture
+                      setImageWithURL:[NSURL URLWithString:assetUrl]
+                      placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"]
+                      success:^(UIImage *image, BOOL cached) {
+                        _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
+                        [appDelegate saveContext];
+                      }
+                      failure:nil];
+    } else {
+      _profilePicture.image = [UIImage imageWithData:_userAsset.asset];
+    }
+  }
+  
   _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
   
   _userLocations = [ModelHelper getUserLocations:_user];
@@ -96,23 +131,13 @@
   UserLocation *userLocation = [ModelHelper getLastUserLocation:_user];
   _location = userLocation.location;
   _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
-  
-  _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
 
   if ([ModelHelper isSameUser:_loggedInUser :_user]) {
     _followButton.hidden = YES;
     _editButton.hidden = NO;
-    //_firstDivider.hidden = YES;
-    //_headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight - 42.0);
-    //_blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY - 42, blurbFrame.size.width, blurbFrame.size.height);
-    //_secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY - 42, secondDividerFrame.size.width, secondDividerFrame.size.height);
   } else {
     _followButton.hidden = NO;
     _editButton.hidden = YES;
-    //_firstDivider.hidden = NO;
-    //_headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight);
-    //_blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY, blurbFrame.size.width, blurbFrame.size.height);
-    //_secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY, secondDividerFrame.size.width, secondDividerFrame.size.height);
   }
 
   CGRect headerFrame = _headerView.frame;
@@ -164,6 +189,7 @@
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_friends" usingBlock:^(RKObjectLoader *loader) {
       loader.method = RKRequestMethodPOST;
       loader.params = params;
+      loader.userData = @"follow";
       loader.delegate = self;
     }];
   } else {
@@ -172,6 +198,7 @@
     [[RKObjectManager sharedManager] deleteObject:_userFriend usingBlock:^(RKObjectLoader *loader) {
       loader.method = RKRequestMethodDELETE;
       loader.params = params;
+      loader.userData = @"follow";
       loader.delegate = self;
     }];
   }
@@ -181,37 +208,69 @@
 
 }
 
-- (IBAction)changeProfilePicture:(id)sender {
-  UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-  UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-  imagePickerController.delegate = self;
-  imagePickerController.allowsEditing = NO;
-  if ([UIImagePickerController isSourceTypeAvailable:sourceType])
-  {
-    imagePickerController.sourceType = sourceType;
-    NSArray* mediaTypes = [NSArray arrayWithObject:(id)kUTTypeImage];
-    imagePickerController.mediaTypes = mediaTypes;
-    
-    [self presentModalViewController:imagePickerController animated:YES];
-  } else {
-    BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Photo error" message:@"Option unavailable on this device"];
-    [alert setCancelButtonWithTitle:@"Okay" block:^{
-    }];
-    [alert show];
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  UIImagePickerControllerSourceType sourceType;
+  
+  switch (buttonIndex) {
+    case 0:
+      sourceType = UIImagePickerControllerSourceTypeCamera;;
+      break;
+    case 1:
+      sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      break;
   }
+  
+  if (buttonIndex != 2) {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType])
+    {
+      imagePickerController.sourceType = sourceType;
+      //NSArray* mediaTypes = [NSArray arrayWithObject:(id)kUTTypeImage];
+      //imagePickerController.mediaTypes = mediaTypes;
+      
+      [self presentModalViewController:imagePickerController animated:YES];
+    } else {
+      BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Photo error" message:@"Option unavailable on this device"];
+      [alert setCancelButtonWithTitle:@"Okay" block:^{
+      }];
+      [alert show];
+    }
+  }
+}
+
+- (IBAction)changeProfilePicture:(id)sender {
+  UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a photo", @"Choose from Library", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showInView:self.view];
+
 }
 
 #pragma mark - UIImagePickerControllerDelegate methods
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
   [picker dismissModalViewControllerAnimated:YES];
-  //UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-  //NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  //NSString* documentsDirectory = [paths objectAtIndex:0];
+  _selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
   
-  //NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-  //NSString *fullPathToImage = [documentsDirectory stringByAppendingPathComponent:CURRENT_IMAGE_KEY];
-  //[imageData writeToFile:fullPathToImage atomically:NO];
+  UserAsset* userAsset = [UserAsset object];
+  userAsset.user = _loggedInUser;
+  userAsset.userId = _loggedInUser.externalId;
+  userAsset.type = @"UserPhotoAsset";
+  userAsset.isDefault = [NSNumber numberWithBool:YES];
+  NSData *data = UIImageJPEGRepresentation(_selectedImage, 1.0);
+  
+  RKParams* params = [RKParams params];
+  [params setData:data MIMEType:@"image/png" forParam:@"asset"];
+  [params setValue:userAsset.userId forParam:@"userId"];
+  [params setValue:userAsset.type forParam:@"type"];
+  [params setValue:userAsset.isDefault forParam:@"isDefault"];
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_assets" usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodPOST;
+    loader.userData = @"userAsset";
+    loader.params = params;
+    loader.delegate = self;
+  }];
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error
@@ -243,6 +302,7 @@
   _profilePicture.userInteractionEnabled = YES;
   [_profilePicture addGestureRecognizer:tapRecognizer];
   _profilePicture.frame = CGRectMake(0, 0, self.view.bounds.size.width, yHeight);
+  _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
   
   UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]];
   CGRect frame = nameBar.frame;

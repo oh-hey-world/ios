@@ -76,10 +76,12 @@
         <relationship name="userUserProviders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProvider" inverseName="user" inverseEntity="UserProvider" syncable="YES"/>
     </entity>
     <entity name="UserAsset" representedClassName="UserAsset" syncable="YES">
+        <attribute name="asset" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="assetContentType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="assetFileName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="assetFileSize" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="assetUpdatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="assetUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="externalId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="isDefault" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -159,10 +161,10 @@
         <element name="NotificationContactDetail" positionX="-72" positionY="342" width="128" height="180"/>
         <element name="ProviderFriend" positionX="531" positionY="246" width="128" height="240"/>
         <element name="User" positionX="-72" positionY="-204" width="128" height="493"/>
+        <element name="UserAsset" positionX="160" positionY="192" width="128" height="240"/>
         <element name="UserFriend" positionX="241" positionY="-270" width="128" height="193"/>
         <element name="UserLocation" positionX="441" positionY="-54" width="128" height="255"/>
         <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="435"/>
         <element name="UserProviderFriend" positionX="151" positionY="-18" width="128" height="165"/>
-        <element name="UserAsset" positionX="160" positionY="192" width="128" height="208"/>
     </elements>
 </model>

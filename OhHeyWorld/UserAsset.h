@@ -13,16 +13,18 @@
 
 @interface UserAsset : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * externalId;
-@property (nonatomic, retain) NSNumber * userId;
-@property (nonatomic, retain) NSString * assetFileName;
+@property (nonatomic, retain) NSData * asset;
 @property (nonatomic, retain) NSString * assetContentType;
+@property (nonatomic, retain) NSString * assetFileName;
 @property (nonatomic, retain) NSNumber * assetFileSize;
 @property (nonatomic, retain) NSDate * assetUpdatedAt;
-@property (nonatomic, retain) NSString * type;
-@property (nonatomic, retain) NSNumber * isDefault;
 @property (nonatomic, retain) NSDate * createdAt;
+@property (nonatomic, retain) NSNumber * externalId;
+@property (nonatomic, retain) NSNumber * isDefault;
+@property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSNumber * userId;
+@property (nonatomic, retain) NSString * assetUrl;
 @property (nonatomic, retain) User *user;
 
 @end

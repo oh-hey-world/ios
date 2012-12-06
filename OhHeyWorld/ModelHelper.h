@@ -20,6 +20,8 @@
 + (NSArray*)getUserProviderFriends:(User*)user;
 + (NSArray*)getUserLocations:(User*)user;
 + (UserFriend*)getUserFriend:(User*)user:(User*)friend;
++ (UserAsset*)getDefaultUserAsset:(User*)user;
++ (void)setOldAssetDefaultsFalse:(User*)user;
 + (BOOL)isSameUser:(User*)user:(User*)friend;
 
 @end

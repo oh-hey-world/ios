@@ -12,16 +12,18 @@
 
 @implementation UserAsset
 
-@dynamic externalId;
-@dynamic userId;
-@dynamic assetFileName;
+@dynamic asset;
 @dynamic assetContentType;
+@dynamic assetFileName;
 @dynamic assetFileSize;
 @dynamic assetUpdatedAt;
-@dynamic type;
-@dynamic isDefault;
 @dynamic createdAt;
+@dynamic externalId;
+@dynamic isDefault;
+@dynamic type;
 @dynamic updatedAt;
+@dynamic userId;
+@dynamic assetUrl;
 @dynamic user;
 
 @end

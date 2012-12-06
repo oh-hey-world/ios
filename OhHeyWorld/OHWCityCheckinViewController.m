@@ -110,8 +110,6 @@
       loader.params = params;
       loader.delegate = self;
     }];
-    
-    
   } else {
     OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
     [self.navigationController pushViewController:controller animated:YES];

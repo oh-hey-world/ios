@@ -344,10 +344,16 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userAssetMapping mapKeyPath:@"asset_file_size" toAttribute:@"assetFileSize"];
   [userAssetMapping mapKeyPath:@"asset_updated_at" toAttribute:@"assetUpdatedAt"];
   [userAssetMapping mapKeyPath:@"type" toAttribute:@"type"];
-  [userAssetMapping mapKeyPath:@"is_default" toAttribute:@"isDefault"];
+  [userAssetMapping mapKeyPath:@"default" toAttribute:@"isDefault"];
   [userAssetMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
   [userAssetMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [userAssetMapping mapKeyPath:@"asset" toAttribute:@"asset"];
+  [userAssetMapping mapKeyPath:@"asset_url" toAttribute:@"assetUrl"];
   userAssetMapping.primaryKeyAttribute = @"externalId";
+  
+  [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[userAssetMapping inverseMapping] forClass:[UserAsset class]];
+  [[RKObjectManager sharedManager].mappingProvider setMapping:userAssetMapping forKeyPath:@"asset"];
+  
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userAssetMapping withRootKeyPath:@"user_assets.user_asset"];
   
   RKObjectRouter *router = [RKObjectManager sharedManager].router;
@@ -355,6 +361,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
   
   [router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
+  
+  [router routeClass:[UserAsset class] toResourcePath:@"/api/user_assets" forMethod:RKRequestMethodPOST];
   
   [router routeClass:[UserProviderFriend class] toResourcePath:@"/api/user_provider_friends/:externalId" forMethod:RKRequestMethodPUT];
   

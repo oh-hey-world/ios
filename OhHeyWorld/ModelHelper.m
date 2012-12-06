@@ -131,6 +131,20 @@
   return [UserFriend findFirstWithPredicate:predicate sortedBy:nil ascending:NO];
 }
 
++ (UserAsset*)getDefaultUserAsset:(User*)user {
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@ AND isDefault == %@", user.externalId, [NSNumber numberWithBool: YES]];
+  return [UserAsset findFirstWithPredicate:predicate sortedBy:nil ascending:NO];
+}
+
++ (void)setOldAssetDefaultsFalse:(User*)user {
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@ AND isDefault == %@", user.externalId, [NSNumber numberWithBool:YES]];
+  NSMutableArray* userAssets = [CoreDataHelper searchObjectsInContext:@"UserAsset" :predicate :nil :NO :[appDelegate managedObjectContext]];
+  for (UserAsset *userAsset in userAssets) {
+    userAsset.isDefault = [NSNumber numberWithBool:NO];
+  }
+  [appDelegate saveContext];
+}
+
 + (BOOL)isSameUser:(User*)user:(User*)otherUser {
   return ([user.externalId isEqualToNumber:otherUser.externalId]);
 }

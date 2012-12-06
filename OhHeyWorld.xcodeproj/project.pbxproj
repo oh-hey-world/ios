@@ -28,7 +28,6 @@
 		07047DD5166D276400DD6741 /* UserProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 07047DD4166D276400DD6741 /* UserProviderFriend.m */; };
 		07047DD8166D2DF200DD6741 /* UserProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07047DD7166D2DF200DD6741 /* UserProvider.m */; };
 		070BA3B01670E92A00179C5C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 070BA3AF1670E92A00179C5C /* User.m */; };
-		070BA3B31670E92B00179C5C /* UserAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 070BA3B21670E92B00179C5C /* UserAsset.m */; };
 		071385DA1623122200936674 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D81623122200936674 /* CoreData.framework */; };
 		071385DB1623122200936674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D91623122200936674 /* CoreLocation.framework */; };
 		071385E01623135100936674 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385DF1623135100936674 /* AddressBook.framework */; };
@@ -43,6 +42,7 @@
 		07141AF316230D33001C346A /* OHWCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07141AF216230D33001C346A /* OHWCheckinViewController.m */; };
 		071EE426162C55C5008C6519 /* HudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EE425162C55C5008C6519 /* HudView.m */; };
 		071EE428162C9BF2008C6519 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071EE427162C9BF2008C6519 /* AddressBookUI.framework */; };
+		07213CD9167115CE00613FC2 /* UserAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 07213CD8167115CE00613FC2 /* UserAsset.m */; };
 		0723775A16541FCF0044FDE5 /* OHWHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */; };
 		0723775D16552B1E0044FDE5 /* default_location.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0723775B16552B1E0044FDE5 /* default_location.jpg */; };
 		0723775E16552B1E0044FDE5 /* default_location@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0723775C16552B1E0044FDE5 /* default_location@2x.jpg */; };
@@ -261,8 +261,6 @@
 		07047DD7166D2DF200DD6741 /* UserProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProvider.m; sourceTree = "<group>"; };
 		070BA3AE1670E92A00179C5C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		070BA3AF1670E92A00179C5C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		070BA3B11670E92B00179C5C /* UserAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAsset.h; sourceTree = "<group>"; };
-		070BA3B21670E92B00179C5C /* UserAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAsset.m; sourceTree = "<group>"; };
 		071385D81623122200936674 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		071385D91623122200936674 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		071385DF1623135100936674 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -280,6 +278,8 @@
 		071EE424162C55C5008C6519 /* HudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudView.h; sourceTree = "<group>"; };
 		071EE425162C55C5008C6519 /* HudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudView.m; sourceTree = "<group>"; };
 		071EE427162C9BF2008C6519 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		07213CD7167115CE00613FC2 /* UserAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAsset.h; sourceTree = "<group>"; };
+		07213CD8167115CE00613FC2 /* UserAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAsset.m; sourceTree = "<group>"; };
 		0723775816541FCF0044FDE5 /* OHWHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWHistoryViewController.h; sourceTree = "<group>"; };
 		0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWHistoryViewController.m; sourceTree = "<group>"; };
 		0723775B16552B1E0044FDE5 /* default_location.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_location.jpg; sourceTree = "<group>"; };
@@ -741,9 +741,9 @@
 		0775F6A216246FFF00D8BDA7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				07213CD7167115CE00613FC2 /* UserAsset.h */,
+				07213CD8167115CE00613FC2 /* UserAsset.m */,
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
-				070BA3B11670E92B00179C5C /* UserAsset.h */,
-				070BA3B21670E92B00179C5C /* UserAsset.m */,
 				070BA3AE1670E92A00179C5C /* User.h */,
 				070BA3AF1670E92A00179C5C /* User.m */,
 				07047DD6166D2DF200DD6741 /* UserProvider.h */,
@@ -1118,7 +1118,7 @@
 				0700DAA1166E8DBE0054089E /* IIViewDeckController.m in Sources */,
 				0700DAA2166E8DBE0054089E /* WrapController.m in Sources */,
 				070BA3B01670E92A00179C5C /* User.m in Sources */,
-				070BA3B31670E92B00179C5C /* UserAsset.m in Sources */,
+				07213CD9167115CE00613FC2 /* UserAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
