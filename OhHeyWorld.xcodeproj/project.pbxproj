@@ -177,6 +177,7 @@
 		07E0637F165160D7009288C9 /* OHWProviderFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E0637E165160D7009288C9 /* OHWProviderFriendViewController.m */; };
 		07E063A616518F75009288C9 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E063A516518F75009288C9 /* Globals.m */; };
 		07FB6AD916270D13006E0F01 /* OHWPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */; };
+		07FD4C10167251CD006A7373 /* OHWEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FD4C0F167251CD006A7373 /* OHWEditProfileViewController.m */; };
 		5F625F920F8B49B481779525 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE417732F6642FCBE38D17D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -439,6 +440,8 @@
 		07E063A516518F75009288C9 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
 		07FB6AD716270D13006E0F01 /* OHWPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWPeopleViewController.h; sourceTree = "<group>"; };
 		07FB6AD816270D13006E0F01 /* OHWPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWPeopleViewController.m; sourceTree = "<group>"; };
+		07FD4C0E167251CD006A7373 /* OHWEditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWEditProfileViewController.h; sourceTree = "<group>"; };
+		07FD4C0F167251CD006A7373 /* OHWEditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWEditProfileViewController.m; sourceTree = "<group>"; };
 		50A9AE9BC10B4146BE576DEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBE417732F6642FCBE38D17D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -693,6 +696,8 @@
 				077CC39D1652A39C00E1D988 /* OHWProviderFriendWebViewController.m */,
 				0723775816541FCF0044FDE5 /* OHWHistoryViewController.h */,
 				0723775916541FCF0044FDE5 /* OHWHistoryViewController.m */,
+				07FD4C0E167251CD006A7373 /* OHWEditProfileViewController.h */,
+				07FD4C0F167251CD006A7373 /* OHWEditProfileViewController.m */,
 				07237766165579200044FDE5 /* OHWFriendsMapViewController.h */,
 				07237767165579200044FDE5 /* OHWFriendsMapViewController.m */,
 				0768B0E9161F73AB002DD6F2 /* MainStoryboard.storyboard */,
@@ -727,7 +732,7 @@
 				0768B107161F73AB002DD6F2 /* Supporting Files */,
 			);
 			path = OhHeyWorldTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		0768B107161F73AB002DD6F2 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -1119,6 +1124,7 @@
 				0700DAA2166E8DBE0054089E /* WrapController.m in Sources */,
 				070BA3B01670E92A00179C5C /* User.m in Sources */,
 				07213CD9167115CE00613FC2 /* UserAsset.m in Sources */,
+				07FD4C10167251CD006A7373 /* OHWEditProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1288,7 +1294,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "42336911-FE64-4EA8-9C4D-3C93715268F5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "861FF540-2A82-4DB0-9CB7-BDA3AFD71659";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				WRAPPER_EXTENSION = app;
 			};

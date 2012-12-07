@@ -35,11 +35,11 @@
 @synthesize headerHeight = _headerHeight;
 @synthesize blurbY = _blurbY;
 @synthesize secondDividerY = _secondDividerY;
-@synthesize editButton = _editButton;
 @synthesize selectedImage = _selectedImage;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
+  [_hudView stopActivityIndicator];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
@@ -80,7 +80,6 @@
     _userAsset.userId = _user.externalId;
     _userAsset.isDefault = [NSNumber numberWithBool:YES];
     _userAsset.asset = UIImageJPEGRepresentation(_selectedImage, 1.0);
-    _profilePicture.image = _selectedImage;
     if (_userAsset.externalId != nil) {
       [appDelegate saveContext];
     }
@@ -132,21 +131,42 @@
   _location = userLocation.location;
   _locationLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.state];
 
+  CGRect headerFrame = _headerView.frame;
+  CGRect blurbFrame = _blurbLabel.frame;
+  CGRect secondDividerFrame = _secondDivider.frame;
   if ([ModelHelper isSameUser:_loggedInUser :_user]) {
     _followButton.hidden = YES;
-    _editButton.hidden = NO;
+
+    if (self.navigationItem.rightBarButtonItem == nil) {
+      UIImage *image = [UIImage imageNamed:@"nav-bar-button.png"];
+      UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+      editButton.bounds = CGRectMake( 0, 0, image.size.width, image.size.height);
+      [editButton setImage:image forState:UIControlStateNormal];
+      [editButton addTarget:self action:@selector(editProfile:) forControlEvents:UIControlEventTouchUpInside];
+      UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton];
+      self.navigationItem.rightBarButtonItem = editBarButtonItem;
+    }
+    
+    _firstDivider.hidden = YES;
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight - 42.0);
+    _blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY - 42, blurbFrame.size.width, blurbFrame.size.height);
+    _secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY - 42, secondDividerFrame.size.width, secondDividerFrame.size.height);
   } else {
     _followButton.hidden = NO;
-    _editButton.hidden = YES;
+    self.navigationItem.rightBarButtonItem = nil;
+    _firstDivider.hidden = NO;
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight);
+    _blurbLabel.frame = CGRectMake(blurbFrame.origin.x, _blurbY, blurbFrame.size.width, blurbFrame.size.height);
+    _secondDivider.frame = CGRectMake(secondDividerFrame.origin.x, _secondDividerY, secondDividerFrame.size.width, secondDividerFrame.size.height);
   }
 
-  CGRect headerFrame = _headerView.frame;
+  headerFrame = _headerView.frame;
   if (_user.blurb == nil || _user.blurb.length == 0) {
     _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight - 42.0);
     _blurbLabel.hidden = YES;
     _secondDivider.hidden = YES;
   } else {
-    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, _headerHeight);
+    _headerView.frame = CGRectMake(headerFrame.origin.x, headerFrame.origin.y, headerFrame.size.width, headerFrame.size.height);
     _blurbLabel.text = _user.blurb;
     _blurbLabel.hidden = NO;
     _secondDivider.hidden = NO;
@@ -171,7 +191,8 @@
 }
 
 - (IBAction)editProfile:(id)sender {
-  NSLog(@"%@", @"clicked");
+  OHWEditProfileViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"EditProfileView"];
+  [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (IBAction)followUser:(id)sender {
@@ -252,7 +273,7 @@
 {
   [picker dismissModalViewControllerAnimated:YES];
   _selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-  
+  _profilePicture.image = _selectedImage;
   UserAsset* userAsset = [UserAsset object];
   userAsset.user = _loggedInUser;
   userAsset.userId = _loggedInUser.externalId;
@@ -291,7 +312,7 @@
   [super viewDidLoad];
   UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title-profile.png"]];
   self.navigationItem.titleView = img;
-  
+
   float yHeight = 164.0f;
   
   _profilePicture = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"profile-photo-default.png"]];
@@ -330,13 +351,6 @@
   [_followButton setImage:followImage forState:UIControlStateNormal];
   [_followButton addTarget:self action:@selector(followUser:) forControlEvents:UIControlEventTouchUpInside];
   
-  
-  _editButton = [[UIButton alloc] initWithFrame:CGRectMake(center - (151 / 2), yHeight, 151, 31)];
-  _editButton.backgroundColor = [UIColor blueColor];
-  [_editButton setTitle:@"Edit Profile" forState:UIControlStateNormal];
-  [_editButton addTarget:self action:@selector(editProfile:) forControlEvents:UIControlEventTouchUpInside];
-  _editButton.hidden = YES;
-  
   yHeight += 36.0;
   
   _firstDivider = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-horizontal.png"]];
@@ -365,7 +379,6 @@
   [_headerView addSubview:nameBar];
   [_headerView addSubview:_followButton];
   [_headerView addSubview:_firstDivider];
-  [_headerView addSubview:_editButton];
   [_headerView addSubview:_blurbLabel];
   [_headerView addSubview:_secondDivider];
   _gridView.gridHeaderView = _headerView;

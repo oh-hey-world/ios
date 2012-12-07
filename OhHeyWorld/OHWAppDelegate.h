@@ -14,6 +14,7 @@
 #import "OHWCityCheckinViewController.h"
 #import "OHWPeopleViewController.h"
 #import "OHWSettings.h"
+#import "OHWEditProfileViewController.h"
 #import "User.h"
 #import "UserProvider.h"
 #import "Location.h"

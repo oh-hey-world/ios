@@ -39,7 +39,6 @@
 @property (readwrite) float headerHeight;
 @property (readwrite) float blurbY;
 @property (readwrite) float secondDividerY;
-@property (strong, nonatomic) IBOutlet UIButton *editButton;
 
 - (IBAction)showFriendsMapView:(id)sender;
 - (IBAction)followUser:(id)sender;

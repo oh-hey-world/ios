@@ -473,6 +473,111 @@
             <point key="canvasLocation" x="1789" y="854"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="4fs-NR-jm2">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="nnj-CH-3Sx" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kdI-ps-SEC">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kii-sN-00h" kind="relationship" relationship="rootViewController" id="iTL-y2-Qlg"/>
+                        <segue destination="wWC-oR-XPw" kind="push" id="Wik-Oc-dTT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2G-Hr-S76" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102" y="1545"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="sqb-uE-uhb">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileView" id="kii-sN-00h" customClass="OHWEditProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v4n-V4-ZJH">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="wUJ-j1-fga">
+                                <rect key="frame" x="20" y="12" width="280" height="112"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0ZO-0i-LbD">
+                                <rect key="frame" x="20" y="132" width="280" height="364"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CR3-e5-tj7">
+                                        <rect key="frame" x="0.0" y="46" width="280" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="BlX-e8-BWy">
+                                        <rect key="frame" x="0.0" y="91" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6SX-Il-f05">
+                                        <rect key="frame" x="0.0" y="135" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NG1-eB-HUV">
+                                        <rect key="frame" x="0.0" y="179" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Vee-ll-rCq">
+                                        <rect key="frame" x="0.0" y="223" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="olY-Sl-a1s">
+                                        <rect key="frame" x="0.0" y="267" width="280" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="kii-sN-00h" id="C1V-nU-MyR"/>
+                                    <outlet property="delegate" destination="kii-sN-00h" id="PcE-16-hqD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="buE-NI-Fmu"/>
+                    <connections>
+                        <outlet property="tableView" destination="0ZO-0i-LbD" id="Ph7-an-0VV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1MS-fN-HjW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="524" y="1545"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="ck2-lY-HcL">
             <objects>
                 <navigationController definesPresentationContext="YES" id="aWD-cm-MuD" sceneMemberID="viewController">
@@ -744,6 +849,12 @@
                 <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
             </relationships>
         </class>
+        <class className="OHWEditProfileViewController" superclassName="OHWBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWEditProfileViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="OHWFriendsMapViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWFriendsMapViewController.h"/>
             <relationships>
@@ -759,7 +870,6 @@
                 <relationship kind="action" name="sendMessage:"/>
                 <relationship kind="action" name="showFriendsMapView:"/>
                 <relationship kind="outlet" name="blurbLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="editButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="friendsViewButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
@@ -812,9 +922,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hBD-cJ-3Nc"/>
         <segue reference="rvP-tz-ysU"/>
-        <segue reference="rIi-z8-8C0"/>
         <segue reference="7BS-DQ-GeH"/>
+        <segue reference="hBD-cJ-3Nc"/>
+        <segue reference="Wik-Oc-dTT"/>
     </inferredMetricsTieBreakers>
 </document>
