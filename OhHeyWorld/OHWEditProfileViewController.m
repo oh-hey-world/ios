@@ -17,6 +17,9 @@
 @synthesize tableView = _tableView;
 @synthesize loggedInUser = _loggedInUser;
 @synthesize hudView = _hudView;
+@synthesize profilePicture = _profilePicture;
+@synthesize selectedImage = _selectedImage;
+@synthesize userAsset = _userAsset;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
@@ -24,6 +27,18 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+  if ([objectLoader.userData isEqualToString:@"userAsset"]) {
+    [ModelHelper setOldAssetDefaultsFalse:_loggedInUser];
+    
+    _userAsset = [objects objectAtIndex:0];
+    _userAsset.user = _loggedInUser;
+    _userAsset.userId = _loggedInUser.externalId;
+    _userAsset.isDefault = [NSNumber numberWithBool:YES];
+    _userAsset.asset = UIImageJPEGRepresentation(_selectedImage, 1.0);
+    if (_userAsset.externalId != nil) {
+      [appDelegate saveContext];
+    }
+  }
   [_hudView stopActivityIndicator];
 }
 
@@ -227,6 +242,83 @@
   }];
 }
 
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  UIImagePickerControllerSourceType sourceType;
+  
+  switch (buttonIndex) {
+    case 0:
+      sourceType = UIImagePickerControllerSourceTypeCamera;;
+      break;
+    case 1:
+      sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      break;
+  }
+  
+  if (buttonIndex != 2) {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType])
+    {
+      imagePickerController.sourceType = sourceType;
+      //NSArray* mediaTypes = [NSArray arrayWithObject:(id)kUTTypeImage];
+      //imagePickerController.mediaTypes = mediaTypes;
+      
+      [self presentModalViewController:imagePickerController animated:YES];
+    } else {
+      BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Photo error" message:@"Option unavailable on this device"];
+      [alert setCancelButtonWithTitle:@"Okay" block:^{
+      }];
+      [alert show];
+    }
+  }
+}
+
+- (IBAction)changeProfilePicture:(id)sender {
+  UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a photo", @"Choose from Library", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showInView:self.view];
+}
+
+#pragma mark - UIImagePickerControllerDelegate methods
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+  [picker dismissModalViewControllerAnimated:YES];
+  _selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+  _profilePicture.image = _selectedImage;
+  UserAsset* userAsset = [UserAsset object];
+  userAsset.user = _loggedInUser;
+  userAsset.userId = _loggedInUser.externalId;
+  userAsset.type = @"UserPhotoAsset";
+  userAsset.isDefault = [NSNumber numberWithBool:YES];
+  NSData *data = UIImageJPEGRepresentation(_selectedImage, 1.0);
+  
+  RKParams* params = [RKParams params];
+  [params setData:data MIMEType:@"image/png" forParam:@"asset"];
+  [params setValue:userAsset.userId forParam:@"userId"];
+  [params setValue:userAsset.type forParam:@"type"];
+  [params setValue:userAsset.isDefault forParam:@"isDefault"];
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_assets" usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodPOST;
+    loader.userData = @"userAsset";
+    loader.params = params;
+    loader.delegate = self;
+  }];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error
+  contextInfo:(void *)contextInfo
+{
+  if (error == NULL) {
+    
+  } else {
+    BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Photo error" message:@"We were unable to save your photo"];
+    [alert setCancelButtonWithTitle:@"Okay" block:^{
+    }];
+    [alert show];
+  }
+}
+
 - (void)animateTextField:(UITextField*)textFieldup:(BOOL)up
 {
   const int movementDistance = (textFieldup.tag > 2) ? 170 : 100;
@@ -244,6 +336,27 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   _loggedInUser = [appDelegate loggedInUser];
+  
+  _userAsset = [ModelHelper getDefaultUserAsset:_loggedInUser];
+  
+  if (_userAsset != nil) {
+    if (_userAsset.asset.length == 0) {
+      NSString *assetUrl = [NSString stringWithFormat:@"%@%@", [appDelegate baseUrl], _userAsset.assetUrl];
+      [_profilePicture
+       setImageWithURL:[NSURL URLWithString:assetUrl]
+       placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"]
+       success:^(UIImage *image, BOOL cached) {
+         _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
+         [appDelegate saveContext];
+       }
+       failure:nil];
+    } else {
+      _profilePicture.image = [UIImage imageWithData:_userAsset.asset];
+    }
+  }
+  
+  _hudView = [[HudView alloc] init];
+  [_hudView loadActivityIndicator];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -268,6 +381,21 @@
   [saveButton addTarget:self action:@selector(saveProfile:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *saveBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
   self.navigationItem.rightBarButtonItem = saveBarButtonItem;
+  
+  UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title-edit-profile.png"]];
+  self.navigationItem.titleView = img;
+  
+  _profilePicture = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"profile-photo-default.png"]];
+  UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(changeProfilePicture:)];
+  [tapRecognizer setNumberOfTouchesRequired:1];
+  [tapRecognizer setDelegate:self];
+  _profilePicture.userInteractionEnabled = YES;
+  [_profilePicture addGestureRecognizer:tapRecognizer];
+  _profilePicture.frame = CGRectMake(0, 0, self.view.bounds.size.width, 164.0f);
+  _profilePicture.contentMode = UIViewContentModeScaleAspectFit;
+  
+  [self.view addSubview:_profilePicture];
   
   _hudView = [[HudView alloc] init];
   [_hudView loadActivityIndicator];

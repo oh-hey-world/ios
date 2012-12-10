@@ -109,7 +109,6 @@
   if (_userAsset != nil) {
     if (_userAsset.asset.length == 0) {
       NSString *assetUrl = [NSString stringWithFormat:@"%@%@", [appDelegate baseUrl], _userAsset.assetUrl];
-      NSLog(@"%@", assetUrl);
       [_profilePicture
                       setImageWithURL:[NSURL URLWithString:assetUrl]
                       placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"]
