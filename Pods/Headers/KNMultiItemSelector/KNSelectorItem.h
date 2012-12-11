@@ -1,1 +1,0 @@
-../../KNMultiItemSelector/KNMultiItemSelector/KNSelectorItem.h

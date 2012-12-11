@@ -268,6 +268,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userMapping mapKeyPath:@"home_location" toAttribute:@"homeLocation"];
   [userMapping mapKeyPath:@"residence_location" toAttribute:@"residenceLocation"];
   [userMapping mapKeyPath:@"authentication_token" toAttribute:@"authenticationToken"];
+  [userMapping mapKeyPath:@"interests_joined" toAttribute:@"interests"];
   userMapping.primaryKeyAttribute = @"externalId";
   [userMapping mapKeyPath:@"user_languages.user_language" toRelationship:@"userUserLanguages" withMapping:userLanguageMapping];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];

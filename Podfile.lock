@@ -14,6 +14,7 @@ DEPENDENCIES:
 - KKGridView (>= 0.6.8.2)
 - KNMultiItemSelector (>= 1.0)
 - SBJson (>= 3.1.1)
+- SDWebImage (>= 2)
 
 SPEC CHECKSUMS:
   BlockAlertsAnd-ActionSheets: cb6379caff86c068616d112b8bfb862b0ec932a6

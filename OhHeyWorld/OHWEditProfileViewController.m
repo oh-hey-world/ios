@@ -23,6 +23,10 @@
 @synthesize languages = _languages;
 @synthesize currentLanguages = _currentLanguages;
 @synthesize currentLanguageNames = _currentLanguageNames;
+@synthesize firstNameField = _firstNameField;
+@synthesize lastNameField = _lastNameField;
+@synthesize blurbField = _blurbField;
+@synthesize interestsField = _interestsField;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
@@ -120,15 +124,15 @@
         label.textColor = [UIColor colorWithWhite:.28 alpha:1];
         [cell.contentView addSubview:label];
         
-        UITextField *text = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
-        text.font = [UIFont fontWithName:@"Helvetica" size:15];
-        text.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        text.text = _loggedInUser.firstName;
-        text.textColor = [UIColor lightGrayColor];
-        text.returnKeyType = UIReturnKeyDone;
-        text.delegate = self;
-        text.tag = 1;
-        [cell.contentView addSubview:text];
+        _firstNameField = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
+        _firstNameField.font = [UIFont fontWithName:@"Helvetica" size:15];
+        _firstNameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        _firstNameField.text = _loggedInUser.firstName;
+        _firstNameField.textColor = [UIColor lightGrayColor];
+        _firstNameField.returnKeyType = UIReturnKeyDone;
+        _firstNameField.delegate = self;
+        _firstNameField.tag = 0;
+        [cell.contentView addSubview:_firstNameField];
         break;
       }
       case 1:
@@ -140,15 +144,15 @@
         label.textColor = [UIColor colorWithWhite:.28 alpha:1];
         [cell.contentView addSubview:label];
         
-        UITextField *text = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
-        text.font = [UIFont fontWithName:@"Helvetica" size:15];
-        text.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        text.text = _loggedInUser.lastName;
-        text.textColor = [UIColor lightGrayColor];
-        text.returnKeyType = UIReturnKeyDone;
-        text.delegate = self;
-        text.tag = 2;
-        [cell.contentView addSubview:text];
+        _lastNameField = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
+        _lastNameField.font = [UIFont fontWithName:@"Helvetica" size:15];
+        _lastNameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        _lastNameField.text = _loggedInUser.lastName;
+        _lastNameField.textColor = [UIColor lightGrayColor];
+        _lastNameField.returnKeyType = UIReturnKeyDone;
+        _lastNameField.delegate = self;
+        _lastNameField.tag = 1;
+        [cell.contentView addSubview:_lastNameField];
         break;
       }
       case 2:
@@ -164,7 +168,7 @@
         text.font = [UIFont fontWithName:@"Helvetica" size:15];
         
         text.textColor = [UIColor lightGrayColor];
-        text.tag = 3;
+        text.tag = 2;
         [cell.contentView addSubview:text];
         text.backgroundColor = [UIColor clearColor];
         
@@ -181,15 +185,15 @@
         label.textColor = [UIColor colorWithWhite:.28 alpha:1];
         [cell.contentView addSubview:label];
         
-        UITextField *text = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
-        text.font = [UIFont fontWithName:@"Helvetica" size:15];
-        text.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        text.text = _loggedInUser.blurb;
-        text.textColor = [UIColor lightGrayColor];
-        text.returnKeyType = UIReturnKeyDone;
-        text.delegate = self;
-        text.tag = 4;
-        [cell.contentView addSubview:text];
+        _blurbField = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
+        _blurbField.font = [UIFont fontWithName:@"Helvetica" size:15];
+        _blurbField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        _blurbField.text = _loggedInUser.blurb;
+        _blurbField.textColor = [UIColor lightGrayColor];
+        _blurbField.returnKeyType = UIReturnKeyDone;
+        _blurbField.delegate = self;
+        _blurbField.tag = 3;
+        [cell.contentView addSubview:_blurbField];
         break;
       }
       case 4:
@@ -201,15 +205,15 @@
         label.textColor = [UIColor colorWithWhite:.28 alpha:1];
         [cell.contentView addSubview:label];
         
-        UITextField *text = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
-        text.font = [UIFont fontWithName:@"Helvetica" size:15];
-        text.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        //text.text = _loggedInUser;
-        text.textColor = [UIColor lightGrayColor];
-        text.returnKeyType = UIReturnKeyDone;
-        text.delegate = self;
-        text.tag = 5;
-        [cell.contentView addSubview:text];
+        _interestsField = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
+        _interestsField.font = [UIFont fontWithName:@"Helvetica" size:15];
+        _interestsField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        _interestsField.text = _loggedInUser.interests;
+        _interestsField.textColor = [UIColor lightGrayColor];
+        _interestsField.returnKeyType = UIReturnKeyDone;
+        _interestsField.delegate = self;
+        _interestsField.tag = 4;
+        [cell.contentView addSubview:_interestsField];
         break;
       }
       default:
@@ -290,33 +294,12 @@
 
 - (IBAction)saveProfile:(id)sender {
   [_hudView startActivityIndicator:self.view];
-  for (NSInteger j = 0; j < [_tableView numberOfSections]; ++j)
-  {
-    for (NSInteger i = 0; i < [_tableView numberOfRowsInSection:j]; ++i)
-    {
-      UITableViewCell *cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]];
-      UITextField *textField = (UITextField*)[cell viewWithTag:i];
-      switch (i) {
-        case 1:
-          _loggedInUser.firstName = textField.text;
-          break;
-        case 2:
-          _loggedInUser.lastName = textField.text;
-          break;
-        case 3:
-          //_loggedInUser.firstName = textField.text;
-          break;
-        case 4:
-          _loggedInUser.firstName = textField.text;
-          break;
-        case 5:
-          //_loggedInUser.firstName = textField.text;
-          break;
-        default:
-          break;
-      }
-    }
-  }
+
+  _loggedInUser.firstName = _firstNameField.text;
+  _loggedInUser.lastName = _lastNameField.text;
+  _loggedInUser.blurb = _blurbField.text;
+  _loggedInUser.interests = _interestsField.text;
+
   [appDelegate saveContext];
   
   RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[User class]];
@@ -330,12 +313,13 @@
   [userDictionary removeObjectForKey:@"roles_mask"];
   [userDictionary removeObjectForKey:@"residence_location"];
   [userDictionary removeObjectForKey:@"home_location"];
+  [userDictionary removeObjectForKey:@"authentication_token"];
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
   [params setValue:@"auth_token" forKey: [appDelegate authToken]];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/api/users/%@", _loggedInUser.externalId] usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodPUT;
     loader.params = params;
-    loader.userData = @"follow";
+    loader.userData = @"updateUser";
     loader.delegate = self;
   }];
 }
@@ -445,11 +429,10 @@
   if (_userAsset != nil) {
     if (_userAsset.asset.length == 0) {
       NSString *assetUrl = [NSString stringWithFormat:@"%@%@", [appDelegate baseUrl], _userAsset.assetUrl];
-      
-      [_profilePicture setImageWithURL:[NSURL URLWithString:assetUrl] placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+      [_profilePicture setImageWithURL:[NSURL URLWithString:assetUrl] placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"] success:^(UIImage *image, BOOL chached) {
         _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
         [appDelegate saveContext];
-      }];
+      } failure:nil];
     } else {
       _profilePicture.image = [UIImage imageWithData:_userAsset.asset];
     }

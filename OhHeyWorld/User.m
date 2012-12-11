@@ -2,7 +2,7 @@
 //  User.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 12/10/12.
+//  Created by Eric Roland on 12/11/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @implementation User
 
 @dynamic agreesToTerms;
+@dynamic authenticationToken;
 @dynamic birthday;
 @dynamic blogUrl;
 @dynamic blurb;
@@ -42,15 +43,15 @@
 @dynamic slug;
 @dynamic timezone;
 @dynamic updatedAt;
-@dynamic authenticationToken;
+@dynamic interests;
 @dynamic userAssets;
 @dynamic userFriends;
 @dynamic userFriendUsers;
+@dynamic userInterests;
 @dynamic userNotificationContactDetails;
+@dynamic userUserLanguages;
 @dynamic userUserLocations;
 @dynamic userUserProviderFriends;
 @dynamic userUserProviders;
-@dynamic userUserLanguages;
-@dynamic userInterests;
 
 @end

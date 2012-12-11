@@ -66,6 +66,7 @@
         <attribute name="homeLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="importJobFinishedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="importJobId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="interests" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locale" optional="YES" attributeType="String" syncable="YES"/>
@@ -183,17 +184,17 @@
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userUserProviderFriends" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Language" positionX="160" positionY="192" width="128" height="135"/>
         <element name="Location" positionX="144" positionY="243" width="128" height="268"/>
         <element name="NotificationContactDetail" positionX="-72" positionY="342" width="128" height="180"/>
         <element name="ProviderFriend" positionX="531" positionY="246" width="128" height="240"/>
-        <element name="User" positionX="-72" positionY="-204" width="128" height="540"/>
+        <element name="User" positionX="-72" positionY="-204" width="128" height="555"/>
         <element name="UserAsset" positionX="160" positionY="192" width="128" height="240"/>
         <element name="UserFriend" positionX="241" positionY="-270" width="128" height="193"/>
+        <element name="UserInterest" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="UserLanguage" positionX="160" positionY="192" width="128" height="150"/>
         <element name="UserLocation" positionX="441" positionY="-54" width="128" height="255"/>
         <element name="UserProvider" positionX="-263" positionY="-6" width="128" height="435"/>
         <element name="UserProviderFriend" positionX="151" positionY="-18" width="128" height="165"/>
-        <element name="Language" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="UserLanguage" positionX="160" positionY="192" width="128" height="150"/>
-        <element name="UserInterest" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

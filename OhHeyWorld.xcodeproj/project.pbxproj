@@ -35,7 +35,6 @@
 		0710A11A16764C61006A72F6 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0710A11916764C61006A72F6 /* Location.m */; };
 		0710A11D16764C62006A72F6 /* UserLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0710A11C16764C61006A72F6 /* UserLanguage.m */; };
 		0710A12016764C62006A72F6 /* ProviderFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 0710A11F16764C62006A72F6 /* ProviderFriend.m */; };
-		0710A12316764C62006A72F6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0710A12216764C62006A72F6 /* User.m */; };
 		0710A12616764C62006A72F6 /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 0710A12516764C62006A72F6 /* Language.m */; };
 		071385DA1623122200936674 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D81623122200936674 /* CoreData.framework */; };
 		071385DB1623122200936674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071385D91623122200936674 /* CoreLocation.framework */; };
@@ -55,6 +54,10 @@
 		0723775D16552B1E0044FDE5 /* default_location.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0723775B16552B1E0044FDE5 /* default_location.jpg */; };
 		0723775E16552B1E0044FDE5 /* default_location@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0723775C16552B1E0044FDE5 /* default_location@2x.jpg */; };
 		07237768165579210044FDE5 /* OHWFriendsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07237767165579200044FDE5 /* OHWFriendsMapViewController.m */; };
+		07303B761677CA4A00EEA968 /* KNMultiItemSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 07303B731677CA4A00EEA968 /* KNMultiItemSelector.m */; };
+		07303B771677CA4A00EEA968 /* KNSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 07303B751677CA4A00EEA968 /* KNSelectorItem.m */; };
+		07303B7A1677CBF100EEA968 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07303B781677CBD100EEA968 /* SDWebImage.framework */; };
+		07303B7D1677CEEC00EEA968 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07303B7C1677CEEC00EEA968 /* User.m */; };
 		074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE91D16305C120043B485 /* ExtendedManagedObject.m */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
@@ -278,8 +281,6 @@
 		0710A11C16764C61006A72F6 /* UserLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLanguage.m; sourceTree = "<group>"; };
 		0710A11E16764C62006A72F6 /* ProviderFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderFriend.h; sourceTree = "<group>"; };
 		0710A11F16764C62006A72F6 /* ProviderFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderFriend.m; sourceTree = "<group>"; };
-		0710A12116764C62006A72F6 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		0710A12216764C62006A72F6 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0710A12416764C62006A72F6 /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
 		0710A12516764C62006A72F6 /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
 		071385D81623122200936674 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -305,6 +306,13 @@
 		0723775C16552B1E0044FDE5 /* default_location@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "default_location@2x.jpg"; sourceTree = "<group>"; };
 		07237766165579200044FDE5 /* OHWFriendsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWFriendsMapViewController.h; sourceTree = "<group>"; };
 		07237767165579200044FDE5 /* OHWFriendsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWFriendsMapViewController.m; sourceTree = "<group>"; };
+		07303B721677CA4A00EEA968 /* KNMultiItemSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNMultiItemSelector.h; sourceTree = "<group>"; };
+		07303B731677CA4A00EEA968 /* KNMultiItemSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNMultiItemSelector.m; sourceTree = "<group>"; };
+		07303B741677CA4A00EEA968 /* KNSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSelectorItem.h; sourceTree = "<group>"; };
+		07303B751677CA4A00EEA968 /* KNSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSelectorItem.m; sourceTree = "<group>"; };
+		07303B781677CBD100EEA968 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../../../../Downloads/SDWebImage.framework; sourceTree = "<group>"; };
+		07303B7B1677CEEC00EEA968 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		07303B7C1677CEEC00EEA968 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		074EE91C16305C120043B485 /* ExtendedManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedManagedObject.h; sourceTree = "<group>"; };
 		074EE91D16305C120043B485 /* ExtendedManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedManagedObject.m; sourceTree = "<group>"; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -459,6 +467,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07303B7A1677CBF100EEA968 /* SDWebImage.framework in Frameworks */,
 				0775F69E1624669500D8BDA7 /* MobileCoreServices.framework in Frameworks */,
 				0700DA8A166E8D010054089E /* QuartzCore.framework in Frameworks */,
 				077CC3971651ABE100E1D988 /* ImageIO.framework in Frameworks */,
@@ -618,14 +627,27 @@
 		071C8602166800D000B86776 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				07303B701677C9A800EEA968 /* KNMultiItemSelector */,
 				0700DA9C166E8D920054089E /* ViewDeck */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		07303B701677C9A800EEA968 /* KNMultiItemSelector */ = {
+			isa = PBXGroup;
+			children = (
+				07303B721677CA4A00EEA968 /* KNMultiItemSelector.h */,
+				07303B731677CA4A00EEA968 /* KNMultiItemSelector.m */,
+				07303B741677CA4A00EEA968 /* KNSelectorItem.h */,
+				07303B751677CA4A00EEA968 /* KNSelectorItem.m */,
+			);
+			name = KNMultiItemSelector;
+			sourceTree = "<group>";
+		};
 		0768B0C2161F73AA002DD6F2 = {
 			isa = PBXGroup;
 			children = (
+				07303B781677CBD100EEA968 /* SDWebImage.framework */,
 				0775FBBD1624AECC00D8BDA7 /* RestKit.xcodeproj */,
 				0768B0D7161F73AA002DD6F2 /* OhHeyWorld */,
 				0768B106161F73AB002DD6F2 /* OhHeyWorldTests */,
@@ -754,10 +776,10 @@
 			isa = PBXGroup;
 			children = (
 				0775F6A3162470AF00D8BDA7 /* Model.xcdatamodeld */,
+				07303B7B1677CEEC00EEA968 /* User.h */,
+				07303B7C1677CEEC00EEA968 /* User.m */,
 				0710A12416764C62006A72F6 /* Language.h */,
 				0710A12516764C62006A72F6 /* Language.m */,
-				0710A12116764C62006A72F6 /* User.h */,
-				0710A12216764C62006A72F6 /* User.m */,
 				0710A11E16764C62006A72F6 /* ProviderFriend.h */,
 				0710A11F16764C62006A72F6 /* ProviderFriend.m */,
 				0710A11B16764C61006A72F6 /* UserLanguage.h */,
@@ -1139,8 +1161,10 @@
 				0710A11A16764C61006A72F6 /* Location.m in Sources */,
 				0710A11D16764C62006A72F6 /* UserLanguage.m in Sources */,
 				0710A12016764C62006A72F6 /* ProviderFriend.m in Sources */,
-				0710A12316764C62006A72F6 /* User.m in Sources */,
 				0710A12616764C62006A72F6 /* Language.m in Sources */,
+				07303B761677CA4A00EEA968 /* KNMultiItemSelector.m in Sources */,
+				07303B771677CA4A00EEA968 /* KNSelectorItem.m in Sources */,
+				07303B7D1677CEEC00EEA968 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1264,6 +1288,7 @@
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/RestKit/Tests/Vendor/OCHamcrest\"",
 					"\"$(SRCROOT)/OhHeyWorld\"",
+					"\"$(SRCROOT)/../../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
@@ -1295,6 +1320,7 @@
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/RestKit/Tests/Vendor/OCHamcrest\"",
 					"\"$(SRCROOT)/OhHeyWorld\"",
+					"\"$(SRCROOT)/../../../../../Downloads\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";

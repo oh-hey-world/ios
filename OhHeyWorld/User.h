@@ -2,7 +2,7 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 12/10/12.
+//  Created by Eric Roland on 12/11/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @interface User : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * agreesToTerms;
+@property (nonatomic, retain) NSString * authenticationToken;
 @property (nonatomic, retain) NSDate * birthday;
 @property (nonatomic, retain) NSString * blogUrl;
 @property (nonatomic, retain) NSString * blurb;
@@ -36,16 +37,16 @@
 @property (nonatomic, retain) NSString * slug;
 @property (nonatomic, retain) NSNumber * timezone;
 @property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSString * authenticationToken;
+@property (nonatomic, retain) NSString * interests;
 @property (nonatomic, retain) NSSet *userAssets;
 @property (nonatomic, retain) NSSet *userFriends;
 @property (nonatomic, retain) NSSet *userFriendUsers;
+@property (nonatomic, retain) NSSet *userInterests;
 @property (nonatomic, retain) NSSet *userNotificationContactDetails;
+@property (nonatomic, retain) NSSet *userUserLanguages;
 @property (nonatomic, retain) NSSet *userUserLocations;
 @property (nonatomic, retain) NSSet *userUserProviderFriends;
 @property (nonatomic, retain) NSSet *userUserProviders;
-@property (nonatomic, retain) NSSet *userUserLanguages;
-@property (nonatomic, retain) NSSet *userInterests;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
@@ -65,10 +66,20 @@
 - (void)addUserFriendUsers:(NSSet *)values;
 - (void)removeUserFriendUsers:(NSSet *)values;
 
+- (void)addUserInterestsObject:(UserInterest *)value;
+- (void)removeUserInterestsObject:(UserInterest *)value;
+- (void)addUserInterests:(NSSet *)values;
+- (void)removeUserInterests:(NSSet *)values;
+
 - (void)addUserNotificationContactDetailsObject:(NotificationContactDetail *)value;
 - (void)removeUserNotificationContactDetailsObject:(NotificationContactDetail *)value;
 - (void)addUserNotificationContactDetails:(NSSet *)values;
 - (void)removeUserNotificationContactDetails:(NSSet *)values;
+
+- (void)addUserUserLanguagesObject:(UserLanguage *)value;
+- (void)removeUserUserLanguagesObject:(UserLanguage *)value;
+- (void)addUserUserLanguages:(NSSet *)values;
+- (void)removeUserUserLanguages:(NSSet *)values;
 
 - (void)addUserUserLocationsObject:(UserLocation *)value;
 - (void)removeUserUserLocationsObject:(UserLocation *)value;
@@ -84,15 +95,5 @@
 - (void)removeUserUserProvidersObject:(UserProvider *)value;
 - (void)addUserUserProviders:(NSSet *)values;
 - (void)removeUserUserProviders:(NSSet *)values;
-
-- (void)addUserUserLanguagesObject:(UserLanguage *)value;
-- (void)removeUserUserLanguagesObject:(UserLanguage *)value;
-- (void)addUserUserLanguages:(NSSet *)values;
-- (void)removeUserUserLanguages:(NSSet *)values;
-
-- (void)addUserInterestsObject:(UserInterest *)value;
-- (void)removeUserInterestsObject:(UserInterest *)value;
-- (void)addUserInterests:(NSSet *)values;
-- (void)removeUserInterests:(NSSet *)values;
 
 @end

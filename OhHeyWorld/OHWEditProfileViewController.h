@@ -20,6 +20,10 @@
 @property (nonatomic, retain) User *loggedInUser;
 @property (nonatomic, retain) HudView *hudView;
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
+@property (strong, nonatomic) IBOutlet UITextField *firstNameField;
+@property (strong, nonatomic) IBOutlet UITextField *lastNameField;
+@property (strong, nonatomic) IBOutlet UITextField *interestsField;
+@property (strong, nonatomic) IBOutlet UITextField *blurbField;
 @property (nonatomic, retain) UIImage *selectedImage;
 @property (nonatomic, retain) UserAsset *userAsset;
 @property (nonatomic, retain) NSArray *currentLanguages;
