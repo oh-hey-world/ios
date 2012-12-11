@@ -922,8 +922,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="rvP-tz-ysU"/>
-        <segue reference="7BS-DQ-GeH"/>
-        <segue reference="hBD-cJ-3Nc"/>
         <segue reference="Wik-Oc-dTT"/>
+        <segue reference="hBD-cJ-3Nc"/>
+        <segue reference="7BS-DQ-GeH"/>
     </inferredMetricsTieBreakers>
 </document>

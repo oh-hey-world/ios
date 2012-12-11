@@ -20,10 +20,32 @@
 @synthesize profilePicture = _profilePicture;
 @synthesize selectedImage = _selectedImage;
 @synthesize userAsset = _userAsset;
+@synthesize languages = _languages;
+@synthesize currentLanguages = _currentLanguages;
+@synthesize currentLanguageNames = _currentLanguageNames;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
   NSLog(@"%@", error);
   [_hudView stopActivityIndicator];
+}
+
+- (void)setCurrentCoreLanguages:(NSSet *)currentCoreLanguages {
+  if (currentCoreLanguages.count > 0) {
+    NSMutableArray *languageIds = [[NSMutableArray alloc] initWithCapacity:currentCoreLanguages.count];
+    for (UserLanguage* userLanguage in currentCoreLanguages) {
+      [languageIds addObject:userLanguage.languageId];
+    }
+    
+    NSArray* languages = [ModelHelper getLanguagesByIds:languageIds];
+    _currentLanguageNames = [[NSMutableString alloc] init];
+    for (Language* language in languages) {
+      NSPredicate *pred = [NSPredicate predicateWithFormat:@"selectValue = %@", [language.externalId stringValue]];
+      NSArray *selectorItems = [_languages filteredArrayUsingPredicate:pred];
+      KNSelectorItem *selectorItem = [selectorItems objectAtIndex:0];
+      selectorItem.selected = YES;
+      [_currentLanguageNames appendFormat:@"%@ ", language.name];
+    }
+  }
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
@@ -38,6 +60,14 @@
     if (_userAsset.externalId != nil) {
       [appDelegate saveContext];
     }
+  } else if ([objectLoader.userData isEqualToString:@"userLanguages"]) {
+    [_loggedInUser removeUserUserLanguages:_loggedInUser.userUserLanguages];
+    for (UserLanguage* userLanguage in objects) {
+      [_loggedInUser addUserUserLanguagesObject:userLanguage];
+    }
+    [appDelegate saveContext];
+    [self setCurrentCoreLanguages:_loggedInUser.userUserLanguages];
+    [_tableView reloadData];
   }
   [_hudView stopActivityIndicator];
 }
@@ -76,6 +106,10 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     float xOffset = 90;
     float textLength = 170;
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
     switch (indexPath.row) {
       case 0:
       {
@@ -126,15 +160,15 @@
         label.textColor = [UIColor colorWithWhite:.28 alpha:1];
         [cell.contentView addSubview:label];
         
-        UITextField *text = [[UITextField alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
         text.font = [UIFont fontWithName:@"Helvetica" size:15];
-        text.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        //text.text = @"tests";
+        
         text.textColor = [UIColor lightGrayColor];
-        text.returnKeyType = UIReturnKeyDone;
-        text.delegate = self;
         text.tag = 3;
         [cell.contentView addSubview:text];
+        text.backgroundColor = [UIColor clearColor];
+        
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 
         break;
       }
@@ -184,10 +218,74 @@
     
   }
   
-  cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  cell.accessoryType = UITableViewCellAccessoryNone;
+  if (indexPath.row == 2) {
+    UILabel *label = (UILabel*)[cell viewWithTag:3];
+    label.text = (_currentLanguageNames.length > 0) ? _currentLanguageNames : @"None selected";
+  }
   
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
   return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.row == 2) {
+    KNMultiItemSelector * selector = [[KNMultiItemSelector alloc] initWithItems:_languages
+                                                               preselectedItems: _currentLanguages
+                                                                          title:@"Select your languages"
+                                                                placeholderText:nil
+                                                                       delegate:self];
+    [self presentModalHelper:selector];
+  }
+}
+
+- (void)presentModalHelper:(UIViewController*)controller {
+  UINavigationController * uinav = [[UINavigationController alloc] initWithRootViewController:controller];
+  uinav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+  uinav.modalPresentationStyle = UIModalPresentationFormSheet;
+  [self presentModalViewController:uinav animated:YES];
+}
+
+-(void)selectorDidSelectItem:(KNSelectorItem *)selectedItem {
+}
+
+-(void)selectorDidDeselectItem:(KNSelectorItem *)selectedItem {
+}
+
+-(void)selectorDidFinishSelectionWithItems:(NSArray *)selectedItems {
+  // Do whatever you want with the selected items
+  NSString * text = @"Selected: ";
+  for (KNSelectorItem * i in selectedItems) {
+    text = [text stringByAppendingFormat:@"%@,", i.selectValue];
+  }
+  
+  _currentLanguages = selectedItems;
+  
+  NSString *languageIds = @"";
+  NSMutableString *currentLanguageIds = [[NSMutableString alloc] init];
+  for (KNSelectorItem *item in _currentLanguages) {
+    [currentLanguageIds appendFormat:@"%@,", item.selectValue];
+  }
+  
+  if ( [currentLanguageIds length] > 0)
+    languageIds = [currentLanguageIds substringToIndex:[currentLanguageIds length] - 1];
+
+  NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+  [params setValue:[appDelegate authToken] forKey:@"auth_token" ];
+  [params setValue:languageIds forKey:@"language_ids"];
+  [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_languages/mass_update" usingBlock:^(RKObjectLoader *loader) {
+    loader.method = RKRequestMethodPUT;
+    loader.userData = @"userLanguages";
+    loader.params = params;
+    loader.delegate = self;
+  }];
+  
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)selectorDidCancelSelection {
+  // You should dismiss modal controller here, it doesn't do that by itself
+  [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)saveProfile:(id)sender {
@@ -336,20 +434,22 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   _loggedInUser = [appDelegate loggedInUser];
-  
+  NSArray *languages = [CoreDataHelper searchObjectsInContext:@"Language" :nil :nil :NO :[appDelegate managedObjectContext]];
+  _languages = [[NSMutableArray alloc] initWithCapacity:languages.count];
+  for (Language *language in languages) {
+    [_languages addObject:[[KNSelectorItem alloc] initWithDisplayValue:language.name selectValue:[language.externalId stringValue] imageUrl:nil]];
+  }
+  [self setCurrentCoreLanguages:_loggedInUser.userUserLanguages];
   _userAsset = [ModelHelper getDefaultUserAsset:_loggedInUser];
   
   if (_userAsset != nil) {
     if (_userAsset.asset.length == 0) {
       NSString *assetUrl = [NSString stringWithFormat:@"%@%@", [appDelegate baseUrl], _userAsset.assetUrl];
-      [_profilePicture
-       setImageWithURL:[NSURL URLWithString:assetUrl]
-       placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"]
-       success:^(UIImage *image, BOOL cached) {
-         _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
-         [appDelegate saveContext];
-       }
-       failure:nil];
+      
+      [_profilePicture setImageWithURL:[NSURL URLWithString:assetUrl] placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
+        [appDelegate saveContext];
+      }];
     } else {
       _profilePicture.image = [UIImage imageWithData:_userAsset.asset];
     }

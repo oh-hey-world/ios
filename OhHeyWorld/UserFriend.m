@@ -2,7 +2,7 @@
 //  UserFriend.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 11/28/12.
+//  Created by Eric Roland on 12/10/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -12,15 +12,15 @@
 
 @implementation UserFriend
 
-@dynamic userId;
-@dynamic friendId;
 @dynamic createdAt;
-@dynamic updatedAt;
-@dynamic sendSms;
-@dynamic sendEmail;
-@dynamic phone;
 @dynamic externalId;
-@dynamic user;
+@dynamic friendId;
+@dynamic phone;
+@dynamic sendEmail;
+@dynamic sendSms;
+@dynamic updatedAt;
+@dynamic userId;
 @dynamic friend;
+@dynamic user;
 
 @end

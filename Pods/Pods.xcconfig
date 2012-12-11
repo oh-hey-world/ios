@@ -1,7 +1,7 @@
 ALWAYS_SEARCH_USER_PATHS = YES
-OTHER_LDFLAGS = -ObjC -lstdc++ -framework QuartzCore
+OTHER_LDFLAGS = -ObjC -lstdc++ -framework CoreGraphics -framework ImageIO -framework QuartzCore
 HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS}
 PODS_ROOT = ${SRCROOT}/Pods
-PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/BlockAlertsAnd-ActionSheets" "${PODS_ROOT}/BuildHeaders/KKGridView" "${PODS_ROOT}/BuildHeaders/SBJson"
-PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/BlockAlertsAnd-ActionSheets" "${PODS_ROOT}/Headers/KKGridView" "${PODS_ROOT}/Headers/SBJson"
+PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/BlockAlertsAnd-ActionSheets" "${PODS_ROOT}/BuildHeaders/KKGridView" "${PODS_ROOT}/BuildHeaders/KNMultiItemSelector" "${PODS_ROOT}/BuildHeaders/SBJson" "${PODS_ROOT}/BuildHeaders/SDWebImage"
+PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/BlockAlertsAnd-ActionSheets" "${PODS_ROOT}/Headers/KKGridView" "${PODS_ROOT}/Headers/KNMultiItemSelector" "${PODS_ROOT}/Headers/SBJson" "${PODS_ROOT}/Headers/SDWebImage"
 PODS_HEADERS_SEARCH_PATHS = ${PODS_PUBLIC_HEADERS_SEARCH_PATHS}

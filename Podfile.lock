@@ -2,16 +2,25 @@
 PODS:
 - BlockAlertsAnd-ActionSheets (1.0.0)
 - KKGridView (0.6.8.2)
+- KNMultiItemSelector (1.0):
+  - SDWebImage
 - SBJson (3.1.1)
+- SDWebImage (3.0):
+  - SDWebImage/Main (= 3.0)
+- SDWebImage/Main (3.0)
 
 DEPENDENCIES:
 - BlockAlertsAnd-ActionSheets (>= 1.0.0)
 - KKGridView (>= 0.6.8.2)
+- KNMultiItemSelector (>= 1.0)
 - SBJson (>= 3.1.1)
 
 SPEC CHECKSUMS:
   BlockAlertsAnd-ActionSheets: cb6379caff86c068616d112b8bfb862b0ec932a6
   KKGridView: ca91fc93e91ddbeab8b46d07af1efda289f324e7
+  KNMultiItemSelector: 982c613756a23fd92c9206d492377202ae2a1aee
   SBJson: d917ef596960a977b6c20235a90810bc306a48f0
+  SDWebImage: afa3965bcb37797ba4ecac49393897b99d1b4be7
+  SDWebImage/Main: afa3965bcb37797ba4ecac49393897b99d1b4be7
 
 COCOAPODS: 0.16.0

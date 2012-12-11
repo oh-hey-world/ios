@@ -2,7 +2,7 @@
 //  NotificationContactDetail.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 10/29/12.
+//  Created by Eric Roland on 12/10/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -12,14 +12,14 @@
 
 @implementation NotificationContactDetail
 
+@dynamic createdAt;
+@dynamic enabledToSendNotification;
 @dynamic externalId;
 @dynamic name;
-@dynamic value;
 @dynamic type;
-@dynamic userId;
-@dynamic createdAt;
 @dynamic updatedAt;
-@dynamic enabledToSendNotification;
-@dynamic user;
+@dynamic userId;
+@dynamic value;
+@dynamic users;
 
 @end

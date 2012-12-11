@@ -109,14 +109,12 @@
   if (_userAsset != nil) {
     if (_userAsset.asset.length == 0) {
       NSString *assetUrl = [NSString stringWithFormat:@"%@%@", [appDelegate baseUrl], _userAsset.assetUrl];
-      [_profilePicture
-                      setImageWithURL:[NSURL URLWithString:assetUrl]
-                      placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"]
-                      success:^(UIImage *image, BOOL cached) {
-                        _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
-                        [appDelegate saveContext];
-                      }
-                      failure:nil];
+      [_profilePicture setImageWithURL:[NSURL URLWithString:assetUrl] placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
+        [appDelegate saveContext];
+      }];
+
+
     } else {
       _profilePicture.image = [UIImage imageWithData:_userAsset.asset];
     }

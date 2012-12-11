@@ -12,8 +12,9 @@
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
 #import "OHWAppDelegate.h"
+#import "KNMultiItemSelector.h"
 
-@interface OHWEditProfileViewController : OHWBaseViewController <RKObjectLoaderDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate>
+@interface OHWEditProfileViewController : OHWBaseViewController <RKObjectLoaderDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, KNMultiItemSelectorDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) User *loggedInUser;
@@ -21,9 +22,13 @@
 @property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (nonatomic, retain) UIImage *selectedImage;
 @property (nonatomic, retain) UserAsset *userAsset;
+@property (nonatomic, retain) NSArray *currentLanguages;
+@property (nonatomic, retain) NSMutableArray *languages;
+@property (nonatomic, retain) NSMutableString *currentLanguageNames;
 
 - (void)animateTextField:(UITextField*)textFieldup:(BOOL)up;
 - (IBAction)saveProfile:(id)sender;
 - (IBAction)changeProfilePicture:(id)sender;
+- (void)presentModalHelper:(UIViewController*)controller;
 
 @end

@@ -2,14 +2,14 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 12/6/12.
+//  Created by Eric Roland on 12/10/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class NotificationContactDetail, UserAsset, UserFriend, UserLocation, UserProvider, UserProviderFriend;
+@class NotificationContactDetail, UserAsset, UserFriend, UserInterest, UserLanguage, UserLocation, UserProvider, UserProviderFriend;
 
 @interface User : NSManagedObject
 
@@ -36,16 +36,24 @@
 @property (nonatomic, retain) NSString * slug;
 @property (nonatomic, retain) NSNumber * timezone;
 @property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSString * authenticationToken;
+@property (nonatomic, retain) NSSet *userAssets;
 @property (nonatomic, retain) NSSet *userFriends;
 @property (nonatomic, retain) NSSet *userFriendUsers;
 @property (nonatomic, retain) NSSet *userNotificationContactDetails;
 @property (nonatomic, retain) NSSet *userUserLocations;
 @property (nonatomic, retain) NSSet *userUserProviderFriends;
 @property (nonatomic, retain) NSSet *userUserProviders;
-@property (nonatomic, retain) NSSet *userAssets;
+@property (nonatomic, retain) NSSet *userUserLanguages;
+@property (nonatomic, retain) NSSet *userInterests;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
+
+- (void)addUserAssetsObject:(UserAsset *)value;
+- (void)removeUserAssetsObject:(UserAsset *)value;
+- (void)addUserAssets:(NSSet *)values;
+- (void)removeUserAssets:(NSSet *)values;
 
 - (void)addUserFriendsObject:(UserFriend *)value;
 - (void)removeUserFriendsObject:(UserFriend *)value;
@@ -77,9 +85,14 @@
 - (void)addUserUserProviders:(NSSet *)values;
 - (void)removeUserUserProviders:(NSSet *)values;
 
-- (void)addUserAssetsObject:(UserAsset *)value;
-- (void)removeUserAssetsObject:(UserAsset *)value;
-- (void)addUserAssets:(NSSet *)values;
-- (void)removeUserAssets:(NSSet *)values;
+- (void)addUserUserLanguagesObject:(UserLanguage *)value;
+- (void)removeUserUserLanguagesObject:(UserLanguage *)value;
+- (void)addUserUserLanguages:(NSSet *)values;
+- (void)removeUserUserLanguages:(NSSet *)values;
+
+- (void)addUserInterestsObject:(UserInterest *)value;
+- (void)removeUserInterestsObject:(UserInterest *)value;
+- (void)addUserInterests:(NSSet *)values;
+- (void)removeUserInterests:(NSSet *)values;
 
 @end

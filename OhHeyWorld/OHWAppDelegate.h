@@ -23,6 +23,9 @@
 #import "ProviderFriend.h"
 #import "UserFriend.h"
 #import "UserAsset.h"
+#import "UserLanguage.h"
+#import "UserInterest.h"
+#import "Language.h"
 #import "NotificationContactDetail.h"
 #import "OHWFriendsMapViewController.h"
 #import "ModelHelper.h"
@@ -35,6 +38,7 @@
 #import "IIViewDeckController.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @class OHWCheckinViewController;
 @class OHWLoginViewController;

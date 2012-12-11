@@ -2,7 +2,7 @@
 //  UserProviderFriend.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 12/3/12.
+//  Created by Eric Roland on 12/10/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -15,10 +15,10 @@
 
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSNumber * externalId;
+@property (nonatomic, retain) NSNumber * following;
 @property (nonatomic, retain) NSNumber * providerFriendId;
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSNumber * userId;
-@property (nonatomic, retain) NSNumber * following;
 @property (nonatomic, retain) ProviderFriend *providerFriend;
 @property (nonatomic, retain) User *user;
 

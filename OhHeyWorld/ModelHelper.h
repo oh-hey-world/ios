@@ -22,6 +22,7 @@
 + (UserFriend*)getUserFriend:(User*)user:(User*)friend;
 + (UserAsset*)getDefaultUserAsset:(User*)user;
 + (void)setOldAssetDefaultsFalse:(User*)user;
++ (NSArray*)getLanguagesByIds:(NSArray*)languageIds;
 + (BOOL)isSameUser:(User*)user:(User*)friend;
 
 @end

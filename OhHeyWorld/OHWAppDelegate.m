@@ -121,9 +121,11 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [_loggedInUser addUserAssetsObject:userAsset];
       }
       [self saveContext];
+    } else if ([objectLoader.userData isEqualToString:@"languages"]) {
+      [self saveContext];
     } else {
-      NSError *jsonParsingError = nil;
-      NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
+      //NSError *jsonParsingError = nil;
+      //NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectLoader.response.body options:0 error:&jsonParsingError];
       if (objects.count == 0) {
         BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Location Failure" message:@"Could not find your location."];
         [alert setCancelButtonWithTitle:@"Ok" block:^{
@@ -131,9 +133,27 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
         [alert show];
       } else {
         [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-        _authToken = [json valueForKey:@"auth_token"];
         if (objects.count > 0) {
           _loggedInUser = [objects objectAtIndex:0];
+          _authToken = _loggedInUser.authenticationToken;
+          
+          NSLog(@"%@", objectLoader.response.bodyAsString);
+          for (UserLanguage* userLanguage in _loggedInUser.userUserLanguages) {
+            NSLog(@"%@ %@ %@", userLanguage.languageId, userLanguage.externalId, userLanguage.createdAt);
+          }
+          
+          NSMutableArray* languages = [CoreDataHelper searchObjectsInContext:@"Language" :nil :nil :NO :[self managedObjectContext]];
+          if (languages.count == 0) {
+            NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+            [params setValue:@"auth_token" forKey: [self authToken]];
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/languages" usingBlock:^(RKObjectLoader *loader) {
+              loader.method = RKRequestMethodGET;
+              loader.userData = @"languages";
+              loader.params = params;
+              loader.delegate = self;
+            }];
+          }
+          
           if (_loggedInUser.userUserProviderFriends.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
             [params setValue:@"auth_token" forKey: [self authToken]];
@@ -207,6 +227,24 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
 }
 
 - (void)setupRKUser {
+  RKManagedObjectMapping *languageMapping = [RKManagedObjectMapping mappingForClass:[Language class] inManagedObjectStore:_manager.objectStore];
+  [languageMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  [languageMapping mapKeyPath:@"name" toAttribute:@"name"];
+  [languageMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [languageMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [languageMapping mapKeyPath:@"local_name" toAttribute:@"localName"];
+  languageMapping.primaryKeyAttribute = @"externalId";
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:languageMapping withRootKeyPath:@"languages.language"];
+  
+  RKManagedObjectMapping *userLanguageMapping = [RKManagedObjectMapping mappingForClass:[UserLanguage class] inManagedObjectStore:_manager.objectStore];
+  [userLanguageMapping mapKeyPath:@"user_id" toAttribute:@"userId"];
+  [userLanguageMapping mapKeyPath:@"created_at" toAttribute:@"createdAt"];
+  [userLanguageMapping mapKeyPath:@"updated_at" toAttribute:@"updatedAt"];
+  [userLanguageMapping mapKeyPath:@"language_id" toAttribute:@"languageId"];
+  [userLanguageMapping mapKeyPath:@"id" toAttribute:@"externalId"];
+  userLanguageMapping.primaryKeyAttribute = @"externalId";
+  [[RKObjectManager sharedManager].mappingProvider registerMapping:userLanguageMapping withRootKeyPath:@"user_languages.user_language"];
+  
   RKManagedObjectMapping *userMapping = [RKManagedObjectMapping mappingForClass:[User class] inManagedObjectStore:_manager.objectStore];
   [userMapping mapKeyPath:@"email" toAttribute:@"email"];
   [userMapping mapKeyPath:@"birthday" toAttribute:@"birthday"];
@@ -229,7 +267,9 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [userMapping mapKeyPath:@"id" toAttribute:@"externalId"];
   [userMapping mapKeyPath:@"home_location" toAttribute:@"homeLocation"];
   [userMapping mapKeyPath:@"residence_location" toAttribute:@"residenceLocation"];
+  [userMapping mapKeyPath:@"authentication_token" toAttribute:@"authenticationToken"];
   userMapping.primaryKeyAttribute = @"externalId";
+  [userMapping mapKeyPath:@"user_languages.user_language" toRelationship:@"userUserLanguages" withMapping:userLanguageMapping];
   [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
   
   RKManagedObjectMapping *userProviderMapping = [RKManagedObjectMapping mappingForClass:[UserProvider class] inManagedObjectStore:_manager.objectStore];
@@ -361,6 +401,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [router routeClass:[User class] toResourcePath:@"/api/users/sign_in" forMethod:RKRequestMethodPOST];
   
   [router routeClass:[UserLocation class] toResourcePath:@"/api/user_locations" forMethod:RKRequestMethodPOST];
+  
+  [router routeClass:[UserLanguage class] toResourcePath:@"/api/user_languages" forMethod:RKRequestMethodPUT];
   
   [router routeClass:[UserAsset class] toResourcePath:@"/api/user_assets" forMethod:RKRequestMethodPOST];
   

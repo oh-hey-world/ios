@@ -2,7 +2,7 @@
 //  ProviderFriend.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 11/13/12.
+//  Created by Eric Roland on 12/10/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @dynamic createdAt;
 @dynamic externalId;
+@dynamic fullName;
 @dynamic link;
 @dynamic locationId;
 @dynamic pictureUrl;
@@ -23,8 +24,7 @@
 @dynamic updatedAt;
 @dynamic userId;
 @dynamic userName;
-@dynamic fullName;
-@dynamic userProviderFriends;
 @dynamic location;
+@dynamic userProviderFriends;
 
 @end

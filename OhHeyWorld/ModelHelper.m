@@ -145,6 +145,12 @@
   [appDelegate saveContext];
 }
 
++ (NSArray*)getLanguagesByIds:(NSArray*)languageIds {
+  
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY externalId IN %@", languageIds];
+  return [CoreDataHelper searchObjectsInContext:@"Language" :predicate :nil :NO :[appDelegate managedObjectContext]];
+}
+
 + (BOOL)isSameUser:(User*)user:(User*)otherUser {
   return ([user.externalId isEqualToNumber:otherUser.externalId]);
 }
