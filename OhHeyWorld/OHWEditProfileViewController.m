@@ -164,7 +164,7 @@
         label.textColor = [UIColor colorWithWhite:.28 alpha:1];
         [cell.contentView addSubview:label];
         
-        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(xOffset, 0, textLength, 35)];
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(xOffset, 0, textLength - 10, 35)];
         text.font = [UIFont fontWithName:@"Helvetica" size:15];
         
         text.textColor = [UIColor lightGrayColor];
@@ -223,7 +223,7 @@
   }
   
   if (indexPath.row == 2) {
-    UILabel *label = (UILabel*)[cell viewWithTag:3];
+    UILabel *label = (UILabel*)[cell viewWithTag:2];
     label.text = (_currentLanguageNames.length > 0) ? _currentLanguageNames : @"None selected";
   }
   
@@ -429,10 +429,10 @@
   if (_userAsset != nil) {
     if (_userAsset.asset.length == 0) {
       NSString *assetUrl = [NSString stringWithFormat:@"%@%@", [appDelegate baseUrl], _userAsset.assetUrl];
-      [_profilePicture setImageWithURL:[NSURL URLWithString:assetUrl] placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"] success:^(UIImage *image, BOOL chached) {
+      [_profilePicture setImageWithURL:[NSURL URLWithString:assetUrl] placeholderImage:[UIImage imageNamed:@"profile-photo-default.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         _userAsset.asset = UIImageJPEGRepresentation(image, 1.0);
         [appDelegate saveContext];
-      } failure:nil];
+      }];
     } else {
       _profilePicture.image = [UIImage imageWithData:_userAsset.asset];
     }
