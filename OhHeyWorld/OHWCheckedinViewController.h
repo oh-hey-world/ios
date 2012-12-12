@@ -10,19 +10,27 @@
 #import "OHWAppDelegate.h"
 #import "User.h"
 #import "Location.h"
+#import "ProviderFriend.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/RKRequestSerialization.h>
+#import <KKGridView/KKGridView.h>
 
-@interface OHWCheckedinViewController : OHWBaseViewController <UITableViewDataSource, UITableViewDelegate, RKObjectLoaderDelegate, MKMapViewDelegate>
+@interface OHWCheckedinViewController : OHWBaseViewController <KKGridViewDataSource, KKGridViewDelegate, RKObjectLoaderDelegate, MKMapViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIButton *sendNotificationsButton;
 @property (nonatomic, retain) IBOutlet UILabel *notificationLabel;
+@property (nonatomic, retain) IBOutlet UIImageView *notificationBar;
 @property (nonatomic, retain) IBOutlet UILabel *cityLabel;
 @property (nonatomic, retain) UserLocation *selectedUserLocation;
 @property (nonatomic, retain) Location *location;
 @property (nonatomic, retain) User *loggedInUser;
 @property(nonatomic,retain) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet KKGridView *gridView;
+@property (readwrite) float headerHeight;
+@property (strong, nonatomic) UIImageView *firstDivider;
+@property (strong, nonatomic) UIView *headerView;
+@property (nonatomic, retain) NSMutableArray *peopleAtLocation;
 
 - (IBAction)sendNotifiction:(id)sender;
 

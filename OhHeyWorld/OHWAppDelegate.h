@@ -13,6 +13,7 @@
 #import "OHWCheckinViewController.h"
 #import "OHWCityCheckinViewController.h"
 #import "OHWPeopleViewController.h"
+#import "OHWHistoryViewController.h"
 #import "OHWSettings.h"
 #import "OHWEditProfileViewController.h"
 #import "User.h"

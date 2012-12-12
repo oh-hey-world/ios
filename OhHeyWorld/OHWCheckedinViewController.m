@@ -16,12 +16,16 @@
 @implementation OHWCheckedinViewController
 @synthesize sendNotificationsButton = _sendNotificationsButton;
 @synthesize notificationLabel = _notificationLabel;
+@synthesize notificationBar = _notificationBar;
 @synthesize cityLabel = _cityLabel;
-@synthesize tableView = _tableView;
+@synthesize gridView = _gridView;
 @synthesize selectedUserLocation = _selectedUserLocation;
 @synthesize location = _location;
 @synthesize loggedInUser = _loggedInUser;
 @synthesize mapView = _mapView;
+@synthesize firstDivider = _firstDivider;
+@synthesize headerView = _headerView;
+@synthesize peopleAtLocation = _peopleAtLocation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,15 +48,20 @@
   } else {
     [appDelegate setUsersAtLocation:objects];
   }
-  [_tableView reloadData];
+  [_peopleAtLocation addObjectsFromArray:objects];
+  [_gridView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   User *user = [appDelegate loggedInUser];
-
-  UserLocation* lastUserLocation = (_selectedUserLocation == nil) ? [ModelHelper getLastUserLocation:user] : _selectedUserLocation;
-  _location = lastUserLocation.location;
+  if (_peopleAtLocation == nil) {
+    _peopleAtLocation = [[NSMutableArray alloc] init];
+  } else {
+    [_peopleAtLocation removeAllObjects];
+  }
+  _selectedUserLocation = (_selectedUserLocation == nil) ? [ModelHelper getLastUserLocation:user] : _selectedUserLocation;
+  _location = _selectedUserLocation.location;
   _cityLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.countryCode, nil];
   _notificationLabel.text = [NSString stringWithFormat:@"Your arrival in %@ was successfully logged in your travel log.", _location.city];
   
@@ -76,7 +85,7 @@
   
   NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
   [params setValue:@"auth_token" forKey: [appDelegate authToken]];
-  NSString *url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_not_ohw_user", lastUserLocation.externalId];
+  NSString *url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_not_ohw_user", _selectedUserLocation.externalId];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodGET;
     loader.userData = @"userFriendsNotOhwUser";
@@ -84,7 +93,7 @@
     loader.delegate = self;
   }];
   
-  url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_ohw_user", lastUserLocation.externalId];
+  url = [NSString stringWithFormat:@"/api/user_locations/%@/user_friends_ohw_user", _selectedUserLocation.externalId];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodGET;
     loader.userData = @"userFriendsOhwUser";
@@ -119,7 +128,7 @@
    nil];
   [[RKObjectManager sharedManager].mappingProvider setMapping:userMapping forKeyPath:@"users"];
   
-  url = [NSString stringWithFormat:@"/api/user_locations/%@/users_at_location", lastUserLocation.externalId];
+  url = [NSString stringWithFormat:@"/api/user_locations/%@/users_at_location", _selectedUserLocation.externalId];
   [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url usingBlock:^(RKObjectLoader *loader) {
     loader.method = RKRequestMethodGET;
     loader.userData = @"usersAtLocation";
@@ -144,12 +153,30 @@
   [super viewDidLoad];
   self.title = @"Checked In";
   
+  float yHeight = 164.0f;
+  float center = (self.view.frame.size.width / 2);
+  
+  _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 164)];
+  _mapView.delegate = self;
+  _mapView.showsUserLocation = YES;
+  
+  _notificationBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"notification-bar.png"]];
+  _notificationLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 110, 5, 220, 30)];
+  _notificationLabel.backgroundColor = [UIColor clearColor];
+  _notificationLabel.textColor = [UIColor whiteColor];
+  _notificationLabel.numberOfLines = 0;
+  _notificationLabel.textAlignment = UITextAlignmentCenter;
+  _notificationLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+  _notificationLabel.lineBreakMode = UILineBreakModeWordWrap;
+  
+  [_notificationBar addSubview:_notificationLabel];
+  [_mapView addSubview:_notificationBar];
+  
   UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]];
   CGRect frame = nameBar.frame;
   frame.origin = CGPointMake(0, _mapView.frame.size.height - nameBar.frame.size.height);
   nameBar.frame = frame;
   
-  float center = (self.view.frame.size.width / 2);
   _cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 115, 7, 240, 30)];
   _cityLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
   _cityLabel.textAlignment = UITextAlignmentCenter;
@@ -158,148 +185,100 @@
   [nameBar insertSubview:_cityLabel atIndex:2];
   
   [_mapView addSubview:nameBar];
+  
+  _headerHeight = yHeight;
+  _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, _headerHeight)];
+  [_headerView addSubview:_mapView];
+  [_headerView addSubview:_firstDivider];
+  _gridView.gridHeaderView = _headerView;
+  
+  _gridView.scrollsToTop = YES;
+  _gridView.backgroundColor = [UIColor colorWithWhite:0.93 alpha:1.0];
+  _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+  _gridView.cellSize = CGSizeMake(90.f, 90.f);
+  _gridView.cellPadding = CGSizeMake(10.f, 10.f);
+  _gridView.allowsMultipleSelection = NO;
 }
 
 - (IBAction)sendNotifiction:(id)sender {
   
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSUInteger)numberOfSectionsInGridView:(KKGridView *)gridView
 {
   return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSUInteger)gridView:(KKGridView *)gridView numberOfItemsInSection:(NSUInteger)section
 {
-  return 3;
+  return _peopleAtLocation.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (KKGridViewCell *)gridView:(KKGridView *)gridView cellForItemAtIndexPath:(KKIndexPath *)indexPath
 {
-  static NSString *CellIdentifier = @"Cell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-    if (indexPath.row == 0) {
-      UILabel *nearbyFriendsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 130, 35)];
-      nearbyFriendsLabel.tag = 1;
-      [cell.contentView addSubview:nearbyFriendsLabel];
-      
-      UILabel *nearbyFriendsCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(135, 0, 80, 35)];
-      nearbyFriendsCountLabel.tag = 2;
-      nearbyFriendsCountLabel.textColor = [UIColor lightGrayColor];
-      [cell.contentView addSubview:nearbyFriendsCountLabel];
-    } else if (indexPath.row == 1) {
-      UILabel *nearbyTravelersLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 135, 35)];
-      nearbyTravelersLabel.tag = 3;
-      [cell.contentView addSubview:nearbyTravelersLabel];
-      
-      UILabel *nearbyTravelersCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(148, 0, 80, 35)];
-      nearbyTravelersCountLabel.tag = 4;
-      nearbyTravelersCountLabel.textColor = [UIColor lightGrayColor];
-      [cell.contentView addSubview:nearbyTravelersCountLabel];
-    } else {
-      UILabel *nearbyFriendsOhwLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 170, 35)];
-      nearbyFriendsOhwLabel.tag = 5;
-      [cell.contentView addSubview:nearbyFriendsOhwLabel];
-      
-      UILabel *nearbyFriendsOhwCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(180, 0, 80, 35)];
-      nearbyFriendsOhwCountLabel.tag = 6;
-      nearbyFriendsOhwCountLabel.textColor = [UIColor lightGrayColor];
-      [cell.contentView addSubview:nearbyFriendsOhwCountLabel];
-    }
-
-  }
-  
-  if (indexPath.row == 0) {
-    UILabel *nearbyFriendsLabel = (UILabel*)[cell viewWithTag:1];
-    nearbyFriendsLabel.text = @"Nearby Friends";
-    //TODO fill this array
-    if ([appDelegate userFriendsNotOhwUser] != nil) {
-      UILabel *nearbyFriendsCountLabel = (UILabel*)[cell viewWithTag:2];
-      nearbyFriendsCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate userFriendsNotOhwUser].count];
-    }
-  } else if (indexPath.row == 1) {
-    UILabel *nearbyTravelersLabel = (UILabel*)[cell viewWithTag:3];
-    nearbyTravelersLabel.text = @"Nearby Travelers";
-    
-    if ([appDelegate usersAtLocation] != nil) {
-      UILabel *nearbyTravelersCountLabel = (UILabel*)[cell viewWithTag:4];
-      nearbyTravelersCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate usersAtLocation].count];
-    }
+  id person = [_peopleAtLocation objectAtIndex:indexPath.index];
+  ProviderFriend *providerFriend = nil;
+  User *user = nil;
+  NSString *url = nil;
+  NSString *name = nil;
+  if ([person isKindOfClass:[ProviderFriend class]]) {
+    providerFriend = person;
+    name = providerFriend.fullName;
+    url = [NSString stringWithFormat:@"%@?width=80&height=80", providerFriend.pictureUrl];
   } else {
-    UILabel *nearbyFriendsOhwLabel = (UILabel*)[cell viewWithTag:5];
-    nearbyFriendsOhwLabel.text = @"Nearby OHW Friends";
+    user = person;
+    url = user.pictureUrl;
+  }
+  static NSString *CellIdentifier = @"Cell";
+  KKGridViewCell *cell = [gridView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil) {
+    cell = [[KKGridViewCell alloc] initWithFrame:CGRectMake(0, 0, 92.f, 92.f) reuseIdentifier:CellIdentifier];
+    UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,92,92)];
+    userImage.tag = 1;
+    [cell.contentView addSubview:userImage];
     
-    if ([appDelegate userFriendsOhwUser] != nil) {
-      UILabel *nearbyFriendsOhwCountLabel = (UILabel*)[cell viewWithTag:6];
-      nearbyFriendsOhwCountLabel.text = [NSString stringWithFormat:@"(%u)", [appDelegate userFriendsOhwUser].count];
-    }
+    UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-small.png"]];
+    CGRect frame = nameBar.frame;
+    nameBar.tag = 4;
+    frame.origin = CGPointMake(0, 68);
+    nameBar.frame = frame;
+    [cell.contentView insertSubview:nameBar aboveSubview:userImage];
+    
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, 92.f, 11)];
+    nameLabel.tag = 2;
+    nameLabel.font = [nameLabel.font fontWithSize:10];
+    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.textAlignment = UITextAlignmentCenter;
+    [cell.contentView insertSubview:nameLabel aboveSubview:nameBar];
   }
   
-  cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-  cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+  UIImageView *userImage = (UIImageView*)[cell viewWithTag:1];
+  [userImage setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"default_location.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    nil;
+  }];
   
+  UILabel *locationLabel = (UILabel*)[cell viewWithTag:2];
+  locationLabel.text = name;
   return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  OHWPeopleViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleView"];
-  if (indexPath.row == 0) {
-    controller.viewType = @"userFriendsNotOhwUser";
-  } else if (indexPath.row == 1) {
-    controller.viewType = @"usersAtLocation";
-  } else if (indexPath.row == 2) {
-    controller.viewType = @"userFriendsOhwUser";
+- (void)gridView:(KKGridView *)gridView didSelectItemAtIndexPath:(KKIndexPath *)indexPath {
+  id person = [_peopleAtLocation objectAtIndex:indexPath.index];
+  ProviderFriend *providerFriend = nil;
+  User *user = nil;
+  if ([person isKindOfClass:[ProviderFriend class]]) {
+    providerFriend = person;
+    [appDelegate setUserProviderFriend:providerFriend.userProviderFriends];
+    OHWProviderFriendViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderFriendView"];
+    [self.navigationController pushViewController:controller animated:YES];
+  } else {
+    user = person;
+    OHWHistoryViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"HistoryView"];
+    controller.selectedModel = user;
+    [self.navigationController pushViewController:controller animated:YES];
   }
-  [self.navigationController pushViewController:controller animated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
