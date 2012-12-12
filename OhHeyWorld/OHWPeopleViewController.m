@@ -87,6 +87,7 @@
 
     UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,92,92)];
     userImage.tag = 2;
+    userImage.contentMode = UIViewContentModeCenter;
     [cell.contentView addSubview:userImage];
 
     UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-small.png"]];
@@ -113,7 +114,7 @@
     [cell.contentView insertSubview:locationLabel aboveSubview:nameBar];
   }
   
-  NSString *url = [NSString stringWithFormat:@"%@?type=large", providerFriend.pictureUrl];
+  NSString *url = [NSString stringWithFormat:@"%@?width=80&height=80", providerFriend.pictureUrl];
   UIImageView *userImage = (UIImageView*)[cell viewWithTag:2];
   [userImage setImageWithURL:[NSURL URLWithString:url]
             placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
