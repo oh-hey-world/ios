@@ -25,6 +25,4 @@
 @property (nonatomic, retain) User *user;
 @property(nonatomic,retain) IBOutlet MKMapView *mapView;
 
-- (IBAction)checkin:(id)sender;
-
 @end

@@ -15,11 +15,13 @@
 
 @implementation OHWCheckedinViewController
 @synthesize sendNotificationsButton = _sendNotificationsButton;
-@synthesize dateLabel = _dateLabel;
+@synthesize notificationLabel = _notificationLabel;
 @synthesize cityLabel = _cityLabel;
 @synthesize tableView = _tableView;
-@synthesize firstCheckinNotifcation = _firstCheckinNotifcation;
 @synthesize selectedUserLocation = _selectedUserLocation;
+@synthesize location = _location;
+@synthesize loggedInUser = _loggedInUser;
+@synthesize mapView = _mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,16 +50,29 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   User *user = [appDelegate loggedInUser];
-  if ([user.completedFirstCheckin intValue] == 1) {
-    [_firstCheckinNotifcation removeFromSuperview];
-  } else {
-    
-  }
+
   UserLocation* lastUserLocation = (_selectedUserLocation == nil) ? [ModelHelper getLastUserLocation:user] : _selectedUserLocation;
-  _cityLabel.text = [[NSArray arrayWithObjects:@"Congrats you made it to", lastUserLocation.name, nil] componentsJoinedByString:@" "];
-  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-  _dateLabel.text = [dateFormatter stringFromDate:lastUserLocation.createdAt];
+  _location = lastUserLocation.location;
+  _cityLabel.text = [NSString stringWithFormat:@"%@, %@", _location.city, _location.countryCode, nil];
+  _notificationLabel.text = [NSString stringWithFormat:@"Your arrival in %@ was successfully logged in your travel log.", _location.city];
+  
+  float latitude = [_location.latitude floatValue];
+  float longitude = [_location.longitude floatValue];
+  CLLocationCoordinate2D center = {latitude, longitude};
+  MKCoordinateRegion region;
+  MKCoordinateSpan span;
+  span.latitudeDelta = .025;
+  span.longitudeDelta = .025;
+  region.center = center;
+  region.span = span;
+  [_mapView setRegion:region animated:TRUE];
+  [_mapView regionThatFits:region];
+  [_mapView setCenterCoordinate:_mapView.region.center animated:NO];
+  
+  MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+  [point setCoordinate:(center)];
+  [point setTitle:_location.address];
+  [_mapView addAnnotation:point];
   
   NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
   [params setValue:@"auth_token" forKey: [appDelegate authToken]];
@@ -113,10 +128,36 @@
   }];
 }
 
+- (MKAnnotationView *) mapView:(MKMapView *)currentMapView viewForAnnotation:(id <MKAnnotation>) annotation {
+  if (annotation == currentMapView.userLocation) {
+    return nil; //default to blue dot
+  }
+  MKPinAnnotationView *dropPin=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"location"];
+  dropPin.pinColor = MKPinAnnotationColorGreen;
+  dropPin.animatesDrop = YES;
+  dropPin.canShowCallout = YES;
+  return dropPin;
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   self.title = @"Checked In";
+  
+  UIImageView *nameBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay-big.png"]];
+  CGRect frame = nameBar.frame;
+  frame.origin = CGPointMake(0, _mapView.frame.size.height - nameBar.frame.size.height);
+  nameBar.frame = frame;
+  
+  float center = (self.view.frame.size.width / 2);
+  _cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(center - 115, 7, 240, 30)];
+  _cityLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
+  _cityLabel.textAlignment = UITextAlignmentCenter;
+  _cityLabel.backgroundColor = [UIColor clearColor];
+  _cityLabel.textColor = [UIColor whiteColor];
+  [nameBar insertSubview:_cityLabel atIndex:2];
+  
+  [_mapView addSubview:nameBar];
 }
 
 - (IBAction)sendNotifiction:(id)sender {

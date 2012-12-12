@@ -390,15 +390,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V2d-kb-lC5">
-                                <rect key="frame" x="20" y="10" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RKK-w4-ODl">
-                                <rect key="frame" x="20" y="210" width="280" height="44"/>
+                                <rect key="frame" x="20" y="180" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Send notifications">
@@ -413,7 +406,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="35" sectionHeaderHeight="10" sectionFooterHeight="10" id="auI-hI-VpQ">
-                                <rect key="frame" x="20" y="261" width="280" height="129"/>
+                                <rect key="frame" x="20" y="249" width="280" height="129"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -442,19 +435,27 @@
                                     <outlet property="delegate" destination="YxA-EE-v5B" id="dYP-iU-ocn"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V1u-JQ-bbK">
-                                <rect key="frame" x="20" y="39" width="280" height="48"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lfW-hj-fvP">
-                                <rect key="frame" x="20" y="70" width="280" height="142"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <string key="text">This is your first check in on Oh Hey World.  We help you share where you are with those who care, log your travels with one click, and discover friends and other travelers as you travel.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Zfs-4C-EDD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YxA-EE-v5B" id="pqr-Eg-qMP"/>
+                                </connections>
+                            </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider-horizontal.png" id="yPj-E8-tB8">
+                                <rect key="frame" x="8" y="233" width="304" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="notification-bar.png" id="EZo-4v-Zdd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x8i-yM-f9q">
+                                <rect key="frame" x="45" y="0.0" width="230" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -462,15 +463,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="kaI-9w-VFf"/>
                     <connections>
-                        <outlet property="cityLabel" destination="V1u-JQ-bbK" id="Uce-XX-qi6"/>
-                        <outlet property="dateLabel" destination="V2d-kb-lC5" id="n6O-l4-LsJ"/>
-                        <outlet property="firstCheckinNotifcation" destination="lfW-hj-fvP" id="ZI7-bn-rg4"/>
+                        <outlet property="mapView" destination="Zfs-4C-EDD" id="L79-G1-qCY"/>
+                        <outlet property="notificationLabel" destination="x8i-yM-f9q" id="MG4-R5-CxH"/>
                         <outlet property="tableView" destination="auI-hI-VpQ" id="Ef9-qd-nPm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="utm-FP-ryx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="854"/>
+            <point key="canvasLocation" x="1746" y="854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4fs-NR-jm2">
@@ -794,9 +794,11 @@
     <resources>
         <image name="button-checkin.png" width="227" height="46"/>
         <image name="button-follow.png" width="151" height="31"/>
+        <image name="divider-horizontal.png" width="304" height="1"/>
         <image name="input-city.png" width="272" height="52"/>
         <image name="menu-bg.png" width="320" height="568"/>
         <image name="menu-divider-horizontal.png" width="276" height="1"/>
+        <image name="notification-bar.png" width="320" height="47"/>
         <image name="text-where-are-you-today.png" width="305" height="28"/>
     </resources>
     <classes>
@@ -821,8 +823,8 @@
             <relationships>
                 <relationship kind="action" name="sendNotifiction:"/>
                 <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="firstCheckinNotifcation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="notificationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sendNotificationsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
@@ -838,7 +840,6 @@
         <class className="OHWCityCheckinViewController" superclassName="OHWBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCityCheckinViewController.h"/>
             <relationships>
-                <relationship kind="action" name="checkin:"/>
                 <relationship kind="outlet" name="checkinButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
@@ -850,6 +851,10 @@
             <relationships>
                 <relationship kind="action" name="changeProfilePicture:"/>
                 <relationship kind="action" name="saveProfile:"/>
+                <relationship kind="outlet" name="blurbField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="interestsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>

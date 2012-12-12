@@ -19,6 +19,7 @@
 @synthesize hudView = _hudView;
 @synthesize placeMark = _placeMark;
 @synthesize checkinText = _checkinText;
+@synthesize loggedInUser = _loggedInUser;
 
 - (void)startLocationManager {
   [self.locationManager startUpdatingLocation];
@@ -95,23 +96,53 @@
     }];
     [alert show];
   } else {
-    OHWAppDelegate *delegate = (OHWAppDelegate *)[[UIApplication sharedApplication] delegate];
-    delegate.location = [objects objectAtIndex:0];
-    OHWCityCheckinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CityCheckinView"];
+    /*
+     OHWAppDelegate *delegate = (OHWAppDelegate *)[[UIApplication sharedApplication] delegate];
+     Location *location = [objects objectAtIndex:0];
+     delegate.location = location;
+     */
+    
+    OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
     [self.navigationController pushViewController:controller animated:YES];
   }
 }
 
 - (IBAction)checkin:(id)sender {
   if (_placeMark != nil || _checkinText.text.length > 0) {
-    NSString *locationInfo = (_checkinText.text.length == 0) ? ABCreateStringWithAddressDictionary(_placeMark.addressDictionary, YES) : _checkinText.text;
-    NSDictionary *params = [NSDictionary dictionaryWithKeysAndObjects:
-                            @"user_input", locationInfo,
-                            @"auth_token", [appDelegate authToken],
-                            nil];
-    
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[@"/api/locations/search" stringByAppendingQueryParameters:params] delegate:self];
-    [_locationManager stopUpdatingLocation];
+    _loggedInUser = [appDelegate loggedInUser];
+    if (_loggedInUser != nil) {
+      NSString *locationInfo = (_checkinText.text.length == 0) ? ABCreateStringWithAddressDictionary(_placeMark.addressDictionary, YES) : _checkinText.text;
+      
+      Location* location = [Location object];
+      location.userInput = locationInfo;
+      
+      UserLocation* userLocation = [UserLocation object];
+      userLocation.user = _loggedInUser;
+      userLocation.userId = _loggedInUser.externalId;
+      userLocation.location = location;
+      
+      RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
+      NSError* error = nil;
+      NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userLocation mapping:serializationMapping] serializedObject:&error];
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+      [params setValue:@"auth_token" forKey: [appDelegate authToken]];
+      [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
+        loader.method = RKRequestMethodPOST;
+        loader.userData = @"userLocation";
+        loader.params = params;
+        loader.delegate = self;
+      }];
+      
+      /*
+      NSDictionary *params = [NSDictionary dictionaryWithKeysAndObjects:
+                              @"user_input", locationInfo,
+                              @"auth_token", [appDelegate authToken],
+                              nil];
+      
+      [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[@"/api/locations/search" stringByAppendingQueryParameters:params] delegate:self];
+      */
+      [_locationManager stopUpdatingLocation];
+    }
   }
 }
 

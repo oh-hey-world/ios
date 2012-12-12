@@ -88,34 +88,6 @@
   return dropPin;
 }
 
-- (IBAction)checkin:(id)sender {
-  UserLocation* lastUserLocation = [ModelHelper getLastUserLocation:_user];
-  [appDelegate setUserLocation:lastUserLocation];
-  if (lastUserLocation == nil || !([lastUserLocation.location.city isEqualToString:_location.city] && [lastUserLocation.location.state isEqualToString:_location.state])) {
-    UserLocation* userLocation = [UserLocation object];
-    userLocation.user = _user;
-    userLocation.userId = _user.externalId;
-    userLocation.locationId = _location.externalId;
-    userLocation.location = _location;
-    userLocation.customMessage = _textView.text;
-    
-    RKObjectMapping *serializationMapping = [[[RKObjectManager sharedManager] mappingProvider] serializationMappingForClass:[UserLocation class]];
-    NSError* error = nil;
-    NSDictionary* dictionary = [[RKObjectSerializer serializerWithObject:userLocation mapping:serializationMapping] serializedObject:&error];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-    [params setValue:@"auth_token" forKey: [appDelegate authToken]];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/user_locations" usingBlock:^(RKObjectLoader *loader) {
-      loader.method = RKRequestMethodPOST;
-      loader.userData = @"userLocation";
-      loader.params = params;
-      loader.delegate = self;
-    }];
-  } else {
-    OHWCheckedinViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckedinView"];
-    [self.navigationController pushViewController:controller animated:YES];
-  }
-}
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];
