@@ -7,7 +7,7 @@
 //
 
 #import "KNMultiItemSelector.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 
 #pragma mark - Private Interface
