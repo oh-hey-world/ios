@@ -56,8 +56,8 @@
 		07237768165579210044FDE5 /* OHWFriendsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07237767165579200044FDE5 /* OHWFriendsMapViewController.m */; };
 		07303B761677CA4A00EEA968 /* KNMultiItemSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 07303B731677CA4A00EEA968 /* KNMultiItemSelector.m */; };
 		07303B771677CA4A00EEA968 /* KNSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 07303B751677CA4A00EEA968 /* KNSelectorItem.m */; };
-		07303B7A1677CBF100EEA968 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07303B781677CBD100EEA968 /* SDWebImage.framework */; };
 		07303B7D1677CEEC00EEA968 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 07303B7C1677CEEC00EEA968 /* User.m */; };
+		07303B7F1678CAAA00EEA968 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07303B7E1678CAAA00EEA968 /* SDWebImage.framework */; };
 		074EE91E16305C120043B485 /* ExtendedManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 074EE91D16305C120043B485 /* ExtendedManagedObject.m */; };
 		0768B0D2161F73AA002DD6F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D1161F73AA002DD6F2 /* UIKit.framework */; };
 		0768B0D4161F73AA002DD6F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0768B0D3161F73AA002DD6F2 /* Foundation.framework */; };
@@ -310,9 +310,9 @@
 		07303B731677CA4A00EEA968 /* KNMultiItemSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNMultiItemSelector.m; sourceTree = "<group>"; };
 		07303B741677CA4A00EEA968 /* KNSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNSelectorItem.h; sourceTree = "<group>"; };
 		07303B751677CA4A00EEA968 /* KNSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNSelectorItem.m; sourceTree = "<group>"; };
-		07303B781677CBD100EEA968 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../../../../Downloads/SDWebImage.framework; sourceTree = "<group>"; };
 		07303B7B1677CEEC00EEA968 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		07303B7C1677CEEC00EEA968 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		07303B7E1678CAAA00EEA968 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../../../github/SDWebImage.framework; sourceTree = "<group>"; };
 		074EE91C16305C120043B485 /* ExtendedManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedManagedObject.h; sourceTree = "<group>"; };
 		074EE91D16305C120043B485 /* ExtendedManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedManagedObject.m; sourceTree = "<group>"; };
 		0768B0CD161F73AA002DD6F2 /* OhHeyWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhHeyWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,7 +350,6 @@
 		0775FBD91625943900D8BDA7 /* OHWSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWSettings.m; sourceTree = "<group>"; };
 		0775FBF81625F93400D8BDA7 /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
 		0775FBF91625F93400D8BDA7 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
-		077CC3941651AB8D00E1D988 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		077CC3961651ABE100E1D988 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		077CC39C1652A39C00E1D988 /* OHWProviderFriendWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHWProviderFriendWebViewController.h; sourceTree = "<group>"; };
 		077CC39D1652A39C00E1D988 /* OHWProviderFriendWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHWProviderFriendWebViewController.m; sourceTree = "<group>"; };
@@ -467,7 +466,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07303B7A1677CBF100EEA968 /* SDWebImage.framework in Frameworks */,
+				07303B7F1678CAAA00EEA968 /* SDWebImage.framework in Frameworks */,
 				0775F69E1624669500D8BDA7 /* MobileCoreServices.framework in Frameworks */,
 				0700DA8A166E8D010054089E /* QuartzCore.framework in Frameworks */,
 				077CC3971651ABE100E1D988 /* ImageIO.framework in Frameworks */,
@@ -647,7 +646,6 @@
 		0768B0C2161F73AA002DD6F2 = {
 			isa = PBXGroup;
 			children = (
-				07303B781677CBD100EEA968 /* SDWebImage.framework */,
 				0775FBBD1624AECC00D8BDA7 /* RestKit.xcodeproj */,
 				0768B0D7161F73AA002DD6F2 /* OhHeyWorld */,
 				0768B106161F73AB002DD6F2 /* OhHeyWorldTests */,
@@ -672,7 +670,7 @@
 		0768B0D0161F73AA002DD6F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				077CC3931651AB6300E1D988 /* SDWebImage */,
+				07303B7E1678CAAA00EEA968 /* SDWebImage.framework */,
 				077CC3961651ABE100E1D988 /* ImageIO.framework */,
 				071EE427162C9BF2008C6519 /* AddressBookUI.framework */,
 				0775F6961624669500D8BDA7 /* CFNetwork.framework */,
@@ -839,15 +837,6 @@
 				07941BF71665577B00B15846 /* TransparentToolbar.m */,
 			);
 			name = Utilities;
-			sourceTree = "<group>";
-		};
-		077CC3931651AB6300E1D988 /* SDWebImage */ = {
-			isa = PBXGroup;
-			children = (
-				077CC3941651AB8D00E1D988 /* SDWebImage.framework */,
-			);
-			name = SDWebImage;
-			path = OhHeyWorld;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1289,6 +1278,7 @@
 					"\"$(SRCROOT)/RestKit/Tests/Vendor/OCHamcrest\"",
 					"\"$(SRCROOT)/OhHeyWorld\"",
 					"\"$(SRCROOT)/../../../../../Downloads\"",
+					"\"$(SRCROOT)/../../../../github\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
@@ -1321,6 +1311,7 @@
 					"\"$(SRCROOT)/RestKit/Tests/Vendor/OCHamcrest\"",
 					"\"$(SRCROOT)/OhHeyWorld\"",
 					"\"$(SRCROOT)/../../../../../Downloads\"",
+					"\"$(SRCROOT)/../../../../github\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OhHeyWorld/OhHeyWorld-Prefix.pch";
