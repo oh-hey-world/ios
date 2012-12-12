@@ -137,11 +137,6 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
           _loggedInUser = [objects objectAtIndex:0];
           _authToken = _loggedInUser.authenticationToken;
           
-          NSLog(@"%@", objectLoader.response.bodyAsString);
-          for (UserLanguage* userLanguage in _loggedInUser.userUserLanguages) {
-            NSLog(@"%@ %@ %@", userLanguage.languageId, userLanguage.externalId, userLanguage.createdAt);
-          }
-          
           NSMutableArray* languages = [CoreDataHelper searchObjectsInContext:@"Language" :nil :nil :NO :[self managedObjectContext]];
           if (languages.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
