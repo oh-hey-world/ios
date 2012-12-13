@@ -172,7 +172,7 @@
         [cell.contentView addSubview:text];
         text.backgroundColor = [UIColor clearColor];
         
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
         break;
       }

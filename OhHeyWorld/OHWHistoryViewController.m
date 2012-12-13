@@ -454,6 +454,7 @@
   UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
   dateLabel.text = ended;
   
+  //cell.selectedBackgroundView = UITableViewCellSelectionStyleNone;
   return cell;
 }
 
