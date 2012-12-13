@@ -156,6 +156,11 @@
   [_locationManager stopUpdatingLocation];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return NO;
+}
+
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
 	NSLog(@"%@", error);
