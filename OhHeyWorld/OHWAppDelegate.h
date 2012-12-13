@@ -16,6 +16,8 @@
 #import "OHWHistoryViewController.h"
 #import "OHWSettings.h"
 #import "OHWEditProfileViewController.h"
+#import "OHWAlertsViewController.h"
+#import "OHWSharingViewController.h"
 #import "User.h"
 #import "UserProvider.h"
 #import "Location.h"

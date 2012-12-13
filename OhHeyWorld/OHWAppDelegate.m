@@ -163,7 +163,7 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
           if (_loggedInUser.userNotificationContactDetails.count == 0) {
             NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
             [params setValue:@"auth_token" forKey:_authToken];
-            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/users/notification_contact_details" usingBlock:^(RKObjectLoader *loader) {
+            [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/notification_contact_details" usingBlock:^(RKObjectLoader *loader) {
               loader.method = RKRequestMethodGET;
               loader.userData = @"notificatioContactDetails";
               loader.params = params;
@@ -401,6 +401,8 @@ NSString *const SessionStateChangedNotification = @"com.ohheyworld.OhHeyWorld:Se
   [router routeClass:[UserLanguage class] toResourcePath:@"/api/user_languages" forMethod:RKRequestMethodPUT];
   
   [router routeClass:[UserAsset class] toResourcePath:@"/api/user_assets" forMethod:RKRequestMethodPOST];
+  
+  [router routeClass:[NotificationContactDetail class] toResourcePath:@"/api/notification_contact_details" forMethod:RKRequestMethodPOST];
   
   [router routeClass:[UserProviderFriend class] toResourcePath:@"/api/user_provider_friends/:externalId" forMethod:RKRequestMethodPUT];
   

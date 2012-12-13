@@ -7,12 +7,22 @@
 //
 
 #import "OHWSharingViewController.h"
+#define appDelegate (OHWAppDelegate *)[[UIApplication sharedApplication] delegate]
 
 @interface OHWSharingViewController ()
 
 @end
 
 @implementation OHWSharingViewController
+@synthesize textView = _textView;
+@synthesize loggedInUser = _loggedInUser;
+@synthesize selectedUserLocation = _selectedUserLocation;
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  _loggedInUser = [appDelegate loggedInUser];
+  _textView.placeholder = [NSString stringWithFormat:@"I safely arrived in %@!", _selectedUserLocation.location.city];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

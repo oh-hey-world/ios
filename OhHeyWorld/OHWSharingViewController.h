@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GCPlaceholderTextView.h"
+#import "OHWAppDelegate.h"
 
 @interface OHWSharingViewController : UIViewController
+
+@property (nonatomic, retain) IBOutlet GCPlaceholderTextView *textView;
+@property (nonatomic, retain) User *loggedInUser;
+@property (nonatomic, retain) UserLocation *selectedUserLocation;
 
 @end
