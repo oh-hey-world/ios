@@ -15,6 +15,7 @@
 
 @implementation OHWCheckedinViewController
 @synthesize sendNotificationsButton = _sendNotificationsButton;
+@synthesize sendAlertsButton = _sendAlertsButton;
 @synthesize notificationLabel = _notificationLabel;
 @synthesize notificationBar = _notificationBar;
 @synthesize cityLabel = _cityLabel;
@@ -186,8 +187,29 @@
   
   [_mapView addSubview:nameBar];
   
+  yHeight += 7;
+  
+  UIImage *alertImage = [UIImage imageNamed:@"button-share.png"];
+  _sendAlertsButton = [[UIButton alloc] initWithFrame:CGRectMake(10, yHeight, alertImage.size.width, alertImage.size.height)];
+  [_sendAlertsButton setImage:alertImage forState:UIControlStateNormal];
+  [_sendAlertsButton addTarget:self action:@selector(sendNotifiction:) forControlEvents:UIControlEventTouchUpInside];
+  
+  UIImage *notificationImage = [UIImage imageNamed:@"button-send-alerts.png"];
+  _sendNotificationsButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - notificationImage.size.width - 10, yHeight, notificationImage.size.width, notificationImage.size.height)];
+  [_sendNotificationsButton setImage:notificationImage forState:UIControlStateNormal];
+  [_sendNotificationsButton addTarget:self action:@selector(sendAlert:) forControlEvents:UIControlEventTouchUpInside];
+  
+  yHeight += alertImage.size.height + 7;
+  
+  _firstDivider = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"divider-horizontal.png"]];
+  _firstDivider.frame = CGRectMake(0, yHeight, _firstDivider.frame.size.width, _firstDivider.frame.size.height);
+  
+  yHeight += 5.0;
+  
   _headerHeight = yHeight;
   _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, _headerHeight)];
+  [_headerView addSubview:_sendAlertsButton];
+  [_headerView addSubview:_sendNotificationsButton];
   [_headerView addSubview:_mapView];
   [_headerView addSubview:_firstDivider];
   _gridView.gridHeaderView = _headerView;
@@ -201,7 +223,15 @@
 }
 
 - (IBAction)sendNotifiction:(id)sender {
-  
+  OHWSharingViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SharingView"];
+  controller.selectedUserLocation = _selectedUserLocation;
+  [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (IBAction)sendAlert:(id)sender {
+  OHWAlertsViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AlertsView"];
+  controller.selectedUserLocation = _selectedUserLocation;
+  [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (NSUInteger)numberOfSectionsInGridView:(KKGridView *)gridView
@@ -254,7 +284,7 @@
   }
   
   UIImageView *userImage = (UIImageView*)[cell viewWithTag:1];
-  [userImage setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"default_location.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+  [userImage setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.gif"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
     nil;
   }];
   

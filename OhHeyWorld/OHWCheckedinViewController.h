@@ -17,8 +17,8 @@
 
 @interface OHWCheckedinViewController : OHWBaseViewController <KKGridViewDataSource, KKGridViewDelegate, RKObjectLoaderDelegate, MKMapViewDelegate>
 
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIButton *sendNotificationsButton;
+@property (nonatomic, retain) IBOutlet UIButton *sendAlertsButton;
 @property (nonatomic, retain) IBOutlet UILabel *notificationLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *notificationBar;
 @property (nonatomic, retain) IBOutlet UILabel *cityLabel;
@@ -33,5 +33,6 @@
 @property (nonatomic, retain) NSMutableArray *peopleAtLocation;
 
 - (IBAction)sendNotifiction:(id)sender;
+- (IBAction)sendAlert:(id)sender;
 
 @end

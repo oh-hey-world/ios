@@ -34,7 +34,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="users" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userNotificationContactDetails" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userNotificationContactDetails" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ProviderFriend" representedClassName="ProviderFriend" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -81,7 +81,7 @@
         <relationship name="userFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserFriend" inverseName="friend" inverseEntity="UserFriend" syncable="YES"/>
         <relationship name="userFriendUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserFriend" inverseName="user" inverseEntity="UserFriend" syncable="YES"/>
         <relationship name="userInterests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserInterest" inverseName="user" inverseEntity="UserInterest" syncable="YES"/>
-        <relationship name="userNotificationContactDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotificationContactDetail" inverseName="users" inverseEntity="NotificationContactDetail" syncable="YES"/>
+        <relationship name="userNotificationContactDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotificationContactDetail" inverseName="user" inverseEntity="NotificationContactDetail" syncable="YES"/>
         <relationship name="userUserLanguages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserLanguage" inverseName="user" inverseEntity="UserLanguage" syncable="YES"/>
         <relationship name="userUserLocations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserLocation" inverseName="user" inverseEntity="UserLocation" syncable="YES"/>
         <relationship name="userUserProviderFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProviderFriend" inverseName="user" inverseEntity="UserProviderFriend" syncable="YES"/>
