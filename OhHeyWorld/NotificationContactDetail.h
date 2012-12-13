@@ -2,7 +2,7 @@
 //  NotificationContactDetail.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 12/10/12.
+//  Created by Eric Roland on 12/13/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -21,6 +21,6 @@
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSString * value;
-@property (nonatomic, retain) User *users;
+@property (nonatomic, retain) User *user;
 
 @end

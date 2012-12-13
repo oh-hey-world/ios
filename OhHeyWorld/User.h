@@ -2,7 +2,7 @@
 //  User.h
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 12/11/12.
+//  Created by Eric Roland on 12/13/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -27,6 +27,7 @@
 @property (nonatomic, retain) NSString * homeLocation;
 @property (nonatomic, retain) NSDate * importJobFinishedAt;
 @property (nonatomic, retain) NSNumber * importJobId;
+@property (nonatomic, retain) NSString * interests;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * link;
 @property (nonatomic, retain) NSString * locale;
@@ -37,7 +38,6 @@
 @property (nonatomic, retain) NSString * slug;
 @property (nonatomic, retain) NSNumber * timezone;
 @property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSString * interests;
 @property (nonatomic, retain) NSSet *userAssets;
 @property (nonatomic, retain) NSSet *userFriends;
 @property (nonatomic, retain) NSSet *userFriendUsers;

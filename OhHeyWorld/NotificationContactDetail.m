@@ -2,7 +2,7 @@
 //  NotificationContactDetail.m
 //  OhHeyWorld
 //
-//  Created by Eric Roland on 12/10/12.
+//  Created by Eric Roland on 12/13/12.
 //  Copyright (c) 2012 Oh Hey World, Inc. All rights reserved.
 //
 
@@ -20,6 +20,6 @@
 @dynamic updatedAt;
 @dynamic userId;
 @dynamic value;
-@dynamic users;
+@dynamic user;
 
 @end
