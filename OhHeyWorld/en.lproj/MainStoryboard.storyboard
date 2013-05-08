@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Itj-uu-QqS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Itj-uu-QqS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Friends-->
@@ -792,141 +792,15 @@
         <image name="text-recipients.png" width="89" height="19"/>
         <image name="text-where-are-you-today.png" width="305" height="28"/>
     </resources>
-    <classes>
-        <class className="GCPlaceholderTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GCPlaceholderTextView.h"/>
-        </class>
-        <class className="KKGridView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/KKGridView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataSource"/>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="OHWAlertsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWAlertsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
-            </relationships>
-        </class>
-        <class className="OHWBaseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWBaseViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="revealSidebar:" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="OHWCheckedinViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckedinViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sendAlert:"/>
-                <relationship kind="action" name="sendNotifiction:"/>
-                <relationship kind="outlet" name="cityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="notificationBar" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="notificationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sendAlertsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sendNotificationsButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="OHWCheckinViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWCheckinViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="checkin:"/>
-                <relationship kind="outlet" name="checkinButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkinText" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="OHWEditProfileViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWEditProfileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeProfilePicture:"/>
-                <relationship kind="action" name="saveProfile:"/>
-                <relationship kind="outlet" name="blurbField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="interestsField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="OHWFriendsMapViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWFriendsMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="OHWHistoryViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWHistoryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeProfilePicture:"/>
-                <relationship kind="action" name="editProfile:"/>
-                <relationship kind="action" name="followUser:"/>
-                <relationship kind="action" name="sendMessage:"/>
-                <relationship kind="action" name="showFriendsMapView:"/>
-                <relationship kind="outlet" name="blurbLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="friendsViewButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
-                <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="sendMessageButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="OHWLeftViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLeftViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="navigate:"/>
-            </relationships>
-        </class>
-        <class className="OHWLoginViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWLoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="performLogin:"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="OHWPeopleViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWPeopleViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="gridView" candidateClass="KKGridView"/>
-            </relationships>
-        </class>
-        <class className="OHWProviderFriendViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWProviderFriendViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="followUser:"/>
-                <relationship kind="action" name="openWebView:"/>
-                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="webViewButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="OHWProviderFriendWebViewController" superclassName="OHWBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWProviderFriendWebViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="openBrowser:"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="OHWSharingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OHWSharingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="textView" candidateClass="GCPlaceholderTextView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="PEt-Im-Atj"/>
         <segue reference="cYZ-0z-282"/>
-        <segue reference="rvP-tz-ysU"/>
-        <segue reference="2WF-P9-OZK"/>
         <segue reference="7BS-DQ-GeH"/>
+        <segue reference="rvP-tz-ysU"/>
     </inferredMetricsTieBreakers>
 </document>
