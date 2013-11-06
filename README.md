@@ -3,8 +3,8 @@
 Designs for this app are located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM
 
 What it needs still:
-- Upgrade X
-- Finish adding design assets (located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM)
+- Upgrade RestKit to latest version
+- Finish adding design assets (located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM) or add your own design assets
 
 Possible uses...
 - a hotel that wants to create their own branded arrival app
