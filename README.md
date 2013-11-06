@@ -1,5 +1,6 @@
 <a href="http://www.ohheyworld.com/">![Logo](http://blog.ohheyworld.com/wp-content/uploads/2013/04/logo_transparent_no_shad.png)</a>
 
+Oh Hey World is a location sharing platform allowing you to share your location with the people who matter. This is a version of an iOS app that is 80% done. We figured we'd let the broader travel community run with it, and create their own branded versions that run on top of Oh Hey World's location sharing platform.
 Designs for this app are located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM
 
 What it needs still:
@@ -10,8 +11,6 @@ Possible uses...
 - a hotel that wants to create their own branded arrival app
 - a tour company wanting to give their customers a seamless arrival experience
 - a travel startup who has their own
-
-Oh Hey World is a location sharing platform allowing you to share your location with the people who matter.
 
 ## Getting Started
 
