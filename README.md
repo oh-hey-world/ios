@@ -15,6 +15,8 @@ Possible uses...
 ## Getting Started
 
 1. Visit <a href="http://www.ohheyworld.com">Oh Hey World</a>
+2. Sign up for a user account (FB recommended).
+3. Begin playing with the iOS app code (the ability to create an account is not included in the app currently)
 
 ## Built With
 
