@@ -10,7 +10,8 @@ What it needs still:
 Possible uses...
 - a hotel that wants to create their own branded arrival app
 - a tour company wanting to give their customers a seamless arrival experience
-- a travel startup who has their own
+- a travel startup who has their own content, that they want to display to users upon arrival or in a search scenario
+- a travel startup wanting to capture data for various cities around the globe. for instance, I'd love to see an app that enables people to log wifi speeds for various cities.
 
 ## Getting Started
 
@@ -39,5 +40,16 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+## Contributing
+
+If you make improvements to this application, please share them with others.
+
+- Fork the project on GitHub.
+- Make your feature addition or bug fix.
+- Commit with Git.
+- Send the author a pull request.
+
+If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I’ll add a note to the README so that others can find your creation.
 
 
