@@ -12,6 +12,7 @@ Possible uses...
 - a tour company wanting to give their customers a seamless arrival experience
 - a travel startup who has their own content, that they want to display to users upon arrival or in a search scenario
 - a travel startup wanting to capture data for various cities around the globe. for instance, I'd love to see an app that enables people to log wifi speeds for various cities.
+- a travel concierge app (see <a href="http://geekestateblog.com/absurd-idea-real-estate-franchises/">this post</a>)
 
 ## Getting Started
 
