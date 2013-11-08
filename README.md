@@ -24,7 +24,7 @@ Possible uses...
 
 Oh Hey World is built from the following open source components:
 
-- [Ruby on Rails](https://github.com/rails/rails) - Our back end API is a Rails app.
+- [Ruby on Rails](https://github.com/rails/rails) - Our back end API is a Rails app. This is the iOS piece that connects to that API.
 
 ## Copyright / License
 
