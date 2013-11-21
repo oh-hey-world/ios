@@ -4,7 +4,7 @@ Oh Hey World is a location sharing platform allowing you to share your location 
 Designs for this app are located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM
 
 What it needs still:
-- Upgrade RestKit to latest version
+- Upgrade RestKit to latest version (https://github.com/RestKit/RestKit/wiki/Upgrading-from-v0.10.x-to-v0.20.0)
 - Finish adding design assets (located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM) or add your own design assets
 
 Possible uses...
