@@ -1,7 +1,7 @@
 <a href="http://www.ohheyworld.com/">![Logo](http://blog.ohheyworld.com/wp-content/uploads/2013/04/logo_transparent_no_shad.png)</a>
 
 Oh Hey World is a location sharing platform allowing you to share your location with the people who matter. This is a version of an iOS app that is 80% done. We figured we'd let the broader travel community run with it, and create their own branded versions that run on top of Oh Hey World's location sharing platform.
-Designs for this app are located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM
+Designs for this app are located here: https://www.dropbox.com/sh/qo1iqhwn8dzlnyh/AACEeFp9kXqeNb-TiOy7FojCa?dl=0
 
 What it needs still:
 - Upgrade RestKit to latest version (https://github.com/RestKit/RestKit/wiki/Upgrading-from-v0.10.x-to-v0.20.0)
