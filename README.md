@@ -5,7 +5,7 @@ Designs for this app are located here: https://www.dropbox.com/sh/qo1iqhwn8dzlny
 
 What it needs still:
 - Upgrade RestKit to latest version (https://github.com/RestKit/RestKit/wiki/Upgrading-from-v0.10.x-to-v0.20.0)
-- Finish adding design assets (located here: https://www.dropbox.com/sh/nmxpd1btcs8uk49/j_FgH-aPjM) or add your own design assets
+- Finish adding design assets or add your own design assets
 
 Possible uses...
 - a hotel that wants to create their own branded arrival app
